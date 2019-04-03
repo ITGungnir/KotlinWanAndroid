@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#FF373737</color>
+    <color name="colorPrimary">#FF707070</color>
+
+    <color name="clr_divider">#FFC2C2C2</color>
+    <color name="clr_background">#FFF5F5F5</color>
+    <color name="clr_nav_icon">#FFFAFAFA</color>
+
+    <color name="clr_icon_selected">#FF707070</color>
+    <color name="clr_icon_unselected">#FFC2C2C2</color>
+
+    <color name="clr_text_level_1">#FF373737</color>
+    <color name="clr_text_level_2">#FF707070</color>
+    <color name="clr_text_level_3">#FFAEAEAE</color>
+
+</resources>

@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion target_sdk_version
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // Kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "org.jetbrains.anko:anko-sdk25:$anko_version"
+    api "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+    // noinspection GradleCompatible
+    api "com.android.support:appcompat-v7:$support_version"
+    api "com.android.support:design:$support_version"
+    api "com.android.support:recyclerview-v7:$support_version"
+    api "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+    // Lifecycle
+    api "android.arch.lifecycle:extensions:$lifecycle_version"
+    // Network
+    api "com.squareup.okhttp3:okhttp:$okhttp_version"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    // ReactiveX
+    api "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    api "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    api "com.github.tbruyelle:rxpermissions:$rxpermissions_version"
+    api "com.jakewharton.rxbinding2:rxbinding:$rxbinding_version"
+    // Glide
+    api "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    // Widgets
+    api "com.google.android:flexbox:$flex_version"
+    // Tools
+    api "com.github.ITGungnir:RxMVVM:$rxmvvm_version"
+    api "net.danlew:android.joda:$joda_version"
+    api "com.google.code.gson:gson:$gson_version"
+    api "com.orhanobut:logger:$logger_version"
+    api "com.android.support:multidex:$dex_version"
+    api "com.github.ITGungnir.APTRouter:router_api:$router_version"
+    debugApi "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
+    debugApi "com.squareup.leakcanary:leakcanary-support-fragment:$leak_canary_version"
+    releaseApi "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
+}
