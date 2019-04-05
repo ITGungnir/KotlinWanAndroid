@@ -2,4 +2,6 @@
 
     <string name="app_name">KotlinWanAndroid</string>
 
+    <string name="str_back">\ue720</string>
+
 </resources>

@@ -3,10 +3,12 @@
 
     <color name="colorPrimaryDark">#FF373737</color>
     <color name="colorPrimary">#FF707070</color>
+    <color name="colorAccent">#FFFFAB00</color>
 
     <color name="clr_divider">#FFC2C2C2</color>
     <color name="clr_background">#FFF5F5F5</color>
     <color name="clr_nav_icon">#FFFAFAFA</color>
+    <color name="clr_mask">#99707070</color>
 
     <color name="clr_icon_selected">#FF707070</color>
     <color name="clr_icon_unselected">#FFC2C2C2</color>

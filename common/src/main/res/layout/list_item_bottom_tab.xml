@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/selector_recycler_item"
     android:orientation="vertical"
     tools:ignore="HardcodedText,SpUsage">
 
-    <my.itgungnir.kotlin.wan.android.common.widget.icon_font.IconFontView
+    <app.itgungnir.kwa.common.widget.icon_font.IconFontView
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

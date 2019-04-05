@@ -22,6 +22,7 @@ android {
 dependencies {
     // Kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-android-extensions-runtime:$kotlin_version"
     api "org.jetbrains.anko:anko-sdk25:$anko_version"
     api "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
     // noinspection GradleCompatible

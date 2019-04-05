@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion target_sdk_version
     defaultConfig {
-        applicationId "my.itgungnir.kotlin.wan.android"
+        applicationId "app.itgungnir.kwa"
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
         versionCode version_code

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.MainActivity">
+    tools:context="app.itgungnir.kwa.main.MainActivity">
 
-    <my.itgungnir.kotlin.wan.android.common.widget.bottom_tab.BottomTabView
+    <app.itgungnir.kwa.common.widget.bottom_tab.BottomTabView
         android:id="@+id/bottomTab"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
