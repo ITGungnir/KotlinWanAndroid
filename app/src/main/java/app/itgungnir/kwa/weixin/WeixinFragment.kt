@@ -1,16 +1,11 @@
 package app.itgungnir.kwa.weixin
 
 import app.itgungnir.kwa.R
-import my.itgungnir.rxmvvm.core.ext.createVM
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 
-class WeixinFragment : BaseFragment<WeixinVM>() {
+class WeixinFragment : BaseFragment() {
 
-    override fun contentView(): Int = R.layout.fragment_weixin
-
-    override fun shouldBindLifecycle(): Boolean = true
-
-    override fun obtainVM(): WeixinVM = createVM()
+    override fun layoutId(): Int = R.layout.fragment_weixin
 
     override fun initComponent() {
     }

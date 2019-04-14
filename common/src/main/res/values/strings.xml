@@ -3,5 +3,8 @@
     <string name="app_name">KotlinWanAndroid</string>
 
     <string name="str_back">\ue720</string>
+    <string name="str_empty">\ue6a6</string>
+
+    <string name="behavior_recycler_page">app.itgungnir.kwa.common.widget.recycler_page.RecyclerPageBehavior</string>
 
 </resources>

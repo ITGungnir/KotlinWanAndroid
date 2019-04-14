@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <app.itgungnir.kwa.common.widget.common_page.TitleBarView
+    <app.itgungnir.kwa.common.widget.title_bar.TitleBarView
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
-    <WebView
-        android:id="@+id/webView"
+    <app.itgungnir.kwa.common.widget.web_browser.WebBrowser
+        android:id="@+id/webBrowser"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -1,20 +1,23 @@
 package app.itgungnir.kwa.web
 
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import app.itgungnir.kwa.R
 import kotlinx.android.synthetic.main.activity_web.*
 import my.itgungnir.apt.router.annotation.Route
-import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
-import my.itgungnir.rxmvvm.core.mvvm.BaseVM
 import org.jetbrains.anko.share
 
 @Route("web")
-class WebActivity : BaseActivity<BaseVM>() {
+class WebActivity : AppCompatActivity() {
 
-    override fun contentView(): Int = R.layout.activity_web
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_web)
 
-    override fun obtainVM(): BaseVM? = null
+        initComponent()
+    }
 
-    override fun initComponent() {
+    private fun initComponent() {
 
         val title = intent.getStringExtra("title")
         val url = intent.getStringExtra("url").replace("http://", "https://")
@@ -26,9 +29,6 @@ class WebActivity : BaseActivity<BaseVM>() {
                 share("KotlinWanAndroid分享《$title》专题：$url", title)
             }
 
-        webView.loadUrl(url)
-    }
-
-    override fun observeVM() {
+        webBrowser.loadUrl(url)
     }
 }

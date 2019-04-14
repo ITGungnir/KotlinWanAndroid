@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/clr_background">
 
-    <app.itgungnir.kwa.common.widget.common_page.TitleBarView
+    <app.itgungnir.kwa.common.widget.title_bar.TitleBarView
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
@@ -16,8 +16,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/list"
+        <app.itgungnir.kwa.common.widget.status_view.StatusView
+            android:id="@+id/statusView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </android.support.v4.widget.SwipeRefreshLayout>
@@ -31,7 +31,7 @@
         android:layout_marginBottom="10dp"
         android:src="@drawable/svg_to_top"
         app:backgroundTint="@color/colorPrimary"
-        app:layout_behavior="app.itgungnir.kwa.common.widget.common_page.CommonPageBehavior"
+        app:layout_behavior="@string/behavior_recycler_page"
         app:maxImageSize="30dp"
         app:rippleColor="@color/clr_divider" />
 

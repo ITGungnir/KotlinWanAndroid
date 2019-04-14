@@ -1,93 +1,102 @@
 package app.itgungnir.kwa.home
 
 import android.arch.lifecycle.Observer
+import android.support.v7.widget.RecyclerView
+import android.widget.TextView
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.ext.bind
-import app.itgungnir.kwa.common.widget.recycler_footer.FooterStatus
 import app.itgungnir.kwa.common.widget.recycler_footer.RecyclerFooter
 import app.itgungnir.kwa.common.widget.recycler_list.RecyclerListAdapter
-import app.itgungnir.kwa.common.widget.recycler_list.RecyclerListStatus
+import app.itgungnir.kwa.common.widget.recycler_list.bind
+import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.home.delegate.BannerDelegate
-import app.itgungnir.kwa.home.delegate.BannerVO
 import app.itgungnir.kwa.home.delegate.HomeArticleDelegate
-import app.itgungnir.kwa.home.delegate.HomeArticleVO
-import kotlinx.android.synthetic.main.layout_common_page.*
-import my.itgungnir.rxmvvm.core.ext.createVM
+import kotlinx.android.synthetic.main.fragment_home.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
+import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 import org.jetbrains.anko.support.v4.toast
 
-class HomeFragment : BaseFragment<HomeVM>() {
+class HomeFragment : BaseFragment() {
+
+    private val viewModel by lazy {
+        buildFragmentViewModel(
+            fragment = this,
+            viewModelClass = HomeViewModel::class.java
+        )
+    }
+
+    override fun layoutId(): Int = R.layout.fragment_home
 
     private var listAdapter: RecyclerListAdapter? = null
 
     private var footer: RecyclerFooter? = null
 
-    override fun contentView(): Int = R.layout.layout_common_page
-
-    override fun shouldBindLifecycle(): Boolean = true
-
-    override fun obtainVM(): HomeVM = createVM()
-
     override fun initComponent() {
-
-        // Title Bar
-        titleBar.title("首页")
-            .addToolButton("\ue833") {
-                toast("scan")
-            }
-
-        // Swipe Refresh Layout
-        refreshLayout.setOnRefreshListener {
-            vm?.getHomeData()
-        }
-
-        // Recycler View
-        listAdapter = list.bind()
-            .map({ data -> data is BannerVO }, BannerDelegate())
-            .map({ data -> data is HomeArticleVO }, HomeArticleDelegate())
-
-        // Recycler Footer
-        footer = RecyclerFooter.Builder()
-            .bindTo(list)
-            .doOnLoadMore {
-                if (!refreshLayout.isRefreshing) {
-                    vm?.loadMoreHomeData()
+        recyclerPage.apply {
+            // Title Bar
+            titleBar().title("首页")
+                .addToolButton("\ue833") {
+                    // TODO
                 }
-            }.build()
-
-        fab.setOnClickListener {
-            list.smoothScrollToPosition(0)
+            // Swipe Refresh Layout
+            refreshLayout().setOnRefreshListener {
+                viewModel.getHomeData()
+            }
+            // Status View
+            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.delegate_list) {
+                val list = it.findViewById<RecyclerView>(R.id.list)
+                // Recycler View
+                listAdapter = list.bind()
+                    .map({ data -> data is HomeState.BannerVO }, BannerDelegate())
+                    .map({ data -> data is HomeState.ArticleVO }, HomeArticleDelegate())
+                // Recycler Footer
+                footer = RecyclerFooter.Builder()
+                    .bindTo(list)
+                    .doOnLoadMore {
+                        if (!recyclerPage.refreshLayout().isRefreshing) {
+                            viewModel.loadMoreHomeData()
+                        }
+                    }.build()
+            }.addDelegate(StatusView.Status.EMPTY, R.layout.delegate_empty) {
+                it.findViewById<TextView>(R.id.tip).text = "暂时没有文章~"
+            }
         }
-
         // Init Data
-        vm?.getHomeData()
+        viewModel.getHomeData()
     }
 
     override fun observeVM() {
-        vm?.listDataState?.observe(this, Observer {
-            when (it?.status) {
-                RecyclerListStatus.Status.PROCESSING -> {
-                    refreshLayout.isRefreshing = true
+
+        viewModel.pick(HomeState::refreshing)
+            .observe(this, Observer { refreshing ->
+                refreshing?.a?.let {
+                    recyclerPage.refreshLayout().isRefreshing = it
                 }
-                RecyclerListStatus.Status.SUCCESS -> {
-                    listAdapter?.update(it.data!!)
+            })
+
+        viewModel.pick(HomeState::dataList, HomeState::hasMore)
+            .observe(this, Observer { states ->
+                states?.let {
+                    when (it.a.isNotEmpty()) {
+                        true -> recyclerPage.statusView().succeed { listAdapter?.update(states.a) }
+                        else -> recyclerPage.statusView().empty { }
+                    }
+                    footer?.onLoadSucceed(it.b)
                 }
-                RecyclerListStatus.Status.COMPLETE -> {
-                    refreshLayout.isRefreshing = false
-                    list.scrollToPosition(0)
+            })
+
+        viewModel.pick(HomeState::loading)
+            .observe(this, Observer { loading ->
+                if (loading?.a == true) {
+                    footer?.onLoading()
                 }
-                RecyclerListStatus.Status.ERROR -> {
-                    dispatchError(it.error!!)
+            })
+
+        viewModel.pick(HomeState::error)
+            .observe(this, Observer { error ->
+                error?.a?.message?.let {
+                    toast(it)
+                    footer?.onLoadFailed()
                 }
-            }
-        })
-        vm?.footerState?.observe(this, Observer {
-            when (it?.status) {
-                FooterStatus.Status.PROGRESSING -> footer?.onLoading()
-                FooterStatus.Status.SUCCEED -> footer?.onLoadSucceed(true)
-                FooterStatus.Status.NO_MORE -> footer?.onLoadSucceed(false)
-                FooterStatus.Status.FAILED -> footer?.onLoadFailed()
-            }
-        })
+            })
     }
 }

@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.ext
+package app.itgungnir.kwa.common.widget.recycler_list
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView

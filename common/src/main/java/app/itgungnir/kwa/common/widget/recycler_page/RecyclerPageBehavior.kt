@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.widget.common_page
+package app.itgungnir.kwa.common.widget.recycler_page
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -9,7 +9,7 @@ import android.support.design.widget.FloatingActionButton
 import android.util.AttributeSet
 import android.view.View
 
-class CommonPageBehavior : FloatingActionButton.Behavior {
+class RecyclerPageBehavior : FloatingActionButton.Behavior {
 
     constructor() : super()
 
@@ -57,7 +57,7 @@ class CommonPageBehavior : FloatingActionButton.Behavior {
             dyUnconsumed,
             type
         )
-        if (dyConsumed > 0) {
+        if (dyConsumed >= 0) {
             if (currScale == 1F) {
                 val x = ObjectAnimator.ofFloat(child, "scaleX", 1F, 0F)
                 val y = ObjectAnimator.ofFloat(child, "scaleY", 1F, 0F)

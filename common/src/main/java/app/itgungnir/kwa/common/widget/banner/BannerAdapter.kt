@@ -34,8 +34,9 @@ class BannerAdapter(private val items: List<BannerItem>) :
     override fun onBindViewHolder(holder: VH, position: Int) {
         GlideApp.with(holder.itemView.context)
             .load(items[position].url)
-            .placeholder(R.drawable.img_placeholder)
-            .error(R.drawable.img_placeholder)
+            .placeholder(R.mipmap.img_placeholder)
+            .error(R.mipmap.img_placeholder)
+            .centerCrop()
             .into(holder.image)
     }
 

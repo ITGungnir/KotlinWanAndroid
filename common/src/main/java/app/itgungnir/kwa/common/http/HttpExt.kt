@@ -1,7 +1,5 @@
-package app.itgungnir.kwa.common.ext
+package app.itgungnir.kwa.common.http
 
-import app.itgungnir.kwa.common.http.Result
-import app.itgungnir.kwa.common.http.exception.AuthException
 import io.reactivex.Single
 import io.reactivex.SingleTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,10 +10,8 @@ fun <T> Single<Result<T>>.handleResult() = compose { upsteam ->
         when (it.errorCode) {
             0 ->
                 Single.just(it.data)
-            -1001 ->
-                Single.error(AuthException())
             else ->
-                Single.error(Throwable(it.errorMsg))
+                Single.error(HttpException(it.errorCode, it.errorMsg))
         }
     }
 }!!

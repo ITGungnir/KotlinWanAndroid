@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.widget.common_page
+package app.itgungnir.kwa.common.widget.title_bar
 
 import android.content.Context
 import android.util.AttributeSet
@@ -11,11 +11,7 @@ import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import kotlinx.android.synthetic.main.view_title_bar.view.*
 import org.jetbrains.anko.leftPadding
 
-class TitleBarView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) :
+class TitleBarView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     RelativeLayout(context, attrs, defStyleAttr) {
 
     private var toolsLayout: LinearLayout? = null

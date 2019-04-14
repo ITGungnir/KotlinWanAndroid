@@ -12,7 +12,11 @@ class FooterAdapter(
     private var status: FooterStatus.Status
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getItemCount(): Int = adapter.itemCount + 1
+    override fun getItemCount(): Int = if (adapter.itemCount > 0) {
+        adapter.itemCount + 1
+    } else {
+        adapter.itemCount
+    }
 
     override fun getItemViewType(position: Int): Int =
         if (position == itemCount - 1) Int.MAX_VALUE

@@ -5,7 +5,11 @@ import android.database.DataSetObserver
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 
-abstract class BottomTabAdapter(val frameId: Int, val tabs: List<BottomTab>, val manager: FragmentManager) {
+abstract class BottomTabAdapter(
+    private val frameId: Int,
+    val tabs: List<BottomTab>,
+    private val manager: FragmentManager
+) {
 
     var currIndex = -1
 

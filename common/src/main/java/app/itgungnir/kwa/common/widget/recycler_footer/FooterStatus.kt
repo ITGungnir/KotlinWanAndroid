@@ -8,18 +8,4 @@ data class FooterStatus(val status: Status) {
         SUCCEED("正在加载..."),
         FAILED("加载失败，请重试")
     }
-
-    companion object {
-
-        fun loading() =
-            FooterStatus(status = Status.PROGRESSING)
-
-        fun succeed(hasMore: Boolean) = when (hasMore) {
-            true -> FooterStatus(Status.SUCCEED)
-            else -> FooterStatus(Status.NO_MORE)
-        }
-
-        fun failed() =
-            FooterStatus(status = Status.FAILED)
-    }
 }
