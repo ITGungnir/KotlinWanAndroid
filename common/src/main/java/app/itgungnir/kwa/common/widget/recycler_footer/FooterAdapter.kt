@@ -41,10 +41,20 @@ class FooterAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (getItemViewType(position)) {
-            Int.MAX_VALUE -> (holder as FooterViewHolder).applyStatus(status)
-            else -> adapter.onBindViewHolder(holder, position)
+            Int.MAX_VALUE ->
+                (holder as FooterViewHolder).applyStatus(status)
+            else ->
+                adapter.onBindViewHolder(holder, position)
         }
     }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, payloads: MutableList<Any>) =
+        when (payloads.isNullOrEmpty()) {
+            true ->
+                this.onBindViewHolder(holder, position)
+            else ->
+                adapter.onBindViewHolder(holder, position, payloads)
+        }
 
     override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
         when (holder.itemViewType) {

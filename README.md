@@ -11,7 +11,6 @@ WanAndroid client programmed with Kotlin.
 - 我的页面（含我的收藏、登录、注册、退出登录）
 
 ## 待办
-- 升级RxMvvm
 - 升级APTRouter
 - WebView添加进度条
 - 现在WebView中的图片加载不出来

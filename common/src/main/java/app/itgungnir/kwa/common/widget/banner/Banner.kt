@@ -16,6 +16,9 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.view_banner.view.*
 import java.util.concurrent.TimeUnit
 
+// 1. OnItemRender
+// 2. OnPageChanged
+// 3. OnPageClick
 class Banner @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

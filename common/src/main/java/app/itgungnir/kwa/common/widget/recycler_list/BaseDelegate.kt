@@ -6,17 +6,9 @@ import android.view.ViewGroup
 
 abstract class BaseDelegate {
 
-    fun onCreateViewHolder(
-        parent: ViewGroup
-    ) = RecyclerListAdapter.VH(
-        LayoutInflater.from(parent.context).inflate(
-            layoutId(),
-            parent,
-            false
-        )
-    )
+    fun onCreateViewHolder(parent: ViewGroup) =
+        RecyclerListAdapter.VH(LayoutInflater.from(parent.context).inflate(layoutId(), parent, false))
 
-    @Suppress("UNCHECKED_CAST")
     fun onBindViewHolder(
         item: ItemData,
         holder: RecyclerListAdapter.VH,
