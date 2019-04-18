@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.common.widget.banner
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
@@ -16,9 +16,6 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.view_banner.view.*
 import java.util.concurrent.TimeUnit
 
-// 1. OnItemRender
-// 2. OnPageChanged
-// 3. OnPageClick
 class Banner @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -31,12 +28,14 @@ class Banner @JvmOverloads constructor(
 
     private var currPage: Int = 1
 
-    private var items: MutableList<BannerItem> = mutableListOf()
+    private var items: MutableList<Any> = mutableListOf()
+
+    private var onPageChange: ((position: Int) -> Unit)? = null
+
+    private var bannerAdapter: BannerAdapter? = null
 
     init {
-        apply {
-            View.inflate(context, R.layout.view_banner, this)
-        }
+        View.inflate(context, R.layout.view_banner, this)
         recyclerView.apply {
             manager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             layoutManager = manager
@@ -61,32 +60,13 @@ class Banner @JvmOverloads constructor(
                                 recyclerView.smoothScrollToPosition(currPage)
                             }
                             initDisposable()
-                            renderBottomBar()
+                            invokePageChangeListener()
                         }
                         else -> recycleDisposable()
                     }
                 }
             })
         }
-    }
-
-    fun setAdapter(items: List<BannerItem>, onItemClickBlock: (String, String) -> Unit) {
-        this.items.clear()
-        this.items.add(items[items.size - 1])
-        this.items.addAll(items)
-        this.items.add(items[0])
-        recyclerView.adapter = BannerAdapter(this.items).apply {
-            listener = onItemClickBlock
-        }
-        recyclerView.scrollToPosition(currPage)
-        initDisposable()
-        renderBottomBar()
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun renderBottomBar() {
-        title.text = this.items[currPage].title
-        index.text = "$currPage/${this.items.size - 2}"
     }
 
     override fun onDetachedFromWindow() {
@@ -116,5 +96,46 @@ class Banner @JvmOverloads constructor(
         if (disposable?.isDisposed == false) {
             this.disposable?.dispose()
         }
+    }
+
+    fun bind(
+        layoutId: Int,
+        items: List<Any>,
+        render: (position: Int, view: View) -> Unit,
+        onClick: (position: Int) -> Unit,
+        onPageChange: (position: Int) -> Unit
+    ) {
+        this.onPageChange = onPageChange
+        this.bannerAdapter = BannerAdapter(layoutId = layoutId, render = render, onClick = onClick)
+        recyclerView.adapter = bannerAdapter
+        update(items)
+    }
+
+    fun update(items: List<Any>) {
+        if (items.isEmpty()) {
+            return
+        }
+        this.items.clear()
+        this.items.add(items[items.size - 1])
+        this.items.addAll(items)
+        this.items.add(items[0])
+        this.bannerAdapter?.update(this.items)
+        Handler().post {
+            if (currPage >= items.size) {
+                currPage = 1
+            }
+            recyclerView.scrollToPosition(currPage)
+            initDisposable()
+            invokePageChangeListener()
+        }
+    }
+
+    private fun invokePageChangeListener() {
+        val realPosition = when (currPage) {
+            0 -> items.size - 3
+            items.size - 1 -> 0
+            else -> currPage - 1
+        }
+        this.onPageChange?.invoke(realPosition)
     }
 }

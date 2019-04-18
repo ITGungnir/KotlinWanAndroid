@@ -1,46 +1,56 @@
 package app.itgungnir.kwa.common.widget.banner
 
+import android.support.v7.recyclerview.extensions.AsyncListDiffer
+import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import app.itgungnir.kwa.common.R
-import app.itgungnir.kwa.common.util.GlideApp
 
-class BannerAdapter(private val items: List<BannerItem>) :
-    RecyclerView.Adapter<BannerAdapter.VH>() {
+class BannerAdapter(
+    private val layoutId: Int,
+    private val render: (position: Int, view: View) -> Unit,
+    private val onClick: (position: Int) -> Unit
+) : RecyclerView.Adapter<BannerAdapter.VH>() {
 
-    var listener: ((String, String) -> Unit)? = null
+    private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<Any>() {
+        override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean = oldItem == newItem
+        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean = oldItem == newItem
+    })
+
+    private val items
+        get() = differ.currentList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val vh = VH(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.list_item_banner,
+                layoutId,
                 parent,
                 false
             )
         )
 
         vh.itemView.setOnClickListener {
-            listener?.invoke(items[vh.adapterPosition].title, items[vh.adapterPosition].target)
+            onClick.invoke(vh.adapterPosition)
         }
 
         return vh
     }
 
+    fun update(newItems: List<Any>) {
+        differ.submitList(newItems)
+    }
+
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        GlideApp.with(holder.itemView.context)
-            .load(items[position].url)
-            .placeholder(R.mipmap.img_placeholder)
-            .error(R.mipmap.img_placeholder)
-            .centerCrop()
-            .into(holder.image)
+        val realPosition = when (position) {
+            0 -> items.size - 3
+            items.size - 1 -> 0
+            else -> position - 1
+        }
+        render.invoke(realPosition, holder.itemView)
     }
 
-    inner class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val image = itemView.findViewById<ImageView>(R.id.image)!!
-    }
+    inner class VH(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

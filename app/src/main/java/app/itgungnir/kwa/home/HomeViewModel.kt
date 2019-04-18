@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import app.itgungnir.kwa.common.http.HttpClient
 import app.itgungnir.kwa.common.http.handleResult
 import app.itgungnir.kwa.common.http.io2Main
-import app.itgungnir.kwa.common.widget.banner.BannerItem
 import app.itgungnir.kwa.common.widget.recycler_list.ItemData
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
@@ -24,7 +23,15 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
         val s1 = HttpClient.api.banner()
             .handleResult()
             .io2Main()
-            .map { HomeState.BannerVO(it.map { item -> BannerItem(item.imagePath, item.title, item.url) }) }
+            .map {
+                HomeState.BannerVO(it.map { item ->
+                    HomeState.BannerVO.BannerItem(
+                        item.imagePath,
+                        item.title,
+                        item.url
+                    )
+                })
+            }
 
         val s2 = HttpClient.api.homeArticle(1)
             .handleResult()

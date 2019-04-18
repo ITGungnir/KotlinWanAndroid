@@ -1,7 +1,6 @@
 package app.itgungnir.kwa.home
 
 import app.itgungnir.kwa.common.http.dto.HomeArticleResponse
-import app.itgungnir.kwa.common.widget.banner.BannerItem
 import app.itgungnir.kwa.common.widget.recycler_list.ItemData
 import my.itgungnir.rxmvvm.core.mvvm.State
 
@@ -15,7 +14,14 @@ data class HomeState(
 
     data class BannerVO(
         val items: List<BannerItem> = listOf()
-    ) : ItemData
+    ) : ItemData {
+
+        data class BannerItem(
+            val url: String,
+            val title: String,
+            val target: String
+        )
+    }
 
     data class ArticleVO(
         val item: HomeArticleResponse.Item
