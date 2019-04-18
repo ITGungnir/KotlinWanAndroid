@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
-    <app.itgungnir.kwa.common.widget.web_browser.WebBrowser
-        android:id="@+id/webBrowser"
+    <WebView
+        android:id="@+id/browser"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

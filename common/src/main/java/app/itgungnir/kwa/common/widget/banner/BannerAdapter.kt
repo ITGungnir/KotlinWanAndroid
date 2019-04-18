@@ -31,7 +31,12 @@ class BannerAdapter(
         )
 
         vh.itemView.setOnClickListener {
-            onClick.invoke(vh.adapterPosition)
+            val realPosition = when (vh.adapterPosition) {
+                0 -> items.size - 3
+                items.size - 1 -> 0
+                else -> vh.adapterPosition - 1
+            }
+            onClick.invoke(realPosition)
         }
 
         return vh
