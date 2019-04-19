@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/str_empty"
         android:textColor="@color/clr_text_level_3"
-        android:textSize="150dp" />
+        android:textSize="120dp" />
 
     <TextView
         android:id="@+id/tip"

@@ -15,11 +15,8 @@ import com.google.android.flexbox.JustifyContent
 import org.jetbrains.anko.find
 import org.jetbrains.anko.textColor
 
-class BottomTab @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : FlexboxLayout(context, attrs, defStyleAttr) {
+class BottomTab @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+    FlexboxLayout(context, attrs, defStyleAttr) {
 
     private var selectedColor: Int = Color.parseColor("#FF707070")
 

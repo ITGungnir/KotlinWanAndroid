@@ -7,24 +7,23 @@ import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
-import android.widget.FrameLayout
-import app.itgungnir.kwa.common.R
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.view_banner.view.*
 import java.util.concurrent.TimeUnit
 
 class Banner @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : RecyclerView(context, attrs, defStyleAttr) {
+
+    private val manager: LinearLayoutManager by lazy {
+        LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    }
 
     private var disposable: Disposable? = null
-
-    private var manager: LinearLayoutManager
 
     private var currPage: Int = 1
 
@@ -35,39 +34,36 @@ class Banner @JvmOverloads constructor(
     private var bannerAdapter: BannerAdapter? = null
 
     init {
-        View.inflate(context, R.layout.view_banner, this)
+        layoutManager = manager
 
-        recyclerView.apply {
-            manager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            layoutManager = manager
-            PagerSnapHelper().attachToRecyclerView(this)
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
-                    when (newState) {
-                        RecyclerView.SCROLL_STATE_IDLE -> {
-                            val currIndex = manager.findFirstCompletelyVisibleItemPosition()
-                            currPage = when {
-                                currIndex > items.size - 2 -> 1
-                                currIndex < 0 -> currPage
-                                currIndex < 1 -> items.size - 2
-                                else -> currIndex
-                            }
-                            if (currPage == items.size - 2 && currIndex == 0) {
-                                recyclerView.scrollToPosition(items.size - 2)
-                            } else if (currPage == 1 && currIndex == items.size - 1) {
-                                recyclerView.scrollToPosition(1)
-                            } else {
-                                recyclerView.smoothScrollToPosition(currPage)
-                            }
-                            initDisposable()
-                            invokePageChangeListener()
+        PagerSnapHelper().attachToRecyclerView(this)
+
+        addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                when (newState) {
+                    RecyclerView.SCROLL_STATE_IDLE -> {
+                        val currIndex = manager.findFirstCompletelyVisibleItemPosition()
+                        currPage = when {
+                            currIndex > items.size - 2 -> 1
+                            currIndex < 0 -> currPage
+                            currIndex < 1 -> items.size - 2
+                            else -> currIndex
                         }
-                        else -> recycleDisposable()
+                        if (currPage == items.size - 2 && currIndex == 0) {
+                            this@Banner.scrollToPosition(items.size - 2)
+                        } else if (currPage == 1 && currIndex == items.size - 1) {
+                            this@Banner.scrollToPosition(1)
+                        } else {
+                            this@Banner.smoothScrollToPosition(currPage)
+                        }
+                        initDisposable()
+                        invokePageChangeListener()
                     }
+                    else -> recycleDisposable()
                 }
-            })
-        }
+            }
+        })
     }
 
     override fun onDetachedFromWindow() {
@@ -89,7 +85,7 @@ class Banner @JvmOverloads constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                recyclerView.smoothScrollToPosition(++currPage)
+                this.smoothScrollToPosition(++currPage)
             }
     }
 
@@ -108,7 +104,7 @@ class Banner @JvmOverloads constructor(
     ) {
         this.onPageChange = onPageChange
         this.bannerAdapter = BannerAdapter(layoutId = layoutId, render = render, onClick = onClick)
-        recyclerView.adapter = bannerAdapter
+        this.adapter = bannerAdapter
         update(items)
     }
 
@@ -125,7 +121,7 @@ class Banner @JvmOverloads constructor(
             if (currPage >= items.size) {
                 currPage = 1
             }
-            recyclerView.scrollToPosition(currPage)
+            this.scrollToPosition(currPage)
             initDisposable()
             invokePageChangeListener()
         }
