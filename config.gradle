@@ -1,6 +1,6 @@
 ext {
     // Build
-    gradle_version = '3.3.2'
+    gradle_version = '3.4.0'
     target_sdk_version = 28
     min_sdk_version = 19
     version_code = 1
