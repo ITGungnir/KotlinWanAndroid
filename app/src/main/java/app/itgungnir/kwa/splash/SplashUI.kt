@@ -5,7 +5,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.util.dp2px
+import app.itgungnir.kwa.common.dp2px
 import org.jetbrains.anko.*
 
 class SplashUI : AnkoComponent<SplashActivity> {

@@ -36,6 +36,7 @@ class Banner @JvmOverloads constructor(
 
     init {
         View.inflate(context, R.layout.view_banner, this)
+
         recyclerView.apply {
             manager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             layoutManager = manager

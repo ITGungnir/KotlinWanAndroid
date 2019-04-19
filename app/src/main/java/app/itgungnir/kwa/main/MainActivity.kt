@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.widget.bottom_tab.BottomTab
+import app.itgungnir.kwa.common.widget.bottom_tab.TabItem
 import app.itgungnir.kwa.common.widget.bottom_tab.BottomTabAdapter
 import app.itgungnir.kwa.home.HomeFragment
 import app.itgungnir.kwa.mine.MineFragment
@@ -41,11 +41,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun tabs() = listOf(
-        BottomTab("首页", "\ue703", "\ue702"),
-        BottomTab("知识体系", "\ue6ef", "\ue6ee"),
-        BottomTab("公众号", "\ue82c", "\ue608"),
-        BottomTab("项目", "\ue6ec", "\ue6eb"),
-        BottomTab("我的", "\ue716", "\ue715")
+        TabItem("首页", "\ue703", "\ue702"),
+        TabItem("知识体系", "\ue6ef", "\ue6ee"),
+        TabItem("公众号", "\ue82c", "\ue608"),
+        TabItem("项目", "\ue6ec", "\ue6eb"),
+        TabItem("我的", "\ue716", "\ue715")
     )
 
     override fun onBackPressed() {

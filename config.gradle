@@ -33,7 +33,7 @@ ext {
     logger_version = '2.2.0'
     dex_version = '1.0.3'
     router_version = '1.1.0'
-    leak_canary_version = '1.6.2'
+    leak_canary_version = '1.6.3'
 }
 
 static def addRepos(RepositoryHandler handler) {

@@ -1,11 +1,11 @@
-package app.itgungnir.kwa.common.widget.recycler_footer
+package app.itgungnir.kwa.common.widget.list_footer
 
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 
 @Suppress("JoinDeclarationAndAssignment")
-class RecyclerFooter(private val recyclerView: RecyclerView, private val loadMore: () -> Unit) {
+class ListFooter(private val recyclerView: RecyclerView, private val loadMore: () -> Unit) {
 
     private var listAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
 
@@ -113,6 +113,6 @@ class RecyclerFooter(private val recyclerView: RecyclerView, private val loadMor
             this.listener = listener
         }
 
-        fun build() = RecyclerFooter(this)
+        fun build() = ListFooter(this)
     }
 }

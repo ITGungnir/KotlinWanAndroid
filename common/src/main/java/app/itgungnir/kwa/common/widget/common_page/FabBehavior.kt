@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.widget.recycler_page
+package app.itgungnir.kwa.common.widget.common_page
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -9,7 +9,7 @@ import android.support.design.widget.FloatingActionButton
 import android.util.AttributeSet
 import android.view.View
 
-class RecyclerPageBehavior : FloatingActionButton.Behavior {
+class FabBehavior : FloatingActionButton.Behavior {
 
     constructor() : super()
 

@@ -9,3 +9,7 @@ WanAndroid client programmed with Kotlin.
 - 公众号页面（含搜索）
 - 项目页面
 - 我的页面（含我的收藏、登录、注册、退出登录）
+
+## ToFix
+- WebView中没有进度条
+- RecyclerList的泛型

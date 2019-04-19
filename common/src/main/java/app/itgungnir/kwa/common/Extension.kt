@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.util
+package app.itgungnir.kwa.common
 
 import android.content.Context
 import android.util.TypedValue

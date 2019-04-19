@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/selectableItemBackground"
     android:gravity="center"
-    android:background="@drawable/selector_recycler_item"
     android:orientation="vertical"
     tools:ignore="HardcodedText,SpUsage">
 

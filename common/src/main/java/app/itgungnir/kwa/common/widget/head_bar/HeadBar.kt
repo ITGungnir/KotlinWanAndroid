@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.widget.title_bar
+package app.itgungnir.kwa.common.widget.head_bar
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,22 +8,22 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import app.itgungnir.kwa.common.R
 import app.itgungnir.kwa.common.widget.icon_font.IconFontView
-import kotlinx.android.synthetic.main.view_title_bar.view.*
+import kotlinx.android.synthetic.main.view_head_bar.view.*
 import org.jetbrains.anko.leftPadding
 
-class TitleBarView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+class HeadBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     RelativeLayout(context, attrs, defStyleAttr) {
 
     private var toolsLayout: LinearLayout? = null
 
     init {
         apply {
-            View.inflate(context, R.layout.view_title_bar, this)
+            View.inflate(context, R.layout.view_head_bar, this)
         }
         toolsLayout = tools
     }
 
-    fun back(onBackPressed: () -> Unit): TitleBarView {
+    fun back(onBackPressed: () -> Unit): HeadBar {
         back.visibility = View.VISIBLE
         back.setOnClickListener {
             onBackPressed.invoke()
@@ -32,12 +32,12 @@ class TitleBarView @JvmOverloads constructor(context: Context, attrs: AttributeS
         return this
     }
 
-    fun title(titleStr: String): TitleBarView {
+    fun title(titleStr: String): HeadBar {
         title.text = titleStr
         return this
     }
 
-    fun addToolButton(iconFont: String, callback: () -> Unit): TitleBarView {
+    fun addToolButton(iconFont: String, callback: () -> Unit): HeadBar {
         (LayoutInflater.from(context).inflate(
             R.layout.view_icon,
             this,

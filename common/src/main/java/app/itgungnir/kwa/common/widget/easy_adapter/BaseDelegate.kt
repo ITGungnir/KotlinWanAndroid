@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.widget.recycler_list
+package app.itgungnir.kwa.common.widget.easy_adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 abstract class BaseDelegate {
 
     fun onCreateViewHolder(parent: ViewGroup) =
-        RecyclerListAdapter.VH(LayoutInflater.from(parent.context).inflate(layoutId(), parent, false))
+        EasyAdapter.VH(LayoutInflater.from(parent.context).inflate(layoutId(), parent, false))
 
     fun onBindViewHolder(
-        item: ItemData,
-        holder: RecyclerListAdapter.VH,
+        item: ListItem,
+        holder: EasyAdapter.VH,
         position: Int,
         payloads: MutableList<Any>
     ) = onBindVH(item, holder, position, payloads)
@@ -27,8 +27,8 @@ abstract class BaseDelegate {
     abstract fun layoutId(): Int
 
     abstract fun onBindVH(
-        item: ItemData,
-        holder: RecyclerListAdapter.VH,
+        item: ListItem,
+        holder: EasyAdapter.VH,
         position: Int,
         payloads: MutableList<Any>
     )

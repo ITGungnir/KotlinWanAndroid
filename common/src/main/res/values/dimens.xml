@@ -2,7 +2,7 @@
 <resources>
 
     <dimen name="dp_divider_height">0.5dp</dimen>
-    <dimen name="dp_nav_icon_size">?android:attr/actionBarSize</dimen>
+    <dimen name="dp_action_bar_size">?android:attr/actionBarSize</dimen>
 
     <dimen name="sp_text_size_1">16dp</dimen>
     <dimen name="sp_text_size_2">14dp</dimen>

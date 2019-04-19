@@ -3,9 +3,9 @@ package app.itgungnir.kwa.home.delegate
 import android.annotation.SuppressLint
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.util.GlideApp
-import app.itgungnir.kwa.common.widget.recycler_list.BaseDelegate
-import app.itgungnir.kwa.common.widget.recycler_list.ItemData
-import app.itgungnir.kwa.common.widget.recycler_list.RecyclerListAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
 import kotlinx.android.synthetic.main.delegate_banner.view.*
 import my.itgungnir.apt.router.api.Router
@@ -16,8 +16,8 @@ class BannerDelegate : BaseDelegate() {
 
     @SuppressLint("SetTextI18n")
     override fun onBindVH(
-        item: ItemData,
-        holder: RecyclerListAdapter.VH,
+        item: ListItem,
+        holder: EasyAdapter.VH,
         position: Int,
         payloads: MutableList<Any>
     ) {

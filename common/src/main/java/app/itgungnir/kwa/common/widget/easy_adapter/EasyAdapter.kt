@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.widget.recycler_list
+package app.itgungnir.kwa.common.widget.easy_adapter
 
 import android.support.v7.recyclerview.extensions.AsyncListDiffer
 import android.support.v7.util.DiffUtil
@@ -7,22 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.extensions.LayoutContainer
 
-class RecyclerListAdapter(
+class EasyAdapter(
     private val recyclerView: RecyclerView,
-    private val diffAnalyzer: DiffAnalyzer<ItemData>? = null
-) : RecyclerView.Adapter<RecyclerListAdapter.VH>() {
+    private val diffAnalyzer: Differ<ListItem>? = null
+) : RecyclerView.Adapter<EasyAdapter.VH>() {
 
     private val bindMap = mutableListOf<BindMap>()
 
-    private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<ItemData>() {
+    private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<ListItem>() {
 
-        override fun areItemsTheSame(oldItem: ItemData, newItem: ItemData): Boolean =
+        override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
             diffAnalyzer?.areItemsTheSame(oldItem, newItem) ?: (oldItem == newItem)
 
-        override fun areContentsTheSame(oldItem: ItemData, newItem: ItemData): Boolean =
+        override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
             diffAnalyzer?.areContentsTheSame(oldItem, newItem) ?: (oldItem == newItem)
 
-        override fun getChangePayload(oldItem: ItemData, newItem: ItemData): Any? =
+        override fun getChangePayload(oldItem: ListItem, newItem: ListItem): Any? =
             diffAnalyzer?.getChangePayload(oldItem, newItem) ?: super.getChangePayload(oldItem, newItem)
     })
 
@@ -55,26 +55,26 @@ class RecyclerListAdapter(
     override fun onViewDetachedFromWindow(holder: VH) =
         bindMap.first { it.type == holder.itemViewType }.delegate.onViewDetachedFromWindow(holder)
 
-    fun map(isForViewType: (data: ItemData) -> Boolean, delegate: BaseDelegate): RecyclerListAdapter {
+    fun map(isForViewType: (data: ListItem) -> Boolean, delegate: BaseDelegate): EasyAdapter {
         bindMap.add(BindMap(bindMap.count(), isForViewType, delegate))
         recyclerView.adapter = this
         return this
     }
 
-    fun update(newItems: List<ItemData>) {
+    fun update(newItems: List<ListItem>) {
         differ.submitList(newItems)
     }
 
     private class BindMap(
         val type: Int,
-        val isForViewTpe: (data: ItemData) -> Boolean,
+        val isForViewTpe: (data: ListItem) -> Boolean,
         val delegate: BaseDelegate
     )
 
     open class VH(override val containerView: View) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun render(data: ItemData, render: View.(data: ItemData) -> Unit) {
+        fun render(data: ListItem, render: View.(data: ListItem) -> Unit) {
             containerView.apply { render(data) }
         }
     }

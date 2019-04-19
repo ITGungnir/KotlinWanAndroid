@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.widget.recycler_footer
+package app.itgungnir.kwa.common.widget.list_footer
 
 data class FooterStatus(val status: Status) {
 

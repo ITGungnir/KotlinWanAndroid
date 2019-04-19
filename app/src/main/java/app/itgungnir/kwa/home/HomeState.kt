@@ -1,12 +1,12 @@
 package app.itgungnir.kwa.home
 
 import app.itgungnir.kwa.common.http.dto.HomeArticleResponse
-import app.itgungnir.kwa.common.widget.recycler_list.ItemData
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import my.itgungnir.rxmvvm.core.mvvm.State
 
 data class HomeState(
     val refreshing: Boolean = false,
-    val dataList: List<ItemData> = listOf(),
+    val dataList: List<ListItem> = listOf(),
     val loading: Boolean = false,
     val hasMore: Boolean = false,
     val error: Throwable? = null
@@ -14,7 +14,7 @@ data class HomeState(
 
     data class BannerVO(
         val items: List<BannerItem> = listOf()
-    ) : ItemData {
+    ) : ListItem {
 
         data class BannerItem(
             val url: String,
@@ -25,5 +25,5 @@ data class HomeState(
 
     data class ArticleVO(
         val item: HomeArticleResponse.Item
-    ) : ItemData
+    ) : ListItem
 }

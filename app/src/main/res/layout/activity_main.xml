@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="app.itgungnir.kwa.main.MainActivity">
 
-    <app.itgungnir.kwa.common.widget.bottom_tab.BottomTabView
+    <app.itgungnir.kwa.common.widget.bottom_tab.BottomTab
         android:id="@+id/bottomTab"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"

@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager
 
 abstract class BottomTabAdapter(
     private val frameId: Int,
-    val tabs: List<BottomTab>,
+    val tabs: List<TabItem>,
     private val manager: FragmentManager
 ) {
 

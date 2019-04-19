@@ -1,8 +1,8 @@
-package app.itgungnir.kwa.common.widget.recycler_list
+package app.itgungnir.kwa.common.widget.easy_adapter
 
 import android.os.Bundle
 
-interface DiffAnalyzer<T> {
+interface Differ<T> {
 
     fun areItemsTheSame(oldItem: T, newItem: T): Boolean
 

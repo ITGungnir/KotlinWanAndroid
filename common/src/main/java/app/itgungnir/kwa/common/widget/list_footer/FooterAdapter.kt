@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.widget.recycler_footer
+package app.itgungnir.kwa.common.widget.list_footer
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -32,7 +32,7 @@ class FooterAdapter(
             Int.MAX_VALUE ->
                 FooterViewHolder(
                     LayoutInflater.from(parent.context).inflate(
-                        R.layout.list_item_recycler_footer, parent, false
+                        R.layout.view_list_footer, parent, false
                     )
                 )
             else ->

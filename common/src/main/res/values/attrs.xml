@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="BottomTabView">
+    <declare-styleable name="BottomTab">
         <attr name="btv_color_selected" format="color" />
         <attr name="btv_color_unselected" format="color" />
         <attr name="btv_text_size" format="float" />

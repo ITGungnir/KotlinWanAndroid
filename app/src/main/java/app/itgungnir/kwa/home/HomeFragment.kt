@@ -4,9 +4,9 @@ import android.arch.lifecycle.Observer
 import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.widget.recycler_footer.RecyclerFooter
-import app.itgungnir.kwa.common.widget.recycler_list.RecyclerListAdapter
-import app.itgungnir.kwa.common.widget.recycler_list.bind
+import app.itgungnir.kwa.common.widget.list_footer.ListFooter
+import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.home.delegate.BannerDelegate
 import app.itgungnir.kwa.home.delegate.HomeArticleDelegate
@@ -26,9 +26,9 @@ class HomeFragment : BaseFragment() {
 
     override fun layoutId(): Int = R.layout.fragment_home
 
-    private var listAdapter: RecyclerListAdapter? = null
+    private var listAdapter: EasyAdapter? = null
 
-    private var footer: RecyclerFooter? = null
+    private var footer: ListFooter? = null
 
     override fun initComponent() {
         recyclerPage.apply {
@@ -42,21 +42,21 @@ class HomeFragment : BaseFragment() {
                 viewModel.getHomeData()
             }
             // Status View
-            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.delegate_list) {
+            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
                 listAdapter = list.bind()
                     .map({ data -> data is HomeState.BannerVO }, BannerDelegate())
                     .map({ data -> data is HomeState.ArticleVO }, HomeArticleDelegate())
                 // Recycler Footer
-                footer = RecyclerFooter.Builder()
+                footer = ListFooter.Builder()
                     .bindTo(list)
                     .doOnLoadMore {
                         if (!recyclerPage.refreshLayout().isRefreshing) {
                             viewModel.loadMoreHomeData()
                         }
                     }.build()
-            }.addDelegate(StatusView.Status.EMPTY, R.layout.delegate_empty) {
+            }.addDelegate(StatusView.Status.EMPTY, R.layout.view_empty) {
                 it.findViewById<TextView>(R.id.tip).text = "暂时没有文章~"
             }
         }

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import app.itgungnir.kwa.common.http.HttpClient
 import app.itgungnir.kwa.common.http.handleResult
 import app.itgungnir.kwa.common.http.io2Main
-import app.itgungnir.kwa.common.widget.recycler_list.ItemData
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
@@ -46,7 +46,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
             }
 
         Single.zip(s1, s2, BiFunction { t1: HomeState.BannerVO, t2: List<HomeState.ArticleVO> ->
-            val responseList = mutableListOf<ItemData>(t1)
+            val responseList = mutableListOf<ListItem>(t1)
             responseList.addAll(t2)
             return@BiFunction responseList
         }).doOnSubscribe {

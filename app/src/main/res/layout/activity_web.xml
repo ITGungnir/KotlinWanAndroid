@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <app.itgungnir.kwa.common.widget.title_bar.TitleBarView
+    <app.itgungnir.kwa.common.widget.head_bar.HeadBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
