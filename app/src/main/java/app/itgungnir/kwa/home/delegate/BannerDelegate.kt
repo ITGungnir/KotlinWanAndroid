@@ -4,25 +4,22 @@ import android.annotation.SuppressLint
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.util.GlideApp
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
 import kotlinx.android.synthetic.main.delegate_banner.view.*
 import my.itgungnir.apt.router.api.Router
 
-class BannerDelegate : BaseDelegate() {
+class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 
     override fun layoutId(): Int = R.layout.delegate_banner
 
     @SuppressLint("SetTextI18n")
     override fun onBindVH(
-        item: ListItem,
-        holder: EasyAdapter.VH,
+        item: HomeState.BannerVO,
+        holder: EasyAdapter.VH<HomeState.BannerVO>,
         position: Int,
         payloads: MutableList<Any>
     ) {
-
-        item as HomeState.BannerVO
 
         holder.render(item) {
             banner.bind(

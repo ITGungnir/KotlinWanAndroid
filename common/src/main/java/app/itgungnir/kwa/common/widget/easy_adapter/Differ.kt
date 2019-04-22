@@ -2,7 +2,7 @@ package app.itgungnir.kwa.common.widget.easy_adapter
 
 import android.os.Bundle
 
-interface Differ<T> {
+interface Differ<T : ListItem> {
 
     fun areItemsTheSame(oldItem: T, newItem: T): Boolean
 

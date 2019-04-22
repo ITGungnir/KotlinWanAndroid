@@ -7,22 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.extensions.LayoutContainer
 
-class EasyAdapter(
+class EasyAdapter<T : ListItem>(
     private val recyclerView: RecyclerView,
-    private val diffAnalyzer: Differ<ListItem>? = null
-) : RecyclerView.Adapter<EasyAdapter.VH>() {
+    private val diffAnalyzer: Differ<T>? = null
+) : RecyclerView.Adapter<EasyAdapter.VH<T>>() {
 
-    private val bindMap = mutableListOf<BindMap>()
+    private val bindMap = mutableListOf<BindMap<T>>()
 
-    private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<ListItem>() {
+    private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<T>() {
 
-        override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
+        override fun areItemsTheSame(oldItem: T, newItem: T): Boolean =
             diffAnalyzer?.areItemsTheSame(oldItem, newItem) ?: (oldItem == newItem)
 
-        override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
+        override fun areContentsTheSame(oldItem: T, newItem: T): Boolean =
             diffAnalyzer?.areContentsTheSame(oldItem, newItem) ?: (oldItem == newItem)
 
-        override fun getChangePayload(oldItem: ListItem, newItem: ListItem): Any? =
+        override fun getChangePayload(oldItem: T, newItem: T): Any? =
             diffAnalyzer?.getChangePayload(oldItem, newItem) ?: super.getChangePayload(oldItem, newItem)
     })
 
@@ -30,10 +30,10 @@ class EasyAdapter(
         get() = differ.currentList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        bindMap.first { it.type == viewType }.delegate.onCreateViewHolder(parent)
+        bindMap.first { it.type == viewType }.delegate.onCreateViewHolder<T>(parent)
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
-        bindMap.first { it.type == holder.itemViewType }.delegate.onBindViewHolder(
+    override fun onBindViewHolder(holder: VH<T>, position: Int) {
+        bindMap.first { it.type == holder.itemViewType }.delegate.onBindViewHolder<T>(
             items[position], holder, position, mutableListOf()
         )
     }
@@ -43,38 +43,38 @@ class EasyAdapter(
 
     override fun getItemCount(): Int = items.count()
 
-    override fun onViewRecycled(holder: VH) =
+    override fun onViewRecycled(holder: VH<T>) =
         bindMap.first { it.type == holder.itemViewType }.delegate.onViewRecycled(holder)
 
-    override fun onFailedToRecycleView(holder: VH) =
+    override fun onFailedToRecycleView(holder: VH<T>) =
         bindMap.first { it.type == holder.itemViewType }.delegate.onFailedToRecycleView(holder)
 
-    override fun onViewAttachedToWindow(holder: VH) =
+    override fun onViewAttachedToWindow(holder: VH<T>) =
         bindMap.first { it.type == holder.itemViewType }.delegate.onViewAttachedToWindow(holder)
 
-    override fun onViewDetachedFromWindow(holder: VH) =
+    override fun onViewDetachedFromWindow(holder: VH<T>) =
         bindMap.first { it.type == holder.itemViewType }.delegate.onViewDetachedFromWindow(holder)
 
-    fun map(isForViewType: (data: ListItem) -> Boolean, delegate: BaseDelegate): EasyAdapter {
+    fun map(isForViewType: (data: T) -> Boolean, delegate: Delegate): EasyAdapter<T> {
         bindMap.add(BindMap(bindMap.count(), isForViewType, delegate))
         recyclerView.adapter = this
         return this
     }
 
-    fun update(newItems: List<ListItem>) {
+    fun update(newItems: List<T>) {
         differ.submitList(newItems)
     }
 
-    private class BindMap(
+    private class BindMap<T : ListItem>(
         val type: Int,
-        val isForViewTpe: (data: ListItem) -> Boolean,
-        val delegate: BaseDelegate
+        val isForViewTpe: (data: T) -> Boolean,
+        val delegate: Delegate
     )
 
-    open class VH(override val containerView: View) :
+    open class VH<T : ListItem>(override val containerView: View) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun render(data: ListItem, render: View.(data: ListItem) -> Unit) {
+        fun render(data: T, render: View.(data: T) -> Unit) {
             containerView.apply { render(data) }
         }
     }

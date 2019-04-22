@@ -4,31 +4,32 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
-abstract class BaseDelegate {
+abstract class BaseDelegate<T : ListItem> : Delegate {
 
-    fun onCreateViewHolder(parent: ViewGroup) =
-        EasyAdapter.VH(LayoutInflater.from(parent.context).inflate(layoutId(), parent, false))
+    override fun <E : ListItem> onCreateViewHolder(parent: ViewGroup) =
+        EasyAdapter.VH<E>(LayoutInflater.from(parent.context).inflate(layoutId(), parent, false))
 
-    fun onBindViewHolder(
-        item: ListItem,
-        holder: EasyAdapter.VH,
+    @Suppress("UNCHECKED_CAST")
+    override fun <E : ListItem> onBindViewHolder(
+        item: E,
+        holder: EasyAdapter.VH<E>,
         position: Int,
         payloads: MutableList<Any>
-    ) = onBindVH(item, holder, position, payloads)
+    ) = onBindVH(item as T, holder as EasyAdapter.VH<T>, position, payloads)
 
-    fun onViewRecycled(holder: RecyclerView.ViewHolder) {}
+    override fun onViewRecycled(holder: RecyclerView.ViewHolder) {}
 
-    fun onFailedToRecycleView(holder: RecyclerView.ViewHolder) = false
+    override fun onFailedToRecycleView(holder: RecyclerView.ViewHolder) = false
 
-    fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {}
+    override fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {}
 
-    fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {}
+    override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {}
 
     abstract fun layoutId(): Int
 
     abstract fun onBindVH(
-        item: ListItem,
-        holder: EasyAdapter.VH,
+        item: T,
+        holder: EasyAdapter.VH<T>,
         position: Int,
         payloads: MutableList<Any>
     )
