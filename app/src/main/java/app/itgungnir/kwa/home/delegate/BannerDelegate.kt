@@ -14,10 +14,33 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 
     override fun layoutId(): Int = R.layout.delegate_banner
 
-    override fun onCreateVH(view: View) {
+    @SuppressLint("SetTextI18n")
+    override fun onCreateVH(containerView: View) {
+        containerView.banner.bind<HomeState.BannerVO.BannerItem>(
+            layoutId = R.layout.list_item_banner,
+            items = listOf(),
+            render = { position, view, data ->
+                GlideApp.with(view.context)
+                    .load(data.url)
+                    .placeholder(R.mipmap.img_placeholder)
+                    .error(R.mipmap.img_placeholder)
+                    .centerCrop()
+                    .into(view.findViewById(R.id.image))
+            },
+            onClick = { position, data ->
+                Router.instance.with(containerView.context)
+                    .target("web")
+                    .addParam("title", data.title)
+                    .addParam("url", data.url)
+                    .go()
+            },
+            onPageChange = { position, totalCount, data ->
+                containerView.title.text = data.title
+                containerView.index.text = "${position + 1}/$totalCount"
+            }
+        )
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindVH(
         item: HomeState.BannerVO,
         holder: EasyAdapter.VH<HomeState.BannerVO>,
@@ -26,29 +49,7 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
     ) {
 
         holder.render(item) {
-            banner.bind(
-                layoutId = R.layout.list_item_banner,
-                items = item.items,
-                render = { position, view ->
-                    GlideApp.with(view.context)
-                        .load(item.items[position].url)
-                        .placeholder(R.mipmap.img_placeholder)
-                        .error(R.mipmap.img_placeholder)
-                        .centerCrop()
-                        .into(view.findViewById(R.id.image))
-                },
-                onClick = { position ->
-                    Router.instance.with(context)
-                        .target("web")
-                        .addParam("title", item.items[position].title)
-                        .addParam("url", item.items[position].url)
-                        .go()
-                },
-                onPageChange = { position ->
-                    title.text = item.items[position].title
-                    index.text = "${position + 1}/${item.items.size}"
-                }
-            )
+            banner.update(item.items)
         }
     }
 }

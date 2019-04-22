@@ -7,15 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class BannerAdapter(
+class BannerAdapter<T>(
     private val layoutId: Int,
-    private val render: (position: Int, view: View) -> Unit,
-    private val onClick: (position: Int) -> Unit
-) : RecyclerView.Adapter<BannerAdapter.VH>() {
+    private val render: (position: Int, view: View, data: T) -> Unit,
+    private val onClick: (position: Int, data: T) -> Unit
+) : RecyclerView.Adapter<BannerAdapter<T>.VH>() {
 
-    private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<Any>() {
-        override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean = oldItem == newItem
-        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean = oldItem == newItem
+    private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<T>() {
+        override fun areItemsTheSame(oldItem: T, newItem: T): Boolean = oldItem == newItem
+        override fun areContentsTheSame(oldItem: T, newItem: T): Boolean = oldItem == newItem
     })
 
     private val items
@@ -36,13 +36,13 @@ class BannerAdapter(
                 items.size - 1 -> 0
                 else -> vh.adapterPosition - 1
             }
-            onClick.invoke(realPosition)
+            onClick.invoke(realPosition, items[vh.adapterPosition])
         }
 
         return vh
     }
 
-    fun update(newItems: List<Any>) {
+    fun update(newItems: List<T>) {
         differ.submitList(newItems)
     }
 
@@ -54,7 +54,7 @@ class BannerAdapter(
             items.size - 1 -> 0
             else -> position - 1
         }
-        render.invoke(realPosition, holder.itemView)
+        render.invoke(realPosition, holder.itemView, items[position])
     }
 
     inner class VH(itemView: View) : RecyclerView.ViewHolder(itemView)

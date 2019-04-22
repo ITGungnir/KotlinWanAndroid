@@ -13,7 +13,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class Banner @JvmOverloads constructor(
+class Banner<T> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -27,11 +27,11 @@ class Banner @JvmOverloads constructor(
 
     private var currPage: Int = 1
 
-    private var items: MutableList<Any> = mutableListOf()
+    private var items: MutableList<T> = mutableListOf()
 
-    private var onPageChange: ((position: Int) -> Unit)? = null
+    private var onPageChange: ((position: Int, totalCount: Int, data: T) -> Unit)? = null
 
-    private var bannerAdapter: BannerAdapter? = null
+    private var bannerAdapter: BannerAdapter<T>? = null
 
     init {
         layoutManager = manager
@@ -42,7 +42,7 @@ class Banner @JvmOverloads constructor(
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 when (newState) {
-                    RecyclerView.SCROLL_STATE_IDLE -> {
+                    SCROLL_STATE_IDLE -> {
                         val currIndex = manager.findFirstCompletelyVisibleItemPosition()
                         currPage = when {
                             currIndex > items.size - 2 -> 1
@@ -95,26 +95,32 @@ class Banner @JvmOverloads constructor(
         }
     }
 
-    fun bind(
+    @Suppress("UNCHECKED_CAST")
+    fun <E> bind(
         layoutId: Int,
-        items: List<Any>,
-        render: (position: Int, view: View) -> Unit,
-        onClick: (position: Int) -> Unit,
-        onPageChange: (position: Int) -> Unit
+        items: List<E>,
+        render: (position: Int, view: View, data: E) -> Unit,
+        onClick: (position: Int, data: E) -> Unit,
+        onPageChange: (position: Int, totalCount: Int, data: E) -> Unit
     ) {
-        this.onPageChange = onPageChange
-        this.bannerAdapter = BannerAdapter(layoutId = layoutId, render = render, onClick = onClick)
+        this.onPageChange = onPageChange as (Int, Int, T) -> Unit
+        this.bannerAdapter = BannerAdapter(
+            layoutId = layoutId,
+            render = render as (Int, View, T) -> Unit,
+            onClick = onClick as (Int, T) -> Unit
+        )
         this.adapter = bannerAdapter
         update(items)
     }
 
-    fun update(items: List<Any>) {
+    @Suppress("UNCHECKED_CAST")
+    fun <E> update(items: List<E>) {
         if (items.isEmpty()) {
             return
         }
         this.items.clear()
-        this.items.add(items[items.size - 1])
-        this.items.addAll(items)
+        this.items.add(items[items.size - 1] as T)
+        this.items.addAll(items as List<T>)
         this.items.add(items[0])
         this.bannerAdapter?.update(this.items)
         Handler().post {
@@ -133,6 +139,6 @@ class Banner @JvmOverloads constructor(
             items.size - 1 -> 0
             else -> currPage - 1
         }
-        this.onPageChange?.invoke(realPosition)
+        this.onPageChange?.invoke(realPosition, items.size - 2, items[currPage])
     }
 }
