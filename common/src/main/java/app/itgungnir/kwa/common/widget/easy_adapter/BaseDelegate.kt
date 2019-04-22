@@ -2,12 +2,15 @@ package app.itgungnir.kwa.common.widget.easy_adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 
 abstract class BaseDelegate<T : ListItem> : Delegate {
 
-    override fun <E : ListItem> onCreateViewHolder(parent: ViewGroup) =
-        EasyAdapter.VH<E>(LayoutInflater.from(parent.context).inflate(layoutId(), parent, false))
+    override fun <E : ListItem> onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        EasyAdapter.VH<E>(LayoutInflater.from(parent.context).inflate(layoutId(), parent, false)).initialize {
+            onCreateVH(this)
+        }
 
     @Suppress("UNCHECKED_CAST")
     override fun <E : ListItem> onBindViewHolder(
@@ -26,6 +29,8 @@ abstract class BaseDelegate<T : ListItem> : Delegate {
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {}
 
     abstract fun layoutId(): Int
+
+    abstract fun onCreateVH(view: View)
 
     abstract fun onBindVH(
         item: T,

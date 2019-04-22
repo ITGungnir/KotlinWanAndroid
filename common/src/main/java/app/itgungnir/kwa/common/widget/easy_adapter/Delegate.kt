@@ -5,7 +5,7 @@ import android.view.ViewGroup
 
 interface Delegate {
 
-    fun <T : ListItem> onCreateViewHolder(parent: ViewGroup): EasyAdapter.VH<T>
+    fun <T : ListItem> onCreateViewHolder(parent: ViewGroup, viewType: Int): EasyAdapter.VH<T>
 
     fun <T : ListItem> onBindViewHolder(
         item: T,

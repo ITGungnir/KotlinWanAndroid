@@ -1,6 +1,7 @@
 package app.itgungnir.kwa.home.delegate
 
 import android.annotation.SuppressLint
+import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
@@ -11,6 +12,9 @@ import my.itgungnir.apt.router.api.Router
 class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
 
     override fun layoutId(): Int = R.layout.delegate_article
+
+    override fun onCreateVH(view: View) {
+    }
 
     @SuppressLint("SetTextI18n")
     override fun onBindVH(

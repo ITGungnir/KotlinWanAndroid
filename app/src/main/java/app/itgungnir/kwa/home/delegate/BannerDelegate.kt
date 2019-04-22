@@ -1,6 +1,7 @@
 package app.itgungnir.kwa.home.delegate
 
 import android.annotation.SuppressLint
+import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.util.GlideApp
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
@@ -12,6 +13,9 @@ import my.itgungnir.apt.router.api.Router
 class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 
     override fun layoutId(): Int = R.layout.delegate_banner
+
+    override fun onCreateVH(view: View) {
+    }
 
     @SuppressLint("SetTextI18n")
     override fun onBindVH(

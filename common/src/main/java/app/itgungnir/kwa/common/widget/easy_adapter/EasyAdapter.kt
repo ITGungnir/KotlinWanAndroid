@@ -30,10 +30,10 @@ class EasyAdapter<T : ListItem>(
         get() = differ.currentList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        bindMap.first { it.type == viewType }.delegate.onCreateViewHolder<T>(parent)
+        bindMap.first { it.type == viewType }.delegate.onCreateViewHolder<T>(parent, viewType)
 
     override fun onBindViewHolder(holder: VH<T>, position: Int) {
-        bindMap.first { it.type == holder.itemViewType }.delegate.onBindViewHolder<T>(
+        bindMap.first { it.type == holder.itemViewType }.delegate.onBindViewHolder(
             items[position], holder, position, mutableListOf()
         )
     }
@@ -73,6 +73,10 @@ class EasyAdapter<T : ListItem>(
 
     open class VH<T : ListItem>(override val containerView: View) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
+
+        fun initialize(block: View.() -> Unit) = apply {
+            containerView.apply { block() }
+        }
 
         fun render(data: T, render: View.(data: T) -> Unit) {
             containerView.apply { render(data) }
