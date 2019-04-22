@@ -16,10 +16,10 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 
     @SuppressLint("SetTextI18n")
     override fun onCreateVH(containerView: View) {
-        containerView.banner.bind<HomeState.BannerVO.BannerItem>(
+        containerView.banner.bind(
             layoutId = R.layout.list_item_banner,
             items = listOf(),
-            render = { position, view, data ->
+            render = { _, view, data: HomeState.BannerVO.BannerItem ->
                 GlideApp.with(view.context)
                     .load(data.url)
                     .placeholder(R.mipmap.img_placeholder)
@@ -27,7 +27,7 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
                     .centerCrop()
                     .into(view.findViewById(R.id.image))
             },
-            onClick = { position, data ->
+            onClick = { _, data ->
                 Router.instance.with(containerView.context)
                     .target("web")
                     .addParam("title", data.title)
