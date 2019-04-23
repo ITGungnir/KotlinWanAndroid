@@ -13,7 +13,7 @@ class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
 
     override fun layoutId(): Int = R.layout.delegate_article
 
-    override fun onCreateVH(view: View) {
+    override fun onCreateVH(container: View) {
     }
 
     @SuppressLint("SetTextI18n")

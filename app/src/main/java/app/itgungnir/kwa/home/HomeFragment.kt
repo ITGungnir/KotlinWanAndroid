@@ -4,10 +4,10 @@ import android.arch.lifecycle.Observer
 import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
+import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.home.delegate.BannerDelegate
 import app.itgungnir.kwa.home.delegate.HomeArticleDelegate

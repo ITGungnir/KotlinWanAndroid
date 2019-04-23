@@ -1,5 +1,6 @@
 package app.itgungnir.kwa.common.widget.easy_adapter
 
+import android.annotation.SuppressLint
 import android.support.v7.recyclerview.extensions.AsyncListDiffer
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
@@ -14,6 +15,7 @@ class EasyAdapter<T : ListItem>(
 
     private val bindMap = mutableListOf<BindMap<T>>()
 
+    @SuppressLint("DiffUtilEquals")
     private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<T>() {
 
         override fun areItemsTheSame(oldItem: T, newItem: T): Boolean =

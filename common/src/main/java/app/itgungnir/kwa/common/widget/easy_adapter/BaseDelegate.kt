@@ -30,7 +30,7 @@ abstract class BaseDelegate<T : ListItem> : Delegate {
 
     abstract fun layoutId(): Int
 
-    abstract fun onCreateVH(containerView: View)
+    abstract fun onCreateVH(container: View)
 
     abstract fun onBindVH(
         item: T,

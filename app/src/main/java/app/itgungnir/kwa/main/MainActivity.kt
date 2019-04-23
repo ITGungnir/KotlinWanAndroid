@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.widget.bottom_tab.TabItem
 import app.itgungnir.kwa.common.widget.bottom_tab.BottomTabAdapter
+import app.itgungnir.kwa.common.widget.bottom_tab.TabItem
 import app.itgungnir.kwa.home.HomeFragment
 import app.itgungnir.kwa.mine.MineFragment
 import app.itgungnir.kwa.project.ProjectFragment
