@@ -25,13 +25,11 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-android-extensions-runtime:$kotlin_version"
     api "org.jetbrains.anko:anko-sdk25:$anko_version"
     api "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
-    // noinspection GradleCompatible
-    api "com.android.support:appcompat-v7:$support_version"
-    api "com.android.support:design:$support_version"
-    api "com.android.support:recyclerview-v7:$support_version"
-    api "com.android.support.constraint:constraint-layout:$constraint_layout_version"
-    // Lifecycle
-    api "android.arch.lifecycle:extensions:$lifecycle_version"
+    // Support
+    api "androidx.appcompat:appcompat:$appcompat_version"
+    api "com.google.android.material:material:$material_version"
+    api "androidx.recyclerview:recyclerview:$recyclerview_version"
+    api "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     // Network
     api "com.squareup.okhttp3:okhttp:$okhttp_version"
     api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
@@ -53,7 +51,7 @@ dependencies {
     api "net.danlew:android.joda:$joda_version"
     api "com.google.code.gson:gson:$gson_version"
     api "com.orhanobut:logger:$logger_version"
-    api "com.android.support:multidex:$dex_version"
+    api "androidx.multidex:multidex:$dex_version"
     api "com.github.ITGungnir.APTRouter:router_api:$router_version"
     debugApi "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
     debugApi "com.squareup.leakcanary:leakcanary-support-fragment:$leak_canary_version"

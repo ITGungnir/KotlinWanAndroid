@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.common.widget.easy_adapter
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 fun <T : ListItem> RecyclerView.bind(
     manager: RecyclerView.LayoutManager = LinearLayoutManager(context),

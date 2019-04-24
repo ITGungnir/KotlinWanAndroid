@@ -3,12 +3,12 @@ package app.itgungnir.kwa.web
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.support.v7.app.AppCompatActivity
 import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import app.itgungnir.kwa.R
 import kotlinx.android.synthetic.main.activity_web.*
 import my.itgungnir.apt.router.annotation.Route

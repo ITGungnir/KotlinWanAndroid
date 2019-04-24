@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.common.widget.easy_adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 interface Delegate {
 

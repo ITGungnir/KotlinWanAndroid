@@ -1,9 +1,9 @@
 package app.itgungnir.kwa.common.widget.easy_adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseDelegate<T : ListItem> : Delegate {
 

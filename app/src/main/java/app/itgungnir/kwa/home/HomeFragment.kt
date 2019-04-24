@@ -1,8 +1,8 @@
 package app.itgungnir.kwa.home
 
-import android.arch.lifecycle.Observer
-import android.support.v7.widget.RecyclerView
 import android.widget.TextView
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem

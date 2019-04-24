@@ -2,7 +2,7 @@ package app.itgungnir.kwa.splash
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import app.itgungnir.kwa.WanAndroidApp
 import app.itgungnir.kwa.common.http.io2Main
 import io.reactivex.Single

@@ -1,6 +1,6 @@
 package app.itgungnir.kwa
 
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDexApplication
 import app.itgungnir.kwa.common.util.AppConfig
 import my.itgungnir.apt.router.annotation.Modules
 import my.itgungnir.apt.router.api.Router
