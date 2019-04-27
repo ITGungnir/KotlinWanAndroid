@@ -4,21 +4,12 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.github.ITGungnir.APTRouter:router_plugin:$router_version"
     }
 }
 
 allprojects {
     addRepos(repositories)
-    // 为所有模块添加，避免每个模块都要写一遍
-    project.afterEvaluate {
-        if (project.plugins.hasPlugin('kotlin-kapt')) {
-            kapt {
-                arguments {
-                    arg("moduleName", project.getName())
-                }
-            }
-        }
-    }
 }
 
 task clean(type: Delete) {

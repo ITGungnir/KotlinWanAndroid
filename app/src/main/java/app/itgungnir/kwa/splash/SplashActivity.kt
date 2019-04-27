@@ -3,7 +3,7 @@ package app.itgungnir.kwa.splash
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import app.itgungnir.kwa.WanAndroidApp
+import app.itgungnir.kwa.App
 import app.itgungnir.kwa.common.http.io2Main
 import io.reactivex.Single
 import my.itgungnir.apt.router.annotation.Route
@@ -23,14 +23,14 @@ class SplashActivity : AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     private fun initComponent() {
-        if (!WanAndroidApp.isFirstRun) {
+        if (!App.isFirstRun) {
             navigate()
             return
         }
 
         Single.timer(2L, TimeUnit.SECONDS)
             .io2Main()
-            .doOnSubscribe { WanAndroidApp.isFirstRun = false }
+            .doOnSubscribe { App.isFirstRun = false }
             .subscribe({
                 navigate()
             }, {})
