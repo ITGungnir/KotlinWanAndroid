@@ -1,6 +1,7 @@
 package app.itgungnir.kwa.home.delegate
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.WebActivity
@@ -20,9 +21,9 @@ class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
     @SuppressLint("SetTextI18n")
     override fun onBindVH(
         item: HomeState.ArticleVO,
-        holder: EasyAdapter.VH<HomeState.ArticleVO>,
+        holder: EasyAdapter.VH,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Bundle>
     ) {
 
         holder.render(item) {

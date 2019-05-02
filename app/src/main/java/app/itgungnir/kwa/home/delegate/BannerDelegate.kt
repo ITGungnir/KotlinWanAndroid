@@ -1,6 +1,7 @@
 package app.itgungnir.kwa.home.delegate
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.WebActivity
@@ -47,9 +48,9 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 
     override fun onBindVH(
         item: HomeState.BannerVO,
-        holder: EasyAdapter.VH<HomeState.BannerVO>,
+        holder: EasyAdapter.VH,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Bundle>
     ) {
 
         holder.render(item) {

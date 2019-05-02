@@ -1,17 +1,18 @@
 package app.itgungnir.kwa.common.widget.easy_adapter
 
+import android.os.Bundle
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 interface Delegate {
 
-    fun <T : ListItem> onCreateViewHolder(parent: ViewGroup, viewType: Int): EasyAdapter.VH<T>
+    fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EasyAdapter.VH
 
-    fun <T : ListItem> onBindViewHolder(
-        item: T,
-        holder: EasyAdapter.VH<T>,
+    fun onBindViewHolder(
+        item: ListItem,
+        holder: EasyAdapter.VH,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Bundle>
     )
 
     fun onViewRecycled(holder: RecyclerView.ViewHolder)

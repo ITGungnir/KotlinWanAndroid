@@ -2,11 +2,11 @@ package app.itgungnir.kwa.common.widget.easy_adapter
 
 import android.os.Bundle
 
-interface Differ<T : ListItem> {
+interface Differ {
 
-    fun areItemsTheSame(oldItem: T, newItem: T): Boolean
+    fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean
 
-    fun areContentsTheSame(oldItem: T, newItem: T): Boolean
+    fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean
 
-    fun getChangePayload(oldItem: T, newItem: T): Bundle?
+    fun getChangePayload(oldItem: ListItem, newItem: ListItem): Bundle?
 }

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.dp2px
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import kotlinx.android.synthetic.main.fragment_tree.*
@@ -24,7 +23,7 @@ class TreeFragment : BaseFragment() {
         )
     }
 
-    private var listAdapter: EasyAdapter<ListItem>? = null
+    private var listAdapter: EasyAdapter? = null
 
     override fun layoutId(): Int = R.layout.fragment_tree
 

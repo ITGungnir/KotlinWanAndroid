@@ -1,5 +1,6 @@
 package app.itgungnir.kwa.tree
 
+import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.R
@@ -16,9 +17,9 @@ class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
 
     override fun onBindVH(
         item: TreeState.TreeVO,
-        holder: EasyAdapter.VH<TreeState.TreeVO>,
+        holder: EasyAdapter.VH,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Bundle>
     ) {
 
         holder.render(item) {

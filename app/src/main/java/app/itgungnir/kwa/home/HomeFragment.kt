@@ -5,7 +5,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
@@ -27,7 +26,7 @@ class HomeFragment : BaseFragment() {
 
     override fun layoutId(): Int = R.layout.fragment_home
 
-    private var listAdapter: EasyAdapter<ListItem>? = null
+    private var listAdapter: EasyAdapter? = null
 
     private var footer: ListFooter? = null
 
@@ -46,7 +45,7 @@ class HomeFragment : BaseFragment() {
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
-                listAdapter = list.bind<ListItem>()
+                listAdapter = list.bind()
                     .map({ data -> data is HomeState.BannerVO }, BannerDelegate())
                     .map({ data -> data is HomeState.ArticleVO }, HomeArticleDelegate())
                 // Recycler Footer
