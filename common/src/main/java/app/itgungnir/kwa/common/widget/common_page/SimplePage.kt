@@ -24,7 +24,7 @@ class SimplePage @JvmOverloads constructor(context: Context, attrs: AttributeSet
         }
     }
 
-    fun titleBar() = titleBar!!
+    fun headBar() = headBar!!
 
     fun refreshLayout() = refreshLayout!!
 

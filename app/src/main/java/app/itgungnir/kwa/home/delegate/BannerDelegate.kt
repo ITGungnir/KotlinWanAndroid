@@ -3,23 +3,24 @@ package app.itgungnir.kwa.home.delegate
 import android.annotation.SuppressLint
 import android.view.View
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.util.GlideApp
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
-import kotlinx.android.synthetic.main.delegate_banner.view.*
+import kotlinx.android.synthetic.main.listitem_banner.view.*
 import my.itgungnir.apt.router.api.Router
 
 class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 
-    override fun layoutId(): Int = R.layout.delegate_banner
+    override fun layoutId(): Int = R.layout.listitem_banner
 
     @SuppressLint("SetTextI18n")
     override fun onCreateVH(container: View) {
 
         container.apply {
             banner.bind(
-                layoutId = R.layout.list_item_banner,
+                layoutId = R.layout.listitem_banner_child,
                 items = listOf(),
                 render = { _, view, data: HomeState.BannerVO.BannerItem ->
                     GlideApp.with(view.context)
@@ -31,7 +32,7 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
                 },
                 onClick = { _, data ->
                     Router.instance.with(context)
-                        .target("web")
+                        .target(WebActivity)
                         .addParam("title", data.title)
                         .addParam("url", data.url)
                         .go()

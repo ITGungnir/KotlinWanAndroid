@@ -32,11 +32,11 @@ class HomeFragment : BaseFragment() {
     private var footer: ListFooter? = null
 
     override fun initComponent() {
-        recyclerPage.apply {
-            // Title Bar
-            titleBar().title("首页")
+        homePage.apply {
+            // Head Bar
+            headBar().title("首页")
                 .addToolButton("\ue833") {
-                    // TODO
+                    // TODO 搜索
                 }
             // Swipe Refresh Layout
             refreshLayout().setOnRefreshListener {
@@ -53,7 +53,7 @@ class HomeFragment : BaseFragment() {
                 footer = ListFooter.Builder()
                     .bindTo(list)
                     .doOnLoadMore {
-                        if (!recyclerPage.refreshLayout().isRefreshing) {
+                        if (!homePage.refreshLayout().isRefreshing) {
                             viewModel.loadMoreHomeData()
                         }
                     }.build()
@@ -70,7 +70,7 @@ class HomeFragment : BaseFragment() {
         viewModel.pick(HomeState::refreshing)
             .observe(this, Observer { refreshing ->
                 refreshing?.a?.let {
-                    recyclerPage.refreshLayout().isRefreshing = it
+                    homePage.refreshLayout().isRefreshing = it
                 }
             })
 
@@ -78,8 +78,8 @@ class HomeFragment : BaseFragment() {
             .observe(this, Observer { states ->
                 states?.let {
                     when (it.a.isNotEmpty()) {
-                        true -> recyclerPage.statusView().succeed { listAdapter?.update(states.a) }
-                        else -> recyclerPage.statusView().empty { }
+                        true -> homePage.statusView().succeed { listAdapter?.update(states.a) }
+                        else -> homePage.statusView().empty { }
                     }
                     footer?.onLoadSucceed(it.b)
                 }

@@ -58,7 +58,7 @@ class BottomTab @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         if (childCount != this.adapter?.tabs?.size) {
             removeAllViews()
             this.adapter?.tabs?.forEachIndexed { index, _ ->
-                LayoutInflater.from(context).inflate(R.layout.list_item_bottom_tab, this, false).apply {
+                LayoutInflater.from(context).inflate(R.layout.listitem_bottom_tab, this, false).apply {
                     setOnClickListener { adapter?.selectTabAt(index) }
                     this@BottomTab.addView(this)
                 }

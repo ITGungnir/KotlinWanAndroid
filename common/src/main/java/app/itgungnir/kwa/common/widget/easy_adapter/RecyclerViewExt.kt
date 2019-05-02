@@ -13,7 +13,7 @@ fun <T : ListItem> RecyclerView.bind(
 
 fun <T : ListItem> RecyclerView.bind(
     manager: RecyclerView.LayoutManager = LinearLayoutManager(context),
-    delegate: BaseDelegate<T>,
+    delegate: Delegate,
     diffAnalyzer: Differ<T>? = null
 ): EasyAdapter<T> {
     layoutManager = manager

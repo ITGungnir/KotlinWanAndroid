@@ -2,6 +2,7 @@ package app.itgungnir.kwa.common.http
 
 import app.itgungnir.kwa.common.http.dto.BannerResponse
 import app.itgungnir.kwa.common.http.dto.HomeArticleResponse
+import app.itgungnir.kwa.common.http.dto.TreeResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,4 +20,10 @@ interface HttpApi {
      */
     @GET("/article/list/{page}/json")
     fun homeArticle(@Path("page") page: Int): Single<Result<HomeArticleResponse>>
+
+    /**
+     * 知识体系
+     */
+    @GET("/tree/json")
+    fun tree(): Single<Result<List<TreeResponse>>>
 }

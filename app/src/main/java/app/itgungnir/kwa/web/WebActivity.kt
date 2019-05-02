@@ -3,18 +3,17 @@ package app.itgungnir.kwa.web
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.webkit.WebResourceRequest
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.view.View
+import android.webkit.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.WebActivity
 import kotlinx.android.synthetic.main.activity_web.*
 import my.itgungnir.apt.router.annotation.Route
 import org.jetbrains.anko.share
 
-@Route("web")
+@Route(WebActivity)
 class WebActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +55,17 @@ class WebActivity : AppCompatActivity() {
                 override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
                     view.loadUrl(url)
                     return true
+                }
+            }
+            webChromeClient = object : WebChromeClient() {
+                override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                    progressBar.apply {
+                        progress = newProgress
+                        visibility = when (newProgress) {
+                            100 -> View.GONE
+                            else -> View.VISIBLE
+                        }
+                    }
                 }
             }
             loadUrl(url)

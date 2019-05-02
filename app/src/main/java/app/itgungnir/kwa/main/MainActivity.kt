@@ -4,19 +4,20 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.MainActivity
 import app.itgungnir.kwa.common.widget.bottom_tab.BottomTabAdapter
 import app.itgungnir.kwa.common.widget.bottom_tab.TabItem
 import app.itgungnir.kwa.home.HomeFragment
 import app.itgungnir.kwa.mine.MineFragment
 import app.itgungnir.kwa.project.ProjectFragment
-import app.itgungnir.kwa.structure.StructureFragment
+import app.itgungnir.kwa.tree.TreeFragment
 import app.itgungnir.kwa.weixin.WeixinFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.apt.router.annotation.Route
 import org.jetbrains.anko.toast
 import org.joda.time.DateTime
 
-@Route("main")
+@Route(MainActivity)
 class MainActivity : AppCompatActivity() {
 
     private var lastTime = 0L
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         bottomTab.setAdapter(object : BottomTabAdapter(R.id.fragment, tabs(), supportFragmentManager) {
             override fun pages(): HashMap<String, Fragment> = hashMapOf(
                 "首页" to HomeFragment(),
-                "知识体系" to StructureFragment(),
+                "知识体系" to TreeFragment(),
                 "公众号" to WeixinFragment(),
                 "项目" to ProjectFragment(),
                 "我的" to MineFragment()

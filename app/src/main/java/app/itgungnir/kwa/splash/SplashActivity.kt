@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import app.itgungnir.kwa.App
+import app.itgungnir.kwa.common.MainActivity
+import app.itgungnir.kwa.common.SplashActivity
 import app.itgungnir.kwa.common.http.io2Main
 import io.reactivex.Single
 import my.itgungnir.apt.router.annotation.Route
@@ -11,7 +13,7 @@ import my.itgungnir.apt.router.api.Router
 import org.jetbrains.anko.setContentView
 import java.util.concurrent.TimeUnit
 
-@Route("splash")
+@Route(SplashActivity)
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +39,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigate() {
-        Router.instance.with(this).target("main").go()
+        Router.instance.with(this).target(MainActivity).go()
         finish()
     }
 }
