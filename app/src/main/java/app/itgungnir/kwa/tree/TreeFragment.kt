@@ -28,15 +28,16 @@ class TreeFragment : BaseFragment() {
     override fun layoutId(): Int = R.layout.fragment_tree
 
     override fun initComponent() {
+        // Head Bar
+        headBar.title("知识体系")
+            .addToolButton("\ue834") {
+                // TODO 常用网址
+            }
+            .addToolButton("\ue744") {
+                // TODO 导航
+            }
+        // Common Page
         treePage.apply {
-            // Head Bar
-            headBar().title("知识体系")
-                .addToolButton("\ue834") {
-                    // TODO 常用网址
-                }
-                .addToolButton("\ue744") {
-                    // TODO 导航
-                }
             // Swipe Refresh Layout
             refreshLayout().setOnRefreshListener {
                 viewModel.getTreeList()

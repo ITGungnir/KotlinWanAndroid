@@ -31,12 +31,13 @@ class HomeFragment : BaseFragment() {
     private var footer: ListFooter? = null
 
     override fun initComponent() {
+        // Head Bar
+        headBar.title("首页")
+            .addToolButton("\ue833") {
+                // TODO 搜索
+            }
+        // Common Page
         homePage.apply {
-            // Head Bar
-            headBar().title("首页")
-                .addToolButton("\ue833") {
-                    // TODO 搜索
-                }
             // Swipe Refresh Layout
             refreshLayout().setOnRefreshListener {
                 viewModel.getHomeData()

@@ -5,16 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/clr_background">
 
-    <app.itgungnir.kwa.common.widget.head_bar.HeadBar
-        android:id="@+id/headBar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:layout_height="match_parent">
 
         <app.itgungnir.kwa.common.widget.status_view.StatusView
             android:id="@+id/statusView"

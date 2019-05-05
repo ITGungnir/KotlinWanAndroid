@@ -8,13 +8,13 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.R
 import app.itgungnir.kwa.common.widget.status_view.StatusView
-import kotlinx.android.synthetic.main.view_simple_page.view.*
+import kotlinx.android.synthetic.main.view_common_page.view.*
 
-class SimplePage @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+class CommonPage @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     CoordinatorLayout(context, attrs, defStyleAttr) {
 
     init {
-        View.inflate(context, R.layout.view_simple_page, this)
+        View.inflate(context, R.layout.view_common_page, this)
 
         fab.setOnClickListener {
             when (val view = statusView.getDelegate(StatusView.Status.SUCCEED)) {
@@ -23,8 +23,6 @@ class SimplePage @JvmOverloads constructor(context: Context, attrs: AttributeSet
             }
         }
     }
-
-    fun headBar() = headBar!!
 
     fun refreshLayout() = refreshLayout!!
 
