@@ -33,22 +33,23 @@ class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
             this.setOnClickListener {
                 Router.instance.with(context)
                     .target(WebActivity)
-                    .addParam("title", item.item.title)
-                    .addParam("url", item.item.link)
+                    .addParam("title", item.title)
+                    .addParam("url", item.link)
                     .go()
             }
 
-            author.text = "\ue830 ${item.item.author}"
+            author.text = "\ue830 ${item.author}"
 
             category.apply {
-                text = "${item.item.superChapterName} / ${item.item.chapterName}"
+                text = item.category
                 setOnClickListener {
+                    val categories = item.category.split(" / ")
                     val data = TreeState.TreeVO(
-                        name = item.item.superChapterName,
+                        name = categories[0],
                         children = listOf(
                             TreeState.TreeVO.TreeChildVO(
-                                id = item.item.chapterId,
-                                name = item.item.chapterName
+                                id = item.categoryId,
+                                name = categories[1]
                             )
                         )
                     )
@@ -60,9 +61,9 @@ class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
                 }
             }
 
-            title.text = item.item.title
+            title.text = item.title
 
-            time.text = item.item.niceDate
+            time.text = item.date
         }
     }
 }

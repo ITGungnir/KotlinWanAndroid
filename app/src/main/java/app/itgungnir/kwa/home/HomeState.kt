@@ -1,6 +1,5 @@
 package app.itgungnir.kwa.home
 
-import app.itgungnir.kwa.common.http.dto.HomeArticleResponse
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import my.itgungnir.rxmvvm.core.mvvm.State
 
@@ -24,6 +23,11 @@ data class HomeState(
     }
 
     data class ArticleVO(
-        val item: HomeArticleResponse.Item
+        val author: String,
+        val category: String,
+        val categoryId: Int,
+        val title: String,
+        val date: String,
+        val link: String
     ) : ListItem
 }

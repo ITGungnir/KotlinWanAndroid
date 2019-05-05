@@ -42,7 +42,16 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                         hasMore = !it.over
                     )
                 }
-                it.datas.map { item -> HomeState.ArticleVO(item) }
+                it.datas.map { item ->
+                    HomeState.ArticleVO(
+                        author = item.author,
+                        category = "${item.superChapterName} / ${item.chapterName}",
+                        categoryId = item.chapterId,
+                        title = item.title,
+                        date = item.niceDate,
+                        link = item.link
+                    )
+                }
             }
 
         Single.zip(s1, s2, BiFunction { t1: HomeState.BannerVO, t2: List<HomeState.ArticleVO> ->
@@ -88,7 +97,16 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                         hasMore = !it.over
                     )
                 }
-                it.datas.map { item -> HomeState.ArticleVO(item) }
+                it.datas.map { item ->
+                    HomeState.ArticleVO(
+                        author = item.author,
+                        category = "${item.superChapterName} / ${item.chapterName}",
+                        categoryId = item.chapterId,
+                        title = item.title,
+                        date = item.niceDate,
+                        link = item.link
+                    )
+                }
             }.doOnSubscribe {
                 setState {
                     copy(
