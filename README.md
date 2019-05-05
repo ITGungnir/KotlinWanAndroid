@@ -11,5 +11,6 @@ WanAndroid client programmed with Kotlin.
 - 我的页面（含我的收藏、登录、注册、退出登录）
 
 ## ToFix
+* 首页：置顶文章
 * EasyAdapter中的ListItem泛型
 * FlexView性能优化

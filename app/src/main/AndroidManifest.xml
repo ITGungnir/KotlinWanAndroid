@@ -26,6 +26,8 @@
 
         <activity android:name=".web.WebActivity" />
 
+        <activity android:name=".hierarchy.HierarchyActivity" />
+
     </application>
 
 </manifest>

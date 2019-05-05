@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.http.dto.TreeResponse
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.listitem_tree.view.*
+import my.itgungnir.apt.router.api.Router
 
 class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
 
@@ -16,7 +17,7 @@ class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
     override fun onCreateVH(container: View) {
         // Flex Layout
         container.apply {
-            children.bind<TreeResponse>(
+            children.bind<TreeState.TreeVO.TreeChildVO>(
                 layoutId = R.layout.listitem_tree_child,
                 items = listOf(),
                 render = { view, data ->
@@ -36,12 +37,16 @@ class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
         holder.render(item) {
 
             this.setOnClickListener {
-                // TODO
+                val json = Gson().toJson(item)
+                Router.instance.with(context)
+                    .target("hierarchy")
+                    .addParam("json", json)
+                    .go()
             }
 
-            title.text = item.item.name
+            title.text = item.name
 
-            children.update(item.item.children)
+            children.update(item.children)
         }
     }
 }

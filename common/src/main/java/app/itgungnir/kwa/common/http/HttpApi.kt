@@ -1,11 +1,13 @@
 package app.itgungnir.kwa.common.http
 
 import app.itgungnir.kwa.common.http.dto.BannerResponse
+import app.itgungnir.kwa.common.http.dto.HierarchyResponse
 import app.itgungnir.kwa.common.http.dto.HomeArticleResponse
 import app.itgungnir.kwa.common.http.dto.TreeResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface HttpApi {
 
@@ -26,4 +28,10 @@ interface HttpApi {
      */
     @GET("/tree/json")
     fun tree(): Single<Result<List<TreeResponse>>>
+
+    /**
+     * 知识体系某栏目下的文章
+     */
+    @GET("/article/list/{page}/json")
+    fun hierarchy(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<HierarchyResponse>>
 }

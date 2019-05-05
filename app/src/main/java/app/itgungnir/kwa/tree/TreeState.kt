@@ -1,6 +1,5 @@
 package app.itgungnir.kwa.tree
 
-import app.itgungnir.kwa.common.http.dto.TreeResponse
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import my.itgungnir.rxmvvm.core.mvvm.State
 
@@ -11,6 +10,13 @@ data class TreeState(
 ) : State {
 
     data class TreeVO(
-        val item: TreeResponse
-    ) : ListItem
+        val name: String,
+        val children: List<TreeChildVO>
+    ) : ListItem {
+
+        data class TreeChildVO(
+            val id: Int,
+            val name: String
+        )
+    }
 }

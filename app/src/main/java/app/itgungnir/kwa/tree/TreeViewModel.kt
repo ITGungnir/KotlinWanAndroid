@@ -28,7 +28,14 @@ class TreeViewModel : BaseViewModel<TreeState>(initialState = TreeState()) {
                 setState {
                     copy(
                         refreshing = false,
-                        items = it.map { item -> TreeState.TreeVO(item) },
+                        items = it.map { item ->
+                            TreeState.TreeVO(
+                                name = item.name,
+                                children = item.children.map { child ->
+                                    TreeState.TreeVO.TreeChildVO(id = child.id, name = child.name)
+                                }
+                            )
+                        },
                         error = null
                     )
                 }

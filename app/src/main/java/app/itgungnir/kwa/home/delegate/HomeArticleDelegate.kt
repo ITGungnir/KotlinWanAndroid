@@ -8,12 +8,14 @@ import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
-import kotlinx.android.synthetic.main.listitem_article.view.*
+import app.itgungnir.kwa.tree.TreeState
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.listitem_home.view.*
 import my.itgungnir.apt.router.api.Router
 
 class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_article
+    override fun layoutId(): Int = R.layout.listitem_home
 
     override fun onCreateVH(container: View) {
     }
@@ -40,7 +42,22 @@ class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
 
             category.apply {
                 text = "${item.item.superChapterName} / ${item.item.chapterName}"
-                setOnClickListener { }
+                setOnClickListener {
+                    val data = TreeState.TreeVO(
+                        name = item.item.superChapterName,
+                        children = listOf(
+                            TreeState.TreeVO.TreeChildVO(
+                                id = item.item.chapterId,
+                                name = item.item.chapterName
+                            )
+                        )
+                    )
+                    val json = Gson().toJson(data)
+                    Router.instance.with(context)
+                        .target("hierarchy")
+                        .addParam("json", json)
+                        .go()
+                }
             }
 
             title.text = item.item.title
