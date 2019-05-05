@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.widget.bottom_tab
+package app.itgungnir.kwa.main
 
 data class TabItem(
     val title: String,

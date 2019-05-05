@@ -1,103 +1,81 @@
 package app.itgungnir.kwa.common.widget.bottom_tab
 
 import android.content.Context
-import android.database.DataSetObserver
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.TextView
-import app.itgungnir.kwa.common.R
-import app.itgungnir.kwa.common.widget.icon_font.IconFontView
+import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayout
 import com.google.android.flexbox.JustifyContent
-import org.jetbrains.anko.find
-import org.jetbrains.anko.textColor
 
 class BottomTab @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     FlexboxLayout(context, attrs, defStyleAttr) {
 
-    private var selectedColor: Int = Color.parseColor("#FF707070")
+    private val currIndex = MutableLiveData<Int>().apply { value = 0 }
 
-    private var unselectedColor: Int = Color.parseColor("#FFC2C2C2")
+    private var targetFrameId: Int? = null
+    private lateinit var fragmentManager: FragmentManager
 
-    private var tabTextSize: Float = 12.0F
-
-    private var adapter: BottomTabAdapter? = null
+    private val inflater by lazy { LayoutInflater.from(context) }
 
     init {
         apply {
             flexDirection = FlexDirection.ROW
             justifyContent = JustifyContent.SPACE_AROUND
             alignItems = AlignItems.CENTER
-
-            context.obtainStyledAttributes(attrs, R.styleable.BottomTab).apply {
-                selectedColor = getColor(R.styleable.BottomTab_btv_color_selected, selectedColor)
-                unselectedColor = getColor(R.styleable.BottomTab_btv_color_unselected, unselectedColor)
-                tabTextSize = getFloat(R.styleable.BottomTab_btv_text_size, tabTextSize)
-                recycle()
-            }
         }
     }
 
-    private val dataSetObserver = object : DataSetObserver() {
-        override fun onChanged() {
-            initTabs()
-        }
-    }
-
-    fun setAdapter(adapter: BottomTabAdapter) {
-        this.adapter = adapter.apply {
-            selectTabAt(0)
-        }
-        this.initTabs()
-    }
-
-    private fun initTabs() {
-        if (childCount != this.adapter?.tabs?.size) {
+    fun <T> init(
+        targetFrameId: Int,
+        fragmentManager: FragmentManager,
+        items: List<Pair<T, Fragment>>,
+        itemLayoutId: Int,
+        render: (view: View, data: T, selected: Boolean) -> Unit
+    ) {
+        if (childCount > 0) {
             removeAllViews()
-            this.adapter?.tabs?.forEachIndexed { index, _ ->
-                LayoutInflater.from(context).inflate(R.layout.listitem_bottom_tab, this, false).apply {
-                    setOnClickListener { adapter?.selectTabAt(index) }
-                    this@BottomTab.addView(this)
-                }
-            }
         }
-        this.adapter?.tabs?.forEachIndexed { index, bottomTab ->
-            val item = getChildAt(index)
-            // icon
-            item.find<IconFontView>(R.id.icon).apply {
-                when (adapter?.currIndex) {
-                    index -> {
-                        text = bottomTab.selectedIcon
-                        textColor = selectedColor
-                    }
-                    else -> {
-                        text = bottomTab.unselectedIcon
-                        textColor = unselectedColor
-                    }
-                }
+        this.targetFrameId = targetFrameId
+        this.fragmentManager = fragmentManager
+        for (index in 0 until items.size) {
+            val view = inflater.inflate(itemLayoutId, this, false)
+            view.setOnClickListener {
+                currIndex.value = index
             }
-            // title
-            item.find<TextView>(R.id.title).apply {
-                text = bottomTab.title
-                textSize = tabTextSize
-                textColor = when (adapter?.currIndex) {
-                    index -> selectedColor
-                    else -> unselectedColor
-                }
-            }
+            this.addView(view)
         }
+        // Observe data change
+        currIndex.observe(context as LifecycleOwner, Observer {
+            togglePage(it, items[it].second)
+            for (index in 0 until childCount) {
+                render.invoke(getChildAt(index), items[index].first, it == index)
+            }
+        })
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        this.adapter?.registerDataSetObserver(this.dataSetObserver)
-    }
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        this.adapter?.unRegisterDataSetObserver(this.dataSetObserver)
+    private fun togglePage(newIndex: Int, targetFragment: Fragment) {
+        if (targetFrameId == null) {
+            return
+        }
+        val tag = newIndex.toString()
+        val transaction = this.fragmentManager.beginTransaction()
+        if (this.fragmentManager.findFragmentByTag(tag) == null) {
+            transaction.add(this.targetFrameId!!, targetFragment, tag)
+        }
+        for (fragment in this.fragmentManager.fragments) {
+            if (fragment.tag == tag) {
+                transaction.show(fragment)
+            } else {
+                transaction.hide(fragment)
+            }
+        }
+        transaction.commit()
     }
 }

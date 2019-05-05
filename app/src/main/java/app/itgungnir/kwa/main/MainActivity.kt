@@ -1,12 +1,12 @@
 package app.itgungnir.kwa.main
 
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.MainActivity
-import app.itgungnir.kwa.common.widget.bottom_tab.BottomTabAdapter
-import app.itgungnir.kwa.common.widget.bottom_tab.TabItem
+import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import app.itgungnir.kwa.home.HomeFragment
 import app.itgungnir.kwa.mine.MineFragment
 import app.itgungnir.kwa.project.ProjectFragment
@@ -14,6 +14,7 @@ import app.itgungnir.kwa.tree.TreeFragment
 import app.itgungnir.kwa.weixin.WeixinFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.apt.router.annotation.Route
+import org.jetbrains.anko.textColor
 import org.jetbrains.anko.toast
 import org.joda.time.DateTime
 
@@ -30,24 +31,40 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initComponent() {
-        bottomTab.setAdapter(object : BottomTabAdapter(R.id.fragment, tabs(), supportFragmentManager) {
-            override fun pages(): HashMap<String, Fragment> = hashMapOf(
-                "首页" to HomeFragment(),
-                "知识体系" to TreeFragment(),
-                "公众号" to WeixinFragment(),
-                "项目" to ProjectFragment(),
-                "我的" to MineFragment()
-            )
-        })
-    }
 
-    private fun tabs() = listOf(
-        TabItem("首页", "\ue703", "\ue702"),
-        TabItem("知识体系", "\ue6ef", "\ue6ee"),
-        TabItem("公众号", "\ue82c", "\ue608"),
-        TabItem("项目", "\ue6ec", "\ue6eb"),
-        TabItem("我的", "\ue716", "\ue715")
-    )
+        val selectedColor = Color.parseColor("#FF707070")
+        val unSelectedColor = Color.parseColor("#FFC2C2C2")
+
+        bottomTab.init(
+            targetFrameId = R.id.fragment,
+            fragmentManager = supportFragmentManager,
+            items = listOf(
+                TabItem("首页", "\ue703", "\ue702") to HomeFragment(),
+                TabItem("知识体系", "\ue6ef", "\ue6ee") to TreeFragment(),
+                TabItem("公众号", "\ue82c", "\ue608") to WeixinFragment(),
+                TabItem("项目", "\ue6ec", "\ue6eb") to ProjectFragment(),
+                TabItem("我的", "\ue716", "\ue715") to MineFragment()
+            ),
+            itemLayoutId = R.layout.listitem_bottom_tab,
+            render = { view, data, selected ->
+                val icon = view.findViewById<IconFontView>(R.id.icon)
+                val title = view.findViewById<TextView>(R.id.title)
+                title.text = data.title
+                when (selected) {
+                    true -> {
+                        icon.text = data.selectedIcon
+                        icon.textColor = selectedColor
+                        title.textColor = selectedColor
+                    }
+                    false -> {
+                        icon.text = data.unselectedIcon
+                        icon.textColor = unSelectedColor
+                        title.textColor = unSelectedColor
+                    }
+                }
+            }
+        )
+    }
 
     override fun onBackPressed() {
         val currTime = DateTime.now().millis
