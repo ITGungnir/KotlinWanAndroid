@@ -3,8 +3,10 @@
 
     <dimen name="dp_divider_height">0.5dp</dimen>
 
-    <dimen name="sp_text_size_1">16dp</dimen>
-    <dimen name="sp_text_size_2">14dp</dimen>
-    <dimen name="sp_text_size_3">12dp</dimen>
+    <dimen name="sp_text_size_1">24dp</dimen>
+    <dimen name="sp_text_size_2">18dp</dimen>
+    <dimen name="sp_text_size_3">16dp</dimen>
+    <dimen name="sp_text_size_4">14dp</dimen>
+    <dimen name="sp_text_size_5">12dp</dimen>
 
 </resources>

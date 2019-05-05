@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="@string/str_back"
         android:textColor="@android:color/white"
-        android:textSize="24dp"
+        android:textSize="@dimen/sp_text_size_1"
         android:textStyle="bold"
         android:visibility="gone" />
 
@@ -36,7 +36,7 @@
         android:singleLine="true"
         android:text="@string/app_name"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/sp_text_size_1"
+        android:textSize="@dimen/sp_text_size_3"
         android:textStyle="bold" />
 
 </RelativeLayout>

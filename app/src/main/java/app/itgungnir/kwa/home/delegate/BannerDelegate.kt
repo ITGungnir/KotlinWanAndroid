@@ -20,10 +20,10 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
     override fun onCreateVH(container: View) {
 
         container.apply {
-            banner.bind(
+            banner.bind<HomeState.BannerVO.BannerItem>(
                 layoutId = R.layout.listitem_banner_child,
                 items = listOf(),
-                render = { _, view, data: HomeState.BannerVO.BannerItem ->
+                render = { _, view, data ->
                     GlideApp.with(view.context)
                         .load(data.url)
                         .placeholder(R.mipmap.img_placeholder)

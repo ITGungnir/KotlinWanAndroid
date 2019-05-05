@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class BannerAdapter<T>(
+class BannerAdapter(
     private val layoutId: Int,
-    private val render: (position: Int, view: View, data: T) -> Unit,
-    private val onClick: (position: Int, data: T) -> Unit
-) : RecyclerView.Adapter<BannerAdapter<T>.VH>() {
+    private val render: (position: Int, view: View, data: Any) -> Unit,
+    private val onClick: (position: Int, data: Any) -> Unit
+) : RecyclerView.Adapter<BannerAdapter.VH>() {
 
     @SuppressLint("DiffUtilEquals")
-    private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<T>() {
-        override fun areItemsTheSame(oldItem: T, newItem: T): Boolean = oldItem == newItem
-        override fun areContentsTheSame(oldItem: T, newItem: T): Boolean = oldItem == newItem
+    private val differ = AsyncListDiffer(this, object : DiffUtil.ItemCallback<Any>() {
+        override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean = oldItem == newItem
+        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean = oldItem == newItem
     })
 
     private val items
@@ -44,7 +44,7 @@ class BannerAdapter<T>(
         return vh
     }
 
-    fun update(newItems: List<T>) {
+    fun update(newItems: List<Any>) {
         differ.submitList(newItems)
     }
 

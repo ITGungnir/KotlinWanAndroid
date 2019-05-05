@@ -13,7 +13,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class Banner<T> @JvmOverloads constructor(
+class Banner @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -27,11 +27,11 @@ class Banner<T> @JvmOverloads constructor(
 
     private var currPage: Int = 1
 
-    private var items: MutableList<T> = mutableListOf()
+    private var items: MutableList<Any> = mutableListOf()
 
-    private var onPageChange: ((position: Int, totalCount: Int, data: T) -> Unit)? = null
+    private var onPageChange: ((position: Int, totalCount: Int, data: Any) -> Unit)? = null
 
-    private var bannerAdapter: BannerAdapter<T>? = null
+    private var bannerAdapter: BannerAdapter? = null
 
     init {
         layoutManager = manager
@@ -103,11 +103,11 @@ class Banner<T> @JvmOverloads constructor(
         onClick: (position: Int, data: E) -> Unit,
         onPageChange: (position: Int, totalCount: Int, data: E) -> Unit
     ) {
-        this.onPageChange = onPageChange as (Int, Int, T) -> Unit
+        this.onPageChange = onPageChange as (Int, Int, Any) -> Unit
         this.bannerAdapter = BannerAdapter(
             layoutId = layoutId,
-            render = render as (Int, View, T) -> Unit,
-            onClick = onClick as (Int, T) -> Unit
+            render = render as (Int, View, Any) -> Unit,
+            onClick = onClick as (Int, Any) -> Unit
         )
         this.adapter = bannerAdapter
         update(items)
@@ -119,8 +119,8 @@ class Banner<T> @JvmOverloads constructor(
             return
         }
         this.items.clear()
-        this.items.add(items[items.size - 1] as T)
-        this.items.addAll(items as List<T>)
+        this.items.add(items[items.size - 1] as Any)
+        this.items.addAll(items as List<Any>)
         this.items.add(items[0])
         this.bannerAdapter?.update(this.items)
         Handler().post {
