@@ -10,6 +10,7 @@
         android:id="@+id/back"
         android:layout_width="?attr/actionBarSize"
         android:layout_height="?attr/actionBarSize"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
         android:text="@string/str_back"
         android:textColor="@android:color/white"
