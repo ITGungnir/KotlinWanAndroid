@@ -48,11 +48,11 @@
             android:gravity="center_vertical"
             android:inputType="text"
             android:paddingStart="?attr/actionBarSize"
+            android:textSize="@dimen/sp_text_size_4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/search"
             app:layout_constraintStart_toStartOf="@+id/icon"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="0dp"

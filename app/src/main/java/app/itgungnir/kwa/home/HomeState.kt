@@ -22,7 +22,7 @@ data class HomeState(
         )
     }
 
-    data class ArticleVO(
+    data class HomeArticleVO(
         val author: String,
         val category: String,
         val categoryId: Int,

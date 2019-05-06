@@ -2,7 +2,6 @@
 WanAndroid client programmed with Kotlin.
 
 ## 功能
-- 公众号页面（含搜索）
 - 我的页面（含我的收藏、登录、注册、退出登录）
 
 ## ToFix

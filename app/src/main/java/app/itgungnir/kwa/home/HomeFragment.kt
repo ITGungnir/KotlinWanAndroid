@@ -48,7 +48,7 @@ class HomeFragment : BaseFragment() {
                 // Recycler View
                 listAdapter = list.bind()
                     .map({ data -> data is HomeState.BannerVO }, BannerDelegate())
-                    .map({ data -> data is HomeState.ArticleVO }, HomeArticleDelegate())
+                    .map({ data -> data is HomeState.HomeArticleVO }, HomeArticleDelegate())
                 // Recycler Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)

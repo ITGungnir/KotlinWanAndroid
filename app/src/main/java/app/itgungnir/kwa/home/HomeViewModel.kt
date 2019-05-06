@@ -43,7 +43,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                     )
                 }
                 it.datas.map { item ->
-                    HomeState.ArticleVO(
+                    HomeState.HomeArticleVO(
                         author = item.author,
                         category = "${item.superChapterName} / ${item.chapterName}",
                         categoryId = item.chapterId,
@@ -54,7 +54,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                 }
             }
 
-        Single.zip(s1, s2, BiFunction { t1: HomeState.BannerVO, t2: List<HomeState.ArticleVO> ->
+        Single.zip(s1, s2, BiFunction { t1: HomeState.BannerVO, t2: List<HomeState.HomeArticleVO> ->
             val responseList = mutableListOf<ListItem>(t1)
             responseList.addAll(t2)
             return@BiFunction responseList
@@ -98,7 +98,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                     )
                 }
                 it.datas.map { item ->
-                    HomeState.ArticleVO(
+                    HomeState.HomeArticleVO(
                         author = item.author,
                         category = "${item.superChapterName} / ${item.chapterName}",
                         categoryId = item.chapterId,

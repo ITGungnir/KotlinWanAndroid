@@ -32,7 +32,7 @@ class TreeViewModel : BaseViewModel<TreeState>(initialState = TreeState()) {
                             TreeState.TreeVO(
                                 name = item.name,
                                 children = item.children.map { child ->
-                                    TreeState.TreeVO.TreeChildVO(id = child.id, name = child.name)
+                                    TreeState.TreeVO.TreeTabVO(id = child.id, name = child.name)
                                 }
                             )
                         },

@@ -5,13 +5,13 @@ import my.itgungnir.rxmvvm.core.mvvm.State
 
 data class HierarchyChildState(
     val refreshing: Boolean = false,
-    val items: List<ArticleVO> = listOf(),
+    val items: List<HierarchyArticleVO> = listOf(),
     val loading: Boolean = false,
     val hasMore: Boolean = false,
     val error: Throwable? = null
 ) : State {
 
-    data class ArticleVO(
+    data class HierarchyArticleVO(
         val author: String,
         val title: String,
         val date: String,

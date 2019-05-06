@@ -11,7 +11,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import kotlinx.android.synthetic.main.listitem_project_child.view.*
 import my.itgungnir.apt.router.api.Router
 
-class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectVO>() {
+class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() {
 
     override fun layoutId(): Int = R.layout.listitem_project_child
 
@@ -20,7 +20,7 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectVO>() {
 
     @SuppressLint("SetTextI18n")
     override fun onBindVH(
-        item: ProjectChildState.ProjectVO,
+        item: ProjectChildState.ProjectArticleVO,
         holder: EasyAdapter.VH,
         position: Int,
         payloads: MutableList<Bundle>

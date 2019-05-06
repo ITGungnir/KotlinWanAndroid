@@ -22,7 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="app.itgungnir.kwa.main.MainActivity" />
+        <activity
+            android:name="app.itgungnir.kwa.main.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity android:name=".web.WebActivity" />
 

@@ -1,23 +1,21 @@
-package app.itgungnir.kwa.project.child
+package app.itgungnir.kwa.weixin.child
 
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import my.itgungnir.rxmvvm.core.mvvm.State
 
-data class ProjectChildState(
+data class WeixinChildState(
     val refreshing: Boolean = false,
-    val items: List<ProjectArticleVO> = listOf(),
+    val items: List<WeixinArticleVO> = listOf(),
     val loading: Boolean = false,
     val hasMore: Boolean = false,
+    val shouldScrollToTop: Boolean = false,
     val error: Throwable? = null
 ) : State {
 
-    data class ProjectArticleVO(
-        val cover: String,
-        val title: String,
+    data class WeixinArticleVO(
         val author: String,
-        val desc: String,
+        val title: String,
         val date: String,
-        val link: String,
-        val repositoryLink: String
+        val link: String
     ) : ListItem
 }

@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.project.child
+package app.itgungnir.kwa.weixin.child
 
 import android.annotation.SuppressLint
 import app.itgungnir.kwa.common.http.HttpClient
@@ -7,16 +7,16 @@ import app.itgungnir.kwa.common.http.io2Main
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
 
 @SuppressLint("CheckResult")
-class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = ProjectChildState()) {
+class WeixinChildViewModel : BaseViewModel<WeixinChildState>(initialState = WeixinChildState()) {
 
     private var pageNo = 0
 
     /**
-     * 获取项目列表
+     * 获取
      */
-    fun getProjects(cid: Int) {
+    fun getArticles(cid: Int, k: String) {
         pageNo = 0
-        HttpClient.api.projectArticles(pageNo, cid)
+        HttpClient.api.weixinArticles(pageNo, cid, k)
             .handleResult()
             .io2Main()
             .map {
@@ -26,14 +26,11 @@ class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = Pr
                     )
                 }
                 it.datas.map { item ->
-                    ProjectChildState.ProjectArticleVO(
-                        cover = item.envelopePic,
-                        title = item.title,
+                    WeixinChildState.WeixinArticleVO(
                         author = item.author,
-                        desc = item.desc,
+                        title = item.title,
                         date = item.niceDate,
-                        link = item.link,
-                        repositoryLink = item.projectLink
+                        link = item.link
                     )
                 }
             }
@@ -51,6 +48,7 @@ class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = Pr
                     copy(
                         refreshing = false,
                         items = it,
+                        shouldScrollToTop = true,
                         error = null
                     )
                 }
@@ -65,10 +63,10 @@ class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = Pr
     }
 
     /**
-     * 加载更多项目
+     * 加载更多
      */
-    fun loadMoreProjects(cid: Int) {
-        HttpClient.api.projectArticles(pageNo, cid)
+    fun loadMoreArticles(cid: Int, k: String) {
+        HttpClient.api.weixinArticles(pageNo, cid, k)
             .handleResult()
             .io2Main()
             .map {
@@ -78,14 +76,11 @@ class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = Pr
                     )
                 }
                 it.datas.map { item ->
-                    ProjectChildState.ProjectArticleVO(
-                        cover = item.envelopePic,
-                        title = item.title,
+                    WeixinChildState.WeixinArticleVO(
                         author = item.author,
-                        desc = item.desc,
+                        title = item.title,
                         date = item.niceDate,
-                        link = item.link,
-                        repositoryLink = item.projectLink
+                        link = item.link
                     )
                 }
             }
@@ -103,6 +98,7 @@ class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = Pr
                     copy(
                         loading = false,
                         items = items.toMutableList() + it,
+                        shouldScrollToTop = false,
                         error = null
                     )
                 }

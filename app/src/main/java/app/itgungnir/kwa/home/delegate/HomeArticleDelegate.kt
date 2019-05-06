@@ -14,7 +14,7 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.listitem_home.view.*
 import my.itgungnir.apt.router.api.Router
 
-class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
+class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
 
     override fun layoutId(): Int = R.layout.listitem_home
 
@@ -23,7 +23,7 @@ class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
 
     @SuppressLint("SetTextI18n")
     override fun onBindVH(
-        item: HomeState.ArticleVO,
+        item: HomeState.HomeArticleVO,
         holder: EasyAdapter.VH,
         position: Int,
         payloads: MutableList<Bundle>
@@ -48,7 +48,7 @@ class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
                     val data = TreeState.TreeVO(
                         name = categories[0],
                         children = listOf(
-                            TreeState.TreeVO.TreeChildVO(
+                            TreeState.TreeVO.TreeTabVO(
                                 id = item.categoryId,
                                 name = categories[1]
                             )
