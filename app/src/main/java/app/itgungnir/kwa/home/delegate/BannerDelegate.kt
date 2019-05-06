@@ -3,9 +3,10 @@ package app.itgungnir.kwa.home.delegate
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.util.GlideApp
+import app.itgungnir.kwa.common.load
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
@@ -24,12 +25,7 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
                 layoutId = R.layout.listitem_banner_child,
                 items = listOf(),
                 render = { _, view, data ->
-                    GlideApp.with(view.context)
-                        .load(data.url)
-                        .placeholder(R.mipmap.img_placeholder)
-                        .error(R.mipmap.img_placeholder)
-                        .centerCrop()
-                        .into(view.findViewById(R.id.image))
+                    view.findViewById<ImageView>(R.id.image).load(data.url)
                 },
                 onClick = { _, data ->
                     Router.instance.with(context)

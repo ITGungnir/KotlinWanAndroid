@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.HierarchyActivity
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import com.google.gson.Gson
@@ -39,7 +40,7 @@ class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
             this.setOnClickListener {
                 val json = Gson().toJson(item)
                 Router.instance.with(context)
-                    .target("hierarchy")
+                    .target(HierarchyActivity)
                     .addParam("json", json)
                     .go()
             }

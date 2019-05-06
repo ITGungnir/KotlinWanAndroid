@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.HierarchyActivity
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
@@ -55,7 +56,7 @@ class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
                     )
                     val json = Gson().toJson(data)
                     Router.instance.with(context)
-                        .target("hierarchy")
+                        .target(HierarchyActivity)
                         .addParam("json", json)
                         .go()
                 }
@@ -63,7 +64,7 @@ class HomeArticleDelegate : BaseDelegate<HomeState.ArticleVO>() {
 
             title.text = item.title
 
-            time.text = item.date
+            date.text = item.date
         }
     }
 }

@@ -39,7 +39,9 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigate() {
-        Router.instance.with(this).target(MainActivity).go()
+        Router.instance.with(this)
+            .target(MainActivity)
+            .go()
         finish()
     }
 }

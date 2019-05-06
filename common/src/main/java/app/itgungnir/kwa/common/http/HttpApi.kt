@@ -1,9 +1,6 @@
 package app.itgungnir.kwa.common.http
 
-import app.itgungnir.kwa.common.http.dto.BannerResponse
-import app.itgungnir.kwa.common.http.dto.HierarchyResponse
-import app.itgungnir.kwa.common.http.dto.HomeArticleResponse
-import app.itgungnir.kwa.common.http.dto.TreeResponse
+import app.itgungnir.kwa.common.http.dto.*
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -34,4 +31,16 @@ interface HttpApi {
      */
     @GET("/article/list/{page}/json")
     fun hierarchy(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<HierarchyResponse>>
+
+    /**
+     * 项目分类
+     */
+    @GET("/project/tree/json")
+    fun projectTab(): Single<Result<List<ProjectTabResponse>>>
+
+    /**
+     * 项目
+     */
+    @GET("/project/list/{page}/json")
+    fun project(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ProjectResponse>>
 }
