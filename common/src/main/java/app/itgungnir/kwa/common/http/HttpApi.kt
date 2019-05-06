@@ -1,6 +1,8 @@
 package app.itgungnir.kwa.common.http
 
-import app.itgungnir.kwa.common.http.dto.*
+import app.itgungnir.kwa.common.http.dto.ArticleResponse
+import app.itgungnir.kwa.common.http.dto.BannerResponse
+import app.itgungnir.kwa.common.http.dto.TabResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,29 +20,29 @@ interface HttpApi {
      * 首页 - 文章列表
      */
     @GET("/article/list/{page}/json")
-    fun homeArticle(@Path("page") page: Int): Single<Result<HomeArticleResponse>>
+    fun homeArticle(@Path("page") page: Int): Single<Result<ArticleResponse>>
 
     /**
      * 知识体系
      */
     @GET("/tree/json")
-    fun tree(): Single<Result<List<TreeResponse>>>
+    fun tree(): Single<Result<List<TabResponse>>>
 
     /**
      * 知识体系某栏目下的文章
      */
     @GET("/article/list/{page}/json")
-    fun hierarchy(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<HierarchyResponse>>
+    fun hierarchy(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleResponse>>
 
     /**
      * 项目分类
      */
     @GET("/project/tree/json")
-    fun projectTab(): Single<Result<List<ProjectTabResponse>>>
+    fun projectTab(): Single<Result<List<TabResponse>>>
 
     /**
      * 项目
      */
     @GET("/project/list/{page}/json")
-    fun project(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ProjectResponse>>
+    fun project(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleResponse>>
 }

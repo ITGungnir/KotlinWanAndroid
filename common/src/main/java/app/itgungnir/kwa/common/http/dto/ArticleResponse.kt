@@ -1,6 +1,6 @@
 package app.itgungnir.kwa.common.http.dto
 
-data class HomeArticleResponse(
+data class ArticleResponse(
     val curPage: Int,
     val datas: List<Item>,
     val offset: Int,
@@ -9,6 +9,7 @@ data class HomeArticleResponse(
     val size: Int,
     val total: Int
 ) {
+
     data class Item(
         val apkLink: String,
         val author: String,
@@ -34,6 +35,10 @@ data class HomeArticleResponse(
         val visible: Int,
         val zan: Int
     ) {
-        data class Tag(val name: String, val url: String)
+
+        data class Tag(
+            val name: String,
+            val url: String
+        )
     }
 }
