@@ -4,6 +4,7 @@
 
     <string name="str_back">\ue720</string>
     <string name="str_empty">\ue6a6</string>
+    <string name="str_search">\ue833</string>
     <string name="str_right_arrow">\ue6f8</string>
     <string name="str_fab_behavior">app.itgungnir.kwa.common.widget.common_page.FabBehavior</string>
 

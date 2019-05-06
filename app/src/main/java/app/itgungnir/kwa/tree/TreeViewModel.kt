@@ -13,7 +13,7 @@ class TreeViewModel : BaseViewModel<TreeState>(initialState = TreeState()) {
      */
     @SuppressLint("CheckResult")
     fun getTreeList() {
-        HttpClient.api.tree()
+        HttpClient.api.hierarchyTabs()
             .handleResult()
             .io2Main()
             .doOnSubscribe {

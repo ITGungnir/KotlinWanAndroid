@@ -16,7 +16,7 @@ class HierarchyChildViewModel : BaseViewModel<HierarchyChildState>(initialState 
      */
     fun getArticles(cid: Int) {
         pageNo = 0
-        HttpClient.api.hierarchy(pageNo, cid)
+        HttpClient.api.hierarchyArticles(pageNo, cid)
             .handleResult()
             .io2Main()
             .map {
@@ -65,7 +65,7 @@ class HierarchyChildViewModel : BaseViewModel<HierarchyChildState>(initialState 
      * 加载更多
      */
     fun loadMoreArticles(cid: Int) {
-        HttpClient.api.hierarchy(pageNo, cid)
+        HttpClient.api.hierarchyArticles(pageNo, cid)
             .handleResult()
             .io2Main()
             .map {

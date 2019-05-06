@@ -13,7 +13,7 @@ class ProjectViewModel : BaseViewModel<ProjectState>(initialState = ProjectState
      */
     @SuppressLint("CheckResult")
     fun getProjectTabs() {
-        HttpClient.api.projectTab()
+        HttpClient.api.projectTabs()
             .handleResult()
             .io2Main()
             .map { it.map { item -> ProjectState.ProjectTabVO(item.id, item.name) } }

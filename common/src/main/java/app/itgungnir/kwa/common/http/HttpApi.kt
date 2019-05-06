@@ -11,38 +11,50 @@ import retrofit2.http.Query
 interface HttpApi {
 
     /**
-     * banner
+     * 首页：banner
      */
     @GET("/banner/json")
-    fun banner(): Single<Result<List<BannerResponse>>>
+    fun banners(): Single<Result<List<BannerResponse>>>
 
     /**
-     * 首页 - 文章列表
+     * 首页：文章列表
      */
     @GET("/article/list/{page}/json")
-    fun homeArticle(@Path("page") page: Int): Single<Result<ArticleResponse>>
+    fun homeArticles(@Path("page") page: Int): Single<Result<ArticleResponse>>
 
     /**
-     * 知识体系
+     * 知识体系：分类
      */
     @GET("/tree/json")
-    fun tree(): Single<Result<List<TabResponse>>>
+    fun hierarchyTabs(): Single<Result<List<TabResponse>>>
 
     /**
-     * 知识体系某栏目下的文章
+     * 知识体系：文章列表
      */
     @GET("/article/list/{page}/json")
-    fun hierarchy(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleResponse>>
+    fun hierarchyArticles(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleResponse>>
 
     /**
-     * 项目分类
+     * 公众号：分类
+     */
+    @GET("/wxarticle/chapters/json")
+    fun weixinTabs(): Single<Result<List<TabResponse>>>
+
+    /**
+     * 公众号：文章列表
+     */
+    @GET("/wxarticle/list/{cid}/{page}/json")
+    fun weixinArticles(@Path("page") page: Int, @Path("cid") cid: Int, @Query("k") k: String): Single<Result<ArticleResponse>>
+
+    /**
+     * 项目：分类
      */
     @GET("/project/tree/json")
-    fun projectTab(): Single<Result<List<TabResponse>>>
+    fun projectTabs(): Single<Result<List<TabResponse>>>
 
     /**
-     * 项目
+     * 项目：文章列表
      */
     @GET("/project/list/{page}/json")
-    fun project(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleResponse>>
+    fun projectArticles(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleResponse>>
 }

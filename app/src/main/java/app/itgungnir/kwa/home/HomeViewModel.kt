@@ -20,7 +20,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
     fun getHomeData() {
         currPage = 1
 
-        val s1 = HttpClient.api.banner()
+        val s1 = HttpClient.api.banners()
             .handleResult()
             .io2Main()
             .map {
@@ -33,7 +33,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                 })
             }
 
-        val s2 = HttpClient.api.homeArticle(1)
+        val s2 = HttpClient.api.homeArticles(1)
             .handleResult()
             .io2Main()
             .map {
@@ -88,7 +88,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
      * 加载更多数据
      */
     fun loadMoreHomeData() {
-        HttpClient.api.homeArticle(currPage)
+        HttpClient.api.homeArticles(currPage)
             .handleResult()
             .io2Main()
             .map {

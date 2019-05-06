@@ -16,7 +16,7 @@ class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = Pr
      */
     fun getProjects(cid: Int) {
         pageNo = 0
-        HttpClient.api.project(pageNo, cid)
+        HttpClient.api.projectArticles(pageNo, cid)
             .handleResult()
             .io2Main()
             .map {
@@ -68,7 +68,7 @@ class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = Pr
      * 加载更多项目
      */
     fun loadMoreProjects(cid: Int) {
-        HttpClient.api.project(pageNo, cid)
+        HttpClient.api.projectArticles(pageNo, cid)
             .handleResult()
             .io2Main()
             .map {
