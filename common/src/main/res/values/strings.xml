@@ -7,7 +7,7 @@
     <string name="str_icon_search">\ue833</string>
     <string name="str_icon_top">\ue617</string>
     <string name="str_icon_right_arrow">\ue6f8</string>
-    <string name="str_icon_clear">\ue82f 清空</string>
+    <string name="str_icon_clear">\ue738 清空</string>
 
     <string name="str_behavior_fab">app.itgungnir.kwa.common.widget.common_page.FabBehavior</string>
 
