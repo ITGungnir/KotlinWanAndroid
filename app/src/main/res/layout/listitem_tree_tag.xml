@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tag"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="15dp"
+    android:paddingTop="25dp"
+    android:paddingEnd="15dp"
+    android:paddingBottom="5dp"
+    android:textColor="@color/colorAccent"
+    android:textSize="@dimen/sp_text_size_4"
+    tools:ignore="SpUsage"
+    tools:text="@string/app_name" />

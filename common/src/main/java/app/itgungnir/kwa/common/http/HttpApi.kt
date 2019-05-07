@@ -2,8 +2,8 @@ package app.itgungnir.kwa.common.http
 
 import app.itgungnir.kwa.common.http.dto.ArticleResponse
 import app.itgungnir.kwa.common.http.dto.BannerResponse
-import app.itgungnir.kwa.common.http.dto.HistoryResponse
 import app.itgungnir.kwa.common.http.dto.TabResponse
+import app.itgungnir.kwa.common.http.dto.TagResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -34,7 +34,7 @@ interface HttpApi {
      * 搜索：热词列表
      */
     @GET("/hotkey/json")
-    fun hotKeys(): Single<Result<List<HistoryResponse>>>
+    fun hotKeys(): Single<Result<List<TagResponse>>>
 
     /**
      * 搜索：结果列表
@@ -53,6 +53,12 @@ interface HttpApi {
      */
     @GET("/article/list/{page}/json")
     fun hierarchyArticles(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleResponse>>
+
+    /**
+     * 常用网站
+     */
+    @GET("/friend/json")
+    fun tools(): Single<Result<List<TagResponse>>>
 
     /**
      * 公众号：分类

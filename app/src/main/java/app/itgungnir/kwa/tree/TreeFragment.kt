@@ -9,6 +9,7 @@ import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.status_view.StatusView
+import app.itgungnir.kwa.tree.tools.ToolsDialog
 import kotlinx.android.synthetic.main.fragment_tree.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
@@ -31,7 +32,7 @@ class TreeFragment : BaseFragment() {
         // Head Bar
         headBar.title("知识体系")
             .addToolButton("\ue834") {
-                // TODO 常用网址
+                ToolsDialog().show(childFragmentManager, ToolsDialog::class.java.name)
             }
             .addToolButton("\ue744") {
                 // TODO 导航
