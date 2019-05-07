@@ -6,6 +6,7 @@ import app.itgungnir.kwa.common.http.dto.HistoryResponse
 import app.itgungnir.kwa.common.http.dto.TabResponse
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -30,10 +31,16 @@ interface HttpApi {
     fun homeArticles(@Path("page") page: Int): Single<Result<ArticleResponse>>
 
     /**
-     * 搜索：热词
+     * 搜索：热词列表
      */
     @GET("/hotkey/json")
     fun hotKeys(): Single<Result<List<HistoryResponse>>>
+
+    /**
+     * 搜索：结果列表
+     */
+    @POST("/article/query/{page}/json")
+    fun searchResult(@Path("page") page: Int, @Query("k") k: String): Single<Result<ArticleResponse>>
 
     /**
      * 知识体系：分类
