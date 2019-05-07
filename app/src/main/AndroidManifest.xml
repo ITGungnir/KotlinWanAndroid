@@ -26,6 +26,8 @@
             android:name="app.itgungnir.kwa.main.MainActivity"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity android:name=".search.result.SearchResultActivity" />
+
         <activity android:name=".web.WebActivity" />
 
         <activity android:name=".hierarchy.HierarchyActivity" />

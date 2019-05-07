@@ -10,6 +10,7 @@ import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.home.delegate.BannerDelegate
 import app.itgungnir.kwa.home.delegate.HomeArticleDelegate
+import app.itgungnir.kwa.search.SearchDialog
 import kotlinx.android.synthetic.main.fragment_home.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
@@ -34,7 +35,7 @@ class HomeFragment : BaseFragment() {
         // Head Bar
         headBar.title("首页")
             .addToolButton("\ue833") {
-                // TODO 搜索
+                SearchDialog().show(childFragmentManager, SearchDialog::class.java.name)
             }
         // Common Page
         homePage.apply {

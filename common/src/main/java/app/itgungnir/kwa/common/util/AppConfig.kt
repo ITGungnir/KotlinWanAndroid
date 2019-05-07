@@ -12,7 +12,8 @@ class AppConfig private constructor() {
         listOf(
             DateTimeUtil(),
             LeakDetectUtil(),
-            LoggingUtil()
+            LoggingUtil(),
+            ReduxUtil()
         ).map {
             it.init(application)
         }

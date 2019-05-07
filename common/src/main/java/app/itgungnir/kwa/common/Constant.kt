@@ -7,5 +7,6 @@ const val HTTP_LOG_TAG = "kotlin-wan-android"
 // 路由表
 const val SplashActivity = "splash"
 const val MainActivity = "main"
+const val SearchResultActivity = "searchResult"
 const val WebActivity = "web"
 const val HierarchyActivity = "hierarchy"

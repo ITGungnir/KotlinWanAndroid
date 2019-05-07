@@ -2,6 +2,7 @@ package app.itgungnir.kwa.common.http
 
 import app.itgungnir.kwa.common.http.dto.ArticleResponse
 import app.itgungnir.kwa.common.http.dto.BannerResponse
+import app.itgungnir.kwa.common.http.dto.HistoryResponse
 import app.itgungnir.kwa.common.http.dto.TabResponse
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -21,6 +22,12 @@ interface HttpApi {
      */
     @GET("/article/list/{page}/json")
     fun homeArticles(@Path("page") page: Int): Single<Result<ArticleResponse>>
+
+    /**
+     * 搜索：热词
+     */
+    @GET("/hotkey/json")
+    fun hotKeys(): Single<Result<List<HistoryResponse>>>
 
     /**
      * 知识体系：分类
