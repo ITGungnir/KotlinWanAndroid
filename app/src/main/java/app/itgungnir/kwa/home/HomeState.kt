@@ -28,6 +28,7 @@ data class HomeState(
         val categoryId: Int,
         val title: String,
         val date: String,
-        val link: String
+        val link: String,
+        val isTop: Boolean = false
     ) : ListItem
 }

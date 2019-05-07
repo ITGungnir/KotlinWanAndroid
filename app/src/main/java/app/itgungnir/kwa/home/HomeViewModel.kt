@@ -6,7 +6,7 @@ import app.itgungnir.kwa.common.http.handleResult
 import app.itgungnir.kwa.common.http.io2Main
 import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import io.reactivex.Single
-import io.reactivex.functions.BiFunction
+import io.reactivex.functions.Function3
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
 
 @SuppressLint("CheckResult")
@@ -33,7 +33,24 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                 })
             }
 
-        val s2 = HttpClient.api.homeArticles(1)
+        val s2 = HttpClient.api.topArticles()
+            .handleResult()
+            .io2Main()
+            .map {
+                it.map { item ->
+                    HomeState.HomeArticleVO(
+                        author = item.author,
+                        category = "${item.superChapterName} / ${item.chapterName}",
+                        categoryId = item.chapterId,
+                        title = item.title,
+                        date = item.niceDate,
+                        link = item.link,
+                        isTop = true
+                    )
+                }
+            }
+
+        val s3 = HttpClient.api.homeArticles(1)
             .handleResult()
             .io2Main()
             .map {
@@ -54,11 +71,15 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                 }
             }
 
-        Single.zip(s1, s2, BiFunction { t1: HomeState.BannerVO, t2: List<HomeState.HomeArticleVO> ->
-            val responseList = mutableListOf<ListItem>(t1)
-            responseList.addAll(t2)
-            return@BiFunction responseList
-        }).doOnSubscribe {
+        Single.zip(
+            s1, s2, s3,
+            Function3 { t1: HomeState.BannerVO, t2: List<HomeState.HomeArticleVO>, t3: List<HomeState.HomeArticleVO> ->
+                val responseList = mutableListOf<ListItem>(t1)
+                responseList.addAll(t2)
+                responseList.addAll(t3)
+                return@Function3 responseList
+            }
+        ).doOnSubscribe {
             setState {
                 copy(
                     refreshing = true,

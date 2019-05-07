@@ -18,6 +18,12 @@ interface HttpApi {
     fun banners(): Single<Result<List<BannerResponse>>>
 
     /**
+     * 首页：置顶列表
+     */
+    @GET("/article/top/json")
+    fun topArticles(): Single<Result<List<ArticleResponse.Item>>>
+
+    /**
      * 首页：文章列表
      */
     @GET("/article/list/{page}/json")

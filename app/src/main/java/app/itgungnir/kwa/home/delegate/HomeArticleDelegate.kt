@@ -65,6 +65,11 @@ class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
             title.text = item.title
 
             date.text = item.date
+
+            topIcon.visibility = when (item.isTop) {
+                true -> View.VISIBLE
+                else -> View.GONE
+            }
         }
     }
 }
