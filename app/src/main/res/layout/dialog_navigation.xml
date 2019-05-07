@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:padding="10dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/navBar"
-        android:layout_width="120dp"
-        android:layout_height="match_parent" />
-
-    <View
-        android:layout_width="@dimen/dp_divider_height"
-        android:layout_height="match_parent"
-        android:background="@color/clr_divider" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/navList"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp" />
+        android:background="@android:color/white">
 
-</LinearLayout>
+        <app.itgungnir.kwa.common.widget.head_bar.HeadBar
+            android:id="@+id/headBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:abnormal="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sideBar"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headBar" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="@dimen/dp_divider_height"
+            android:layout_height="0dp"
+            android:background="@color/clr_divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sideBar"
+            app:layout_constraintTop_toBottomOf="@+id/headBar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/navList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@+id/headBar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
