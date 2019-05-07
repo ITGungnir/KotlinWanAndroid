@@ -13,23 +13,26 @@ class NavigationViewModel : BaseViewModel<NavigationState>(initialState = Naviga
         HttpClient.api.navigation()
             .handleResult()
             .io2Main()
-            .map {
-                it.map { item ->
-                    NavigationState.NavigationVO(
-                        title = item.name,
-                        children = item.articles.map { data ->
-                            NavigationState.NavigationVO.NavTagVO(
-                                name = data.title,
-                                link = data.link
-                            )
-                        },
-                        selected = false
-                    )
-                }
-            }.subscribe({
+            .subscribe({
                 setState {
                     copy(
-                        items = it,
+                        tabs = it.mapIndexed { index, item ->
+                            NavigationState.NavTabVO(
+                                name = item.name,
+                                selected = index == 0
+                            )
+                        },
+                        items = it.map { item ->
+                            NavigationState.NavigationVO(
+                                title = item.name,
+                                children = item.articles.map { data ->
+                                    NavigationState.NavigationVO.NavTagVO(
+                                        name = data.title,
+                                        link = data.link
+                                    )
+                                }
+                            )
+                        },
                         error = null
                     )
                 }

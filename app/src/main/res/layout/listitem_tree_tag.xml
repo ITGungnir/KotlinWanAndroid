@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tag"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingStart="10dp"
-    android:paddingTop="5dp"
-    android:paddingEnd="10dp"
-    android:paddingBottom="5dp"
-    android:textColor="@color/colorAccent"
-    android:textSize="@dimen/sp_text_size_4"
-    tools:ignore="SpUsage"
-    tools:text="@string/app_name" />
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tag"
+        style="@style/Widget.MaterialComponents.Chip.Action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceSmallInverse"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/sp_text_size_4"
+        app:chipBackgroundColor="@color/clr_background"
+        tools:ignore="SpUsage"
+        tools:text="@string/app_name" />
+
+</FrameLayout>

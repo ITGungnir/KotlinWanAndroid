@@ -1,18 +1,14 @@
 package app.itgungnir.kwa.tree.tools
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.dp2px
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
+import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.dialog_tools.*
 import my.itgungnir.apt.router.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
-import org.jetbrains.anko.backgroundDrawable
 
 class ToolsDialog : FullScreenDialog() {
 
@@ -33,12 +29,8 @@ class ToolsDialog : FullScreenDialog() {
         children.bind<ToolsState.ToolTagVO>(
             layoutId = R.layout.listitem_tree_tag,
             render = { view, data ->
-                view.findViewById<TextView>(R.id.tag).apply {
+                view.findViewById<Chip>(R.id.tag).apply {
                     text = data.name
-                    backgroundDrawable = GradientDrawable().apply {
-                        cornerRadius = context.dp2px(10.0F).toFloat()
-                        setColor(Color.parseColor("#FFF5F5F5"))
-                    }
                     setOnClickListener {
                         Router.instance.with(context)
                             .target(WebActivity)

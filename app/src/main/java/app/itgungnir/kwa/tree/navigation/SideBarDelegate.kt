@@ -9,7 +9,9 @@ import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import kotlinx.android.synthetic.main.listitem_side_bar.view.*
 import org.jetbrains.anko.backgroundColor
 
-class SideBarDelegate : BaseDelegate<NavigationState.NavigationVO>() {
+class SideBarDelegate(
+    private val tabClickCallback: (Int) -> Unit
+) : BaseDelegate<NavigationState.NavTabVO>() {
 
     override fun layoutId(): Int = R.layout.listitem_side_bar
 
@@ -17,7 +19,7 @@ class SideBarDelegate : BaseDelegate<NavigationState.NavigationVO>() {
     }
 
     override fun onBindVH(
-        item: NavigationState.NavigationVO,
+        item: NavigationState.NavTabVO,
         holder: EasyAdapter.VH,
         position: Int,
         payloads: MutableList<Bundle>
@@ -25,11 +27,23 @@ class SideBarDelegate : BaseDelegate<NavigationState.NavigationVO>() {
 
         holder.render(item) {
 
+            this.setOnClickListener {
+                tabClickCallback.invoke(position)
+            }
+
             name.apply {
-                text = item.title
-                backgroundColor = when (item.selected) {
-                    true -> Color.WHITE
-                    else -> Color.parseColor("#FFF5F5F5")
+                text = item.name
+                backgroundColor = if (payloads.isNullOrEmpty()) {
+                    when (item.selected) {
+                        true -> Color.WHITE
+                        else -> Color.parseColor("#FFF5F5F5")
+                    }
+                } else {
+                    val payload = payloads[0]
+                    when (payload["PL_SELECT"]) {
+                        true -> Color.WHITE
+                        else -> Color.parseColor("#FFF5F5F5")
+                    }
                 }
             }
         }
