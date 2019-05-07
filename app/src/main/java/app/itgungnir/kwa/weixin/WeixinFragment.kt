@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.hideSoftInput
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.weixin.child.WeixinChildFragment
 import kotlinx.android.synthetic.main.fragment_weixin.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
@@ -78,6 +79,13 @@ class WeixinFragment : BaseFragment() {
             .observe(this, Observer { currTab ->
                 currTab?.a?.let {
                     searchBar.hint("在${it.name}的公众号中搜索")
+                }
+            })
+
+        viewModel.pick(WeixinState::error)
+            .observe(this, Observer { error ->
+                error?.a?.message?.let {
+                    popToast(it)
                 }
             })
     }

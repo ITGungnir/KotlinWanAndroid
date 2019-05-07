@@ -4,6 +4,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
@@ -14,7 +15,6 @@ import app.itgungnir.kwa.search.SearchDialog
 import kotlinx.android.synthetic.main.fragment_home.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
-import org.jetbrains.anko.support.v4.toast
 
 class HomeFragment : BaseFragment() {
 
@@ -96,7 +96,7 @@ class HomeFragment : BaseFragment() {
         viewModel.pick(HomeState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    toast(it)
+                    popToast(it)
                     footer?.onLoadFailed()
                 }
             })

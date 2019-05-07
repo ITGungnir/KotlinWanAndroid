@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.MainActivity
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import app.itgungnir.kwa.home.HomeFragment
 import app.itgungnir.kwa.mine.MineFragment
@@ -15,7 +16,6 @@ import app.itgungnir.kwa.weixin.WeixinFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.apt.router.annotation.Route
 import org.jetbrains.anko.textColor
-import org.jetbrains.anko.toast
 import org.joda.time.DateTime
 
 @Route(MainActivity)
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             this.finish()
         } else {
             this.lastTime = currTime
-            toast("再按一次退出应用")
+            popToast("再按一次退出应用")
         }
     }
 }

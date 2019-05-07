@@ -3,6 +3,7 @@ package app.itgungnir.kwa.search
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.SearchResultActivity
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AddSearchHistory
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
@@ -13,7 +14,6 @@ import app.itgungnir.kwa.search.delegate.SearchHotKeyDelegate
 import kotlinx.android.synthetic.main.dialog_search.*
 import my.itgungnir.apt.router.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
-import org.jetbrains.anko.support.v4.toast
 
 class SearchDialog : FullScreenDialog() {
 
@@ -39,7 +39,7 @@ class SearchDialog : FullScreenDialog() {
             .hint("发现更多干货")
 
         listAdapter = list.bind()
-            .map(isForViewType = { data -> data is SearchState.SearchHotKeyVO }, delegate = SearchHotKeyDelegate() {
+            .map(isForViewType = { data -> data is SearchState.SearchHotKeyVO }, delegate = SearchHotKeyDelegate {
                 AppRedux.instance.dispatch(AddSearchHistory(it), true)
                 navigate(it)
             })
@@ -63,7 +63,7 @@ class SearchDialog : FullScreenDialog() {
         viewModel.pick(SearchState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    toast(it)
+                    popToast(it)
                 }
             })
     }
