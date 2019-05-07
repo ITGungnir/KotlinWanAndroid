@@ -9,10 +9,14 @@ data class SearchState(
 ) : State {
 
     data class SearchHotKeyVO(
-        val data: List<String>
+        val data: List<SearchTagVO>
     ) : ListItem
 
     data class SearchHistoryVO(
-        val data: List<String>
+        val data: List<SearchTagVO>
+    ) : ListItem
+
+    data class SearchTagVO(
+        val name: String
     ) : ListItem
 }

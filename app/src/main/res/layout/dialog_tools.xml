@@ -49,13 +49,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/back" />
 
-        <app.itgungnir.kwa.common.widget.flex.FlexView
+        <app.itgungnir.kwa.common.widget.flex.ScrollableFlexView
             android:id="@+id/children"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="10dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />

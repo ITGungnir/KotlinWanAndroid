@@ -31,12 +31,11 @@ class ToolsDialog : FullScreenDialog() {
 
         children.bind<ToolsState.ToolTagVO>(
             layoutId = R.layout.listitem_tree_tag,
-            items = listOf(),
             render = { view, data ->
                 view.findViewById<TextView>(R.id.tag).apply {
                     text = data.name
                     backgroundDrawable = GradientDrawable().apply {
-                        cornerRadius = context.dp2px(10.0F).toFloat()
+                        cornerRadius = context.dp2px(15.0F).toFloat()
                         setColor(Color.parseColor("#FFF5F5F5"))
                     }
                     setOnClickListener {
@@ -59,7 +58,7 @@ class ToolsDialog : FullScreenDialog() {
         viewModel.pick(ToolsState::items)
             .observe(this, Observer { items ->
                 items?.a?.let {
-                    children.update(it)
+                    children.refresh(it)
                 }
             })
 

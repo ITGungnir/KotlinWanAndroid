@@ -1,11 +1,9 @@
 package app.itgungnir.kwa.common.widget.flex
 
 import android.content.Context
-import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import app.itgungnir.kwa.common.dp2px
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayout
@@ -18,28 +16,21 @@ class FlexView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
 
     private val inflater by lazy { LayoutInflater.from(context) }
 
-    private val dividerDrawable by lazy {
-        GradientDrawable().apply {
-            setSize(context.dp2px(10.0F), context.dp2px(5.0F))
-        }
-    }
-
     init {
         flexDirection = FlexDirection.ROW
         flexWrap = FlexWrap.WRAP
 
         setShowDivider(SHOW_DIVIDER_MIDDLE)
-        setDividerDrawable(dividerDrawable)
+        setDividerDrawable(FlexDividerDrawable(context))
     }
 
     @Suppress("UNCHECKED_CAST")
-    fun <T> bind(layoutId: Int, items: List<T>, render: (view: View, data: T) -> Unit) {
+    fun <T> bind(layoutId: Int, render: (view: View, data: T) -> Unit) {
         this.layoutId = layoutId
         this.render = render as (View, Any) -> Unit
-        this.update(items)
     }
 
-    fun <T> update(items: List<T>) {
+    fun <T> refresh(items: List<T>) {
         if (layoutId == null || render == null) {
             return
         }

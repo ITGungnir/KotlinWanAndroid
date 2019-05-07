@@ -20,10 +20,10 @@ class SearchViewModel : BaseViewModel<SearchState>(initialState = SearchState())
         val s1 = HttpClient.api.hotKeys()
             .handleResult()
             .io2Main()
-            .map { SearchState.SearchHotKeyVO(data = it.map { item -> item.name }) }
+            .map { SearchState.SearchHotKeyVO(data = it.map { item -> SearchState.SearchTagVO(item.name) }) }
 
-        val s2 = Single.just(AppRedux.instance.currState()?.searchHistory)
-            .map { SearchState.SearchHistoryVO(data = it.toList()) }
+        val s2 = Single.just(AppRedux.instance.currState().searchHistory)
+            .map { SearchState.SearchHistoryVO(data = it.map { item -> SearchState.SearchTagVO(item) }) }
 
         Single.zip(s1, s2, BiFunction { t1: SearchState.SearchHotKeyVO, t2: SearchState.SearchHistoryVO ->
             listOf(t1, t2)

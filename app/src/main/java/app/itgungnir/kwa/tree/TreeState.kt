@@ -11,12 +11,12 @@ data class TreeState(
 
     data class TreeVO(
         val name: String,
-        val children: List<TreeTabVO>
+        val children: List<TreeTagVO>
     ) : ListItem {
 
-        data class TreeTabVO(
+        data class TreeTagVO(
             val id: Int,
             val name: String
-        )
+        ) : ListItem
     }
 }

@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.SearchResultActivity
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.search.SearchState
 import kotlinx.android.synthetic.main.listitem_search_hotkey.view.*
-import my.itgungnir.apt.router.api.Router
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.textColor
 
@@ -23,16 +21,15 @@ class SearchHotKeyDelegate(
     override fun onCreateVH(container: View) {
         container.apply {
             // Flex Layout
-            children.bind<String>(
+            children.bind<SearchState.SearchTagVO>(
                 layoutId = R.layout.listitem_search_text,
-                items = listOf(),
                 render = { view, data ->
                     view.findViewById<TextView>(R.id.name).apply {
-                        text = data
+                        text = data.name
                         backgroundColor = Color.parseColor("#FFFFAB00")
                         textColor = Color.WHITE
                         setOnClickListener {
-                            keyClickCallback.invoke(data)
+                            keyClickCallback.invoke(data.name)
                         }
                     }
                 }
@@ -49,7 +46,7 @@ class SearchHotKeyDelegate(
 
         holder.render(item) {
 
-            children.update(item.data)
+            children.refresh(item.data)
         }
     }
 }

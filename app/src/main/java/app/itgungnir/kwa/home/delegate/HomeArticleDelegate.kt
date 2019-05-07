@@ -48,7 +48,7 @@ class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
                     val data = TreeState.TreeVO(
                         name = categories[0],
                         children = listOf(
-                            TreeState.TreeVO.TreeTabVO(
+                            TreeState.TreeVO.TreeTagVO(
                                 id = item.categoryId,
                                 name = categories[1]
                             )

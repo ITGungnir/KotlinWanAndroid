@@ -35,16 +35,15 @@ class SearchHistoryDelegate(
             }
             // Status View
             statusView.addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_flex) {
-                it.findViewById<FlexView>(R.id.children).bind<String>(
+                it.findViewById<FlexView>(R.id.children).bind<SearchState.SearchTagVO>(
                     layoutId = R.layout.listitem_search_text,
-                    items = listOf(),
                     render = { view, data ->
                         view.findViewById<TextView>(R.id.name).apply {
-                            text = data
+                            text = data.name
                             backgroundColor = Color.parseColor("#FFC2C2C2")
                             textColor = Color.parseColor("#FF373737")
                             setOnClickListener {
-                                keyClickCallback.invoke(data)
+                                keyClickCallback.invoke(data.name)
                             }
                         }
                     }
@@ -72,7 +71,7 @@ class SearchHistoryDelegate(
                 }
             } else {
                 statusView.succeed {
-                    (it as FlexView).update(item.data)
+                    (it as FlexView).refresh(item.data)
                 }
                 clear.apply {
                     isEnabled = true

@@ -18,9 +18,8 @@ class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
     override fun onCreateVH(container: View) {
         // Flex Layout
         container.apply {
-            children.bind<TreeState.TreeVO.TreeTabVO>(
+            children.bind<TreeState.TreeVO.TreeTagVO>(
                 layoutId = R.layout.listitem_tree_child,
-                items = listOf(),
                 render = { view, data ->
                     view.findViewById<TextView>(R.id.name).text = data.name
                 }
@@ -47,7 +46,7 @@ class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
 
             title.text = item.name
 
-            children.update(item.children)
+            children.refresh(item.children)
         }
     }
 }
