@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/str_top"
+            android:text="@string/str_icon_top"
             android:textColor="@color/clr_text_level_2"
             android:textSize="@dimen/sp_text_size_2"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -10,10 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:text="热搜"
+        android:text="@string/str_hot_key"
         android:textColor="@color/clr_text_level_1"
         android:textSize="@dimen/sp_text_size_2"
-        tools:ignore="HardcodedText,SpUsage" />
+        tools:ignore="SpUsage" />
 
     <app.itgungnir.kwa.common.widget.flex.FlexView
         android:id="@+id/children"

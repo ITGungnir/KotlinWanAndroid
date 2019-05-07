@@ -25,7 +25,7 @@
         android:layout_marginBottom="10dp"
         android:src="@drawable/svg_to_top"
         app:backgroundTint="@color/colorPrimary"
-        app:layout_behavior="@string/str_fab_behavior"
+        app:layout_behavior="@string/str_behavior_fab"
         app:maxImageSize="30dp"
         app:rippleColor="@color/clr_divider" />
 

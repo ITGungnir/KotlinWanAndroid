@@ -12,12 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
-        android:text="搜搜历史"
+        android:text="@string/str_search_history"
         android:textColor="@color/clr_text_level_1"
         android:textSize="@dimen/sp_text_size_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,SpUsage" />
+        tools:ignore="SpUsage" />
 
     <app.itgungnir.kwa.common.widget.icon_font.IconFontView
         android:id="@+id/clear"
@@ -25,11 +25,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="10dp"
-        android:text="\ue82f 清空"
+        android:text="@string/str_icon_clear"
         android:textSize="@dimen/sp_text_size_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,SpUsage"
+        tools:ignore="SpUsage"
         tools:textColor="@color/colorAccent" />
 
     <app.itgungnir.kwa.common.widget.status_view.StatusView

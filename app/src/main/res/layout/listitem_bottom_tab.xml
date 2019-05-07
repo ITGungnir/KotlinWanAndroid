@@ -6,14 +6,14 @@
     android:background="?android:attr/selectableItemBackground"
     android:gravity="center"
     android:orientation="vertical"
-    tools:ignore="HardcodedText,SpUsage">
+    tools:ignore="SpUsage">
 
     <app.itgungnir.kwa.common.widget.icon_font.IconFontView
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="\ue703"
-        android:textSize="@dimen/sp_text_size_1" />
+        android:textSize="@dimen/sp_text_size_1"
+        tools:text="@string/str_icon_back" />
 
     <TextView
         android:id="@+id/title"

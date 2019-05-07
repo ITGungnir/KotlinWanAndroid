@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
-    tools:ignore="HardcodedText,SpUsage,RtlSymmetry">
+    tools:ignore="SpUsage,RtlSymmetry">
 
     <app.itgungnir.kwa.common.widget.icon_font.IconFontView
         android:id="@+id/back"
@@ -12,7 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
-        android:text="@string/str_back"
+        android:text="@string/str_icon_back"
         android:textColor="@android:color/white"
         android:textSize="@dimen/sp_text_size_1"
         android:textStyle="bold"

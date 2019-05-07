@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:text="@string/str_right_arrow"
+            android:text="@string/str_icon_right_arrow"
             android:textColor="@color/clr_text_level_2"
             android:textSize="@dimen/sp_text_size_1"
             app:layout_constraintBottom_toBottomOf="parent"

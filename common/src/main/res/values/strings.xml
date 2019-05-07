@@ -2,11 +2,18 @@
 
     <string name="app_name">KotlinWanAndroid</string>
 
-    <string name="str_back">\ue720</string>
-    <string name="str_empty">\ue6a6</string>
-    <string name="str_search">\ue833</string>
-    <string name="str_top">\ue617</string>
-    <string name="str_right_arrow">\ue6f8</string>
-    <string name="str_fab_behavior">app.itgungnir.kwa.common.widget.common_page.FabBehavior</string>
+    <string name="str_icon_back">\ue720</string>
+    <string name="str_icon_empty">\ue6a6</string>
+    <string name="str_icon_search">\ue833</string>
+    <string name="str_icon_top">\ue617</string>
+    <string name="str_icon_right_arrow">\ue6f8</string>
+    <string name="str_icon_clear">\ue82f 清空</string>
+
+    <string name="str_behavior_fab">app.itgungnir.kwa.common.widget.common_page.FabBehavior</string>
+
+    <string name="str_search">搜索</string>
+    <string name="str_hot_key">热搜</string>
+    <string name="str_repository">Repository</string>
+    <string name="str_search_history">搜索历史</string>
 
 </resources>

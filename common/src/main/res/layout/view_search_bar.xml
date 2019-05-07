@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@android:color/white"
-    tools:ignore="HardcodedText, SpUsage, RtlSymmetry, Autofill, LabelFor">
+    tools:ignore="SpUsage, RtlSymmetry, Autofill, LabelFor">
 
     <app.itgungnir.kwa.common.widget.icon_font.IconFontView
         android:id="@+id/back"
@@ -13,7 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
-        android:text="@string/str_back"
+        android:text="@string/str_icon_back"
         android:textColor="@color/clr_text_level_2"
         android:textSize="@dimen/sp_text_size_1"
         android:visibility="gone"
@@ -33,7 +33,7 @@
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"
             android:gravity="center"
-            android:text="@string/str_search"
+            android:text="@string/str_icon_search"
             android:textColor="@color/clr_divider"
             android:textSize="@dimen/sp_text_size_2"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +70,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:text="搜索"
+            android:text="@string/str_search"
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
