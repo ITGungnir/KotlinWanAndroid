@@ -6,4 +6,4 @@ WanAndroid client programmed with Kotlin.
 
 ## ToFix
 * Web页面：收藏功能
-* 知识体系页面：常用网站、导航
+* 知识体系页面：导航

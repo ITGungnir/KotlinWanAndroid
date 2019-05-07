@@ -10,44 +10,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white">
+        android:background="@android:color/white"
+        tools:ignore="UselessParent">
 
-        <app.itgungnir.kwa.common.widget.icon_font.IconFontView
-            android:id="@+id/back"
-            android:layout_width="?attr/actionBarSize"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:text="@string/str_icon_back"
-            android:textColor="@color/clr_text_level_1"
-            android:textSize="@dimen/sp_text_size_1"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:text="@string/str_tools"
-            android:textColor="@color/clr_text_level_1"
-            android:textSize="@dimen/sp_text_size_3"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/divider"
-            app:layout_constraintStart_toEndOf="@+id/back"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/divider"
+        <app.itgungnir.kwa.common.widget.head_bar.HeadBar
+            android:id="@+id/headBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_divider_height"
-            android:background="@color/clr_divider"
+            android:layout_height="?attr/actionBarSize"
+            app:abnormal="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/back" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <app.itgungnir.kwa.common.widget.flex.ScrollableFlexView
             android:id="@+id/children"
@@ -61,7 +34,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
+            app:layout_constraintTop_toBottomOf="@+id/headBar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

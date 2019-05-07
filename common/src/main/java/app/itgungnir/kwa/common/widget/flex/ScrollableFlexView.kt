@@ -18,7 +18,6 @@ class ScrollableFlexView @JvmOverloads constructor(
     private var manager: FlexboxLayoutManager = FlexboxLayoutManager(context).apply {
         flexDirection = FlexDirection.ROW
         flexWrap = FlexWrap.WRAP
-        alignItems = AlignItems.STRETCH
     }
 
     init {

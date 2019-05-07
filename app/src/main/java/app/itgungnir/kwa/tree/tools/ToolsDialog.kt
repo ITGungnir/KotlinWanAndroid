@@ -27,7 +27,8 @@ class ToolsDialog : FullScreenDialog() {
 
     override fun initComponent() {
 
-        back.setOnClickListener { this.dismiss() }
+        headBar.title("常用网站")
+            .back { this.dismiss() }
 
         children.bind<ToolsState.ToolTagVO>(
             layoutId = R.layout.listitem_tree_tag,
@@ -35,7 +36,7 @@ class ToolsDialog : FullScreenDialog() {
                 view.findViewById<TextView>(R.id.tag).apply {
                     text = data.name
                     backgroundDrawable = GradientDrawable().apply {
-                        cornerRadius = context.dp2px(15.0F).toFloat()
+                        cornerRadius = context.dp2px(10.0F).toFloat()
                         setColor(Color.parseColor("#FFF5F5F5"))
                     }
                     setOnClickListener {

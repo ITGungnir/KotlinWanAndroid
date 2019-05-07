@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimary"
     tools:ignore="SpUsage,RtlSymmetry">
 
     <app.itgungnir.kwa.common.widget.icon_font.IconFontView
@@ -39,5 +38,12 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/sp_text_size_3"
         android:textStyle="bold" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_divider_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/clr_divider" />
 
 </RelativeLayout>
