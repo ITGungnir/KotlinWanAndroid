@@ -44,7 +44,7 @@ class HomeFragment : BaseFragment() {
                 viewModel.getHomeData()
             }
             // Status View
-            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_list) {
+            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
                 listAdapter = list.bind()
@@ -58,7 +58,7 @@ class HomeFragment : BaseFragment() {
                             viewModel.loadMoreHomeData()
                         }
                     }.build()
-            }.addDelegate(StatusView.Status.EMPTY, R.layout.view_empty) {
+            }.addDelegate(StatusView.Status.EMPTY, R.layout.status_view_list_empty) {
                 it.findViewById<TextView>(R.id.tip).text = "暂时没有文章~"
             }
         }

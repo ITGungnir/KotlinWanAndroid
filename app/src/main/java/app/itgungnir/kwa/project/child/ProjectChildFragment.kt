@@ -41,7 +41,7 @@ class ProjectChildFragment : LazyFragment() {
                 viewModel.getProjects(flag)
             }
             // Status View
-            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_list) {
+            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
                 listAdapter = list.bind(delegate = ProjectChildDelegate())
@@ -54,7 +54,7 @@ class ProjectChildFragment : LazyFragment() {
                         }
                     }
                     .build()
-            }.addDelegate(StatusView.Status.EMPTY, R.layout.view_empty) {
+            }.addDelegate(StatusView.Status.EMPTY, R.layout.status_view_list_empty) {
                 it.findViewById<TextView>(R.id.tip).text = "本栏目暂无项目~"
             }
         }

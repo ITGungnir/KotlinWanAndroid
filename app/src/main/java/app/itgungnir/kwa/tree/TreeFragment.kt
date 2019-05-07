@@ -43,12 +43,12 @@ class TreeFragment : BaseFragment() {
                 viewModel.getTreeList()
             }
             // Status View
-            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_list) {
+            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_list) {
                 it.findViewById<RecyclerView>(R.id.list).apply {
                     bottomPadding = context.dp2px(10.0F)
                     listAdapter = this.bind(delegate = TreeDelegate())
                 }
-            }.addDelegate(StatusView.Status.EMPTY, R.layout.view_empty) {
+            }.addDelegate(StatusView.Status.EMPTY, R.layout.status_view_list_empty) {
                 it.findViewById<TextView>(R.id.tip).text = "还没有知识体系~"
             }
         }
