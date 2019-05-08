@@ -36,7 +36,9 @@ class MineFragment : BaseFragment() {
 
     override fun initComponent() {
 
-        headBar.addToolButton("\ue6de") {
+        headBar.addToolButton("\ue6df") {
+            // TODO 添加外链
+        }.addToolButton("\ue6de") {
             // TODO TODO
         }.addToolButton("\ue728") {
             Router.instance.with(this)
