@@ -1,5 +1,6 @@
 package app.itgungnir.kwa.mine.delegate
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -18,6 +19,7 @@ class MineProfileDelegate : BaseDelegate<MineState.MineProfileVO>() {
     override fun onCreateVH(container: View) {
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindVH(
         item: MineState.MineProfileVO,
         holder: EasyAdapter.VH,
@@ -30,7 +32,7 @@ class MineProfileDelegate : BaseDelegate<MineState.MineProfileVO>() {
             when (item.userName != null) {
                 true -> {
                     profile.apply {
-                        text = item.userName
+                        text = "用户：${item.userName}"
                         setOnClickListener(null)
                     }
                 }

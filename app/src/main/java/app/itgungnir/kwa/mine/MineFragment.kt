@@ -4,6 +4,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.redux.AppRedux
+import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
@@ -61,12 +63,16 @@ class MineFragment : BaseFragment() {
                     .build()
             }
         }
-
-        // Init data
-        viewModel.getMineData()
     }
 
     override fun observeVM() {
+
+        AppRedux.instance.pick(AppState::userName)
+            .observe(this, Observer { data ->
+                data?.a?.let {
+                    viewModel.getMineData()
+                }
+            })
 
         viewModel.pick(MineState::refreshing)
             .observe(this, Observer { refreshing ->

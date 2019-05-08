@@ -32,6 +32,14 @@
 
         <activity android:name=".hierarchy.HierarchyActivity" />
 
+        <activity
+            android:name=".login.LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".register.RegisterActivity"
+            android:windowSoftInputMode="adjustPan" />
+
     </application>
 
 </manifest>

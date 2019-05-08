@@ -25,7 +25,9 @@ interface HttpApi {
      * 首页：文章列表
      */
     @GET("/article/list/{page}/json")
-    fun homeArticles(@Path("page") page: Int): Single<Result<ArticleListResponse>>
+    fun homeArticles(
+        @Path("page") page: Int
+    ): Single<Result<ArticleListResponse>>
 
     /**
      * 搜索：热词列表
@@ -37,7 +39,9 @@ interface HttpApi {
      * 搜索：结果列表
      */
     @POST("/article/query/{page}/json")
-    fun searchResult(@Path("page") page: Int, @Query("k") k: String): Single<Result<ArticleListResponse>>
+    fun searchResult(
+        @Path("page") page: Int, @Query("k") k: String
+    ): Single<Result<ArticleListResponse>>
 
     /**
      * 知识体系：分类
@@ -49,7 +53,10 @@ interface HttpApi {
      * 知识体系：文章列表
      */
     @GET("/article/list/{page}/json")
-    fun hierarchyArticles(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleListResponse>>
+    fun hierarchyArticles(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): Single<Result<ArticleListResponse>>
 
     /**
      * 常用网站
@@ -73,7 +80,11 @@ interface HttpApi {
      * 公众号：文章列表
      */
     @GET("/wxarticle/list/{cid}/{page}/json")
-    fun weixinArticles(@Path("page") page: Int, @Path("cid") cid: Int, @Query("k") k: String): Single<Result<ArticleListResponse>>
+    fun weixinArticles(
+        @Path("page") page: Int,
+        @Path("cid") cid: Int,
+        @Query("k") k: String
+    ): Single<Result<ArticleListResponse>>
 
     /**
      * 项目：分类
@@ -85,11 +96,35 @@ interface HttpApi {
      * 项目：文章列表
      */
     @GET("/project/list/{page}/json")
-    fun projectArticles(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleListResponse>>
+    fun projectArticles(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): Single<Result<ArticleListResponse>>
 
     /**
      * 我的：收藏列表
      */
     @GET("/lg/collect/list/{page}/json")
-    fun mineCollections(@Path("page") page: Int): Single<Result<ArticleListResponse>>
+    fun mineCollections(
+        @Path("page") page: Int
+    ): Single<Result<ArticleListResponse>>
+
+    /**
+     * 我的：登录
+     */
+    @POST("/user/login")
+    fun login(
+        @Query("username") userName: String,
+        @Query("password") password: String
+    ): Single<Result<Unit>>
+
+    /**
+     * 我的：注册
+     */
+    @POST("/user/register")
+    fun register(
+        @Query("username") userName: String,
+        @Query("password") password: String,
+        @Query("repassword") confirmPwd: String
+    ): Single<Result<Unit>>
 }

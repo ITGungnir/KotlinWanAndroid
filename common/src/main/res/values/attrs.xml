@@ -5,4 +5,12 @@
         <attr name="abnormal" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="ProgressButton">
+        <attr name="enabledColor" format="color" />
+        <attr name="disabledColor" format="color" />
+        <attr name="enabledTextColor" format="color" />
+        <attr name="disabledTextColor" format="color" />
+        <attr name="cornerRadius" format="dimension" />
+    </declare-styleable>
+
 </resources>
