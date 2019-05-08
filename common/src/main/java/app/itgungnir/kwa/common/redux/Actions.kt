@@ -7,3 +7,13 @@ data class AddSearchHistory(
 ) : Action
 
 object ClearSearchHistory : Action
+
+data class LocalizeCookies(
+    val cookies: Set<String>
+) : Action
+
+data class LocalizeUserName(
+    val userName: String
+) : Action
+
+object ClearUserInfo : Action

@@ -97,6 +97,10 @@ class ListFooter(private val recyclerView: RecyclerView, private val loadMore: (
         footerAdapter.notifyStatusChanged(FooterStatus.Status.FAILED)
     }
 
+    fun hide() {
+        footerAdapter.notifyStatusChanged(FooterStatus.Status.HIDE)
+    }
+
     class Builder {
 
         lateinit var recyclerView: RecyclerView

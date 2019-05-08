@@ -86,4 +86,10 @@ interface HttpApi {
      */
     @GET("/project/list/{page}/json")
     fun projectArticles(@Path("page") page: Int, @Query("cid") cid: Int): Single<Result<ArticleListResponse>>
+
+    /**
+     * 我的：收藏列表
+     */
+    @GET("/lg/collect/list/{page}/json")
+    fun mineCollections(@Path("page") page: Int): Single<Result<ArticleListResponse>>
 }

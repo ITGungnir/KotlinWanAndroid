@@ -6,6 +6,7 @@ data class FooterStatus(val status: Status) {
         PROGRESSING("正在加载..."),
         NO_MORE("没有更多数据了"),
         SUCCEED("正在加载..."),
-        FAILED("加载失败，请重试")
+        FAILED("加载失败，请重试"),
+        HIDE("")
     }
 }
