@@ -18,12 +18,15 @@ fun Context.dp2px(dp: Float): Int =
     TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
 
 /**
- * 弹出SnackBar
+ * Activity - 弹出SnackBar
  */
 fun AppCompatActivity.popToast(content: String) {
     Snackbar.make(contentView!!, content, Snackbar.LENGTH_SHORT).show()
 }
 
+/**
+ * Fragment - 弹出SnackBar
+ */
 fun Fragment.popToast(content: String) {
     Snackbar.make(view!!, content, Snackbar.LENGTH_SHORT).show()
 }

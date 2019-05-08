@@ -76,13 +76,7 @@ class FooterAdapter(
         private val title = itemView.findViewById<TextView>(R.id.title)!!
 
         fun applyStatus(status: FooterStatus.Status) {
-            when (status) {
-                FooterStatus.Status.HIDE -> itemView.visibility = View.GONE
-                else -> {
-                    itemView.visibility = View.VISIBLE
-                    title.text = status.title
-                }
-            }
+            title.text = status.title
             itemView.invalidate()
         }
     }
