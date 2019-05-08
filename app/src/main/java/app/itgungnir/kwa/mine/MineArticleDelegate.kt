@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.mine.delegate
+package app.itgungnir.kwa.mine
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,7 +8,6 @@ import app.itgungnir.kwa.common.HierarchyActivity
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.mine.MineState
 import app.itgungnir.kwa.tree.TreeState
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.listitem_mine_article.view.*
@@ -44,13 +43,12 @@ class MineArticleDelegate : BaseDelegate<MineState.MineArticleVO>() {
             category.apply {
                 text = item.category
                 setOnClickListener {
-                    val categories = item.category.split(" / ")
                     val data = TreeState.TreeVO(
-                        name = categories[0],
+                        name = item.category,
                         children = listOf(
                             TreeState.TreeVO.TreeTagVO(
                                 id = item.categoryId,
-                                name = categories[1]
+                                name = item.category
                             )
                         )
                     )

@@ -5,16 +5,11 @@ import my.itgungnir.rxmvvm.core.mvvm.State
 
 data class MineState(
     val refreshing: Boolean = false,
-    val items: List<ListItem> = listOf(MineProfileVO()),
+    val items: List<ListItem> = listOf(),
     val loading: Boolean = false,
     val hasMore: Boolean = false,
     val error: Throwable? = null
 ) : State {
-
-    data class MineProfileVO(
-        val userName: String? = null,
-        val isListEmpty: Boolean = false
-    ) : ListItem
 
     data class MineArticleVO(
         val author: String,

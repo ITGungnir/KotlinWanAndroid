@@ -40,6 +40,8 @@
             android:name=".register.RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity android:name=".setting.SettingActivity" />
+
     </application>
 
 </manifest>

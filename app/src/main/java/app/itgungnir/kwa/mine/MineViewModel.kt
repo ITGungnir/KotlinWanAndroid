@@ -33,7 +33,7 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                 it.datas.map { item ->
                     MineState.MineArticleVO(
                         author = item.author,
-                        category = "${item.superChapterName} / ${item.chapterName}",
+                        category = item.chapterName,
                         categoryId = item.chapterId,
                         title = item.title,
                         date = item.niceDate,
@@ -53,7 +53,7 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                 setState {
                     copy(
                         refreshing = false,
-                        items = listOf(MineState.MineProfileVO(userName = userName, isListEmpty = it.isEmpty())) + it,
+                        items = it,
                         error = null
                     )
                 }
@@ -61,12 +61,6 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                 setState {
                     copy(
                         refreshing = false,
-                        items = listOf(
-                            MineState.MineProfileVO(
-                                userName = userName,
-                                isListEmpty = userName != null
-                            )
-                        ),
                         error = if (userName == null) null else it
                     )
                 }
@@ -89,7 +83,7 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                 it.datas.map { item ->
                     MineState.MineArticleVO(
                         author = item.author,
-                        category = "${item.superChapterName} / ${item.chapterName}",
+                        category = item.chapterName,
                         categoryId = item.chapterId,
                         title = item.title,
                         date = item.niceDate,

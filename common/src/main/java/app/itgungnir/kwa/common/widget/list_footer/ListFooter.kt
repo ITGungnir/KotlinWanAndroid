@@ -83,14 +83,12 @@ class ListFooter(private val recyclerView: RecyclerView, private val loadMore: (
     }
 
     fun onLoadSucceed(hasMore: Boolean) {
-        val isInit = this.recyclerView.childCount < 2
         this.hasMore = hasMore
         if (hasMore) {
             footerAdapter.notifyStatusChanged(FooterStatus.Status.SUCCEED)
         } else {
             footerAdapter.notifyStatusChanged(FooterStatus.Status.NO_MORE)
         }
-        if (isInit) this.recyclerView.scrollToPosition(0)
     }
 
     fun onLoadFailed() {
