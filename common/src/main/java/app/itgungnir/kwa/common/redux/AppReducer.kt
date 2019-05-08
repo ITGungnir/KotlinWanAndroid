@@ -16,11 +16,11 @@ class AppReducer : Reducer<AppState> {
         is LocalizeCookies ->
             state.copy(cookies = action.cookies)
         // 持久化用户名
-        is LocalizeUserName ->
-            state.copy(userName = action.userName)
+        is LocalizeUserInfo ->
+            state.copy(collectIds = action.collectIds, userName = action.userName)
         // 清空用户信息
         is ClearUserInfo ->
-            state.copy(userName = null, cookies = setOf())
+            state.copy(userName = null, cookies = setOf(), collectIds = setOf())
         // Default
         else ->
             state

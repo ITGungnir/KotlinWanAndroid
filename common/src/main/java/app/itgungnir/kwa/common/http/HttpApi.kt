@@ -108,7 +108,7 @@ interface HttpApi {
     fun login(
         @Query("username") userName: String,
         @Query("password") password: String
-    ): Single<Result<Unit>>
+    ): Single<Result<LoginResponse>>
 
     /**
      * 我的：注册

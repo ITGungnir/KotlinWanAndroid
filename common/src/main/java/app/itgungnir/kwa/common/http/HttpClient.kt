@@ -60,8 +60,7 @@ class HttpClient private constructor() {
     private fun cookieInterceptor() = Interceptor { chain: Interceptor.Chain ->
         // Request
         val requestBuilder = chain.request().newBuilder()
-        val cookies = AppRedux.instance.currState().cookies
-        cookies.forEach {
+        AppRedux.instance.currState().cookies.forEach {
             requestBuilder.addHeader("Cookie", it)
         }
         // Response

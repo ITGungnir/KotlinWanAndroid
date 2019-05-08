@@ -106,14 +106,14 @@ class MineFragment : BaseFragment() {
         viewModel.pick(MineState::items, MineState::hasMore)
             .observe(this, Observer { states ->
                 states?.let {
-                    if (AppRedux.instance.currState().userName == null) {
-                        minePage.statusView().failed { }
-                    } else {
+                    if (AppRedux.instance.isUserIn()) {
                         when (it.a.isNotEmpty()) {
                             true -> minePage.statusView().succeed { listAdapter?.update(states.a) }
                             else -> minePage.statusView().empty { }
                         }
                         footer?.onLoadSucceed(it.b)
+                    } else {
+                        minePage.statusView().failed { }
                     }
                 }
             })

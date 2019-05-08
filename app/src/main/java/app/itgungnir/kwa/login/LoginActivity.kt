@@ -8,7 +8,7 @@ import app.itgungnir.kwa.common.RegisterActivity
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
-import app.itgungnir.kwa.common.redux.LocalizeUserName
+import app.itgungnir.kwa.common.redux.LocalizeUserInfo
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_login.*
@@ -71,13 +71,10 @@ class LoginActivity : BaseActivity() {
 
     override fun observeVM() {
 
-        viewModel.pick(LoginState::succeed)
-            .observe(this, Observer { succeed ->
-                succeed?.a?.let {
-                    AppRedux.instance.dispatch(
-                        LocalizeUserName(userNameInput.getInput().editableText.toString().trim()),
-                        true
-                    )
+        viewModel.pick(LoginState::userInfo)
+            .observe(this, Observer { userInfo ->
+                userInfo?.a?.let {
+                    AppRedux.instance.dispatch(LocalizeUserInfo(it.collectIds, it.userName), true)
                     login.ready("登录")
                     finish()
                 }

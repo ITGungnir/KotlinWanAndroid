@@ -19,8 +19,6 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
 
         pageNo = 0
 
-        val userName = AppRedux.instance.currState().userName
-
         HttpClient.api.mineCollections(pageNo)
             .handleResult()
             .io2Main()
@@ -61,7 +59,7 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                 setState {
                     copy(
                         refreshing = false,
-                        error = if (userName == null) null else it
+                        error = if (AppRedux.instance.isUserIn()) it else null
                     )
                 }
             })

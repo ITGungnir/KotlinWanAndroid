@@ -20,9 +20,8 @@ class SettingActivity : BaseActivity() {
             .back { finish() }
 
         logout.apply {
-            when (AppRedux.instance.currState().userName.isNullOrBlank()) {
-                true -> visibility = View.GONE
-                else -> {
+            when (AppRedux.instance.isUserIn()) {
+                true -> {
                     visibility = View.VISIBLE
                     ready("退出登录")
                     setOnClickListener {
@@ -30,6 +29,7 @@ class SettingActivity : BaseActivity() {
                         finish()
                     }
                 }
+                else -> visibility = View.GONE
             }
         }
     }

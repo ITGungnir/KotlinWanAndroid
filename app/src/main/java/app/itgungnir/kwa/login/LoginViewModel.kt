@@ -16,7 +16,7 @@ class LoginViewModel : BaseViewModel<LoginState>(initialState = LoginState()) {
             .subscribe({
                 setState {
                     copy(
-                        succeed = Unit,
+                        userInfo = LoginState.UserInfoVO(collectIds = it.collectIds, userName = it.username),
                         error = null
                     )
                 }

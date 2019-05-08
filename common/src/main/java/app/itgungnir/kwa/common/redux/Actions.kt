@@ -12,7 +12,8 @@ data class LocalizeCookies(
     val cookies: Set<String>
 ) : Action
 
-data class LocalizeUserName(
+data class LocalizeUserInfo(
+    val collectIds: Set<Int>,
     val userName: String
 ) : Action
 

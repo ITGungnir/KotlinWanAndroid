@@ -3,6 +3,8 @@ package app.itgungnir.kwa.common.redux
 data class AppState(
     // 搜索历史
     val searchHistory: Set<String> = linkedSetOf(),
+    // 收藏列表
+    val collectIds: Set<Int> = setOf(),
     // 用户名
     val userName: String? = null,
     // Cookies
