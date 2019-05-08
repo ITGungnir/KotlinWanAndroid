@@ -102,14 +102,6 @@ interface HttpApi {
     ): Single<Result<ArticleListResponse>>
 
     /**
-     * 我的：收藏列表
-     */
-    @GET("/lg/collect/list/{page}/json")
-    fun mineCollections(
-        @Path("page") page: Int
-    ): Single<Result<ArticleListResponse>>
-
-    /**
      * 我的：登录
      */
     @POST("/user/login")
@@ -126,5 +118,21 @@ interface HttpApi {
         @Query("username") userName: String,
         @Query("password") password: String,
         @Query("repassword") confirmPwd: String
+    ): Single<Result<Unit>>
+
+    /**
+     * 收藏：收藏列表
+     */
+    @GET("/lg/collect/list/{page}/json")
+    fun mineCollections(
+        @Path("page") page: Int
+    ): Single<Result<ArticleListResponse>>
+
+    /**
+     * 收藏：站内收藏
+     */
+    @POST("/lg/collect/{id}/json")
+    fun innerCollect(
+        @Path("id") id: Int
     ): Single<Result<Unit>>
 }

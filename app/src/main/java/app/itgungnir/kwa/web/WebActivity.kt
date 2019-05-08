@@ -31,8 +31,9 @@ class WebActivity : AppCompatActivity() {
 
         titleBar.title(title)
             .back { finish() }
-            .addToolButton("\ue708") {}
-            .addToolButton("\ue729") {
+            .addToolButton("\ue708") {
+                // TODO 收藏/取消收藏
+            }.addToolButton("\ue729") {
                 share("KotlinWanAndroid分享《$title》专题：$url", title)
             }
 
