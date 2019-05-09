@@ -8,24 +8,27 @@ import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import app.itgungnir.kwa.common.R
 import com.jakewharton.rxbinding2.widget.RxTextView
-import kotlinx.android.synthetic.main.view_username_input.view.*
+import kotlinx.android.synthetic.main.view_shadow_input.view.*
 
 @SuppressLint("CheckResult")
-class UserNameInput @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+class ShadowInput @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     ConstraintLayout(context, attrs, defStyleAttr) {
 
     init {
-        apply {
-            View.inflate(context, R.layout.view_username_input, this)
-        }
 
-        RxTextView.textChanges(username).subscribe {
+        View.inflate(context, R.layout.view_shadow_input, this)
+
+        RxTextView.textChanges(inputView).subscribe {
             clear.visibility = if (it.isNullOrBlank()) View.GONE else View.VISIBLE
         }
         clear.setOnClickListener {
-            username.setText("")
+            inputView.setText("")
         }
     }
 
-    fun getInput(): EditText = username
+    fun hint(hint: String) {
+        inputView.hint = hint
+    }
+
+    fun getInput(): EditText = inputView
 }

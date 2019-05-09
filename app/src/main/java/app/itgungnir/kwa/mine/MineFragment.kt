@@ -14,6 +14,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.input.ProgressButton
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
+import app.itgungnir.kwa.mine.add.AddDialog
 import kotlinx.android.synthetic.main.fragment_mine.*
 import my.itgungnir.apt.router.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
@@ -37,9 +38,9 @@ class MineFragment : BaseFragment() {
     override fun initComponent() {
 
         headBar.addToolButton("\ue6df") {
-            // TODO 添加外链
+            AddDialog().show(childFragmentManager, AddDialog::class.java.name)
         }.addToolButton("\ue6de") {
-            // TODO TODO
+            // TODO Schedule
         }.addToolButton("\ue728") {
             Router.instance.with(this)
                 .target(SettingActivity)

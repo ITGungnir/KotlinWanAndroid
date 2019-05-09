@@ -36,29 +36,6 @@ class WebViewModel : BaseViewModel<WebState>(initialState = WebState()) {
     }
 
     /**
-     * 收藏站外文章
-     */
-    fun collectOuterArticle(title: String, link: String) {
-        HttpClient.api.outerCollect(title, "站外收藏", link)
-            .handleResult()
-            .io2Main()
-            .subscribe({
-                AppRedux.instance.dispatch(CollectArticle(it.id))
-                setState {
-                    copy(
-                        error = null
-                    )
-                }
-            }, {
-                setState {
-                    copy(
-                        error = it
-                    )
-                }
-            })
-    }
-
-    /**
      * 取消收藏站内文章
      */
     fun disCollectInnerArticle(articleId: Int) {
