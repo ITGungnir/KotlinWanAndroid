@@ -5,11 +5,11 @@ import io.reactivex.SingleTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-fun <T> Single<Result<T>>.handleResult() = compose { upsteam ->
+inline fun <reified T> Single<Result<T>>.handleResult() = compose { upsteam ->
     upsteam.flatMap {
         when (it.errorCode) {
             0 ->
-                Single.just(it.data)
+                Single.just(it.data ?: T::class.java.newInstance())
             else ->
                 Single.error(HttpException(it.errorCode, it.errorMsg))
         }

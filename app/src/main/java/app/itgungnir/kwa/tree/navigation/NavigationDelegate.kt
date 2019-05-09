@@ -25,6 +25,8 @@ class NavigationDelegate : BaseDelegate<NavigationState.NavigationVO>() {
                         setOnClickListener {
                             Router.instance.with(context)
                                 .target(WebActivity)
+                                .addParam("id", data.id)
+                                .addParam("originId", data.originId)
                                 .addParam("title", data.name)
                                 .addParam("url", data.link)
                                 .go()

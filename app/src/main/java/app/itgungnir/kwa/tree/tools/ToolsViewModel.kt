@@ -13,7 +13,15 @@ class ToolsViewModel : BaseViewModel<ToolsState>(initialState = ToolsState()) {
         HttpClient.api.tools()
             .handleResult()
             .io2Main()
-            .map { it.map { item -> ToolsState.ToolTagVO(name = item.name, link = item.link) } }
+            .map {
+                it.map { item ->
+                    ToolsState.ToolTagVO(
+                        id = item.id,
+                        name = item.name,
+                        link = item.link
+                    )
+                }
+            }
             .subscribe({
                 setState {
                     copy(

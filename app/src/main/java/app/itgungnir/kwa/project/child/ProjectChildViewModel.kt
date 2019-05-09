@@ -27,6 +27,8 @@ class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = Pr
                 }
                 it.datas.map { item ->
                     ProjectChildState.ProjectArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         cover = item.envelopePic,
                         title = item.title,
                         author = item.author,
@@ -79,6 +81,8 @@ class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = Pr
                 }
                 it.datas.map { item ->
                     ProjectChildState.ProjectArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         cover = item.envelopePic,
                         title = item.title,
                         author = item.author,

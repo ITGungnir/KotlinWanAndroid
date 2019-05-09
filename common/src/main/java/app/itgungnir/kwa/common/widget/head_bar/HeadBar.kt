@@ -70,4 +70,12 @@ class HeadBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
         toolsLayout?.addView(view)
         return this
     }
+
+    fun updateToolButton(position: Int, iconFont: String) {
+        toolsLayout?.getChildAt(position)?.let {
+            (it as IconFontView).text = iconFont
+        }
+    }
+
+    fun toolButtonCount() = toolsLayout?.childCount ?: 0
 }

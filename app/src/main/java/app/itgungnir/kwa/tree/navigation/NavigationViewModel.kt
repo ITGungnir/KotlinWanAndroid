@@ -27,6 +27,8 @@ class NavigationViewModel : BaseViewModel<NavigationState>(initialState = Naviga
                                 title = item.name,
                                 children = item.articles.map { data ->
                                     NavigationState.NavigationVO.NavTagVO(
+                                        id = data.id,
+                                        originId = data.originId,
                                         name = data.title,
                                         link = data.link
                                     )

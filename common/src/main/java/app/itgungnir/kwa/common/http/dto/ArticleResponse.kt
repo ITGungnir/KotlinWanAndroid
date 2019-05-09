@@ -14,6 +14,7 @@ data class ArticleResponse(
     val link: String,
     val niceDate: String,
     val origin: String,
+    val originId: Int,
     val projectLink: String,
     val publishTime: Long,
     val superChapterId: Int,

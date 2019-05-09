@@ -30,6 +30,8 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                 }
                 it.datas.map { item ->
                     MineState.MineArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         category = item.chapterName,
                         categoryId = item.chapterId,
@@ -80,6 +82,8 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                 }
                 it.datas.map { item ->
                     MineState.MineArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         category = item.chapterName,
                         categoryId = item.chapterId,

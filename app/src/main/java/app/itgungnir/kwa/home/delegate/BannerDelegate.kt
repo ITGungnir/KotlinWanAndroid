@@ -31,7 +31,7 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
                     Router.instance.with(context)
                         .target(WebActivity)
                         .addParam("title", data.title)
-                        .addParam("url", data.url)
+                        .addParam("url", data.target)
                         .go()
                 },
                 onPageChange = { position, totalCount, data ->

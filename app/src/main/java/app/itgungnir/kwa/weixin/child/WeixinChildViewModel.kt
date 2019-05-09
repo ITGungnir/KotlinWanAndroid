@@ -27,6 +27,8 @@ class WeixinChildViewModel : BaseViewModel<WeixinChildState>(initialState = Weix
                 }
                 it.datas.map { item ->
                     WeixinChildState.WeixinArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         title = item.title,
                         date = item.niceDate,
@@ -77,6 +79,8 @@ class WeixinChildViewModel : BaseViewModel<WeixinChildState>(initialState = Weix
                 }
                 it.datas.map { item ->
                     WeixinChildState.WeixinArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         title = item.title,
                         date = item.niceDate,

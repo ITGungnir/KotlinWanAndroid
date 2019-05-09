@@ -27,6 +27,8 @@ class HierarchyChildViewModel : BaseViewModel<HierarchyChildState>(initialState 
                 }
                 it.datas.map { item ->
                     HierarchyChildState.HierarchyArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         title = item.title,
                         date = item.niceDate,
@@ -76,6 +78,8 @@ class HierarchyChildViewModel : BaseViewModel<HierarchyChildState>(initialState 
                 }
                 it.datas.map { item ->
                     HierarchyChildState.HierarchyArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         title = item.title,
                         date = item.niceDate,

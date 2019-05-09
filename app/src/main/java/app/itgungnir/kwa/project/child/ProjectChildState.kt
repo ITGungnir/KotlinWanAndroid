@@ -12,6 +12,8 @@ data class ProjectChildState(
 ) : State {
 
     data class ProjectArticleVO(
+        val id: Int,
+        val originId: Int,
         val cover: String,
         val title: String,
         val author: String,

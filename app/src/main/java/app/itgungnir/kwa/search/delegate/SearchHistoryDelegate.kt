@@ -26,7 +26,7 @@ class SearchHistoryDelegate(
         container.apply {
             // Clear Button
             clear.setOnClickListener {
-                AppRedux.instance.dispatch(ClearSearchHistory, true)
+                AppRedux.instance.dispatch(ClearSearchHistory)
                 statusView.empty { }
                 clear.apply {
                     isEnabled = false

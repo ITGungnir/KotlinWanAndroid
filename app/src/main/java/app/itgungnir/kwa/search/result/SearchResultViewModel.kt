@@ -24,6 +24,8 @@ class SearchResultViewModel : BaseViewModel<SearchResultState>(initialState = Se
                 }
                 it.datas.map { item ->
                     SearchResultState.SearchResultArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         title = item.title,
                         date = item.niceDate,
@@ -70,6 +72,8 @@ class SearchResultViewModel : BaseViewModel<SearchResultState>(initialState = Se
                 }
                 it.datas.map { item ->
                     SearchResultState.SearchResultArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         title = item.title,
                         date = item.niceDate,

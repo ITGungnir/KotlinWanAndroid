@@ -13,6 +13,8 @@ data class WeixinChildState(
 ) : State {
 
     data class WeixinArticleVO(
+        val id: Int,
+        val originId: Int,
         val author: String,
         val title: String,
         val date: String,

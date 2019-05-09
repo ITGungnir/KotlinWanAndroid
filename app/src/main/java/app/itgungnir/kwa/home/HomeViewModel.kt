@@ -26,9 +26,10 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
             .map {
                 HomeState.BannerVO(it.map { item ->
                     HomeState.BannerVO.BannerItem(
-                        item.imagePath,
-                        item.title,
-                        item.url
+                        id = item.id,
+                        url = item.imagePath,
+                        title = item.title,
+                        target = item.url
                     )
                 })
             }
@@ -39,6 +40,8 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
             .map {
                 it.map { item ->
                     HomeState.HomeArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         category = "${item.superChapterName} / ${item.chapterName}",
                         categoryId = item.chapterId,
@@ -61,6 +64,8 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                 }
                 it.datas.map { item ->
                     HomeState.HomeArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         category = "${item.superChapterName} / ${item.chapterName}",
                         categoryId = item.chapterId,
@@ -120,6 +125,8 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                 }
                 it.datas.map { item ->
                     HomeState.HomeArticleVO(
+                        id = item.id,
+                        originId = item.originId,
                         author = item.author,
                         category = "${item.superChapterName} / ${item.chapterName}",
                         categoryId = item.chapterId,

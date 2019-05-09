@@ -74,7 +74,8 @@ class LoginActivity : BaseActivity() {
         viewModel.pick(LoginState::userInfo)
             .observe(this, Observer { userInfo ->
                 userInfo?.a?.let {
-                    AppRedux.instance.dispatch(LocalizeUserInfo(it.collectIds, it.userName), true)
+                    AppRedux.instance.dispatch(
+                        LocalizeUserInfo(it.collectIds - -1, it.userName))
                     login.ready("登录")
                     finish()
                 }

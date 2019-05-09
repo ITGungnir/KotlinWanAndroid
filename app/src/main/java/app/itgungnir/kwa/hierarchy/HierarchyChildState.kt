@@ -12,6 +12,8 @@ data class HierarchyChildState(
 ) : State {
 
     data class HierarchyArticleVO(
+        val id: Int,
+        val originId: Int,
         val author: String,
         val title: String,
         val date: String,

@@ -32,6 +32,8 @@ class WeixinChildDelegate : BaseDelegate<WeixinChildState.WeixinArticleVO>() {
                 it.hideSoftInput()
                 Router.instance.with(context)
                     .target(WebActivity)
+                    .addParam("id", item.id)
+                    .addParam("originId", item.originId)
                     .addParam("title", item.title)
                     .addParam("url", item.link)
                     .go()

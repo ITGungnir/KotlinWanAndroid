@@ -21,6 +21,12 @@ class AppReducer : Reducer<AppState> {
         // 清空用户信息
         is ClearUserInfo ->
             state.copy(userName = null, cookies = setOf(), collectIds = setOf())
+        // 收藏文章
+        is CollectArticle ->
+            state.copy(collectIds = state.collectIds + action.articleId)
+        // 取消收藏文章
+        is DisCollectArticle ->
+            state.copy(collectIds = state.collectIds - action.articleId)
         // Default
         else ->
             state

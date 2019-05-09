@@ -12,6 +12,8 @@ data class MineState(
 ) : State {
 
     data class MineArticleVO(
+        val id: Int,
+        val originId: Int,
         val author: String,
         val category: String,
         val categoryId: Int,

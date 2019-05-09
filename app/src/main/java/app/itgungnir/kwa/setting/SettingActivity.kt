@@ -25,7 +25,7 @@ class SettingActivity : BaseActivity() {
                     visibility = View.VISIBLE
                     ready("退出登录")
                     setOnClickListener {
-                        AppRedux.instance.dispatch(ClearUserInfo, true)
+                        AppRedux.instance.dispatch(ClearUserInfo)
                         finish()
                     }
                 }

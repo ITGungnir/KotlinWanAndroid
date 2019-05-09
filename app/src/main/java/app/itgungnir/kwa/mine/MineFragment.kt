@@ -82,12 +82,13 @@ class MineFragment : BaseFragment() {
 
     override fun observeVM() {
 
-        AppRedux.instance.pick(AppState::userName)
+        AppRedux.instance.pick(AppState::userName, AppState::collectIds)
             .observe(this, Observer {
                 when (it?.a) {
                     null -> {
                         headBar.title("我的")
                         minePage.statusView().failed { }
+                        viewModel.setState { MineState() }
                     }
                     else -> {
                         headBar.title(it.a!!)

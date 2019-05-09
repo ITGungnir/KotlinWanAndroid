@@ -23,5 +23,9 @@ class AppRedux(context: Application) : BaseRedux<AppState>(
     override fun deserializeToCurrState(json: String): AppState? =
         Gson().fromJson(json, AppState::class.java)
 
+    // 判断用户是否已登录
     fun isUserIn() = !currState().userName.isNullOrBlank()
+
+    // 判断用户是否已收藏了某篇文章
+    fun isCollected(articleId: Int) = currState().collectIds.contains(articleId)
 }

@@ -16,6 +16,7 @@ data class HomeState(
     ) : ListItem {
 
         data class BannerItem(
+            val id: Int,
             val url: String,
             val title: String,
             val target: String
@@ -23,6 +24,8 @@ data class HomeState(
     }
 
     data class HomeArticleVO(
+        val id: Int,
+        val originId: Int,
         val author: String,
         val category: String,
         val categoryId: Int,

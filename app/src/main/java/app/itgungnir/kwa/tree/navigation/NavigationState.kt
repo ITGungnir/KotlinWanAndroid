@@ -20,6 +20,8 @@ data class NavigationState(
     ) : ListItem {
 
         data class NavTagVO(
+            val id: Int,
+            val originId: Int,
             val name: String,
             val link: String
         ) : ListItem

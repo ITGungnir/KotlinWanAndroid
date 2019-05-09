@@ -9,6 +9,7 @@ data class ToolsState(
 ) : State {
 
     data class ToolTagVO(
+        val id: Int,
         val name: String,
         val link: String
     ) : ListItem

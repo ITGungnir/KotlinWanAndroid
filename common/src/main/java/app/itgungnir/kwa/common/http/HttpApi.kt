@@ -118,7 +118,7 @@ interface HttpApi {
         @Query("username") userName: String,
         @Query("password") password: String,
         @Query("repassword") confirmPwd: String
-    ): Single<Result<Unit>>
+    ): Single<Result<Any>>
 
     /**
      * 收藏：收藏列表
@@ -134,5 +134,32 @@ interface HttpApi {
     @POST("/lg/collect/{id}/json")
     fun innerCollect(
         @Path("id") id: Int
-    ): Single<Result<Unit>>
+    ): Single<Result<Any>>
+
+    /**
+     * 收藏：站外收藏
+     */
+    @POST("/lg/collect/add/json")
+    fun outerCollect(
+        @Query("title") title: String,
+        @Query("author") author: String,
+        @Query("link") link: String
+    ): Single<Result<ArticleResponse>>
+
+    /**
+     * 收藏：取消站内收藏
+     */
+    @POST("/lg/uncollect_originId/{id}/json")
+    fun innerDisCollect(
+        @Path("id") id: Int
+    ): Single<Result<Any>>
+
+    /**
+     * 收藏：取消站外收藏
+     */
+    @POST("/lg/uncollect/{id}/json")
+    fun outerDisCollect(
+        @Path("id") id: Int,
+        @Query("originId") originId: Int
+    ): Single<Result<Any>>
 }

@@ -12,6 +12,8 @@ data class SearchResultState(
 ) : State {
 
     data class SearchResultArticleVO(
+        val id: Int,
+        val originId: Int,
         val author: String,
         val title: String,
         val date: String,
