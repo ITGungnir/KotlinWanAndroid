@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import app.itgungnir.kwa.common.onAntiShakeClick
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayout
@@ -46,7 +47,7 @@ class BottomTab @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         this.fragmentManager = fragmentManager
         for (index in 0 until items.size) {
             val view = inflater.inflate(itemLayoutId, this, false)
-            view.setOnClickListener {
+            view.onAntiShakeClick {
                 currIndex.value = index
             }
             this.addView(view)

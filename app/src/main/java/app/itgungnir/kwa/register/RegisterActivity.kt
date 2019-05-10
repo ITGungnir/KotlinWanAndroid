@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.RegisterActivity
 import app.itgungnir.kwa.common.hideSoftInput
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
@@ -51,7 +52,7 @@ class RegisterActivity : BaseActivity() {
 
         register.apply {
             disabled("注册")
-            setOnClickListener {
+            onAntiShakeClick {
                 hideSoftInput()
                 loading()
                 val userName = userNameInput.getInput().editableText.toString().trim()

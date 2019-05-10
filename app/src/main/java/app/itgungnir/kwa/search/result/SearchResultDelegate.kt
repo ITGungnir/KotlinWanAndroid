@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import kotlinx.android.synthetic.main.listitem_search_result.view.*
@@ -27,7 +28,7 @@ class SearchResultDelegate : BaseDelegate<SearchResultState.SearchResultArticleV
 
         holder.render(item) {
 
-            this.setOnClickListener {
+            this.onAntiShakeClick {
                 Router.instance.with(context)
                     .target(WebActivity)
                     .addParam("id", item.id)

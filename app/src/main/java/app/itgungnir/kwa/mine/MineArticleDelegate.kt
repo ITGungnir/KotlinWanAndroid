@@ -6,6 +6,7 @@ import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.HierarchyActivity
 import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.tree.TreeState
@@ -36,7 +37,7 @@ class MineArticleDelegate(
                 true
             }
 
-            this.setOnClickListener {
+            this.onAntiShakeClick {
                 Router.instance.with(context)
                     .target(WebActivity)
                     .addParam("id", item.id)
@@ -50,7 +51,7 @@ class MineArticleDelegate(
 
             category.apply {
                 text = item.category
-                setOnClickListener {
+                onAntiShakeClick {
                     val data = TreeState.TreeVO(
                         name = item.category,
                         children = listOf(

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.search.SearchState
@@ -28,7 +29,7 @@ class SearchHotKeyDelegate(
                         text = data.name
                         backgroundColor = Color.parseColor("#FFFFAB00")
                         textColor = Color.WHITE
-                        setOnClickListener {
+                        onAntiShakeClick {
                             keyClickCallback.invoke(data.name)
                         }
                     }

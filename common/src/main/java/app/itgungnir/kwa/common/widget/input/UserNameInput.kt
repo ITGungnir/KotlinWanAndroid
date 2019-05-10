@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import app.itgungnir.kwa.common.R
+import app.itgungnir.kwa.common.onAntiShakeClick
 import com.jakewharton.rxbinding2.widget.RxTextView
 import kotlinx.android.synthetic.main.view_username_input.view.*
 
@@ -22,7 +23,7 @@ class UserNameInput @JvmOverloads constructor(context: Context, attrs: Attribute
         RxTextView.textChanges(username).subscribe {
             clear.visibility = if (it.isNullOrBlank()) View.GONE else View.VISIBLE
         }
-        clear.setOnClickListener {
+        clear.onAntiShakeClick {
             username.setText("")
         }
     }

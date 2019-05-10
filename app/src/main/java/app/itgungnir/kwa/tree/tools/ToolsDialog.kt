@@ -3,6 +3,7 @@ package app.itgungnir.kwa.tree.tools
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
 import com.google.android.material.chip.Chip
@@ -31,7 +32,7 @@ class ToolsDialog : FullScreenDialog() {
             render = { view, data ->
                 view.findViewById<Chip>(R.id.tag).apply {
                     text = data.name
-                    setOnClickListener {
+                    onAntiShakeClick {
                         Router.instance.with(context)
                             .target(WebActivity)
                             .addParam("title", data.name)

@@ -12,9 +12,8 @@ WanAndroid client programmed with Kotlin.
 * 设置页面：夜间模式
 
 ## ToFix
-* 按钮添加防抖处理
-* 导航页面交互问题
+* 将用到的所有颜色都放到`colors.xml`文件中
 * 所有IconFont字符串提取成常量
+* 导航页面交互问题
 * 为所有EasyAdapter的使用添加Differ
 * 模块化
-* 将用到的所有颜色都放到`colors.xml`文件中

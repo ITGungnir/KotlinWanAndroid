@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import app.itgungnir.kwa.common.R
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import kotlinx.android.synthetic.main.view_head_bar.view.*
 import org.jetbrains.anko.backgroundColor
@@ -46,7 +47,7 @@ class HeadBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
 
     fun back(onBackPressed: () -> Unit): HeadBar {
         back.visibility = View.VISIBLE
-        back.setOnClickListener {
+        back.onAntiShakeClick {
             onBackPressed.invoke()
         }
         title.leftPadding = 0
@@ -63,7 +64,7 @@ class HeadBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
         view.findViewById<IconFontView>(R.id.icon).apply {
             text = iconFont
             this.textColor = this@HeadBar.textColor
-            setOnClickListener {
+            onAntiShakeClick {
                 callback.invoke()
             }
         }

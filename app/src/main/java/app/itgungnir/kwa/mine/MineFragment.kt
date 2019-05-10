@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.LoginActivity
 import app.itgungnir.kwa.common.SettingActivity
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
@@ -41,6 +42,7 @@ class MineFragment : BaseFragment() {
         headBar.addToolButton("\ue6df") {
             AddDialog().show(childFragmentManager, AddDialog::class.java.name)
         }.addToolButton("\ue6de") {
+            popToast("11111")
             // TODO Schedule
         }.addToolButton("\ue728") {
             Router.instance.with(this)
@@ -77,7 +79,7 @@ class MineFragment : BaseFragment() {
             }.addDelegate(StatusView.Status.FAILED, R.layout.status_view_auth) {
                 it.findViewById<ProgressButton>(R.id.auth).apply {
                     ready("登录 / 注册")
-                    setOnClickListener {
+                    onAntiShakeClick {
                         Router.instance.with(context)
                             .target(LoginActivity)
                             .go()

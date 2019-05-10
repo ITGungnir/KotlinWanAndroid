@@ -3,6 +3,7 @@ package app.itgungnir.kwa.setting
 import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.SettingActivity
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.ClearUserInfo
 import kotlinx.android.synthetic.main.activity_setting.*
@@ -24,7 +25,7 @@ class SettingActivity : BaseActivity() {
                 true -> {
                     visibility = View.VISIBLE
                     ready("退出登录")
-                    setOnClickListener {
+                    onAntiShakeClick {
                         AppRedux.instance.dispatch(ClearUserInfo)
                         finish()
                     }

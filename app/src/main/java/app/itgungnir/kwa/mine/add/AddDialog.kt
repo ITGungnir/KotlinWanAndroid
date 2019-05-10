@@ -9,6 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.hideSoftInput
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
@@ -60,7 +61,7 @@ class AddDialog : DialogFragment() {
 
         addButton.apply {
             disabled("确定新增")
-            setOnClickListener {
+            onAntiShakeClick {
                 loading()
                 it.hideSoftInput()
                 val titleStr = titleInput.getInput().editableText.toString().trim()

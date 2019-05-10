@@ -6,6 +6,7 @@ import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.HierarchyActivity
 import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
@@ -31,7 +32,7 @@ class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
 
         holder.render(item) {
 
-            this.setOnClickListener {
+            this.onAntiShakeClick {
                 Router.instance.with(context)
                     .target(WebActivity)
                     .addParam("id", item.id)
@@ -45,7 +46,7 @@ class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
 
             category.apply {
                 text = item.category
-                setOnClickListener {
+                onAntiShakeClick {
                     val categories = item.category.split(" / ")
                     val data = TreeState.TreeVO(
                         name = categories[0],

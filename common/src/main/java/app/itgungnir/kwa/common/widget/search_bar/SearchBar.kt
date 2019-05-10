@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import app.itgungnir.kwa.common.R
+import app.itgungnir.kwa.common.onAntiShakeClick
 import kotlinx.android.synthetic.main.view_search_bar.view.*
 
 class SearchBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
@@ -17,7 +18,7 @@ class SearchBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     fun back(block: () -> Unit): SearchBar {
         back.apply {
             visibility = View.VISIBLE
-            setOnClickListener {
+            onAntiShakeClick {
                 block.invoke()
             }
         }
@@ -25,7 +26,7 @@ class SearchBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     fun doOnSearch(block: (String) -> Unit): SearchBar {
-        search.setOnClickListener {
+        search.onAntiShakeClick {
             val input = inputBar.editableText.toString().trim()
             block.invoke(input)
         }

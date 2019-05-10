@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import app.itgungnir.kwa.common.onAntiShakeClick
 
 class BannerAdapter(
     private val layoutId: Int,
@@ -32,7 +33,7 @@ class BannerAdapter(
             )
         )
 
-        vh.itemView.setOnClickListener {
+        vh.itemView.onAntiShakeClick {
             val realPosition = when (vh.adapterPosition) {
                 0 -> items.size - 3
                 items.size - 1 -> 0

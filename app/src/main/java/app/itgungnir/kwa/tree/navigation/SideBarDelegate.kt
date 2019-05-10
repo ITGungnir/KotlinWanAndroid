@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import kotlinx.android.synthetic.main.listitem_side_bar.view.*
@@ -27,7 +28,7 @@ class SideBarDelegate(
 
         holder.render(item) {
 
-            this.setOnClickListener {
+            this.onAntiShakeClick {
                 tabClickCallback.invoke(position)
             }
 

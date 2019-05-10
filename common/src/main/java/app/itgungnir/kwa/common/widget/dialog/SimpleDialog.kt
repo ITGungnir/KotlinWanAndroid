@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import app.itgungnir.kwa.common.R
+import app.itgungnir.kwa.common.onAntiShakeClick
 import kotlinx.android.synthetic.main.view_simple_dialog.*
 
 class SimpleDialog(
@@ -22,12 +23,12 @@ class SimpleDialog(
 
         message.text = msg
 
-        confirm.setOnClickListener {
+        confirm.onAntiShakeClick {
             onConfirm?.invoke()
             dismiss()
         }
 
-        cancel.setOnClickListener {
+        cancel.onAntiShakeClick {
             onCancel?.invoke()
             dismiss()
         }

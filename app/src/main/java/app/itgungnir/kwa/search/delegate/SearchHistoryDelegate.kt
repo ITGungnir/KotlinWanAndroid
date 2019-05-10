@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.ClearSearchHistory
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
@@ -25,7 +26,7 @@ class SearchHistoryDelegate(
     override fun onCreateVH(container: View) {
         container.apply {
             // Clear Button
-            clear.setOnClickListener {
+            clear.onAntiShakeClick {
                 AppRedux.instance.dispatch(ClearSearchHistory)
                 statusView.empty { }
                 clear.apply {
@@ -42,7 +43,7 @@ class SearchHistoryDelegate(
                             text = data.name
                             backgroundColor = Color.parseColor("#FFC2C2C2")
                             textColor = Color.parseColor("#FF373737")
-                            setOnClickListener {
+                            onAntiShakeClick {
                                 keyClickCallback.invoke(data.name)
                             }
                         }

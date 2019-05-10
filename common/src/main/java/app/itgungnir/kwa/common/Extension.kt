@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import app.itgungnir.kwa.common.util.GlideApp
 import com.google.android.material.snackbar.Snackbar
+import com.jakewharton.rxbinding2.view.RxView
 import org.jetbrains.anko.contentView
+import java.util.concurrent.TimeUnit
 
 /**
  * dp转px
@@ -48,3 +50,11 @@ fun ImageView.load(url: String) =
 fun View.hideSoftInput() =
     (context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)
         ?.hideSoftInputFromWindow(windowToken, 0)
+
+/**
+ * 防抖动的点击事件
+ */
+fun View.onAntiShakeClick(block: (View) -> Unit) =
+    RxView.clicks(this)
+        .throttleFirst(2L, TimeUnit.SECONDS)
+        .subscribe { block.invoke(this) }!!

@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import app.itgungnir.kwa.common.R
+import app.itgungnir.kwa.common.onAntiShakeClick
 import com.jakewharton.rxbinding2.widget.RxTextView
 import kotlinx.android.synthetic.main.view_password_input.view.*
 
@@ -25,7 +26,7 @@ class PasswordInput @JvmOverloads constructor(context: Context, attrs: Attribute
         RxTextView.textChanges(password).subscribe {
             toggle.visibility = if (it.isNullOrBlank()) View.GONE else View.VISIBLE
         }
-        toggle.setOnClickListener {
+        toggle.onAntiShakeClick {
             if (toggle.tag == "1") {
                 toggle.tag = "2"
                 toggle.text = "\ue8d5"
