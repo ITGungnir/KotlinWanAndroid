@@ -12,6 +12,14 @@ WanAndroid client programmed with Kotlin.
 * 设置页面：夜间模式
 
 ## ToFix
-* 导航页面交互问题
+* 公共的Delegate尽量抽取出来
 * 为所有EasyAdapter的使用添加Differ
+* 导航页面交互问题
 * 模块化
+
+## 项目模块化计划
+本项目拟分为四个模块：app、app_main、app_support和common
+
+app依赖app_main和app_support；app_main和app_support依赖common
+
+后期将common中的widget包抽出放到远端依赖中，拟命名为UIKit
