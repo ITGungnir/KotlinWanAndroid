@@ -4,6 +4,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.COLOR_BACKGROUND
+import app.itgungnir.kwa.common.COLOR_PURE
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
@@ -36,14 +38,14 @@ class SideBarDelegate(
                 text = item.name
                 backgroundColor = if (payloads.isNullOrEmpty()) {
                     when (item.selected) {
-                        true -> Color.WHITE
-                        else -> Color.parseColor("#FFF5F5F5")
+                        true -> Color.parseColor(COLOR_PURE)
+                        else -> Color.parseColor(COLOR_BACKGROUND)
                     }
                 } else {
                     val payload = payloads[0]
                     when (payload["PL_SELECT"]) {
-                        true -> Color.WHITE
-                        else -> Color.parseColor("#FFF5F5F5")
+                        true -> Color.parseColor(COLOR_PURE)
+                        else -> Color.parseColor(COLOR_BACKGROUND)
                     }
                 }
             }

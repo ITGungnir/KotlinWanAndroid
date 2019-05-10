@@ -6,8 +6,7 @@ import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
-import app.itgungnir.kwa.common.R
-import app.itgungnir.kwa.common.dp2px
+import app.itgungnir.kwa.common.*
 import kotlinx.android.synthetic.main.view_progress_button.view.*
 import org.jetbrains.anko.backgroundDrawable
 
@@ -20,10 +19,10 @@ class ProgressButton @JvmOverloads constructor(context: Context, attrs: Attribut
     private var enabledBg: GradientDrawable
     private var disabledBg: GradientDrawable
 
-    private var enabledColor: Int = Color.parseColor("#FF707070")
-    private var disabledColor: Int = Color.parseColor("#FFC2C2C2")
-    private var enabledTextColor: Int = Color.WHITE
-    private var disabledTextColor: Int = Color.parseColor("#FFF5F5F5")
+    private var enabledColor: Int = Color.parseColor(COLOR_PRIMARY)
+    private var disabledColor: Int = Color.parseColor(COLOR_DIVIDER)
+    private var enabledTextColor: Int = Color.parseColor(COLOR_PURE)
+    private var disabledTextColor: Int = Color.parseColor(COLOR_BACKGROUND)
     private var cornerRadius: Float = context.dp2px(3F).toFloat()
 
     init {

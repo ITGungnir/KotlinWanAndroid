@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.ICON_AUTHOR
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.load
 import app.itgungnir.kwa.common.onAntiShakeClick
@@ -41,7 +42,7 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
 
             cover.load(item.cover)
 
-            author.text = "\ue830 ${item.author}"
+            author.text = "$ICON_AUTHOR ${item.author}"
 
             repository.onAntiShakeClick {
                 Router.instance.with(context)

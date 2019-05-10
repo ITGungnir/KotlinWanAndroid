@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import app.itgungnir.kwa.common.COLOR_PRIMARY
+import app.itgungnir.kwa.common.COLOR_PURE
 import app.itgungnir.kwa.common.R
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.icon_font.IconFontView
@@ -32,9 +34,9 @@ class HeadBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? =
             recycle()
         }
 
-        textColor = if (abnormal) Color.parseColor("#FF707070") else Color.WHITE
+        textColor = Color.parseColor(if (abnormal) COLOR_PRIMARY else COLOR_PURE)
 
-        this.backgroundColor = if (abnormal) Color.WHITE else Color.parseColor("#FF707070")
+        this.backgroundColor = Color.parseColor(if (abnormal) COLOR_PURE else COLOR_PRIMARY)
 
         back.textColor = textColor
 

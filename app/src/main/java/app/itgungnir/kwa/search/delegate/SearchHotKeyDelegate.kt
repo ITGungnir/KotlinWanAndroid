@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.COLOR_ACCENT
+import app.itgungnir.kwa.common.COLOR_PURE
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
@@ -27,8 +29,8 @@ class SearchHotKeyDelegate(
                 render = { view, data ->
                     view.findViewById<TextView>(R.id.name).apply {
                         text = data.name
-                        backgroundColor = Color.parseColor("#FFFFAB00")
-                        textColor = Color.WHITE
+                        backgroundColor = Color.parseColor(COLOR_ACCENT)
+                        textColor = Color.parseColor(COLOR_PURE)
                         onAntiShakeClick {
                             keyClickCallback.invoke(data.name)
                         }

@@ -2,9 +2,7 @@ package app.itgungnir.kwa.web
 
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.LoginActivity
-import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import kotlinx.android.synthetic.main.activity_web.*
@@ -40,7 +38,7 @@ class WebActivity : BaseActivity() {
             .back { finish() }
 
         if (id > 0 && originId >= 0) {
-            headBar.addToolButton("\uE708") {
+            headBar.addToolButton(ICON_UNCOLLECT) {
                 if (AppRedux.instance.isUserIn()) {
                     when (AppRedux.instance.isCollected(id) || AppRedux.instance.isCollected(originId)) {
                         // 取消收藏
@@ -62,7 +60,7 @@ class WebActivity : BaseActivity() {
             }
         }
 
-        headBar.addToolButton("\ue729") {
+        headBar.addToolButton(ICON_SHARE) {
             share("KotlinWanAndroid分享《$title》专题：$url", title)
         }
 
@@ -76,7 +74,7 @@ class WebActivity : BaseActivity() {
                 collectIds?.a?.let {
                     if (headBar.toolButtonCount() > 1) {
                         val flag = it.contains(id) || it.contains(originId)
-                        headBar.updateToolButton(0, if (flag) "\uE707" else "\uE708")
+                        headBar.updateToolButton(0, if (flag) ICON_COLLECT else ICON_UNCOLLECT)
                     }
                 }
             })

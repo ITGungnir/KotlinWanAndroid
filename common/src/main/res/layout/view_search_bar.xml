@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@android:color/white"
+    android:background="@color/colorPure"
     tools:ignore="SpUsage, RtlSymmetry, Autofill, LabelFor">
 
     <app.itgungnir.kwa.common.widget.icon_font.IconFontView

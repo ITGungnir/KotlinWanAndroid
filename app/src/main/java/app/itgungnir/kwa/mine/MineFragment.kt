@@ -4,10 +4,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.LoginActivity
-import app.itgungnir.kwa.common.SettingActivity
-import app.itgungnir.kwa.common.onAntiShakeClick
-import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.common.widget.dialog.SimpleDialog
@@ -39,12 +36,12 @@ class MineFragment : BaseFragment() {
 
     override fun initComponent() {
 
-        headBar.addToolButton("\ue6df") {
+        headBar.addToolButton(ICON_ADD) {
             AddDialog().show(childFragmentManager, AddDialog::class.java.name)
-        }.addToolButton("\ue6de") {
+        }.addToolButton(ICON_SCHEDULE) {
             popToast("11111")
             // TODO Schedule
-        }.addToolButton("\ue728") {
+        }.addToolButton(ICON_SETTING) {
             Router.instance.with(this)
                 .target(SettingActivity)
                 .go()

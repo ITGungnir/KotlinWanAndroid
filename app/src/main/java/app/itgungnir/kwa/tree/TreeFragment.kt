@@ -4,6 +4,8 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.ICON_NAVIGATION
+import app.itgungnir.kwa.common.ICON_TOOLS
 import app.itgungnir.kwa.common.dp2px
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
@@ -32,10 +34,10 @@ class TreeFragment : BaseFragment() {
     override fun initComponent() {
         // Head Bar
         headBar.title("知识体系")
-            .addToolButton("\ue834") {
+            .addToolButton(ICON_TOOLS) {
                 ToolsDialog().show(childFragmentManager, ToolsDialog::class.java.name)
             }
-            .addToolButton("\ue744") {
+            .addToolButton(ICON_NAVIGATION) {
                 NavigationDialog().show(childFragmentManager, NavigationDialog::class.java.name)
             }
         // Common Page

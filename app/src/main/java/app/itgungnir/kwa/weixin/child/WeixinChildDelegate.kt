@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.ICON_AUTHOR
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.onAntiShakeClick
@@ -40,7 +41,7 @@ class WeixinChildDelegate : BaseDelegate<WeixinChildState.WeixinArticleVO>() {
                     .go()
             }
 
-            author.text = "\ue830 ${item.author}"
+            author.text = "$ICON_AUTHOR ${item.author}"
 
             title.text = item.title
 

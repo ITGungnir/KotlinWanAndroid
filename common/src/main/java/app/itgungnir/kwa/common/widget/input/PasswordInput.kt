@@ -8,6 +8,8 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
+import app.itgungnir.kwa.common.ICON_PASSWORD_HIDE
+import app.itgungnir.kwa.common.ICON_PASSWORD_SHOW
 import app.itgungnir.kwa.common.R
 import app.itgungnir.kwa.common.onAntiShakeClick
 import com.jakewharton.rxbinding2.widget.RxTextView
@@ -22,18 +24,18 @@ class PasswordInput @JvmOverloads constructor(context: Context, attrs: Attribute
             View.inflate(context, R.layout.view_password_input, this)
         }
 
-        toggle.text = "\ue8d4"
+        toggle.text = ICON_PASSWORD_SHOW
         RxTextView.textChanges(password).subscribe {
             toggle.visibility = if (it.isNullOrBlank()) View.GONE else View.VISIBLE
         }
         toggle.onAntiShakeClick {
             if (toggle.tag == "1") {
                 toggle.tag = "2"
-                toggle.text = "\ue8d5"
+                toggle.text = ICON_PASSWORD_HIDE
                 password.transformationMethod = HideReturnsTransformationMethod.getInstance()
             } else if (toggle.tag == "2") {
                 toggle.tag = "1"
-                toggle.text = "\uE8D4"
+                toggle.text = ICON_PASSWORD_SHOW
                 password.transformationMethod = PasswordTransformationMethod.getInstance()
             }
             password.setSelection(password.text.length)

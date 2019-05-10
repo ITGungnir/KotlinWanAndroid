@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.MainActivity
-import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import app.itgungnir.kwa.home.HomeFragment
 import app.itgungnir.kwa.mine.MineFragment
@@ -32,18 +31,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun initComponent() {
 
-        val selectedColor = Color.parseColor("#FF707070")
-        val unSelectedColor = Color.parseColor("#FFC2C2C2")
+        val selectedColor = Color.parseColor(COLOR_ICON_SELECT)
+        val unSelectedColor = Color.parseColor(COLOR_ICON_NORMAL)
 
         bottomTab.init(
             targetFrameId = R.id.fragment,
             fragmentManager = supportFragmentManager,
             items = listOf(
-                TabItem("首页", "\ue703", "\ue702") to HomeFragment(),
-                TabItem("知识体系", "\ue6ef", "\ue6ee") to TreeFragment(),
-                TabItem("公众号", "\ue82c", "\ue608") to WeixinFragment(),
-                TabItem("项目", "\ue6ec", "\ue6eb") to ProjectFragment(),
-                TabItem("我的", "\ue716", "\ue715") to MineFragment()
+                TabItem("首页", ICON_HOME_NORMAL, ICON_HOME_SELECT) to HomeFragment(),
+                TabItem("知识体系", ICON_TREE_NORMAL, ICON_TREE_SELECT) to TreeFragment(),
+                TabItem("公众号", ICON_WEIXIN_NORMAL, ICON_WEIXIN_SELECT) to WeixinFragment(),
+                TabItem("项目", ICON_PROJECT_NORMAL, ICON_PROJECT_SELECT) to ProjectFragment(),
+                TabItem("我的", ICON_MINE_NORMAL, ICON_MINE_SELECT) to MineFragment()
             ),
             itemLayoutId = R.layout.listitem_bottom_tab,
             render = { view, data, selected ->

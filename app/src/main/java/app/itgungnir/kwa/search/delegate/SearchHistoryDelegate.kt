@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.COLOR_ACCENT
+import app.itgungnir.kwa.common.COLOR_DIVIDER
+import app.itgungnir.kwa.common.COLOR_TEXT1
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.ClearSearchHistory
@@ -31,7 +34,7 @@ class SearchHistoryDelegate(
                 statusView.empty { }
                 clear.apply {
                     isEnabled = false
-                    textColor = Color.parseColor("#FFC2C2C2")
+                    textColor = Color.parseColor(COLOR_DIVIDER)
                 }
             }
             // Status View
@@ -41,8 +44,8 @@ class SearchHistoryDelegate(
                     render = { view, data ->
                         view.findViewById<TextView>(R.id.name).apply {
                             text = data.name
-                            backgroundColor = Color.parseColor("#FFC2C2C2")
-                            textColor = Color.parseColor("#FF373737")
+                            backgroundColor = Color.parseColor(COLOR_DIVIDER)
+                            textColor = Color.parseColor(COLOR_TEXT1)
                             onAntiShakeClick {
                                 keyClickCallback.invoke(data.name)
                             }
@@ -68,7 +71,7 @@ class SearchHistoryDelegate(
                 statusView.empty { }
                 clear.apply {
                     isEnabled = false
-                    textColor = Color.parseColor("#FFC2C2C2")
+                    textColor = Color.parseColor(COLOR_DIVIDER)
                 }
             } else {
                 statusView.succeed {
@@ -76,7 +79,7 @@ class SearchHistoryDelegate(
                 }
                 clear.apply {
                     isEnabled = true
-                    textColor = Color.parseColor("#FFFFAB00")
+                    textColor = Color.parseColor(COLOR_ACCENT)
                 }
             }
         }

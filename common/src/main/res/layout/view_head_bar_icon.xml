@@ -6,7 +6,7 @@
     android:layout_height="?attr/actionBarSize"
     android:background="?android:attr/selectableItemBackground"
     android:gravity="center"
-    android:textColor="@android:color/white"
+    android:textColor="@color/colorPure"
     android:textSize="@dimen/sp_text_size_1"
     android:textStyle="bold"
     tools:ignore="SpUsage" />

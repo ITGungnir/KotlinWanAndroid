@@ -15,10 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        app:tabIndicatorColor="@android:color/white"
+        app:tabIndicatorColor="@color/colorPure"
         app:tabIndicatorHeight="5dp"
         app:tabMode="scrollable"
-        app:tabSelectedTextColor="@android:color/white"
+        app:tabSelectedTextColor="@color/colorPure"
         app:tabTextColor="@color/clr_text_level_3" />
 
     <androidx.viewpager.widget.ViewPager

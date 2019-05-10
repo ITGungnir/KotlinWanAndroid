@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.HierarchyActivity
+import app.itgungnir.kwa.common.ICON_AUTHOR
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
@@ -42,7 +43,7 @@ class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
                     .go()
             }
 
-            author.text = "\ue830 ${item.author}"
+            author.text = "$ICON_AUTHOR ${item.author}"
 
             category.apply {
                 text = item.category
