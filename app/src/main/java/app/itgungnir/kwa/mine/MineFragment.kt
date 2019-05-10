@@ -1,6 +1,5 @@
 package app.itgungnir.kwa.mine
 
-import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
@@ -10,15 +9,13 @@ import app.itgungnir.kwa.common.SettingActivity
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
-import app.itgungnir.kwa.common.widget.easy_adapter.Differ
+import app.itgungnir.kwa.common.widget.dialog.SimpleDialog
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.input.ProgressButton
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.mine.add.AddDialog
-import app.itgungnir.kwa.mine.delegate.MineDelegate
 import kotlinx.android.synthetic.main.fragment_mine.*
 import my.itgungnir.apt.router.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
@@ -60,51 +57,12 @@ class MineFragment : BaseFragment() {
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
-                listAdapter = list.bind(
-                    delegate = MineDelegate { id, originId -> viewModel.disCollectArticle(id, originId) },
-                    diffAnalyzer = object : Differ {
-                        override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
-                            (oldItem as MineState.MineDataVO).articleVO.id == (newItem as MineState.MineDataVO).articleVO.id &&
-                                    oldItem.articleVO.originId == newItem.articleVO.originId
-
-                        override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
-                            (oldItem as MineState.MineDataVO).articleVO.author == (newItem as MineState.MineDataVO).articleVO.author &&
-                                    oldItem.articleVO.title == newItem.articleVO.title &&
-                                    oldItem.articleVO.category == newItem.articleVO.category &&
-                                    oldItem.articleVO.categoryId == newItem.articleVO.categoryId &&
-                                    oldItem.articleVO.date == newItem.articleVO.date &&
-                                    oldItem.articleVO.link == newItem.articleVO.link &&
-                                    oldItem.deleteVO.id == newItem.deleteVO.id &&
-                                    oldItem.deleteVO.originId == newItem.deleteVO.originId
-
-                        override fun getChangePayload(oldItem: ListItem, newItem: ListItem): Bundle? {
-                            oldItem as MineState.MineDataVO
-                            newItem as MineState.MineDataVO
-                            val bundle = Bundle()
-                            bundle.putInt("PL_ID", newItem.articleVO.id)
-                            bundle.putInt("PL_OID", newItem.articleVO.originId)
-                            if (oldItem.articleVO.author != newItem.articleVO.author) {
-                                bundle.putString("PL_AUTHOR", newItem.articleVO.author)
-                            }
-                            if (oldItem.articleVO.title != newItem.articleVO.title) {
-                                bundle.putString("PL_TITLE", newItem.articleVO.title)
-                            }
-                            if (oldItem.articleVO.category != newItem.articleVO.category) {
-                                bundle.putString("PL_C", newItem.articleVO.category)
-                            }
-                            if (oldItem.articleVO.categoryId != newItem.articleVO.categoryId) {
-                                bundle.putInt("PL_CID", newItem.articleVO.categoryId)
-                            }
-                            if (oldItem.articleVO.date != newItem.articleVO.date) {
-                                bundle.putString("PL_DATE", newItem.articleVO.date)
-                            }
-                            if (oldItem.articleVO.link != newItem.articleVO.link) {
-                                bundle.putString("PL_LINK", newItem.articleVO.link)
-                            }
-                            return if (bundle.isEmpty) null else bundle
-                        }
-                    }
-                )
+                listAdapter = list.bind(delegate = MineArticleDelegate { id, originId ->
+                    SimpleDialog(
+                        msg = "确定要取消收藏该文章吗？",
+                        onConfirm = { viewModel.disCollectArticle(id, originId) }
+                    ).show(childFragmentManager, SimpleDialog::class.java.name)
+                })
                 // List Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)

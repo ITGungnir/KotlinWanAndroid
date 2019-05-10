@@ -30,21 +30,15 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                     )
                 }
                 it.datas.map { item ->
-                    MineState.MineDataVO(
-                        articleVO = MineState.MineArticleVO(
-                            id = item.id,
-                            originId = item.originId,
-                            author = item.author,
-                            category = item.chapterName,
-                            categoryId = item.chapterId,
-                            title = item.title,
-                            date = item.niceDate,
-                            link = item.link
-                        ),
-                        deleteVO = MineState.MineDeleteVO(
-                            id = item.id,
-                            originId = item.originId
-                        )
+                    MineState.MineArticleVO(
+                        id = item.id,
+                        originId = item.originId,
+                        author = item.author,
+                        category = item.chapterName,
+                        categoryId = item.chapterId,
+                        title = item.title,
+                        date = item.niceDate,
+                        link = item.link
                     )
                 }
             }.doOnSubscribe {
@@ -88,21 +82,15 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                     )
                 }
                 it.datas.map { item ->
-                    MineState.MineDataVO(
-                        articleVO = MineState.MineArticleVO(
-                            id = item.id,
-                            originId = item.originId,
-                            author = item.author,
-                            category = item.chapterName,
-                            categoryId = item.chapterId,
-                            title = item.title,
-                            date = item.niceDate,
-                            link = item.link
-                        ),
-                        deleteVO = MineState.MineDeleteVO(
-                            id = item.id,
-                            originId = item.originId
-                        )
+                    MineState.MineArticleVO(
+                        id = item.id,
+                        originId = item.originId,
+                        author = item.author,
+                        category = item.chapterName,
+                        categoryId = item.chapterId,
+                        title = item.title,
+                        date = item.niceDate,
+                        link = item.link
                     )
                 }
             }.doOnSubscribe {

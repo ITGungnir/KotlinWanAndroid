@@ -2,7 +2,6 @@
 WanAndroid client programmed with Kotlin.
 
 ## ToFinish
-* 我的页面：收藏信息右滑删除
 * 我的页面：日程按钮
 * 设置页面：UI
 * 设置页面：关于我们
@@ -17,3 +16,5 @@ WanAndroid client programmed with Kotlin.
 * 导航页面交互问题
 * 所有IconFont字符串提取成常量
 * 为所有EasyAdapter的使用添加Differ
+* 模块化
+* 将用到的所有颜色都放到`colors.xml`文件中
