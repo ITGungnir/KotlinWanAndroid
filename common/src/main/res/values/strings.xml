@@ -10,6 +10,7 @@
     <string name="str_icon_clear">\ue738 清空</string>
     <string name="str_icon_clear_text">\ue6f2</string>
     <string name="str_icon_auth">\ue6ec</string>
+    <string name="str_icon_delete">\ue738</string>
 
     <string name="str_behavior_fab">app.itgungnir.kwa.common.widget.common_page.FabBehavior</string>
 

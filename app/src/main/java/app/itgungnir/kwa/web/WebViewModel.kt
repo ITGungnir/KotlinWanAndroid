@@ -57,27 +57,4 @@ class WebViewModel : BaseViewModel<WebState>(initialState = WebState()) {
                 }
             })
     }
-
-    /**
-     * 取消收藏站外文章
-     */
-    fun disCollectOuterArticle(articleId: Int, originId: Int) {
-        HttpClient.api.outerDisCollect(articleId, originId)
-            .handleResult()
-            .io2Main()
-            .subscribe({
-                AppRedux.instance.dispatch(DisCollectArticle(articleId))
-                setState {
-                    copy(
-                        error = null
-                    )
-                }
-            }, {
-                setState {
-                    copy(
-                        error = it
-                    )
-                }
-            })
-    }
 }

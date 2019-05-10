@@ -26,20 +26,3 @@ data class CollectArticle(
 data class DisCollectArticle(
     val articleId: Int
 ) : Action
-
-object NullAction : Action
-
-class LoginActions {
-    data class Login(
-        val userName: String,
-        val password: String
-    ) : Action
-
-    data class GetCollectIds(
-        val userName: String
-    ) : Action
-
-    data class Error(
-        val message: String
-    ) : Action
-}

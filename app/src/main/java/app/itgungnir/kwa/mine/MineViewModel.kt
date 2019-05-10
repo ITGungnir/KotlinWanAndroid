@@ -5,6 +5,7 @@ import app.itgungnir.kwa.common.http.HttpClient
 import app.itgungnir.kwa.common.http.handleResult
 import app.itgungnir.kwa.common.http.io2Main
 import app.itgungnir.kwa.common.redux.AppRedux
+import app.itgungnir.kwa.common.redux.DisCollectArticle
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
 
 @SuppressLint("CheckResult")
@@ -29,15 +30,21 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                     )
                 }
                 it.datas.map { item ->
-                    MineState.MineArticleVO(
-                        id = item.id,
-                        originId = item.originId,
-                        author = item.author,
-                        category = item.chapterName,
-                        categoryId = item.chapterId,
-                        title = item.title,
-                        date = item.niceDate,
-                        link = item.link
+                    MineState.MineDataVO(
+                        articleVO = MineState.MineArticleVO(
+                            id = item.id,
+                            originId = item.originId,
+                            author = item.author,
+                            category = item.chapterName,
+                            categoryId = item.chapterId,
+                            title = item.title,
+                            date = item.niceDate,
+                            link = item.link
+                        ),
+                        deleteVO = MineState.MineDeleteVO(
+                            id = item.id,
+                            originId = item.originId
+                        )
                     )
                 }
             }.doOnSubscribe {
@@ -81,15 +88,21 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                     )
                 }
                 it.datas.map { item ->
-                    MineState.MineArticleVO(
-                        id = item.id,
-                        originId = item.originId,
-                        author = item.author,
-                        category = item.chapterName,
-                        categoryId = item.chapterId,
-                        title = item.title,
-                        date = item.niceDate,
-                        link = item.link
+                    MineState.MineDataVO(
+                        articleVO = MineState.MineArticleVO(
+                            id = item.id,
+                            originId = item.originId,
+                            author = item.author,
+                            category = item.chapterName,
+                            categoryId = item.chapterId,
+                            title = item.title,
+                            date = item.niceDate,
+                            link = item.link
+                        ),
+                        deleteVO = MineState.MineDeleteVO(
+                            id = item.id,
+                            originId = item.originId
+                        )
                     )
                 }
             }.doOnSubscribe {
@@ -113,6 +126,30 @@ class MineViewModel : BaseViewModel<MineState>(initialState = MineState()) {
                 setState {
                     copy(
                         loading = false,
+                        error = it
+                    )
+                }
+            })
+    }
+
+    /**
+     * 取消收藏站外文章
+     */
+    fun disCollectArticle(articleId: Int, originId: Int) {
+        HttpClient.api.outerDisCollect(articleId, originId)
+            .handleResult()
+            .io2Main()
+            .subscribe({
+                val targetId = if (originId < 1) articleId else originId
+                AppRedux.instance.dispatch(DisCollectArticle(targetId))
+                setState {
+                    copy(
+                        error = null
+                    )
+                }
+            }, {
+                setState {
+                    copy(
                         error = it
                     )
                 }
