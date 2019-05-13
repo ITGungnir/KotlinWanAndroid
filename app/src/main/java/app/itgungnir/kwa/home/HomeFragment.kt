@@ -1,12 +1,15 @@
 package app.itgungnir.kwa.home
 
+import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.ICON_SEARCH
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.widget.easy_adapter.Differ
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
@@ -48,8 +51,32 @@ class HomeFragment : BaseFragment() {
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
-                listAdapter = list.bind()
-                    .map({ data -> data is HomeState.BannerVO }, BannerDelegate())
+                listAdapter = list.bind(diffAnalyzer = object : Differ {
+                    override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
+                        if (oldItem is HomeState.HomeArticleVO && newItem is HomeState.HomeArticleVO) {
+                            oldItem.id == newItem.id && oldItem.originId == newItem.originId
+                        } else {
+                            false
+                        }
+
+                    override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
+                        if (oldItem is HomeState.HomeArticleVO && newItem is HomeState.HomeArticleVO) {
+                            oldItem.date == newItem.date
+                        } else {
+                            false
+                        }
+
+                    override fun getChangePayload(oldItem: ListItem, newItem: ListItem): Bundle? =
+                        if (oldItem is HomeState.HomeArticleVO && newItem is HomeState.HomeArticleVO) {
+                            val bundle = Bundle()
+                            if (oldItem.date != newItem.date) {
+                                bundle.putString("PL_DATE", newItem.date)
+                            }
+                            if (bundle.isEmpty) null else bundle
+                        } else {
+                            null
+                        }
+                }).map({ data -> data is HomeState.BannerVO }, BannerDelegate())
                     .map({ data -> data is HomeState.HomeArticleVO }, HomeArticleDelegate())
                 // Recycler Footer
                 footer = ListFooter.Builder()

@@ -1,11 +1,14 @@
 package app.itgungnir.kwa.hierarchy
 
+import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.widget.easy_adapter.Differ
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
@@ -44,7 +47,31 @@ class HierarchyChildFragment : LazyFragment() {
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
-                listAdapter = list.bind(delegate = HierarchyChildDelegate())
+                listAdapter = list.bind(
+                    delegate = HierarchyChildDelegate(),
+                    diffAnalyzer = object : Differ {
+                        override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
+                            oldItem as HierarchyChildState.HierarchyArticleVO
+                            newItem as HierarchyChildState.HierarchyArticleVO
+                            return oldItem.id == newItem.id && oldItem.originId == newItem.originId
+                        }
+
+                        override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
+                            oldItem as HierarchyChildState.HierarchyArticleVO
+                            newItem as HierarchyChildState.HierarchyArticleVO
+                            return oldItem.date == newItem.date
+                        }
+
+                        override fun getChangePayload(oldItem: ListItem, newItem: ListItem): Bundle? {
+                            oldItem as HierarchyChildState.HierarchyArticleVO
+                            newItem as HierarchyChildState.HierarchyArticleVO
+                            val bundle = Bundle()
+                            if (oldItem.date != newItem.date) {
+                                bundle.putString("PL_DATE", newItem.date)
+                            }
+                            return if (bundle.isEmpty) null else bundle
+                        }
+                    })
                 // Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)

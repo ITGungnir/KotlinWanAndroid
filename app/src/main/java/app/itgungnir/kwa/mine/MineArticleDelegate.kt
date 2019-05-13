@@ -72,7 +72,14 @@ class MineArticleDelegate(
 
             titleView.text = item.title
 
-            dateView.text = item.date
+            if (payloads.isNotEmpty()) {
+                val payload = payloads[0]
+                payload.getString("PL_DATE")?.let {
+                    dateView.text = it
+                }
+            } else {
+                dateView.text = item.date
+            }
         }
     }
 }

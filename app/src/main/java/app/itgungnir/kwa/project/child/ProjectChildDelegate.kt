@@ -56,7 +56,14 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
 
             descView.text = item.desc
 
-            dateView.text = item.date
+            if (payloads.isNotEmpty()) {
+                val payload = payloads[0]
+                payload.getString("PL_DATE")?.let {
+                    dateView.text = it
+                }
+            } else {
+                dateView.text = item.date
+            }
         }
     }
 }

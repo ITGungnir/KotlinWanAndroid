@@ -1,5 +1,6 @@
 package app.itgungnir.kwa.mine
 
+import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,9 @@ import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.common.widget.dialog.SimpleDialog
+import app.itgungnir.kwa.common.widget.easy_adapter.Differ
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
+import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.input.ProgressButton
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
@@ -56,12 +59,36 @@ class MineFragment : BaseFragment() {
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
-                listAdapter = list.bind(delegate = MineArticleDelegate { id, originId ->
-                    SimpleDialog(
-                        msg = "确定要取消收藏该文章吗？",
-                        onConfirm = { viewModel.disCollectArticle(id, originId) }
-                    ).show(childFragmentManager, SimpleDialog::class.java.name)
-                })
+                listAdapter = list.bind(
+                    delegate = MineArticleDelegate { id, originId ->
+                        SimpleDialog(
+                            msg = "确定要取消收藏该文章吗？",
+                            onConfirm = { viewModel.disCollectArticle(id, originId) }
+                        ).show(childFragmentManager, SimpleDialog::class.java.name)
+                    },
+                    diffAnalyzer = object : Differ {
+                        override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
+                            oldItem as MineState.MineArticleVO
+                            newItem as MineState.MineArticleVO
+                            return oldItem.id == newItem.id && oldItem.originId == newItem.originId
+                        }
+
+                        override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
+                            oldItem as MineState.MineArticleVO
+                            newItem as MineState.MineArticleVO
+                            return oldItem.date == newItem.date
+                        }
+
+                        override fun getChangePayload(oldItem: ListItem, newItem: ListItem): Bundle? {
+                            oldItem as MineState.MineArticleVO
+                            newItem as MineState.MineArticleVO
+                            val bundle = Bundle()
+                            if (oldItem.date != newItem.date) {
+                                bundle.putString("PL_DATE", newItem.date)
+                            }
+                            return if (bundle.isEmpty) null else bundle
+                        }
+                    })
                 // List Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)
