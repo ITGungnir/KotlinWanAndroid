@@ -12,9 +12,9 @@ WanAndroid client programmed with Kotlin.
 * 设置页面：夜间模式
 
 ## ToFix
-* 公共的Delegate尽量抽取出来
 * 为所有EasyAdapter的使用添加Differ
 * 导航页面交互问题
+* 将自定义View的属性进行自定义，使成为可以公用的控件
 * 模块化
 
 ## 项目模块化计划

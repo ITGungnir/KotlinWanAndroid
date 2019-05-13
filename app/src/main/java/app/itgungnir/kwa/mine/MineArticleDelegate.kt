@@ -12,14 +12,14 @@ import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.tree.TreeState
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.listitem_mine_article.view.*
+import kotlinx.android.synthetic.main.list_item_mine_article.view.*
 import my.itgungnir.apt.router.api.Router
 
 class MineArticleDelegate(
     private val onLongClick: (id: Int, originId: Int) -> Unit
 ) : BaseDelegate<MineState.MineArticleVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_mine_article
+    override fun layoutId(): Int = R.layout.list_item_mine_article
 
     override fun onCreateVH(container: View) {}
 
@@ -48,9 +48,9 @@ class MineArticleDelegate(
                     .go()
             }
 
-            author.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "$ICON_AUTHOR ${item.author}"
 
-            category.apply {
+            categoryView.apply {
                 text = item.category
                 onAntiShakeClick {
                     val data = TreeState.TreeVO(
@@ -70,9 +70,9 @@ class MineArticleDelegate(
                 }
             }
 
-            title.text = item.title
+            titleView.text = item.title
 
-            date.text = item.date
+            dateView.text = item.date
         }
     }
 }

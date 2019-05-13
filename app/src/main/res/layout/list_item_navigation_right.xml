@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -15,7 +15,7 @@
         tools:ignore="SpUsage" />
 
     <app.itgungnir.kwa.common.widget.flex.ScrollableFlexView
-        android:id="@+id/children"
+        android:id="@+id/childrenView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

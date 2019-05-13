@@ -10,12 +10,12 @@ import app.itgungnir.kwa.common.load
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import kotlinx.android.synthetic.main.listitem_project_child.view.*
+import kotlinx.android.synthetic.main.list_item_project_article.view.*
 import my.itgungnir.apt.router.api.Router
 
 class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_project_child
+    override fun layoutId(): Int = R.layout.list_item_project_article
 
     override fun onCreateVH(container: View) {
     }
@@ -40,11 +40,11 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
                     .go()
             }
 
-            cover.load(item.cover)
+            coverView.load(item.cover)
 
-            author.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "$ICON_AUTHOR ${item.author}"
 
-            repository.onAntiShakeClick {
+            repositoryView.onAntiShakeClick {
                 Router.instance.with(context)
                     .target(WebActivity)
                     .addParam("title", item.title)
@@ -52,11 +52,11 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
                     .go()
             }
 
-            title.text = item.title
+            titleView.text = item.title
 
-            desc.text = item.desc
+            descView.text = item.desc
 
-            date.text = item.date
+            dateView.text = item.date
         }
     }
 }

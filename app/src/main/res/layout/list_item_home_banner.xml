@@ -8,7 +8,7 @@
     android:layout_marginEnd="10dp">
 
     <app.itgungnir.kwa.common.widget.banner.Banner
-        android:id="@+id/banner"
+        android:id="@+id/bannerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -20,7 +20,7 @@
         tools:ignore="SpUsage,RelativeOverlap">
 
         <TextView
-            android:id="@+id/index"
+            android:id="@+id/indexView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
@@ -31,7 +31,7 @@
             tools:text="2/8" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/titleView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="15dp"
@@ -42,5 +42,4 @@
             tools:text="@string/app_name" />
 
     </RelativeLayout>
-
 </FrameLayout>

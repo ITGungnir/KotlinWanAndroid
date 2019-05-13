@@ -9,14 +9,14 @@
     tools:ignore="SpUsage">
 
     <app.itgungnir.kwa.common.widget.icon_font.IconFontView
-        android:id="@+id/icon"
+        android:id="@+id/iconView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/sp_text_size_1"
         tools:text="@string/str_icon_back" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"

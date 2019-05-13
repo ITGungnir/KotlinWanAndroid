@@ -44,10 +44,10 @@ class MainActivity : AppCompatActivity() {
                 TabItem("项目", ICON_PROJECT_NORMAL, ICON_PROJECT_SELECT) to ProjectFragment(),
                 TabItem("我的", ICON_MINE_NORMAL, ICON_MINE_SELECT) to MineFragment()
             ),
-            itemLayoutId = R.layout.listitem_bottom_tab,
+            itemLayoutId = R.layout.list_item_main_bottom_tab,
             render = { view, data, selected ->
-                val icon = view.findViewById<IconFontView>(R.id.icon)
-                val title = view.findViewById<TextView>(R.id.title)
+                val icon = view.findViewById<IconFontView>(R.id.iconView)
+                val title = view.findViewById<TextView>(R.id.titleView)
                 title.text = data.title
                 when (selected) {
                     true -> {

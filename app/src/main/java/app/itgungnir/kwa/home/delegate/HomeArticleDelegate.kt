@@ -13,12 +13,12 @@ import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
 import app.itgungnir.kwa.tree.TreeState
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.listitem_home.view.*
+import kotlinx.android.synthetic.main.list_item_home_article.view.*
 import my.itgungnir.apt.router.api.Router
 
 class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_home
+    override fun layoutId(): Int = R.layout.list_item_home_article
 
     override fun onCreateVH(container: View) {
     }
@@ -43,9 +43,9 @@ class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
                     .go()
             }
 
-            author.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "$ICON_AUTHOR ${item.author}"
 
-            category.apply {
+            categoryView.apply {
                 text = item.category
                 onAntiShakeClick {
                     val categories = item.category.split(" / ")
@@ -66,11 +66,11 @@ class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
                 }
             }
 
-            title.text = item.title
+            titleView.text = item.title
 
-            date.text = item.date
+            dateView.text = item.date
 
-            topIcon.visibility = when (item.isTop) {
+            topView.visibility = when (item.isTop) {
                 true -> View.VISIBLE
                 else -> View.GONE
             }

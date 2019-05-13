@@ -9,12 +9,12 @@ import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import kotlinx.android.synthetic.main.listitem_hierarchy_child.view.*
+import kotlinx.android.synthetic.main.list_item_hierarchy_article.view.*
 import my.itgungnir.apt.router.api.Router
 
 class HierarchyChildDelegate : BaseDelegate<HierarchyChildState.HierarchyArticleVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_hierarchy_child
+    override fun layoutId(): Int = R.layout.list_item_hierarchy_article
 
     override fun onCreateVH(container: View) {}
 
@@ -38,11 +38,11 @@ class HierarchyChildDelegate : BaseDelegate<HierarchyChildState.HierarchyArticle
                     .go()
             }
 
-            author.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "$ICON_AUTHOR ${item.author}"
 
-            title.text = item.title
+            titleView.text = item.title
 
-            date.text = item.date
+            dateView.text = item.date
         }
     }
 }

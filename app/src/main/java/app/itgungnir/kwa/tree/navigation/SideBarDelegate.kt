@@ -9,14 +9,14 @@ import app.itgungnir.kwa.common.COLOR_PURE
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import kotlinx.android.synthetic.main.listitem_side_bar.view.*
+import kotlinx.android.synthetic.main.list_item_navigation_left.view.*
 import org.jetbrains.anko.backgroundColor
 
 class SideBarDelegate(
     private val tabClickCallback: (Int) -> Unit
 ) : BaseDelegate<NavigationState.NavTabVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_side_bar
+    override fun layoutId(): Int = R.layout.list_item_navigation_left
 
     override fun onCreateVH(container: View) {
     }
@@ -34,7 +34,7 @@ class SideBarDelegate(
                 tabClickCallback.invoke(position)
             }
 
-            name.apply {
+            nameView.apply {
                 text = item.name
                 backgroundColor = if (payloads.isNullOrEmpty()) {
                     when (item.selected) {

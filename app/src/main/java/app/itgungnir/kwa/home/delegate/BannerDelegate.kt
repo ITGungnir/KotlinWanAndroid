@@ -10,22 +10,22 @@ import app.itgungnir.kwa.common.load
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
-import kotlinx.android.synthetic.main.listitem_banner.view.*
+import kotlinx.android.synthetic.main.list_item_home_banner.view.*
 import my.itgungnir.apt.router.api.Router
 
 class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_banner
+    override fun layoutId(): Int = R.layout.list_item_home_banner
 
     @SuppressLint("SetTextI18n")
     override fun onCreateVH(container: View) {
 
         container.apply {
-            banner.bind<HomeState.BannerVO.BannerItem>(
-                layoutId = R.layout.listitem_banner_child,
+            bannerView.bind<HomeState.BannerVO.BannerItem>(
+                layoutId = R.layout.list_item_home_banner_child,
                 items = listOf(),
                 render = { _, view, data ->
-                    view.findViewById<ImageView>(R.id.image).load(data.url)
+                    view.findViewById<ImageView>(R.id.imageView).load(data.url)
                 },
                 onClick = { _, data ->
                     Router.instance.with(context)
@@ -35,8 +35,8 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
                         .go()
                 },
                 onPageChange = { position, totalCount, data ->
-                    title.text = data.title
-                    index.text = "${position + 1}/$totalCount"
+                    titleView.text = data.title
+                    indexView.text = "${position + 1}/$totalCount"
                 }
             )
         }
@@ -50,7 +50,7 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
     ) {
 
         holder.render(item) {
-            banner.update(item.items)
+            bannerView.update(item.items)
         }
     }
 }

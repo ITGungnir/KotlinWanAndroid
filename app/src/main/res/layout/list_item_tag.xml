@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/tag"
+        android:id="@+id/tagView"
         style="@style/Widget.MaterialComponents.Chip.Action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -9,12 +9,12 @@ import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import kotlinx.android.synthetic.main.listitem_search_result.view.*
+import kotlinx.android.synthetic.main.list_item_search_article.view.*
 import my.itgungnir.apt.router.api.Router
 
 class SearchResultDelegate : BaseDelegate<SearchResultState.SearchResultArticleVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_search_result
+    override fun layoutId(): Int = R.layout.list_item_search_article
 
     override fun onCreateVH(container: View) {
     }
@@ -39,11 +39,11 @@ class SearchResultDelegate : BaseDelegate<SearchResultState.SearchResultArticleV
                     .go()
             }
 
-            author.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "$ICON_AUTHOR ${item.author}"
 
-            title.text = item.title
+            titleView.text = item.title
 
-            date.text = item.date
+            dateView.text = item.date
         }
     }
 }

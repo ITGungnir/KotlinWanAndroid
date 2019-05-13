@@ -8,20 +8,20 @@ import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import com.google.android.material.chip.Chip
-import kotlinx.android.synthetic.main.listitem_navigation.view.*
+import kotlinx.android.synthetic.main.list_item_navigation_right.view.*
 import my.itgungnir.apt.router.api.Router
 
 class NavigationDelegate : BaseDelegate<NavigationState.NavigationVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_navigation
+    override fun layoutId(): Int = R.layout.list_item_navigation_right
 
     override fun onCreateVH(container: View) {
 
         container.apply {
-            children.bind<NavigationState.NavigationVO.NavTagVO>(
-                layoutId = R.layout.listitem_tree_tag,
+            childrenView.bind<NavigationState.NavigationVO.NavTagVO>(
+                layoutId = R.layout.list_item_tag,
                 render = { view, data ->
-                    view.findViewById<Chip>(R.id.tag).apply {
+                    view.findViewById<Chip>(R.id.tagView).apply {
                         text = data.name
                         onAntiShakeClick {
                             Router.instance.with(context)
@@ -47,9 +47,9 @@ class NavigationDelegate : BaseDelegate<NavigationState.NavigationVO>() {
 
         holder.render(item) {
 
-            title.text = item.title
+            titleView.text = item.title
 
-            children.refresh(item.children)
+            childrenView.refresh(item.children)
         }
     }
 }

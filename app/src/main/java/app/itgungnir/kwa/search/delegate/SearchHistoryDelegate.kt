@@ -16,23 +16,22 @@ import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.common.widget.flex.FlexView
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.search.SearchState
-import kotlinx.android.synthetic.main.listitem_search_history.view.*
-import org.jetbrains.anko.backgroundColor
+import kotlinx.android.synthetic.main.list_item_search_history.view.*
 import org.jetbrains.anko.textColor
 
 class SearchHistoryDelegate(
     private val keyClickCallback: (String) -> Unit
 ) : BaseDelegate<SearchState.SearchHistoryVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_search_history
+    override fun layoutId(): Int = R.layout.list_item_search_history
 
     override fun onCreateVH(container: View) {
         container.apply {
             // Clear Button
-            clear.onAntiShakeClick {
+            clearView.onAntiShakeClick {
                 AppRedux.instance.dispatch(ClearSearchHistory)
                 statusView.empty { }
-                clear.apply {
+                clearView.apply {
                     isEnabled = false
                     textColor = Color.parseColor(COLOR_DIVIDER)
                 }
@@ -40,11 +39,10 @@ class SearchHistoryDelegate(
             // Status View
             statusView.addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_flex) {
                 it.findViewById<FlexView>(R.id.children).bind<SearchState.SearchTagVO>(
-                    layoutId = R.layout.listitem_search_text,
+                    layoutId = R.layout.list_item_tag,
                     render = { view, data ->
-                        view.findViewById<TextView>(R.id.name).apply {
+                        view.findViewById<TextView>(R.id.tagView).apply {
                             text = data.name
-                            backgroundColor = Color.parseColor(COLOR_DIVIDER)
                             textColor = Color.parseColor(COLOR_TEXT1)
                             onAntiShakeClick {
                                 keyClickCallback.invoke(data.name)
@@ -69,7 +67,7 @@ class SearchHistoryDelegate(
 
             if (item.data.isEmpty()) {
                 statusView.empty { }
-                clear.apply {
+                clearView.apply {
                     isEnabled = false
                     textColor = Color.parseColor(COLOR_DIVIDER)
                 }
@@ -77,7 +75,7 @@ class SearchHistoryDelegate(
                 statusView.succeed {
                     (it as FlexView).refresh(item.data)
                 }
-                clear.apply {
+                clearView.apply {
                     isEnabled = true
                     textColor = Color.parseColor(COLOR_ACCENT)
                 }

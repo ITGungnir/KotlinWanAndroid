@@ -28,9 +28,9 @@ class ToolsDialog : FullScreenDialog() {
             .back { this.dismiss() }
 
         children.bind<ToolsState.ToolTagVO>(
-            layoutId = R.layout.listitem_tree_tag,
+            layoutId = R.layout.list_item_tag,
             render = { view, data ->
-                view.findViewById<Chip>(R.id.tag).apply {
+                view.findViewById<Chip>(R.id.tagView).apply {
                     text = data.name
                     onAntiShakeClick {
                         Router.instance.with(context)

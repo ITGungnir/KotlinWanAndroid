@@ -9,20 +9,20 @@ import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.listitem_tree.view.*
+import kotlinx.android.synthetic.main.list_item_tree.view.*
 import my.itgungnir.apt.router.api.Router
 
 class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
 
-    override fun layoutId(): Int = R.layout.listitem_tree
+    override fun layoutId(): Int = R.layout.list_item_tree
 
     override fun onCreateVH(container: View) {
         // Flex Layout
         container.apply {
-            children.bind<TreeState.TreeVO.TreeTagVO>(
-                layoutId = R.layout.listitem_tree_child,
+            childrenView.bind<TreeState.TreeVO.TreeTagVO>(
+                layoutId = R.layout.list_item_tree_child,
                 render = { view, data ->
-                    view.findViewById<TextView>(R.id.name).text = data.name
+                    view.findViewById<TextView>(R.id.nameView).text = data.name
                 }
             )
         }
@@ -45,9 +45,9 @@ class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
                     .go()
             }
 
-            title.text = item.name
+            titleView.text = item.name
 
-            children.refresh(item.children)
+            childrenView.refresh(item.children)
         }
     }
 }

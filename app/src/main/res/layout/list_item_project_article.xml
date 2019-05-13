@@ -16,7 +16,7 @@
         android:background="?android:attr/selectableItemBackground">
 
         <ImageView
-            android:id="@+id/cover"
+            android:id="@+id/coverView"
             android:layout_width="100dp"
             android:layout_height="160dp"
             android:layout_marginStart="10dp"
@@ -28,19 +28,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <app.itgungnir.kwa.common.widget.icon_font.IconFontView
-            android:id="@+id/author"
+            android:id="@+id/authorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:textColor="@color/clr_text_level_2"
             android:textSize="@dimen/sp_text_size_4"
-            app:layout_constraintStart_toEndOf="@+id/cover"
+            app:layout_constraintStart_toEndOf="@+id/coverView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="TextView" />
 
         <TextView
-            android:id="@+id/repository"
+            android:id="@+id/repositoryView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -52,7 +52,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/titleView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -64,12 +64,12 @@
             android:textSize="@dimen/sp_text_size_3"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cover"
-            app:layout_constraintTop_toBottomOf="@+id/repository"
+            app:layout_constraintStart_toEndOf="@+id/coverView"
+            app:layout_constraintTop_toBottomOf="@+id/repositoryView"
             tools:text="TextView" />
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/dateView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -81,7 +81,7 @@
             tools:text="TextView" />
 
         <TextView
-            android:id="@+id/desc"
+            android:id="@+id/descView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="10dp"
@@ -93,10 +93,10 @@
             android:maxLines="3"
             android:textColor="@color/clr_text_level_2"
             android:textSize="@dimen/sp_text_size_5"
-            app:layout_constraintBottom_toTopOf="@+id/date"
+            app:layout_constraintBottom_toTopOf="@+id/dateView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cover"
-            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintStart_toEndOf="@+id/coverView"
+            app:layout_constraintTop_toBottomOf="@+id/titleView"
             tools:text="TextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
