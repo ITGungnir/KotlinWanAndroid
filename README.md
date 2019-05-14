@@ -14,6 +14,7 @@ WanAndroid client programmed with Kotlin.
 ## ToFix
 * HeadBarStyle_Light显示问题
 * SearchBar提供动态修改hint的功能
+* 文章title样式展示
 * 导航页面交互问题
 * 模块化
 
