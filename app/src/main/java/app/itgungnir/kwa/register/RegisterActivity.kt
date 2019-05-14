@@ -3,10 +3,7 @@ package app.itgungnir.kwa.register
 import android.annotation.SuppressLint
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.RegisterActivity
-import app.itgungnir.kwa.common.hideSoftInput
-import app.itgungnir.kwa.common.onAntiShakeClick
-import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.*
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_register.*
@@ -30,9 +27,7 @@ class RegisterActivity : BaseActivity() {
     override fun initComponent() {
 
         headBar.title("用户注册")
-            .back { finish() }
-
-        confirmPwdInput.hint("请再次输入密码")
+            .back(ICON_BACK) { finish() }
 
         Observable.combineLatest(
             arrayOf(

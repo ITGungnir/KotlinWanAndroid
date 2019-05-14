@@ -9,11 +9,11 @@
         android:layout_height="match_parent"
         android:background="@color/colorPure">
 
-        <app.itgungnir.kwa.common.widget.head_bar.HeadBar
+        <my.itgungnir.ui.head_bar.HeadBar
             android:id="@+id/headBar"
+            style="@style/HeadBarStyle_Light"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:abnormal="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

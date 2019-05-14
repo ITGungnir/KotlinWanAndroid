@@ -30,7 +30,7 @@ class LoginActivity : BaseActivity() {
     override fun initComponent() {
 
         headBar.title("用户登录")
-            .back { finish() }
+            .back(ICON_BACK) { finish() }
 
         Observable.combineLatest(
             arrayOf(
@@ -72,7 +72,8 @@ class LoginActivity : BaseActivity() {
             .observe(this, Observer { userInfo ->
                 userInfo?.a?.let {
                     AppRedux.instance.dispatch(
-                        LocalizeUserInfo(it.collectIds - -1, it.userName))
+                        LocalizeUserInfo(it.collectIds - -1, it.userName)
+                    )
                     login.ready("登录")
                     finish()
                 }

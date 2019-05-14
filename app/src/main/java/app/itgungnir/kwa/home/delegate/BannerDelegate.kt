@@ -7,11 +7,11 @@ import android.widget.ImageView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.load
-import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
 import kotlinx.android.synthetic.main.list_item_home_banner.view.*
 import my.itgungnir.grouter.api.Router
+import my.itgungnir.ui.easy_adapter.BaseDelegate
+import my.itgungnir.ui.easy_adapter.EasyAdapter
 
 class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 

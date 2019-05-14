@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <app.itgungnir.kwa.common.widget.head_bar.HeadBar
+    <my.itgungnir.ui.head_bar.HeadBar
         android:id="@+id/headBar"
+        style="@style/HeadBarStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <app.itgungnir.kwa.common.widget.browser.WebBrowser
+    <my.itgungnir.ui.browser.WebBrowser
         android:id="@+id/browser"
         android:layout_width="match_parent"
         android:layout_height="0dp"

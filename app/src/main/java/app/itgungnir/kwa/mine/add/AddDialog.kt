@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
@@ -38,11 +39,7 @@ class AddDialog : DialogFragment() {
     private fun initComponent() {
 
         headBar.title("新增站外文章")
-            .back { this.dismiss() }
-
-        titleInput.hint("请输入文章标题")
-
-        linkInput.hint("请输入文章链接")
+            .back(ICON_BACK) { this.dismiss() }
 
         Observable.combineLatest(
             arrayOf(

@@ -12,6 +12,8 @@ WanAndroid client programmed with Kotlin.
 * 设置页面：夜间模式
 
 ## ToFix
+* HeadBarStyle_Light显示问题
+* SearchBar提供动态修改hint的功能
 * 导航页面交互问题
 * 模块化
 

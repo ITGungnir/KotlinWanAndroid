@@ -16,6 +16,7 @@ const val HTTP_TIME_OUT = 5L
 const val HTTP_LOG_TAG = "kotlin-wan-android"
 
 // 图标
+const val ICON_BACK = "\ue720"
 const val ICON_HOME_NORMAL = "\ue703"
 const val ICON_HOME_SELECT = "\ue702"
 const val ICON_TREE_NORMAL = "\ue6ef"

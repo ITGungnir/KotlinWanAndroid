@@ -2,18 +2,19 @@ package app.itgungnir.kwa.search
 
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.SearchResultActivity
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AddSearchHistory
 import app.itgungnir.kwa.common.redux.AppRedux
-import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.search.delegate.SearchHistoryDelegate
 import app.itgungnir.kwa.search.delegate.SearchHotKeyDelegate
 import kotlinx.android.synthetic.main.dialog_search.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
+import my.itgungnir.ui.dialog.FullScreenDialog
+import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.easy_adapter.bind
 
 class SearchDialog : FullScreenDialog() {
 
@@ -29,14 +30,13 @@ class SearchDialog : FullScreenDialog() {
     override fun layoutId(): Int = R.layout.dialog_search
 
     override fun initComponent() {
-        searchBar.back { this.dismiss() }
+        searchBar.back(ICON_BACK) { this.dismiss() }
             .doOnSearch {
                 if (it.isNotBlank()) {
                     AppRedux.instance.dispatch(AddSearchHistory(it))
                     navigate(it)
                 }
             }
-            .hint("发现更多干货")
 
         listAdapter = list.bind()
             .map(isForViewType = { data -> data is SearchState.SearchHotKeyVO }, delegate = SearchHotKeyDelegate {

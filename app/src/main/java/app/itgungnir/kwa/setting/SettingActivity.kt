@@ -2,6 +2,7 @@ package app.itgungnir.kwa.setting
 
 import android.view.View
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.SettingActivity
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
@@ -18,7 +19,7 @@ class SettingActivity : BaseActivity() {
     override fun initComponent() {
 
         headBar.title("设置")
-            .back { finish() }
+            .back(ICON_BACK) { finish() }
 
         logout.apply {
             when (AppRedux.instance.isUserIn()) {

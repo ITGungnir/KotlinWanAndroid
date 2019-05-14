@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.project.child
 
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import my.itgungnir.rxmvvm.core.mvvm.State
+import my.itgungnir.ui.easy_adapter.ListItem
 
 data class ProjectChildState(
     val refreshing: Boolean = false,

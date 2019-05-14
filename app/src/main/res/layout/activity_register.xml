@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <app.itgungnir.kwa.common.widget.head_bar.HeadBar
+    <my.itgungnir.ui.head_bar.HeadBar
         android:id="@+id/headBar"
+        style="@style/HeadBarStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
-    <app.itgungnir.kwa.common.widget.input.UserNameInput
+    <my.itgungnir.ui.input.TextInput
         android:id="@+id/userNameInput"
+        style="@style/TextInputStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        app:ti_hint="@string/str_username_hint" />
 
-    <app.itgungnir.kwa.common.widget.input.PasswordInput
+    <my.itgungnir.ui.input.PasswordInput
         android:id="@+id/passwordInput"
+        style="@style/PasswordInputStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        app:pi_hint="@string/str_password_hint" />
 
-    <app.itgungnir.kwa.common.widget.input.PasswordInput
+    <my.itgungnir.ui.input.PasswordInput
         android:id="@+id/confirmPwdInput"
+        style="@style/PasswordInputStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        app:pi_hint="@string/str_confirm_pwd_hint" />
 
-    <app.itgungnir.kwa.common.widget.input.ProgressButton
+    <my.itgungnir.ui.input.ProgressButton
         android:id="@+id/register"
+        style="@style/ProgressButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginStart="20dp"

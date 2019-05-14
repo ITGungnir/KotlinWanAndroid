@@ -5,18 +5,19 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.SearchResultActivity
 import app.itgungnir.kwa.common.popToast
-import app.itgungnir.kwa.common.widget.easy_adapter.Differ
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
-import app.itgungnir.kwa.common.widget.easy_adapter.bind
-import app.itgungnir.kwa.common.widget.list_footer.ListFooter
-import app.itgungnir.kwa.common.widget.status_view.StatusView
 import kotlinx.android.synthetic.main.activity_search_result.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import my.itgungnir.ui.easy_adapter.Differ
+import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.easy_adapter.ListItem
+import my.itgungnir.ui.easy_adapter.bind
+import my.itgungnir.ui.list_footer.ListFooter
+import my.itgungnir.ui.status_view.StatusView
 
 @Route(SearchResultActivity)
 class SearchResultActivity : BaseActivity() {
@@ -39,7 +40,7 @@ class SearchResultActivity : BaseActivity() {
         val key = intent.extras?.getString("key") ?: ""
 
         headBar.title("\"$key\"的搜索结果")
-            .back { finish() }
+            .back(ICON_BACK) { finish() }
 
         searchResultPage.apply {
             // Refresh Layout

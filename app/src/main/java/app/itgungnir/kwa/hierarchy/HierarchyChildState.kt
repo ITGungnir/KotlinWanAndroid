@@ -1,7 +1,7 @@
 package app.itgungnir.kwa.hierarchy
 
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import my.itgungnir.rxmvvm.core.mvvm.State
+import my.itgungnir.ui.easy_adapter.ListItem
 
 data class HierarchyChildState(
     val refreshing: Boolean = false,

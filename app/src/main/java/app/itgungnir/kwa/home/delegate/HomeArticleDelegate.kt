@@ -8,13 +8,13 @@ import app.itgungnir.kwa.common.HierarchyActivity
 import app.itgungnir.kwa.common.ICON_AUTHOR
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.onAntiShakeClick
-import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
 import app.itgungnir.kwa.tree.TreeState
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.list_item_home_article.view.*
 import my.itgungnir.grouter.api.Router
+import my.itgungnir.ui.easy_adapter.BaseDelegate
+import my.itgungnir.ui.easy_adapter.EasyAdapter
 
 class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
 

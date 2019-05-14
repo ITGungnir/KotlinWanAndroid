@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground">
 
-        <app.itgungnir.kwa.common.widget.icon_font.IconFontView
+        <my.itgungnir.ui.icon_font.IconFontView
             android:id="@+id/authorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
             app:layout_constraintTop_toBottomOf="@+id/titleView"
             tools:text="TextView" />
 
-        <app.itgungnir.kwa.common.widget.icon_font.IconFontView
+        <my.itgungnir.ui.icon_font.IconFontView
             android:id="@+id/topView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

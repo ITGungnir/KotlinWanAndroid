@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,10 +13,12 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
-        <app.itgungnir.kwa.common.widget.search_bar.SearchBar
+        <my.itgungnir.ui.search_bar.SearchBar
             android:id="@+id/searchBar"
+            style="@style/SearchBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+            android:layout_height="?attr/actionBarSize"
+            app:sb_hint="@string/str_search_hint" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
@@ -23,5 +26,4 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
-
 </FrameLayout>

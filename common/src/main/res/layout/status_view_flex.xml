@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<app.itgungnir.kwa.common.widget.flex.FlexView xmlns:android="http://schemas.android.com/apk/res/android"
+<my.itgungnir.ui.flex.FlexView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/children"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />

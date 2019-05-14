@@ -6,7 +6,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.*
-import app.itgungnir.kwa.common.widget.icon_font.IconFontView
 import app.itgungnir.kwa.home.HomeFragment
 import app.itgungnir.kwa.mine.MineFragment
 import app.itgungnir.kwa.project.ProjectFragment
@@ -14,6 +13,7 @@ import app.itgungnir.kwa.tree.TreeFragment
 import app.itgungnir.kwa.weixin.WeixinFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.grouter.annotation.Route
+import my.itgungnir.ui.icon_font.IconFontView
 import org.jetbrains.anko.textColor
 import org.joda.time.DateTime
 

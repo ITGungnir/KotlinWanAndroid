@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.HierarchyActivity
+import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.tree.TreeState
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_hierarchy.*
@@ -20,7 +21,7 @@ class HierarchyActivity : BaseActivity() {
         val vo = Gson().fromJson(json, TreeState.TreeVO::class.java)
 
         headBar.title(vo.name)
-            .back { finish() }
+            .back(ICON_BACK) { finish() }
 
         tabLayout.setupWithViewPager(viewPager)
 

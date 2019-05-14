@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import app.itgungnir.kwa.common.http.HttpClient
 import app.itgungnir.kwa.common.http.handleResult
 import app.itgungnir.kwa.common.http.io2Main
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
 import io.reactivex.Single
 import io.reactivex.functions.Function3
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
+import my.itgungnir.ui.easy_adapter.ListItem
 
 @SuppressLint("CheckResult")
 class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {

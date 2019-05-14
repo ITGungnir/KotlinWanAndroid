@@ -5,14 +5,15 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
+import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.popToast
-import app.itgungnir.kwa.common.widget.dialog.FullScreenDialog
-import app.itgungnir.kwa.common.widget.easy_adapter.Differ
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
-import app.itgungnir.kwa.common.widget.easy_adapter.bind
-import app.itgungnir.kwa.common.widget.easy_adapter.update
 import kotlinx.android.synthetic.main.dialog_navigation.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
+import my.itgungnir.ui.dialog.FullScreenDialog
+import my.itgungnir.ui.easy_adapter.Differ
+import my.itgungnir.ui.easy_adapter.ListItem
+import my.itgungnir.ui.easy_adapter.bind
+import my.itgungnir.ui.easy_adapter.update
 
 class NavigationDialog : FullScreenDialog() {
 
@@ -32,7 +33,7 @@ class NavigationDialog : FullScreenDialog() {
     override fun initComponent() {
 
         headBar.title("导航")
-            .back { this.dismiss() }
+            .back(ICON_BACK) { this.dismiss() }
 
         sideBar.bind(
             delegate = SideBarDelegate { position ->

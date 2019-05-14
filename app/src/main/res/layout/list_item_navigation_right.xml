@@ -14,7 +14,7 @@
         android:textSize="@dimen/sp_text_size_3"
         tools:ignore="SpUsage" />
 
-    <app.itgungnir.kwa.common.widget.flex.ScrollableFlexView
+    <my.itgungnir.ui.flex.ScrollableFlexView
         android:id="@+id/childrenView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

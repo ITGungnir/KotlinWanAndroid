@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     tools:context="app.itgungnir.kwa.main.MainActivity">
 
-    <app.itgungnir.kwa.common.widget.bottom_tab.BottomTab
+    <my.itgungnir.ui.bottom_tab.BottomTab
         android:id="@+id/bottomTab"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPure"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

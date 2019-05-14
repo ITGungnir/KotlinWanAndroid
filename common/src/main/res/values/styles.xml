@@ -4,6 +4,75 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/clr_background</item>
+    </style>
+
+    <style name="HeadBarStyle">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="hb_showDivider">false</item>
+        <item name="hb_textColor">@color/colorPure</item>
+    </style>
+
+    <style name="HeadBarStyle_Light">
+        <item name="android:background">@color/colorPure</item>
+        <item name="hb_showDivider">true</item>
+        <item name="hb_dividerColor">@color/clr_divider</item>
+        <item name="hb_textColor">@color/clr_text_level_1</item>
+    </style>
+
+    <style name="TabLayoutStyle">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="tabIndicatorColor">@color/colorPure</item>
+        <item name="tabIndicatorHeight">5dp</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabSelectedTextColor">@color/colorPure</item>
+        <item name="tabTextColor">@color/clr_text_level_3</item>
+    </style>
+
+    <style name="TextInputStyle">
+        <item name="ti_dividerColor">@color/clr_divider</item>
+        <item name="ti_hintColor">@color/clr_divider</item>
+        <item name="ti_iconColor">@color/clr_text_level_2</item>
+        <item name="ti_iconFont">@string/str_icon_clear_text</item>
+        <item name="ti_textColor">@color/clr_text_level_1</item>
+    </style>
+
+    <style name="PasswordInputStyle">
+        <item name="pi_dividerColor">@color/clr_divider</item>
+        <item name="pi_hideIcon">@string/str_icon_hide_pwd</item>
+        <item name="pi_hintColor">@color/clr_divider</item>
+        <item name="pi_iconColor">@color/clr_text_level_2</item>
+        <item name="pi_showIcon">@string/str_icon_show_pwd</item>
+        <item name="pi_textColor">@color/clr_text_level_1</item>
+    </style>
+
+    <style name="ProgressButtonStyle">
+        <item name="pb_cornerRadius">3dp</item>
+        <item name="pb_disabledColor">@color/clr_divider</item>
+        <item name="pb_disabledTextColor">@color/clr_background</item>
+        <item name="pb_enabledColor">@color/colorPrimary</item>
+        <item name="pb_enabledTextColor">@color/colorPure</item>
+    </style>
+
+    <style name="CommonPageStyle">
+        <item name="cp_fabBackColor">@color/colorPrimary</item>
+        <item name="cp_fabRippleColor">@color/clr_text_level_3</item>
+    </style>
+
+    <style name="ShadowInputStyle">
+        <item name="android:background">@color/clr_divider</item>
+        <item name="si_iconFont">@string/str_icon_clear_text</item>
+        <item name="si_iconColor">@color/clr_text_level_2</item>
+        <item name="si_hintColor">@color/clr_text_level_3</item>
+        <item name="si_textColor">@color/clr_text_level_1</item>
+    </style>
+
+    <style name="SearchBarStyle">
+        <item name="sb_btnColor">@color/colorAccent</item>
+        <item name="sb_dividerColor">@color/clr_divider</item>
+        <item name="sb_hintColor">@color/clr_divider</item>
+        <item name="sb_iconFont">@string/str_icon_search</item>
+        <item name="sb_textColor">@color/clr_text_level_1</item>
     </style>
 
 </resources>

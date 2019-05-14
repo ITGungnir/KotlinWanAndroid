@@ -7,18 +7,18 @@ import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.ICON_SEARCH
 import app.itgungnir.kwa.common.popToast
-import app.itgungnir.kwa.common.widget.easy_adapter.Differ
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.common.widget.easy_adapter.ListItem
-import app.itgungnir.kwa.common.widget.easy_adapter.bind
-import app.itgungnir.kwa.common.widget.list_footer.ListFooter
-import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.home.delegate.BannerDelegate
 import app.itgungnir.kwa.home.delegate.HomeArticleDelegate
 import app.itgungnir.kwa.search.SearchDialog
 import kotlinx.android.synthetic.main.fragment_home.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
+import my.itgungnir.ui.easy_adapter.Differ
+import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.easy_adapter.ListItem
+import my.itgungnir.ui.easy_adapter.bind
+import my.itgungnir.ui.list_footer.ListFooter
+import my.itgungnir.ui.status_view.StatusView
 
 class HomeFragment : BaseFragment() {
 

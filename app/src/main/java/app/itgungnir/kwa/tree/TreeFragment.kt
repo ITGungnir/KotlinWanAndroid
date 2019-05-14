@@ -8,14 +8,14 @@ import app.itgungnir.kwa.common.ICON_NAVIGATION
 import app.itgungnir.kwa.common.ICON_TOOLS
 import app.itgungnir.kwa.common.dp2px
 import app.itgungnir.kwa.common.popToast
-import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
-import app.itgungnir.kwa.common.widget.easy_adapter.bind
-import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.tree.navigation.NavigationDialog
 import app.itgungnir.kwa.tree.tools.ToolsDialog
 import kotlinx.android.synthetic.main.fragment_tree.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.easy_adapter.bind
+import my.itgungnir.ui.status_view.StatusView
 import org.jetbrains.anko.bottomPadding
 
 class TreeFragment : BaseFragment() {

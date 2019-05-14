@@ -35,7 +35,7 @@ class WebActivity : BaseActivity() {
         val url = intent.getStringExtra("url").replace("http://", "https://")
 
         headBar.title(title)
-            .back { finish() }
+            .back(ICON_BACK) { finish() }
 
         if (id > 0 && originId >= 0) {
             headBar.addToolButton(ICON_UNCOLLECT) {

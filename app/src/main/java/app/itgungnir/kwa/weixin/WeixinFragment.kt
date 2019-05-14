@@ -78,7 +78,7 @@ class WeixinFragment : BaseFragment() {
         viewModel.pick(WeixinState::currTab)
             .observe(this, Observer { currTab ->
                 currTab?.a?.let {
-                    searchBar.hint("在${it.name}的公众号中搜索")
+                    // TODO searchBar.hint("在${it.name}的公众号中搜索")
                 }
             })
 
