@@ -14,7 +14,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import kotlinx.android.synthetic.main.activity_search_result.*
-import my.itgungnir.apt.router.annotation.Route
+import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 

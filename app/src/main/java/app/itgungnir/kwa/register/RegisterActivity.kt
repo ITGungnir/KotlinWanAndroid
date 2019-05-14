@@ -10,7 +10,7 @@ import app.itgungnir.kwa.common.popToast
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_register.*
-import my.itgungnir.apt.router.annotation.Route
+import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 

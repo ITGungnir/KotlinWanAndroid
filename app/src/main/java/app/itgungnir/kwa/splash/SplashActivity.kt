@@ -8,8 +8,8 @@ import app.itgungnir.kwa.common.MainActivity
 import app.itgungnir.kwa.common.SplashActivity
 import app.itgungnir.kwa.common.http.io2Main
 import io.reactivex.Single
-import my.itgungnir.apt.router.annotation.Route
-import my.itgungnir.apt.router.api.Router
+import my.itgungnir.grouter.annotation.Route
+import my.itgungnir.grouter.api.Router
 import org.jetbrains.anko.setContentView
 import java.util.concurrent.TimeUnit
 

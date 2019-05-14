@@ -13,7 +13,7 @@ import app.itgungnir.kwa.project.ProjectFragment
 import app.itgungnir.kwa.tree.TreeFragment
 import app.itgungnir.kwa.weixin.WeixinFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import my.itgungnir.apt.router.annotation.Route
+import my.itgungnir.grouter.annotation.Route
 import org.jetbrains.anko.textColor
 import org.joda.time.DateTime
 

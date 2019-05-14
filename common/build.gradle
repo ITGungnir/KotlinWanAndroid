@@ -47,12 +47,13 @@ dependencies {
     // Widgets
     api "com.google.android:flexbox:$flex_version"
     // Tools
+    api "com.github.ITGungnir:UIKit:$uikit_version"
     api "com.github.ITGungnir:RxMVVM:$rxmvvm_version"
     api "net.danlew:android.joda:$joda_version"
     api "com.google.code.gson:gson:$gson_version"
     api "com.orhanobut:logger:$logger_version"
     api "androidx.multidex:multidex:$dex_version"
-    api "com.github.ITGungnir.APTRouter:router_api:$router_version"
+    api "com.github.ITGungnir.GRouter:router_api:$router_version"
     debugApi "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
     debugApi "com.squareup.leakcanary:leakcanary-support-fragment:$leak_canary_version"
     releaseApi "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"

@@ -6,8 +6,8 @@ import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import kotlinx.android.synthetic.main.activity_web.*
-import my.itgungnir.apt.router.annotation.Route
-import my.itgungnir.apt.router.api.Router
+import my.itgungnir.grouter.annotation.Route
+import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import org.jetbrains.anko.share

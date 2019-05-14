@@ -4,7 +4,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.github.ITGungnir.APTRouter:router_plugin:$router_version"
+        classpath "com.github.ITGungnir.GRouter:router_plugin:$router_version"
     }
 }
 

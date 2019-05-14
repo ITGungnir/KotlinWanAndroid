@@ -11,7 +11,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import app.itgungnir.kwa.home.HomeState
 import kotlinx.android.synthetic.main.list_item_home_banner.view.*
-import my.itgungnir.apt.router.api.Router
+import my.itgungnir.grouter.api.Router
 
 class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 

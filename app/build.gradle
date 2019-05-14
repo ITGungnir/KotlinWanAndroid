@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'apt-router'
+apply plugin: 'grouter'
 
 android {
     compileSdkVersion target_sdk_version
@@ -31,5 +31,5 @@ dependencies {
     // Project
     implementation project(':common')
     // Router
-    kapt "com.github.ITGungnir.APTRouter:router_compiler:$router_version"
+    kapt "com.github.ITGungnir.GRouter:router_compiler:$router_version"
 }

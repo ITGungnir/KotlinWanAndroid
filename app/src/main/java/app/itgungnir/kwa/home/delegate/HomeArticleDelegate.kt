@@ -14,7 +14,7 @@ import app.itgungnir.kwa.home.HomeState
 import app.itgungnir.kwa.tree.TreeState
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.list_item_home_article.view.*
-import my.itgungnir.apt.router.api.Router
+import my.itgungnir.grouter.api.Router
 
 class HomeArticleDelegate : BaseDelegate<HomeState.HomeArticleVO>() {
 

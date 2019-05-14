@@ -7,7 +7,7 @@ import app.itgungnir.kwa.common.HierarchyActivity
 import app.itgungnir.kwa.tree.TreeState
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_hierarchy.*
-import my.itgungnir.apt.router.annotation.Route
+import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 
 @Route(HierarchyActivity)

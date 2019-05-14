@@ -7,7 +7,7 @@ import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.ClearUserInfo
 import kotlinx.android.synthetic.main.activity_setting.*
-import my.itgungnir.apt.router.annotation.Route
+import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 
 @Route(SettingActivity)

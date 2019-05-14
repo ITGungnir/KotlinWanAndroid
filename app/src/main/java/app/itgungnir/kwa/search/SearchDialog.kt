@@ -12,7 +12,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.bind
 import app.itgungnir.kwa.search.delegate.SearchHistoryDelegate
 import app.itgungnir.kwa.search.delegate.SearchHotKeyDelegate
 import kotlinx.android.synthetic.main.dialog_search.*
-import my.itgungnir.apt.router.api.Router
+import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 
 class SearchDialog : FullScreenDialog() {

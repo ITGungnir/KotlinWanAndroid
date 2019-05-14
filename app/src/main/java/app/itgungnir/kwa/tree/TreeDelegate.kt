@@ -10,7 +10,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.list_item_tree.view.*
-import my.itgungnir.apt.router.api.Router
+import my.itgungnir.grouter.api.Router
 
 class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
 

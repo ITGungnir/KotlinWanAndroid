@@ -18,7 +18,7 @@ import app.itgungnir.kwa.common.widget.list_footer.ListFooter
 import app.itgungnir.kwa.common.widget.status_view.StatusView
 import app.itgungnir.kwa.mine.add.AddDialog
 import kotlinx.android.synthetic.main.fragment_mine.*
-import my.itgungnir.apt.router.api.Router
+import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 

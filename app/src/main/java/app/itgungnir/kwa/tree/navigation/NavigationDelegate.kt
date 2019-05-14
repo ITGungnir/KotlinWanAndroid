@@ -9,7 +9,7 @@ import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.list_item_navigation_right.view.*
-import my.itgungnir.apt.router.api.Router
+import my.itgungnir.grouter.api.Router
 
 class NavigationDelegate : BaseDelegate<NavigationState.NavigationVO>() {
 

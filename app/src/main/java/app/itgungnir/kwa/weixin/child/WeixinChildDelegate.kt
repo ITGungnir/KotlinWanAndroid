@@ -11,7 +11,7 @@ import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.widget.easy_adapter.BaseDelegate
 import app.itgungnir.kwa.common.widget.easy_adapter.EasyAdapter
 import kotlinx.android.synthetic.main.list_item_weixin_article.view.*
-import my.itgungnir.apt.router.api.Router
+import my.itgungnir.grouter.api.Router
 
 class WeixinChildDelegate : BaseDelegate<WeixinChildState.WeixinArticleVO>() {
 
