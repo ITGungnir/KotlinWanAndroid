@@ -1,3 +1,5 @@
 include ':app'
 
+include ':app_main', ':app_support'
+
 include ':common'

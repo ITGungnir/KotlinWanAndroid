@@ -1,18 +1,15 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'grouter'
 
 android {
     compileSdkVersion target_sdk_version
     defaultConfig {
-        applicationId "app.itgungnir.kwa"
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
         versionCode version_code
         versionName version_name
-        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -20,18 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     // Project
-    implementation project(':app_main')
-    implementation project(':app_support')
-    implementation project(':common')
+    compileOnly project(':common')
     // Router
     kapt "com.github.ITGungnir.GRouter:router_compiler:$router_version"
 }
