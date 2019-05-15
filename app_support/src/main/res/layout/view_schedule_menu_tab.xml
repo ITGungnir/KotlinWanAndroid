@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPure"
+    tools:ignore="SpUsage">
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="@dimen/ui_kit_dp_divider_height"
+        android:layout_height="20dp"
+        android:background="@color/clr_divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="@dimen/ui_kit_dp_divider_height"
+        android:layout_height="20dp"
+        android:layout_marginEnd="70dp"
+        android:background="@color/clr_divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ui_kit_dp_divider_height"
+        android:background="@color/clr_divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/tab1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tabText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_schedule_type"
+            android:textColor="@color/clr_text_level_1"
+            android:textSize="@dimen/sp_text_size_4" />
+
+        <my.itgungnir.ui.icon_font.IconFontView
+            android:id="@+id/tabArrow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/str_icon_arrow_down"
+            android:textColor="@color/clr_text_level_1"
+            android:textSize="@dimen/sp_text_size_2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tab2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider2"
+        app:layout_constraintStart_toEndOf="@+id/divider1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tabText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_schedule_priority"
+            android:textColor="@color/clr_text_level_1"
+            android:textSize="@dimen/sp_text_size_4" />
+
+        <my.itgungnir.ui.icon_font.IconFontView
+            android:id="@+id/tabArrow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/str_icon_arrow_down"
+            android:textColor="@color/clr_text_level_1"
+            android:textSize="@dimen/sp_text_size_2" />
+    </LinearLayout>
+
+    <my.itgungnir.ui.icon_font.IconFontView
+        android:id="@+id/tab3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/str_icon_sort"
+        android:textColor="@color/clr_text_level_1"
+        android:textSize="@dimen/sp_text_size_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/divider2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

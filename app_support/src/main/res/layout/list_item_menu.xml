@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="40.0dip"
+    android:background="@color/clr_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:selectableItemBackground"
+        android:gravity="center"
+        android:textColor="@color/clr_text_level_1"
+        android:textSize="@dimen/sp_text_size_4"
+        tools:ignore="SpUsage"
+        tools:text="不限" />
+
+</FrameLayout>

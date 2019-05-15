@@ -162,4 +162,59 @@ interface HttpApi {
         @Path("id") id: Int,
         @Query("originId") originId: Int
     ): Single<Result<Any>>
+
+    /**
+     * 日程：日程列表
+     */
+    @POST("/lg/todo/v2/list/{page}/json")
+    fun scheduleList(
+        @Path("page") page: Int,
+        @Query("status") status: Int,
+        @Query("type") type: Int?,
+        @Query("priority") priority: Int?,
+        @Query("orderby") orderBy: Int
+    ): Single<Result<ScheduleListResponse>>
+
+    /**
+     * 日程：添加日程
+     */
+    @POST("/lg/todo/add/json")
+    fun addSchedule(
+        @Query("title") title: String,
+        @Query("content") content: String,
+        @Query("date") date: String,
+        @Query("type") type: Int,
+        @Query("priority") priority: Int
+    ): Single<Result<ScheduleResponse>>
+
+    /**
+     * 日程：编辑日程
+     */
+    @POST("/lg/todo/update/{id}/json")
+    fun editSchedule(
+        @Path("id") id: Int,
+        @Query("title") title: String,
+        @Query("content") content: String,
+        @Query("date") date: String,
+        @Query("status") status: Int,
+        @Query("type") type: Int,
+        @Query("priority") priority: Int
+    ): Single<Result<ScheduleResponse>>
+
+    /**
+     * 日程：完成日程
+     */
+    @POST("/lg/todo/done/{id}/json")
+    fun finishSchedule(
+        @Path("id") id: Int,
+        @Query("status") status: Int
+    ): Single<Result<ScheduleResponse>>
+
+    /**
+     * 日程：删除日程
+     */
+    @POST("/lg/todo/delete/{id}/json")
+    fun deleteSchedule(
+        @Path("id") id: Int
+    ): Single<Result<Any>>
 }
