@@ -37,7 +37,7 @@ class SearchHistoryDelegate(
                 }
             }
             // Status View
-            statusView.addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_flex) {
+            statusView.addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_flex) {
                 it.findViewById<FlexView>(R.id.children).bind<SearchState.SearchTagVO>(
                     layoutId = R.layout.list_item_tag,
                     render = { view, data ->
@@ -50,7 +50,7 @@ class SearchHistoryDelegate(
                         }
                     }
                 )
-            }.addDelegate(StatusView.Status.EMPTY, R.layout.status_view_flex_empty) {
+            }.addDelegate(StatusView.Status.EMPTY, R.layout.view_status_flex_empty) {
                 it.findViewById<TextView>(R.id.tip).text = "快来搜点干货吧( •̀ ω •́ )✧"
             }
         }

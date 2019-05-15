@@ -70,9 +70,9 @@ class WebActivity : BaseActivity() {
             share("KotlinWanAndroid分享《$title》专题：$url", title)
         }
 
-        statusView.addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_web) {
+        statusView.addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_web) {
             loadSucceedPage(it, url)
-        }.addDelegate(StatusView.Status.FAILED, R.layout.status_view_error) {
+        }.addDelegate(StatusView.Status.FAILED, R.layout.view_status_error) {
             loadFailedPage(it, url)
         }.succeed { }
     }

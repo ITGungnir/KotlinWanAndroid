@@ -1,6 +1,6 @@
 package app.itgungnir.kwa.common.http
 
-import app.itgungnir.kwa.common.http.dto.*
+import app.itgungnir.kwa.common.dto.*
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.POST

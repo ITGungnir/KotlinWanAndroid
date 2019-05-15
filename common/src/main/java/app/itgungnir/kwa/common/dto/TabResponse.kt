@@ -1,4 +1,4 @@
-package app.itgungnir.kwa.common.http.dto
+package app.itgungnir.kwa.common.dto
 
 data class TabResponse(
     val children: List<TabResponse>,

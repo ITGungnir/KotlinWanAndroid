@@ -56,7 +56,7 @@ class MineFragment : BaseFragment() {
                 viewModel.getMineData()
             }
             // Status View
-            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_list) {
+            statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
                 listAdapter = list.bind(
@@ -98,9 +98,10 @@ class MineFragment : BaseFragment() {
                         }
                     }
                     .build()
-            }.addDelegate(StatusView.Status.EMPTY, R.layout.status_view_list_empty) {
+            }.addDelegate(StatusView.Status.EMPTY, R.layout.view_status_list_empty) {
                 it.findViewById<TextView>(R.id.tip).text = "收藏列表为空，快去收藏吧~"
-            }.addDelegate(StatusView.Status.FAILED, R.layout.status_view_error) {
+            }.addDelegate(StatusView.Status.FAILED, R.layout.view_status_error) {
+                it.findViewById<TextView>(R.id.tip).text = "您尚未登录"
                 it.findViewById<ProgressButton>(R.id.button).apply {
                     ready("登录 / 注册")
                     onAntiShakeClick {
