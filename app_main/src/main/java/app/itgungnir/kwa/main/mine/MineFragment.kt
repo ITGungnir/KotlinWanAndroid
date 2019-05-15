@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
+import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.mine.add.AddDialog
 import kotlinx.android.synthetic.main.fragment_mine.*
 import my.itgungnir.grouter.api.Router
@@ -42,8 +42,15 @@ class MineFragment : BaseFragment() {
         headBar.addToolButton(ICON_ADD) {
             AddDialog().show(childFragmentManager, AddDialog::class.java.name)
         }.addToolButton(ICON_SCHEDULE) {
-            popToast("11111")
-            // TODO Schedule
+            if (AppRedux.instance.isUserIn()) {
+                Router.instance.with(this)
+                    .target(ScheduleActivity)
+                    .go()
+            } else {
+                Router.instance.with(this)
+                    .target(LoginActivity)
+                    .go()
+            }
         }.addToolButton(ICON_SETTING) {
             Router.instance.with(this)
                 .target(SettingActivity)

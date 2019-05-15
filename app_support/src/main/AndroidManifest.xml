@@ -19,6 +19,8 @@
 
         <activity android:name=".setting.SettingActivity" />
 
+        <activity android:name=".schedule.ScheduleActivity" />
+
     </application>
 
 </manifest>
