@@ -4,10 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.ICON_AUTHOR
-import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.load
-import app.itgungnir.kwa.common.onAntiShakeClick
+import app.itgungnir.kwa.common.*
 import kotlinx.android.synthetic.main.list_item_project_article.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate
@@ -52,9 +49,9 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
                     .go()
             }
 
-            titleView.text = item.title
+            titleView.text = html(item.title)
 
-            descView.text = item.desc
+            descView.text = html(item.desc)
 
             if (payloads.isNotEmpty()) {
                 val payload = payloads[0]

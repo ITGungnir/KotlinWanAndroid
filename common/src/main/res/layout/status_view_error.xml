@@ -25,7 +25,7 @@
         android:textSize="@dimen/sp_text_size_3" />
 
     <my.itgungnir.ui.input.ProgressButton
-        android:id="@+id/auth"
+        android:id="@+id/button"
         style="@style/ProgressButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

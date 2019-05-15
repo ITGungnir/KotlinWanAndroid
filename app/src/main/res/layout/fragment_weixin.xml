@@ -20,7 +20,8 @@
         android:id="@+id/searchBar"
         style="@style/SearchBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPure" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

@@ -6,6 +6,7 @@ import android.view.View
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.ICON_AUTHOR
 import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.onAntiShakeClick
 import kotlinx.android.synthetic.main.list_item_hierarchy_article.view.*
 import my.itgungnir.grouter.api.Router
@@ -40,7 +41,7 @@ class HierarchyChildDelegate : BaseDelegate<HierarchyChildState.HierarchyArticle
 
             authorView.text = "$ICON_AUTHOR ${item.author}"
 
-            titleView.text = item.title
+            titleView.text = html(item.title)
 
             if (payloads.isNotEmpty()) {
                 val payload = payloads[0]

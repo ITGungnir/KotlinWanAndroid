@@ -60,7 +60,7 @@
     </style>
 
     <style name="ShadowInputStyle">
-        <item name="android:background">@color/clr_divider</item>
+        <item name="android:background">@color/clr_background</item>
         <item name="si_iconFont">@string/str_icon_clear_text</item>
         <item name="si_iconColor">@color/clr_text_level_2</item>
         <item name="si_hintColor">@color/clr_text_level_3</item>

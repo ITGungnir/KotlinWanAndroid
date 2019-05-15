@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.load
 import app.itgungnir.kwa.home.HomeState
 import kotlinx.android.synthetic.main.list_item_home_banner.view.*
@@ -35,7 +36,7 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
                         .go()
                 },
                 onPageChange = { position, totalCount, data ->
-                    titleView.text = data.title
+                    titleView.text = html(data.title)
                     indexView.text = "${position + 1}/$totalCount"
                 }
             )

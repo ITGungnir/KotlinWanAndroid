@@ -100,8 +100,8 @@ class MineFragment : BaseFragment() {
                     .build()
             }.addDelegate(StatusView.Status.EMPTY, R.layout.status_view_list_empty) {
                 it.findViewById<TextView>(R.id.tip).text = "收藏列表为空，快去收藏吧~"
-            }.addDelegate(StatusView.Status.FAILED, R.layout.status_view_auth) {
-                it.findViewById<ProgressButton>(R.id.auth).apply {
+            }.addDelegate(StatusView.Status.FAILED, R.layout.status_view_error) {
+                it.findViewById<ProgressButton>(R.id.button).apply {
                     ready("登录 / 注册")
                     onAntiShakeClick {
                         Router.instance.with(context)

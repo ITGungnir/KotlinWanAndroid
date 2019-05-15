@@ -1,6 +1,8 @@
 package app.itgungnir.kwa.common
 
 import android.content.Context
+import android.os.Build
+import android.text.Html
 import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -58,3 +60,11 @@ fun View.onAntiShakeClick(block: (View) -> Unit) =
     RxView.clicks(this)
         .throttleFirst(2L, TimeUnit.SECONDS)
         .subscribe { block.invoke(this) }!!
+
+/**
+ * 加载HTML代码到TextView中
+ */
+fun html(html: String): String =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY).toString()
+    } else html

@@ -42,7 +42,7 @@ class WeixinFragment : BaseFragment() {
             override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
-                searchBar.clear()
+                searchBar.getInput().setText("")
                 searchBar.hideSoftInput()
                 viewModel.setState {
                     copy(
@@ -78,7 +78,7 @@ class WeixinFragment : BaseFragment() {
         viewModel.pick(WeixinState::currTab)
             .observe(this, Observer { currTab ->
                 currTab?.a?.let {
-                    // TODO searchBar.hint("在${it.name}的公众号中搜索")
+                    searchBar.getInput().hint = "在${it.name}的公众号中搜索"
                 }
             })
 

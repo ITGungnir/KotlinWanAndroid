@@ -1,5 +1,8 @@
 package app.itgungnir.kwa.web
 
+import android.annotation.SuppressLint
+import android.view.View
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.R
 import app.itgungnir.kwa.common.*
@@ -10,6 +13,9 @@ import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import my.itgungnir.ui.browser.WebBrowser
+import my.itgungnir.ui.input.ProgressButton
+import my.itgungnir.ui.status_view.StatusView
 import org.jetbrains.anko.share
 
 @Route(WebActivity)
@@ -34,7 +40,7 @@ class WebActivity : BaseActivity() {
         val title = intent.getStringExtra("title")
         val url = intent.getStringExtra("url").replace("http://", "https://")
 
-        headBar.title(title)
+        headBar.title(html(title))
             .back(ICON_BACK) { finish() }
 
         if (id > 0 && originId >= 0) {
@@ -64,7 +70,32 @@ class WebActivity : BaseActivity() {
             share("KotlinWanAndroid分享《$title》专题：$url", title)
         }
 
-        browser.load(url)
+        statusView.addDelegate(StatusView.Status.SUCCEED, R.layout.status_view_web) {
+            loadSucceedPage(it, url)
+        }.addDelegate(StatusView.Status.FAILED, R.layout.status_view_error) {
+            loadFailedPage(it, url)
+        }.succeed { }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun loadSucceedPage(view: View, url: String) {
+        view.findViewById<WebBrowser>(R.id.browser).load(url)
+            .onError { code, msg ->
+                statusView.failed { view ->
+                    view.findViewById<TextView>(R.id.tip).text = "$code：$msg"
+                    view.findViewById<ProgressButton>(R.id.button).ready("重新加载")
+                }
+            }
+    }
+
+    private fun loadFailedPage(view: View, url: String) {
+        view.findViewById<ProgressButton>(R.id.button).apply {
+            ready("重新加载")
+            setOnClickListener {
+                loading()
+                statusView.succeed { v -> loadSucceedPage(v, url) }
+            }
+        }
     }
 
     override fun observeVM() {

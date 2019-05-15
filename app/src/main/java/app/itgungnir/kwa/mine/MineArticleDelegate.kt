@@ -4,10 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.R
-import app.itgungnir.kwa.common.HierarchyActivity
-import app.itgungnir.kwa.common.ICON_AUTHOR
-import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.onAntiShakeClick
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.tree.TreeState
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.list_item_mine_article.view.*
@@ -70,7 +67,7 @@ class MineArticleDelegate(
                 }
             }
 
-            titleView.text = item.title
+            titleView.text = html(item.title)
 
             if (payloads.isNotEmpty()) {
                 val payload = payloads[0]
