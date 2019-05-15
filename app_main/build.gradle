@@ -21,7 +21,7 @@ android {
 
 dependencies {
     // Project
-    compileOnly project(':common')
+    api project(':common')
     // Router
     kapt "com.github.ITGungnir.GRouter:router_compiler:$router_version"
 }

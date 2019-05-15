@@ -1,1 +1,24 @@
-<manifest package="app.itgungnir.kwa" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.itgungnir.kwa.support">
+
+    <application android:theme="@style/AppTheme">
+
+        <activity android:name=".search_result.SearchResultActivity" />
+
+        <activity android:name=".web.WebActivity" />
+
+        <activity android:name=".hierarchy.HierarchyActivity" />
+
+        <activity
+            android:name=".login.LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".register.RegisterActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity android:name=".setting.SettingActivity" />
+
+    </application>
+
+</manifest>

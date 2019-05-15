@@ -1,1 +1,12 @@
-<manifest package="app.itgungnir.kwa" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.itgungnir.kwa.main">
+
+    <application android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".main.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+    </application>
+
+</manifest>

@@ -15,32 +15,12 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name="app.itgungnir.kwa.splash.SplashActivity">
+        <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name="app.itgungnir.kwa.main.MainActivity"
-            android:windowSoftInputMode="adjustPan" />
-
-        <activity android:name=".search.result.SearchResultActivity" />
-
-        <activity android:name=".web.WebActivity" />
-
-        <activity android:name=".hierarchy.HierarchyActivity" />
-
-        <activity
-            android:name=".login.LoginActivity"
-            android:windowSoftInputMode="adjustPan" />
-
-        <activity
-            android:name=".register.RegisterActivity"
-            android:windowSoftInputMode="adjustPan" />
-
-        <activity android:name=".setting.SettingActivity" />
 
     </application>
 
