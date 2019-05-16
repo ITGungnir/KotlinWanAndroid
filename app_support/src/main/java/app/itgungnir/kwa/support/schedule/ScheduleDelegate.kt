@@ -1,23 +1,27 @@
 package app.itgungnir.kwa.support.schedule
 
-import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.list_item_schedule.view.*
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
-import org.jetbrains.anko.backgroundColor
+import my.itgungnir.ui.rich_text.RichText
+import org.jetbrains.anko.backgroundDrawable
 
-class ScheduleDelegate : BaseDelegate<ScheduleState.ScheduleVO>() {
+class ScheduleDelegate(
+    private val clickCallback: (Int, ScheduleState.ScheduleVO) -> Unit,
+    private val longClickCallback: (Int, Int) -> Unit
+) : BaseDelegate<ScheduleState.ScheduleVO>() {
 
     override fun layoutId(): Int = R.layout.list_item_schedule
 
     override fun onCreateVH(container: View) {
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindVH(
         item: ScheduleState.ScheduleVO,
         holder: EasyAdapter.VH,
@@ -27,29 +31,54 @@ class ScheduleDelegate : BaseDelegate<ScheduleState.ScheduleVO>() {
 
         holder.render(item) {
 
-            priorityView.text = when (item.priority) {
-                0 -> "重要"
-                else -> "一般"
+            this.setOnLongClickListener {
+                longClickCallback.invoke(position, item.id)
+                true
             }
+
+            this.setOnClickListener {
+                clickCallback.invoke(position, item)
+            }
+
+            val cornerRadius = this.context.dp2px(4.0F).toFloat()
+
+            priorityView.text = RichText()
+                .append("优先级：")
+                .append(if (item.priority == 0) "重要" else "一般")
+                .foreColor(Color.parseColor(if (item.priority == 0) COLOR_PRIORITY_IMPORTANT else COLOR_PRIORITY_NORMAL))
+                .create()
 
             typeView.apply {
                 when (item.type) {
                     0 -> {
                         text = "工作"
-                        backgroundColor = Color.RED
+                        backgroundDrawable = buildTypeDrawable(COLOR_BG_WORK, cornerRadius)
                     }
                     1 -> {
                         text = "学习"
-                        backgroundColor = Color.GREEN
+                        backgroundDrawable = buildTypeDrawable(COLOR_BG_LEARN, cornerRadius)
                     }
                     2 -> {
                         text = "生活"
-                        backgroundColor = Color.BLUE
+                        backgroundDrawable = buildTypeDrawable(COLOR_BG_LIFE, cornerRadius)
                     }
                 }
             }
 
-            descView.text = "在${item.targetDate}前，${item.title}（${item.content}）"
+            descView.text = RichText()
+                .append("在")
+                .append(item.targetDate)
+                .bold()
+                .append("前，")
+                .append(item.title)
+                .bold()
+                .append("（${item.content}）")
+                .create()
         }
+    }
+
+    private fun buildTypeDrawable(color: String, radius: Float) = GradientDrawable().apply {
+        setColor(Color.parseColor(color))
+        cornerRadius = radius
     }
 }

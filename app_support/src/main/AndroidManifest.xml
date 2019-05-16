@@ -21,6 +21,8 @@
 
         <activity android:name=".schedule.ScheduleActivity" />
 
+        <activity android:name=".schedule.done.ScheduleDoneActivity" />
+
     </application>
 
 </manifest>

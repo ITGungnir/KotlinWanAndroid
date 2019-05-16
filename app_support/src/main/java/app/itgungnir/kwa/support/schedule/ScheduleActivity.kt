@@ -2,15 +2,14 @@ package app.itgungnir.kwa.support.schedule
 
 import android.view.View
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.ICON_ADD
-import app.itgungnir.kwa.common.ICON_BACK
-import app.itgungnir.kwa.common.ICON_SCHEDULE_DONE
-import app.itgungnir.kwa.common.ScheduleActivity
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.support.R
+import app.itgungnir.kwa.support.schedule.add.AddScheduleDialog
 import app.itgungnir.kwa.support.schedule.menu.MenuContent
 import app.itgungnir.kwa.support.schedule.menu.MenuView
 import kotlinx.android.synthetic.main.activity_schedule.*
 import my.itgungnir.grouter.annotation.Route
+import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 
@@ -32,9 +31,12 @@ class ScheduleActivity : BaseActivity() {
             .back(ICON_BACK) { finish() }
             .addToolButton(ICON_ADD) {
                 // TODO
+                AddScheduleDialog().show(supportFragmentManager, AddScheduleDialog::class.java.name)
             }
             .addToolButton(ICON_SCHEDULE_DONE) {
-                // TODO
+                Router.instance.with(this)
+                    .target(ScheduleDoneActivity)
+                    .go()
             }
 
         initDropDownMenu()
@@ -73,9 +75,7 @@ class ScheduleActivity : BaseActivity() {
         MenuView(this).apply {
             bind(
                 ScheduleState.MenuTabVO(title = "默认排序", value = 4, selected = true),
-                ScheduleState.MenuTabVO(title = "创建日期顺序", value = 3),
-                ScheduleState.MenuTabVO(title = "完成日期顺序", value = 1),
-                ScheduleState.MenuTabVO(title = "完成日期逆序", value = 2)
+                ScheduleState.MenuTabVO(title = "逆序排序", value = 3)
             )
             selectCallback = { position, _, value ->
                 dropDownMenu.toggleTab(selected = position != 0)

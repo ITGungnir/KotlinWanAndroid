@@ -1,20 +1,16 @@
-package app.itgungnir.kwa.support.schedule.menu
+package app.itgungnir.kwa.support.schedule.done
 
-import android.content.Context
-import android.util.AttributeSet
-import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import app.itgungnir.kwa.common.ICON_BACK
+import app.itgungnir.kwa.common.ScheduleDoneActivity
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.support.R
-import app.itgungnir.kwa.support.schedule.ScheduleActivity
 import app.itgungnir.kwa.support.schedule.ScheduleDelegate
-import app.itgungnir.kwa.support.schedule.ScheduleState
-import app.itgungnir.kwa.support.schedule.ScheduleViewModel
-import app.itgungnir.kwa.support.schedule.edit.EditScheduleDialog
-import kotlinx.android.synthetic.main.view_schedule_menu_content.view.*
+import kotlinx.android.synthetic.main.activity_schedule_done.*
+import my.itgungnir.grouter.annotation.Route
+import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import my.itgungnir.ui.dialog.SimpleDialog
 import my.itgungnir.ui.easy_adapter.EasyAdapter
@@ -22,27 +18,28 @@ import my.itgungnir.ui.easy_adapter.bind
 import my.itgungnir.ui.list_footer.ListFooter
 import my.itgungnir.ui.status_view.StatusView
 
-class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    LinearLayout(context, attrs, defStyleAttr) {
+@Route(ScheduleDoneActivity)
+class ScheduleDoneActivity : BaseActivity() {
 
     private val viewModel by lazy {
         buildActivityViewModel(
-            activity = context as ScheduleActivity,
-            viewModelClass = ScheduleViewModel::class.java
+            activity = this,
+            viewModelClass = ScheduleDoneViewModel::class.java
         )
     }
-
-    private val fragmentManager by lazy { (context as ScheduleActivity).supportFragmentManager }
 
     private var listAdapter: EasyAdapter? = null
 
     private var footer: ListFooter? = null
 
-    init {
+    override fun layoutId(): Int = R.layout.activity_schedule_done
 
-        View.inflate(context, R.layout.view_schedule_menu_content, this)
+    override fun initComponent() {
 
-        schedulePage.apply {
+        headBar.title("已完成日程")
+            .back(ICON_BACK) { finish() }
+
+        scheduleDonePage.apply {
             // Refresh Layout
             refreshLayout().setOnRefreshListener {
                 viewModel.getScheduleList()
@@ -52,17 +49,14 @@ class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSe
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Easy Adapter
                 listAdapter = list.bind(delegate = ScheduleDelegate(
-                    clickCallback = { position, data ->
-                        // TODO
-                        EditScheduleDialog().show(fragmentManager, EditScheduleDialog::class.java.name)
-                    },
+                    clickCallback = { _, _ -> },
                     longClickCallback = { position, id ->
                         SimpleDialog(
                             msg = "确定要删除该日程吗？",
                             onConfirm = {
                                 viewModel.deleteSchedule(position, id)
                             }
-                        ).show(fragmentManager, SimpleDialog::class.java.name)
+                        ).show(supportFragmentManager, SimpleDialog::class.java.name)
                     }
                 ))
                 // List Footer
@@ -75,44 +69,44 @@ class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSe
                     }
                     .build()
             }.addDelegate(StatusView.Status.EMPTY, R.layout.view_status_list_empty) {
-                it.findViewById<TextView>(R.id.tip).text = "没有符合条件的日程~"
+                it.findViewById<TextView>(R.id.tip).text = "还没有完成任何日程~"
             }
         }
 
-        observeVM()
+        viewModel.getScheduleList()
     }
 
-    private fun observeVM() {
+    override fun observeVM() {
 
-        viewModel.pick(ScheduleState::refreshing)
-            .observe(context as ScheduleActivity, Observer { refreshing ->
+        viewModel.pick(ScheduleDoneState::refreshing)
+            .observe(this, Observer { refreshing ->
                 refreshing?.a?.let {
-                    schedulePage.refreshLayout().isRefreshing = it
+                    scheduleDonePage.refreshLayout().isRefreshing = it
                 }
             })
 
-        viewModel.pick(ScheduleState::items, ScheduleState::hasMore)
-            .observe(context as ScheduleActivity, Observer { states ->
+        viewModel.pick(ScheduleDoneState::items, ScheduleDoneState::hasMore)
+            .observe(this, Observer { states ->
                 states?.let {
                     when (it.a.isNotEmpty()) {
-                        true -> schedulePage.statusView().succeed { listAdapter?.update(states.a) }
-                        else -> schedulePage.statusView().empty { }
+                        true -> scheduleDonePage.statusView().succeed { listAdapter?.update(states.a) }
+                        else -> scheduleDonePage.statusView().empty { }
                     }
                     footer?.onLoadSucceed(it.b)
                 }
             })
 
-        viewModel.pick(ScheduleState::loading)
-            .observe(context as ScheduleActivity, Observer { loading ->
+        viewModel.pick(ScheduleDoneState::loading)
+            .observe(this, Observer { loading ->
                 if (loading?.a == true) {
                     footer?.onLoading()
                 }
             })
 
-        viewModel.pick(ScheduleState::error)
-            .observe(context as ScheduleActivity, Observer { error ->
+        viewModel.pick(ScheduleDoneState::error)
+            .observe(this, Observer { error ->
                 error?.a?.message?.let {
-                    (context as ScheduleActivity).popToast(it)
+                    popToast(it)
                     footer?.onLoadFailed()
                 }
             })

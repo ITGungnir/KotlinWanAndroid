@@ -8,7 +8,7 @@ import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.CollectArticle
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
 
-class AddViewModel : BaseViewModel<AddState>(initialState = AddState()) {
+class AddArticleViewModel : BaseViewModel<AddArticleState>(initialState = AddArticleState()) {
 
     /**
      * 收藏站外文章

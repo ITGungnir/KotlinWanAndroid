@@ -20,7 +20,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
-        app:si_hint="@string/str_add_title" />
+        app:si_hint="@string/str_add_article_title" />
 
     <my.itgungnir.ui.input.ShadowInput
         android:id="@+id/linkInput"
@@ -30,7 +30,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
-        app:si_hint="@string/str_add_link" />
+        app:si_hint="@string/str_add_article_link" />
 
     <my.itgungnir.ui.input.ProgressButton
         android:id="@+id/addButton"

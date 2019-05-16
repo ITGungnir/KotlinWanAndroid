@@ -37,6 +37,7 @@
             android:paddingBottom="2dp"
             android:textColor="@color/colorPure"
             android:textSize="@dimen/sp_text_size_5"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

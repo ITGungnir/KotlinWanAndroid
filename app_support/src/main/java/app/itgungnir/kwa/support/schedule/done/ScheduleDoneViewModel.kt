@@ -1,25 +1,20 @@
-package app.itgungnir.kwa.support.schedule
+package app.itgungnir.kwa.support.schedule.done
 
 import android.annotation.SuppressLint
 import app.itgungnir.kwa.common.http.HttpClient
 import app.itgungnir.kwa.common.http.handleResult
 import app.itgungnir.kwa.common.http.io2Main
+import app.itgungnir.kwa.support.schedule.ScheduleState
 import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
 
 @SuppressLint("CheckResult")
-class ScheduleViewModel : BaseViewModel<ScheduleState>(initialState = ScheduleState()) {
+class ScheduleDoneViewModel : BaseViewModel<ScheduleDoneState>(initialState = ScheduleDoneState()) {
 
     private var pageNo: Int = 1
 
     fun getScheduleList() {
-        withState {
-            getScheduleList(it.type, it.priority, it.orderBy)
-        }
-    }
-
-    fun getScheduleList(type: Int?, priority: Int?, orderBy: Int) {
         pageNo = 1
-        HttpClient.api.scheduleList(page = pageNo, status = 0, type = type, priority = priority, orderBy = orderBy)
+        HttpClient.api.scheduleList(page = pageNo, status = 1, type = null, priority = null, orderBy = 4)
             .handleResult()
             .io2Main()
             .map {
@@ -67,13 +62,7 @@ class ScheduleViewModel : BaseViewModel<ScheduleState>(initialState = ScheduleSt
     }
 
     fun loadMoreScheduleList() {
-        withState {
-            loadMoreScheduleList(it.type, it.priority, it.orderBy)
-        }
-    }
-
-    private fun loadMoreScheduleList(type: Int?, priority: Int?, orderBy: Int) {
-        HttpClient.api.scheduleList(page = pageNo, status = 0, type = type, priority = priority, orderBy = orderBy)
+        HttpClient.api.scheduleList(page = pageNo, status = 1, type = null, priority = null, orderBy = 4)
             .handleResult()
             .io2Main()
             .map {

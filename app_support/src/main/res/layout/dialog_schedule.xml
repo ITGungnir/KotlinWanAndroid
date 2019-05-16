@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPure"
+    android:orientation="vertical"
+    tools:ignore="SpUsage">
+
+    <my.itgungnir.ui.head_bar.HeadBar
+        android:id="@+id/headBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:hb_dividerColor="@color/clr_divider"
+        app:hb_showDivider="true"
+        app:hb_textColor="@color/clr_text_level_1" />
+
+    <my.itgungnir.ui.input.ShadowInput
+        android:id="@+id/titleInput"
+        style="@style/ShadowInputStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        app:si_hint="@string/str_dialog_schedule_title" />
+
+    <my.itgungnir.ui.input.ShadowInput
+        android:id="@+id/contentInput"
+        style="@style/ShadowInputStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        app:si_hint="@string/str_dialog_schedule_content" />
+
+    <TextView
+        android:id="@+id/dateInput"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/clr_background"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/str_dialog_schedule_date"
+        android:textColor="@color/clr_text_level_1"
+        android:textSize="@dimen/sp_text_size_2" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/str_schedule_type"
+            android:textColor="@color/clr_text_level_2"
+            android:textSize="@dimen/sp_text_size_3" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/typeGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="60dp"
+            app:chipSpacing="10dp"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipWork"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_schedule_work"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/colorPure"
+                app:chipBackgroundColor="#FFB4004E"
+                app:chipIconSize="@dimen/sp_text_size_3" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipLearn"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_schedule_learn"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/colorPure"
+                app:chipBackgroundColor="#FF087F23"
+                app:chipIconSize="@dimen/sp_text_size_3" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipLife"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_schedule_life"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/colorPure"
+                app:chipBackgroundColor="#FF007AC1"
+                app:chipIconSize="@dimen/sp_text_size_3" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/str_schedule_priority"
+            android:textColor="@color/clr_text_level_2"
+            android:textSize="@dimen/sp_text_size_3" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/priorityGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="60dp"
+            app:chipSpacing="10dp"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipImportant"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_schedule_important"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="#FFFF5722"
+                app:chipBackgroundColor="@color/clr_background"
+                app:chipIconSize="@dimen/sp_text_size_3" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipNormal"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_schedule_normal"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="#FF29B6F6"
+                app:chipBackgroundColor="@color/clr_background"
+                app:chipIconSize="@dimen/sp_text_size_3" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </RelativeLayout>
+
+    <my.itgungnir.ui.input.ProgressButton
+        android:id="@+id/confirm"
+        style="@style/ProgressButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_margin="15dp" />
+
+</LinearLayout>

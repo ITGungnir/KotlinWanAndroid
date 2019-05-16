@@ -8,7 +8,7 @@ import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.main.R
-import app.itgungnir.kwa.main.mine.add.AddDialog
+import app.itgungnir.kwa.main.mine.add.AddArticleDialog
 import kotlinx.android.synthetic.main.fragment_mine.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
@@ -40,7 +40,7 @@ class MineFragment : BaseFragment() {
     override fun initComponent() {
 
         headBar.addToolButton(ICON_ADD) {
-            AddDialog().show(childFragmentManager, AddDialog::class.java.name)
+            AddArticleDialog().show(childFragmentManager, AddArticleDialog::class.java.name)
         }.addToolButton(ICON_SCHEDULE) {
             if (AppRedux.instance.isUserIn()) {
                 Router.instance.with(this)

@@ -14,20 +14,20 @@ import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.dialog_add.*
+import kotlinx.android.synthetic.main.dialog_add_article.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 
-class AddDialog : DialogFragment() {
+class AddArticleDialog : DialogFragment() {
 
     private val viewModel by lazy {
         buildFragmentViewModel(
             fragment = this,
-            viewModelClass = AddViewModel::class.java
+            viewModelClass = AddArticleViewModel::class.java
         )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.dialog_add, container, false)
+        inflater.inflate(R.layout.dialog_add_article, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,7 +70,7 @@ class AddDialog : DialogFragment() {
 
     private fun observeVM() {
 
-        viewModel.pick(AddState::succeed)
+        viewModel.pick(AddArticleState::succeed)
             .observe(this, Observer { succeed ->
                 succeed?.a?.let {
                     addButton.ready("确定新增")
@@ -78,7 +78,7 @@ class AddDialog : DialogFragment() {
                 }
             })
 
-        viewModel.pick(AddState::error)
+        viewModel.pick(AddArticleState::error)
             .observe(this, Observer { error ->
                 error?.a?.message?.let {
                     addButton.ready("确定新增")
