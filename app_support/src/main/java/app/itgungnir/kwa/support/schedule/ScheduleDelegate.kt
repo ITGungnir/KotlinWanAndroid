@@ -42,38 +42,85 @@ class ScheduleDelegate(
 
             val cornerRadius = this.context.dp2px(4.0F).toFloat()
 
-            priorityView.text = RichText()
-                .append("优先级：")
-                .append(if (item.priority == 1) "重要" else "一般")
-                .foreColor(Color.parseColor(if (item.priority == 1) COLOR_PRIORITY_IMPORTANT else COLOR_PRIORITY_NORMAL))
-                .create()
-
-            typeView.apply {
-                when (item.type) {
-                    1 -> {
-                        text = "工作"
-                        backgroundDrawable = buildTypeDrawable(COLOR_BG_WORK, cornerRadius)
-                    }
-                    2 -> {
-                        text = "学习"
-                        backgroundDrawable = buildTypeDrawable(COLOR_BG_LEARN, cornerRadius)
-                    }
-                    3 -> {
-                        text = "生活"
-                        backgroundDrawable = buildTypeDrawable(COLOR_BG_LIFE, cornerRadius)
+            if (payloads.isNotEmpty()) {
+                val payload = payloads[0]
+                payload.keySet().forEach {
+                    when (it) {
+                        // 优先级
+                        "PL_PRIORITY" -> {
+                            val priority = payload.getInt(it)
+                            val foreColor = if (priority == 1) COLOR_PRIORITY_IMPORTANT else COLOR_PRIORITY_NORMAL
+                            priorityView.text = RichText()
+                                .append("优先级：")
+                                .append(if (priority == 1) "重要" else "一般")
+                                .foreColor(Color.parseColor(foreColor))
+                                .create()
+                        }
+                        // 类型
+                        "PL_TYPE" -> typeView.apply {
+                            when (payload.getInt(it)) {
+                                1 -> {
+                                    text = "工作"
+                                    backgroundDrawable = buildTypeDrawable(COLOR_BG_WORK, cornerRadius)
+                                }
+                                2 -> {
+                                    text = "学习"
+                                    backgroundDrawable = buildTypeDrawable(COLOR_BG_LEARN, cornerRadius)
+                                }
+                                3 -> {
+                                    text = "生活"
+                                    backgroundDrawable = buildTypeDrawable(COLOR_BG_LIFE, cornerRadius)
+                                }
+                            }
+                        }
+                        // 描述
+                        "PL_DESC" -> descView.text = RichText()
+                            .append("在")
+                            .append(item.targetDate)
+                            .bold()
+                            .append("前，")
+                            .append(item.title)
+                            .bold()
+                            .append("（${item.content}）")
+                            .create()
                     }
                 }
+            } else {
+                // 优先级
+                val foreColor = if (item.priority == 1) COLOR_PRIORITY_IMPORTANT else COLOR_PRIORITY_NORMAL
+                priorityView.text = RichText()
+                    .append("优先级：")
+                    .append(if (item.priority == 1) "重要" else "一般")
+                    .foreColor(Color.parseColor(foreColor))
+                    .create()
+                // 类型
+                typeView.apply {
+                    when (item.type) {
+                        1 -> {
+                            text = "工作"
+                            backgroundDrawable = buildTypeDrawable(COLOR_BG_WORK, cornerRadius)
+                        }
+                        2 -> {
+                            text = "学习"
+                            backgroundDrawable = buildTypeDrawable(COLOR_BG_LEARN, cornerRadius)
+                        }
+                        3 -> {
+                            text = "生活"
+                            backgroundDrawable = buildTypeDrawable(COLOR_BG_LIFE, cornerRadius)
+                        }
+                    }
+                }
+                // 描述
+                descView.text = RichText()
+                    .append("在")
+                    .append(item.targetDate)
+                    .bold()
+                    .append("前，")
+                    .append(item.title)
+                    .bold()
+                    .append("（${item.content}）")
+                    .create()
             }
-
-            descView.text = RichText()
-                .append("在")
-                .append(item.targetDate)
-                .bold()
-                .append("前，")
-                .append(item.title)
-                .bold()
-                .append("（${item.content}）")
-                .create()
         }
     }
 

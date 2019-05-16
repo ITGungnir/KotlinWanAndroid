@@ -1,6 +1,7 @@
 package app.itgungnir.kwa.support.schedule.menu
 
 import android.content.Context
+import android.os.Bundle
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -17,7 +18,9 @@ import app.itgungnir.kwa.support.schedule.dialog.EditScheduleDialog
 import kotlinx.android.synthetic.main.view_schedule_menu_content.view.*
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import my.itgungnir.ui.dialog.SimpleDialog
+import my.itgungnir.ui.easy_adapter.Differ
 import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.easy_adapter.ListItem
 import my.itgungnir.ui.easy_adapter.bind
 import my.itgungnir.ui.list_footer.ListFooter
 import my.itgungnir.ui.status_view.StatusView
@@ -51,21 +54,51 @@ class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSe
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Easy Adapter
-                listAdapter = list.bind(delegate = ScheduleDelegate(
-                    clickCallback = { position, data ->
-                        viewModel.setState { copy(dismissFlag = null) }
-                        EditScheduleDialog(position, data)
-                            .show(fragmentManager, EditScheduleDialog::class.java.name)
-                    },
-                    longClickCallback = { position, id ->
-                        SimpleDialog(
-                            msg = "确定要删除该日程吗？",
-                            onConfirm = {
-                                viewModel.deleteSchedule(position, id)
+                listAdapter = list.bind(
+                    delegate = ScheduleDelegate(
+                        clickCallback = { position, data ->
+                            viewModel.setState { copy(dismissFlag = null) }
+                            EditScheduleDialog(position, data).show(
+                                fragmentManager,
+                                EditScheduleDialog::class.java.name
+                            )
+                        },
+                        longClickCallback = { position, id ->
+                            SimpleDialog(
+                                msg = "确定要删除该日程吗？",
+                                onConfirm = {
+                                    viewModel.deleteSchedule(position, id)
+                                }
+                            ).show(fragmentManager, SimpleDialog::class.java.name)
+                        }
+                    ),
+                    diffAnalyzer = object : Differ {
+                        override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
+                            (oldItem as ScheduleState.ScheduleVO).id == (newItem as ScheduleState.ScheduleVO).id
+
+                        override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
+                            (oldItem as ScheduleState.ScheduleVO).title == (newItem as ScheduleState.ScheduleVO).title &&
+                                    oldItem.content == newItem.content && oldItem.targetDate == newItem.targetDate &&
+                                    oldItem.type == newItem.type && oldItem.priority == newItem.priority
+
+                        override fun getChangePayload(oldItem: ListItem, newItem: ListItem): Bundle? {
+                            oldItem as ScheduleState.ScheduleVO
+                            newItem as ScheduleState.ScheduleVO
+                            val bundle = Bundle()
+                            if (oldItem.title != newItem.title || oldItem.content != newItem.content ||
+                                oldItem.targetDate != newItem.targetDate
+                            ) {
+                                bundle.putBoolean("PL_DESC", true)
                             }
-                        ).show(fragmentManager, SimpleDialog::class.java.name)
-                    }
-                ))
+                            if (oldItem.type != newItem.type) {
+                                bundle.putInt("PL_TYPE", newItem.type)
+                            }
+                            if (oldItem.priority != newItem.priority) {
+                                bundle.putInt("PL_PRIORITY", newItem.priority)
+                            }
+                            return if (bundle.isEmpty) null else bundle
+                        }
+                    })
                 // List Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)

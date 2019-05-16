@@ -77,7 +77,7 @@ class EditScheduleDialog(
 
         priorityGroup.apply {
             check(
-                when (data.type) {
+                when (data.priority) {
                     1 -> R.id.chipImportant
                     else -> R.id.chipNormal
                 }

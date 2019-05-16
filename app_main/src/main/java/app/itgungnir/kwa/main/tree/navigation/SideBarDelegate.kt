@@ -31,7 +31,7 @@ class SideBarDelegate(
         holder.render(item) {
 
             this.onAntiShakeClick {
-                tabClickCallback.invoke(position)
+                tabClickCallback.invoke(holder.adapterPosition)
             }
 
             nameView.apply {

@@ -71,7 +71,7 @@ class MenuItemDelegate(
             }
 
             setOnClickListener {
-                clickCallback.invoke(position, item)
+                clickCallback.invoke(holder.adapterPosition, item)
             }
         }
     }
