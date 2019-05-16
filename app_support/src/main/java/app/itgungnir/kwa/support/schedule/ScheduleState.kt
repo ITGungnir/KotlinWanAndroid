@@ -8,6 +8,7 @@ data class ScheduleState(
     val type: Int? = null,
     val priority: Int? = null,
     val orderBy: Int = 4,
+    val dismissFlag: Unit? = null,
     val items: List<ScheduleVO> = listOf(),
     val loading: Boolean = false,
     val hasMore: Boolean = false,

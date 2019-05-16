@@ -6,6 +6,9 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.github.ITGungnir.GRouter:router_plugin:$router_version"
     }
+    repositories {
+        google()
+    }
 }
 
 allprojects {

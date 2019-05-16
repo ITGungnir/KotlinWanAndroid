@@ -120,6 +120,80 @@ class ScheduleViewModel : BaseViewModel<ScheduleState>(initialState = ScheduleSt
             })
     }
 
+    fun addSchedule(title: String, content: String, date: String, type: Int, priority: Int) {
+        HttpClient.api.addSchedule(title, content, date, type, priority)
+            .handleResult()
+            .io2Main()
+            .subscribe({
+                setState {
+                    copy(
+                        dismissFlag = Unit,
+                        error = null
+                    )
+                }
+            }, {
+                setState {
+                    copy(
+                        error = it
+                    )
+                }
+            })
+    }
+
+    fun editSchedule(id: Int, title: String, content: String, date: String, type: Int, priority: Int) {
+        HttpClient.api.editSchedule(id, title, content, date, 0, type, priority)
+            .handleResult()
+            .io2Main()
+            .subscribe({
+                setState {
+                    copy(
+                        items = items.map { item ->
+                            if (item.id == id) {
+                                item.copy(
+                                    title = title,
+                                    content = content,
+                                    targetDate = date,
+                                    type = type,
+                                    priority = priority
+                                )
+                            } else {
+                                item.copy()
+                            }
+                        },
+                        dismissFlag = Unit,
+                        error = null
+                    )
+                }
+            }, {
+                setState {
+                    copy(
+                        error = it
+                    )
+                }
+            })
+    }
+
+    fun finishSchedule(position: Int, id: Int) {
+        HttpClient.api.finishSchedule(id, 1)
+            .handleResult()
+            .io2Main()
+            .subscribe({
+                setState {
+                    copy(
+                        items = items.toMutableList() - items[position],
+                        dismissFlag = Unit,
+                        error = null
+                    )
+                }
+            }, {
+                setState {
+                    copy(
+                        error = it
+                    )
+                }
+            })
+    }
+
     fun deleteSchedule(position: Int, id: Int) {
         HttpClient.api.deleteSchedule(id)
             .handleResult()

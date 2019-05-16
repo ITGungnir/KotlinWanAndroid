@@ -2,7 +2,6 @@
 WanAndroid client programmed with Kotlin.
 
 ## ToFinish
-* 我的页面：日程按钮
 * 设置页面：UI
 * 设置页面：关于我们
 * 设置页面：意见反馈

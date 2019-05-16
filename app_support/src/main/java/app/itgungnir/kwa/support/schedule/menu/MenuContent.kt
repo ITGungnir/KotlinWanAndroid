@@ -13,7 +13,7 @@ import app.itgungnir.kwa.support.schedule.ScheduleActivity
 import app.itgungnir.kwa.support.schedule.ScheduleDelegate
 import app.itgungnir.kwa.support.schedule.ScheduleState
 import app.itgungnir.kwa.support.schedule.ScheduleViewModel
-import app.itgungnir.kwa.support.schedule.edit.EditScheduleDialog
+import app.itgungnir.kwa.support.schedule.dialog.EditScheduleDialog
 import kotlinx.android.synthetic.main.view_schedule_menu_content.view.*
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import my.itgungnir.ui.dialog.SimpleDialog
@@ -53,8 +53,9 @@ class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSe
                 // Easy Adapter
                 listAdapter = list.bind(delegate = ScheduleDelegate(
                     clickCallback = { position, data ->
-                        // TODO
-                        EditScheduleDialog().show(fragmentManager, EditScheduleDialog::class.java.name)
+                        viewModel.setState { copy(dismissFlag = null) }
+                        EditScheduleDialog(position, data)
+                            .show(fragmentManager, EditScheduleDialog::class.java.name)
                     },
                     longClickCallback = { position, id ->
                         SimpleDialog(

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.support.R
-import app.itgungnir.kwa.support.schedule.add.AddScheduleDialog
+import app.itgungnir.kwa.support.schedule.dialog.AddScheduleDialog
 import app.itgungnir.kwa.support.schedule.menu.MenuContent
 import app.itgungnir.kwa.support.schedule.menu.MenuView
 import kotlinx.android.synthetic.main.activity_schedule.*
@@ -30,7 +30,7 @@ class ScheduleActivity : BaseActivity() {
         headBar.title("我的日程")
             .back(ICON_BACK) { finish() }
             .addToolButton(ICON_ADD) {
-                // TODO
+                viewModel.setState { copy(dismissFlag = null) }
                 AddScheduleDialog().show(supportFragmentManager, AddScheduleDialog::class.java.name)
             }
             .addToolButton(ICON_SCHEDULE_DONE) {

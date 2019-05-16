@@ -32,12 +32,12 @@ class ScheduleDelegate(
         holder.render(item) {
 
             this.setOnLongClickListener {
-                longClickCallback.invoke(position, item.id)
+                longClickCallback.invoke(holder.adapterPosition, item.id)
                 true
             }
 
             this.setOnClickListener {
-                clickCallback.invoke(position, item)
+                clickCallback.invoke(holder.adapterPosition, item)
             }
 
             val cornerRadius = this.context.dp2px(4.0F).toFloat()

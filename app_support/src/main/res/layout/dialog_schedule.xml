@@ -111,6 +111,12 @@
 
         </com.google.android.material.chip.ChipGroup>
 
+        <TextView
+            android:id="@+id/typeTip"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textColor="@android:color/transparent" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -161,6 +167,12 @@
                 app:chipIconSize="@dimen/sp_text_size_3" />
 
         </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            android:id="@+id/priorityTip"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textColor="@android:color/transparent" />
 
     </RelativeLayout>
 
