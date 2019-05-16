@@ -48,9 +48,9 @@ class ScheduleActivity : BaseActivity() {
         MenuView(this).apply {
             bind(
                 ScheduleState.MenuTabVO(title = "不限", value = null, selected = true),
-                ScheduleState.MenuTabVO(title = "工作", value = 0),
-                ScheduleState.MenuTabVO(title = "学习", value = 1),
-                ScheduleState.MenuTabVO(title = "生活", value = 2)
+                ScheduleState.MenuTabVO(title = "工作", value = 1),
+                ScheduleState.MenuTabVO(title = "学习", value = 2),
+                ScheduleState.MenuTabVO(title = "生活", value = 3)
             )
             selectCallback = { position, title, value ->
                 dropDownMenu.toggleTab(selected = position != 0, text = if (position == 0) null else title)
@@ -62,8 +62,8 @@ class ScheduleActivity : BaseActivity() {
         MenuView(this).apply {
             bind(
                 ScheduleState.MenuTabVO(title = "不限", value = null, selected = true),
-                ScheduleState.MenuTabVO(title = "重要", value = 0),
-                ScheduleState.MenuTabVO(title = "一般", value = 1)
+                ScheduleState.MenuTabVO(title = "重要", value = 1),
+                ScheduleState.MenuTabVO(title = "一般", value = 2)
             )
             selectCallback = { position, title, value ->
                 dropDownMenu.toggleTab(selected = position != 0, text = if (position == 0) null else title)

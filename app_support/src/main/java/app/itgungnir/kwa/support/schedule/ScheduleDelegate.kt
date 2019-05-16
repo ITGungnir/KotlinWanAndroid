@@ -44,21 +44,21 @@ class ScheduleDelegate(
 
             priorityView.text = RichText()
                 .append("优先级：")
-                .append(if (item.priority == 0) "重要" else "一般")
-                .foreColor(Color.parseColor(if (item.priority == 0) COLOR_PRIORITY_IMPORTANT else COLOR_PRIORITY_NORMAL))
+                .append(if (item.priority == 1) "重要" else "一般")
+                .foreColor(Color.parseColor(if (item.priority == 1) COLOR_PRIORITY_IMPORTANT else COLOR_PRIORITY_NORMAL))
                 .create()
 
             typeView.apply {
                 when (item.type) {
-                    0 -> {
+                    1 -> {
                         text = "工作"
                         backgroundDrawable = buildTypeDrawable(COLOR_BG_WORK, cornerRadius)
                     }
-                    1 -> {
+                    2 -> {
                         text = "学习"
                         backgroundDrawable = buildTypeDrawable(COLOR_BG_LEARN, cornerRadius)
                     }
-                    2 -> {
+                    3 -> {
                         text = "生活"
                         backgroundDrawable = buildTypeDrawable(COLOR_BG_LIFE, cornerRadius)
                     }
