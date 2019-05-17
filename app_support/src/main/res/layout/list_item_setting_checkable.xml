@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="@dimen/dp_divider_height"
+    android:layout_marginEnd="10dp"
+    android:background="@color/colorPure"
+    tools:ignore="SpUsage">
+
+    <my.itgungnir.ui.icon_font.IconFontView
+        android:id="@+id/iconView"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/sp_text_size_1" />
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/iconView"
+        android:textColor="@color/clr_text_level_1"
+        android:textSize="@dimen/sp_text_size_3"
+        tools:ignore="RelativeOverlap" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/clr_text_level_2"
+        android:textSize="@dimen/sp_text_size_4" />
+
+</RelativeLayout>

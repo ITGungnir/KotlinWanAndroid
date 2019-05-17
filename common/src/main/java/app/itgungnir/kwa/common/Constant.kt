@@ -43,6 +43,12 @@ const val ICON_SETTING = "\ue728"
 const val ICON_ARROW_UP = "\ue749"
 const val ICON_ARROW_DOWN = "\ue74a"
 const val ICON_FINISH = "\ue721"
+const val ICON_AUTO_CACHE = "\ue791"
+const val ICON_NO_IMAGE = "\ue63d"
+const val ICON_DARK_MODE = "\ue633"
+const val ICON_CLEAR_CACHE = "\ue6aa"
+const val ICON_FEEDBACK = "\ue6f5"
+const val ICON_ABOUT_US = "\ue601"
 
 // 颜色
 const val COLOR_PURE = "#FFFFFFFF"
