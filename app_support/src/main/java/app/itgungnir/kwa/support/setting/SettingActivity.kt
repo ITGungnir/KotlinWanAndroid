@@ -15,6 +15,7 @@ import my.itgungnir.ui.easy_adapter.Differ
 import my.itgungnir.ui.easy_adapter.EasyAdapter
 import my.itgungnir.ui.easy_adapter.ListItem
 import my.itgungnir.ui.easy_adapter.bind
+import org.jetbrains.anko.email
 
 @Route(SettingActivity)
 class SettingActivity : BaseActivity() {
@@ -42,20 +43,23 @@ class SettingActivity : BaseActivity() {
         }).map({ data -> data is SettingState.DividerVO }, DividerDelegate())
             .map({ data -> data is SettingState.CheckableVO }, CheckableDelegate(checkCallback = { id ->
                 when (id) {
-                    1 -> popToast("正在开发中，敬请期待~") // TODO
-                    2 -> popToast("正在开发中，敬请期待~") // TODO
-                    3 -> popToast("正在开发中，敬请期待~") // TODO
+                    1 -> popToast("正在开发中，敬请期待~") // TODO 自动缓存
+                    2 -> popToast("正在开发中，敬请期待~") // TODO 无图模式
+                    3 -> popToast("正在开发中，敬请期待~") // TODO 夜间模式
                 }
             }))
             .map({ data -> data is SettingState.DigitalVO }, DigitalDelegate(digitalClickCallback = { id ->
                 when (id) {
-                    4 -> popToast("正在开发中，敬请期待~") // TODO
+                    4 -> popToast("正在开发中，敬请期待~") // TODO 清除缓存
                 }
             }))
             .map({ data -> data is SettingState.NavigableVO }, NavigableDelegate(navigateCallback = { id ->
                 when (id) {
-                    5 -> popToast("正在开发中，敬请期待~") // TODO
-                    6 -> popToast("正在开发中，敬请期待~") // TODO
+                    5 -> when (email(email = "itgungnir@163.com")) {
+                        true -> popToast("反馈成功！")
+                        else -> popToast("发送邮件失败，请检查邮箱设置")
+                    }
+                    6 -> AboutUsDialog().show(supportFragmentManager, AboutUsDialog::class.java.name)
                 }
             }))
             .map({ data -> data is SettingState.ButtonVO }, ButtonDelegate(callback = {

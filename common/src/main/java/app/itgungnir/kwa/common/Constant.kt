@@ -13,6 +13,7 @@ const val ScheduleActivity = "schedule"
 const val ScheduleDoneActivity = "scheduleDone"
 
 // HTTP
+const val APP_VERSION = "V1.0.0"
 const val HTTP_BASE_URL = "https://www.wanandroid.com"
 const val HTTP_TIME_OUT = 5L
 const val HTTP_LOG_TAG = "kotlin-wan-android"
