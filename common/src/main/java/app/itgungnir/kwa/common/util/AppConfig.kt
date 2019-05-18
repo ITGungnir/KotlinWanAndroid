@@ -13,7 +13,8 @@ class AppConfig private constructor() {
             DateTimeUtil(),
             LeakDetectUtil(),
             LoggingUtil(),
-            ReduxUtil()
+            ReduxUtil(),
+            CacheUtil.instance
         ).map {
             it.init(application)
         }

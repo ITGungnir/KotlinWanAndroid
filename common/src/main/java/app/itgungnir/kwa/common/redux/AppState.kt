@@ -12,7 +12,7 @@ data class AppState(
     // Cookies
     val cookies: Set<String> = setOf(),
     // 是否开启“自动缓存”
-    val autoCache: Boolean = false,
+    val autoCache: Boolean = true,
     // 是否开启“无图模式”
     val noImage: Boolean = false,
     // 是否开启“夜间模式”

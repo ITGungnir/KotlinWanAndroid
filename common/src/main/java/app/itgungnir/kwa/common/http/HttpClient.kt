@@ -1,13 +1,12 @@
 package app.itgungnir.kwa.common.http
 
 import android.util.Log
-import app.itgungnir.kwa.common.BuildConfig
-import app.itgungnir.kwa.common.HTTP_BASE_URL
-import app.itgungnir.kwa.common.HTTP_LOG_TAG
-import app.itgungnir.kwa.common.HTTP_TIME_OUT
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.LocalizeCookies
+import app.itgungnir.kwa.common.util.CacheUtil
 import com.orhanobut.logger.Logger
+import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,6 +37,7 @@ class HttpClient private constructor() {
         .readTimeout(HTTP_TIME_OUT, TimeUnit.SECONDS)
         .addInterceptor(loggingInterceptor())
         .addInterceptor(cookieInterceptor())
+        .cache(if (AppRedux.instance.isAutoCache()) Cache(CacheUtil.instance.cacheFile, MAX_CACHE_SIZE) else null)
         .build()
 
     private fun loggingInterceptor() =

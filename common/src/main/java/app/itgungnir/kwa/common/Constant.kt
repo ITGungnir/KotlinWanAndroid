@@ -17,6 +17,7 @@ const val APP_VERSION = "V1.0.0"
 const val HTTP_BASE_URL = "https://www.wanandroid.com"
 const val HTTP_TIME_OUT = 5L
 const val HTTP_LOG_TAG = "kotlin-wan-android"
+const val MAX_CACHE_SIZE = 1024 * 1024 * 50L
 
 // 图标
 const val ICON_BACK = "\ue720"

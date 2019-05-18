@@ -7,7 +7,9 @@ import app.itgungnir.kwa.common.SettingActivity
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
+import app.itgungnir.kwa.common.redux.ToggleAutoCache
 import app.itgungnir.kwa.common.redux.ToggleNoImage
+import app.itgungnir.kwa.common.util.CacheUtil
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.setting.delegate.*
 import kotlinx.android.synthetic.main.activity_setting.*
@@ -85,14 +87,30 @@ class SettingActivity : BaseActivity() {
         }).map({ data -> data is SettingState.DividerVO }, DividerDelegate())
             .map({ data -> data is SettingState.CheckableVO }, CheckableDelegate(checkCallback = { id ->
                 when (id) {
-                    1 -> popToast("正在开发中，敬请期待~") // TODO 自动缓存
+                    1 -> {
+                        CacheUtil.instance.clearCache()
+                        AppRedux.instance.dispatch(ToggleAutoCache)
+                    }
                     2 -> AppRedux.instance.dispatch(ToggleNoImage)
                     3 -> popToast("正在开发中，敬请期待~") // TODO 夜间模式
                 }
             }))
             .map({ data -> data is SettingState.DigitalVO }, DigitalDelegate(digitalClickCallback = { id ->
                 when (id) {
-                    4 -> popToast("正在开发中，敬请期待~") // TODO 清除缓存
+                    4 -> {
+                        CacheUtil.instance.clearCache()
+                        viewModel.setState {
+                            copy(
+                                items = items.map { item ->
+                                    if (item is SettingState.DigitalVO) {
+                                        item.copy(digit = CacheUtil.instance.getCacheSize())
+                                    } else {
+                                        item
+                                    }
+                                }
+                            )
+                        }
+                    }
                 }
             }))
             .map({ data -> data is SettingState.NavigableVO }, NavigableDelegate(navigateCallback = { id ->
