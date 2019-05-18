@@ -3,8 +3,8 @@ package app.itgungnir.kwa.main.project.child
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.list_item_project_article.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate

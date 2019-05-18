@@ -9,13 +9,13 @@ import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
 @SuppressLint("CheckResult")
 class ProjectChildViewModel : BaseViewModel<ProjectChildState>(initialState = ProjectChildState()) {
 
-    private var pageNo = 0
+    private var pageNo = 1
 
     /**
      * 获取项目列表
      */
     fun getProjects(cid: Int) {
-        pageNo = 0
+        pageNo = 1
         HttpClient.api.projectArticles(pageNo, cid)
             .handleResult()
             .io2Main()

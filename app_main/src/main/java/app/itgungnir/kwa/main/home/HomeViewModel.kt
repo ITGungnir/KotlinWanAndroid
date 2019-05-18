@@ -12,13 +12,13 @@ import my.itgungnir.ui.easy_adapter.ListItem
 @SuppressLint("CheckResult")
 class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
 
-    private var currPage = 1
+    private var pageNo = 1
 
     /**
      * 获取数据
      */
     fun getHomeData() {
-        currPage = 1
+        pageNo = 1
 
         val s1 = HttpClient.api.banners()
             .handleResult()
@@ -92,7 +92,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                 )
             }
         }.subscribe({
-            currPage++
+            pageNo++
             setState {
                 copy(
                     refreshing = false,
@@ -114,7 +114,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
      * 加载更多数据
      */
     fun loadMoreHomeData() {
-        HttpClient.api.homeArticles(currPage)
+        HttpClient.api.homeArticles(pageNo)
             .handleResult()
             .io2Main()
             .map {
@@ -143,7 +143,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                     )
                 }
             }.subscribe({
-                currPage++
+                pageNo++
                 setState {
                     copy(
                         loading = false,

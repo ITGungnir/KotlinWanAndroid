@@ -9,13 +9,13 @@ import my.itgungnir.rxmvvm.core.mvvm.BaseViewModel
 @SuppressLint("CheckResult")
 class WeixinChildViewModel : BaseViewModel<WeixinChildState>(initialState = WeixinChildState()) {
 
-    private var pageNo = 0
+    private var pageNo = 1
 
     /**
      * 获取
      */
     fun getArticles(cid: Int, k: String) {
-        pageNo = 0
+        pageNo = 1
         HttpClient.api.weixinArticles(pageNo, cid, k)
             .handleResult()
             .io2Main()

@@ -39,7 +39,7 @@ fun Fragment.popToast(content: String) {
  */
 fun ImageView.load(url: String) =
     GlideApp.with(this.context)
-        .load(url)
+        .load(url.replaceFirst("http://", "https://"))
         .placeholder(R.mipmap.img_placeholder)
         .error(R.mipmap.img_placeholder)
         .centerCrop()
