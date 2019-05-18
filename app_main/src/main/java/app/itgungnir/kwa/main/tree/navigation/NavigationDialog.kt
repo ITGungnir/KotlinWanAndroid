@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.dialog_navigation.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 import my.itgungnir.ui.dialog.FullScreenDialog
@@ -19,7 +19,8 @@ class NavigationDialog : FullScreenDialog() {
 
     private var currIndex = 0
 
-    private var hasTarget = false
+    private lateinit var leftManager: LinearLayoutManager
+    private lateinit var rightManager: LinearLayoutManager
 
     private val viewModel by lazy {
         buildFragmentViewModel(
@@ -32,14 +33,17 @@ class NavigationDialog : FullScreenDialog() {
 
     override fun initComponent() {
 
+        leftManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        rightManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
         headBar.title("导航")
             .back(ICON_BACK) { this.dismiss() }
 
         sideBar.bind(
+            manager = leftManager,
             delegate = SideBarDelegate { position ->
-                hasTarget = true
                 selectTabAt(position)
-                navList.scrollToPosition(position)
+                rightManager.scrollToPositionWithOffset(position, 0)
             },
             diffAnalyzer = object : Differ {
                 override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
@@ -61,15 +65,17 @@ class NavigationDialog : FullScreenDialog() {
         )
 
         navList.apply {
-            bind(delegate = NavigationDelegate())
+            bind(manager = rightManager, delegate = NavigationDelegate())
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
-                    if (!hasTarget) {
-                        val index = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+                    if (rightManager.findLastVisibleItemPosition() != rightManager.itemCount - 1) {
+                        var index = rightManager.findFirstCompletelyVisibleItemPosition()
+                        if (index == -1) {
+                            index = rightManager.findFirstVisibleItemPosition()
+                        }
                         selectTabAt(index)
                     }
-                    hasTarget = false
                 }
             })
         }
@@ -111,7 +117,7 @@ class NavigationDialog : FullScreenDialog() {
                     }
                 )
             }
-            sideBar.scrollToPosition(position)
+            leftManager.scrollToPositionWithOffset(position, 0)
             currIndex = position
         }
     }
