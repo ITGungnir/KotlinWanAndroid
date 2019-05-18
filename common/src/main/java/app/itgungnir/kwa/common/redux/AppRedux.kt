@@ -28,4 +28,13 @@ class AppRedux(context: Application) : BaseRedux<AppState>(
 
     // 判断用户是否已收藏了某篇文章
     fun isCollected(articleId: Int) = currState().collectIds.contains(articleId)
+
+    // 判断当前是否自动缓存
+    fun isAutoCache() = currState().autoCache
+
+    // 判断当前是否处于无图模式
+    fun isNoImage() = currState().noImage
+
+    // 判断当前是否处于夜间模式
+    fun isDarkMode() = currState().darkMode
 }

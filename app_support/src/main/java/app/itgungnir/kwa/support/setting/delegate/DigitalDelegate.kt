@@ -35,7 +35,11 @@ class DigitalDelegate(
 
             titleView.text = item.title
 
-            digitView.text = item.digit
+            digitView.text = if (payloads.isNotEmpty()) {
+                payloads[0].getString("PL_DIGIT") ?: item.digit
+            } else {
+                item.digit
+            }
         }
     }
 }

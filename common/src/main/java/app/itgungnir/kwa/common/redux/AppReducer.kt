@@ -28,6 +28,15 @@ class AppReducer : Reducer<AppState> {
         // 取消收藏文章
         is DisCollectArticle ->
             state.copy(collectIds = state.collectIds - action.articleId, collectChanges = uuid())
+        // 切换“自动缓存”的状态
+        is ToggleAutoCache ->
+            state.copy(autoCache = !state.autoCache)
+        // 切换“无图模式”的状态
+        is ToggleNoImage ->
+            state.copy(noImage = !state.noImage)
+        // 切换“夜间模式”的状态
+        is ToggleDarkMode ->
+            state.copy(darkMode = !state.darkMode)
         // Default
         else ->
             state

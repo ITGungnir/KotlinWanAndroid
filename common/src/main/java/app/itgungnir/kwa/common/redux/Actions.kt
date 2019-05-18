@@ -26,3 +26,9 @@ data class CollectArticle(
 data class DisCollectArticle(
     val articleId: Int
 ) : Action
+
+object ToggleAutoCache : Action
+
+object ToggleNoImage : Action
+
+object ToggleDarkMode : Action

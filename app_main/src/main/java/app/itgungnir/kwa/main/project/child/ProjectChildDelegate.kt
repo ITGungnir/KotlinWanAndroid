@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.list_item_project_article.view.*
 import my.itgungnir.grouter.api.Router
@@ -37,7 +38,11 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
                     .go()
             }
 
-            coverView.load(item.cover)
+            if (AppRedux.instance.isNoImage()) {
+                coverView.load(R.mipmap.img_placeholder)
+            } else {
+                coverView.load(item.cover)
+            }
 
             authorView.text = "$ICON_AUTHOR ${item.author}"
 

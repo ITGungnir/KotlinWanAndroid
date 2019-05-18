@@ -5,6 +5,9 @@ import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.SettingActivity
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.redux.AppRedux
+import app.itgungnir.kwa.common.redux.AppState
+import app.itgungnir.kwa.common.redux.ToggleNoImage
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.setting.delegate.*
 import kotlinx.android.synthetic.main.activity_setting.*
@@ -37,14 +40,53 @@ class SettingActivity : BaseActivity() {
             .back(ICON_BACK) { finish() }
 
         listAdapter = list.bind(diffAnalyzer = object : Differ {
-            override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean = false
-            override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean = false
-            override fun getChangePayload(oldItem: ListItem, newItem: ListItem): Bundle? = null
+            override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
+                if (oldItem is SettingState.CheckableVO && newItem is SettingState.CheckableVO) {
+                    oldItem.id == newItem.id
+                } else if (oldItem is SettingState.DigitalVO && newItem is SettingState.DigitalVO) {
+                    oldItem.id == newItem.id
+                } else if (oldItem is SettingState.NavigableVO && newItem is SettingState.NavigableVO) {
+                    oldItem.id == newItem.id
+                } else {
+                    oldItem is SettingState.ButtonVO && newItem is SettingState.ButtonVO ||
+                            oldItem is SettingState.DividerVO && newItem is SettingState.DividerVO
+                }
+
+
+            override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
+                if (oldItem is SettingState.CheckableVO && newItem is SettingState.CheckableVO) {
+                    oldItem.iconFont == newItem.iconFont && oldItem.title == newItem.title &&
+                            oldItem.isChecked == newItem.isChecked
+                } else if (oldItem is SettingState.DigitalVO && newItem is SettingState.DigitalVO) {
+                    oldItem.iconFont == newItem.iconFont && oldItem.title == newItem.title &&
+                            oldItem.digit == newItem.digit
+                } else {
+                    oldItem is SettingState.ButtonVO && newItem is SettingState.ButtonVO ||
+                            oldItem is SettingState.DividerVO && newItem is SettingState.DividerVO ||
+                            oldItem is SettingState.NavigableVO && newItem is SettingState.NavigableVO
+                }
+
+            override fun getChangePayload(oldItem: ListItem, newItem: ListItem): Bundle? {
+                if (oldItem is SettingState.CheckableVO && newItem is SettingState.CheckableVO) {
+                    val bundle = Bundle()
+                    if (oldItem.isChecked != newItem.isChecked) {
+                        bundle.putBoolean("PL_CHECKED", newItem.isChecked)
+                    }
+                    return if (bundle.isEmpty) null else bundle
+                } else if (oldItem is SettingState.DigitalVO && newItem is SettingState.DigitalVO) {
+                    val bundle = Bundle()
+                    if (oldItem.digit != newItem.digit) {
+                        bundle.putString("PL_DIGIT", newItem.digit)
+                    }
+                    return if (bundle.isEmpty) null else bundle
+                }
+                return null
+            }
         }).map({ data -> data is SettingState.DividerVO }, DividerDelegate())
             .map({ data -> data is SettingState.CheckableVO }, CheckableDelegate(checkCallback = { id ->
                 when (id) {
                     1 -> popToast("正在开发中，敬请期待~") // TODO 自动缓存
-                    2 -> popToast("正在开发中，敬请期待~") // TODO 无图模式
+                    2 -> AppRedux.instance.dispatch(ToggleNoImage)
                     3 -> popToast("正在开发中，敬请期待~") // TODO 夜间模式
                 }
             }))
@@ -70,6 +112,29 @@ class SettingActivity : BaseActivity() {
     }
 
     override fun observeVM() {
+
+        AppRedux.instance.pick(AppState::autoCache, AppState::noImage, AppState::darkMode)
+            .observe(this, Observer { states ->
+                states?.let {
+                    viewModel.setState {
+                        copy(
+                            items = items.map { item ->
+                                if (item is SettingState.CheckableVO) {
+                                    item.copy(
+                                        isChecked = when (item.id) {
+                                            1 -> it.a
+                                            2 -> it.b
+                                            else -> it.c
+                                        }
+                                    )
+                                } else {
+                                    item
+                                }
+                            }
+                        )
+                    }
+                }
+            })
 
         viewModel.pick(SettingState::items)
             .observe(this, Observer { items ->

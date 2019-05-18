@@ -10,5 +10,11 @@ data class AppState(
     // 用户名
     val userName: String? = null,
     // Cookies
-    val cookies: Set<String> = setOf()
+    val cookies: Set<String> = setOf(),
+    // 是否开启“自动缓存”
+    val autoCache: Boolean = false,
+    // 是否开启“无图模式”
+    val noImage: Boolean = false,
+    // 是否开启“夜间模式”
+    val darkMode: Boolean = false
 )

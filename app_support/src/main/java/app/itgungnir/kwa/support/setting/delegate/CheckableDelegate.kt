@@ -27,9 +27,12 @@ class CheckableDelegate(
         holder.render(item) {
 
             checkerView.apply {
-                isChecked = item.isChecked
+                isChecked = if (payloads.isNotEmpty()) {
+                    payloads[0].getBoolean("PL_CHECKED")
+                } else {
+                    item.isChecked
+                }
                 setOnClickListener {
-                    isChecked = false
                     checkCallback.invoke(item.id)
                 }
             }

@@ -13,9 +13,9 @@ class SettingViewModel : BaseViewModel<SettingState>(initialState = SettingState
         Single.just(
             listOf(
                 SettingState.DividerVO,
-                SettingState.CheckableVO(1, ICON_AUTO_CACHE, "自动缓存", false),
-                SettingState.CheckableVO(2, ICON_NO_IMAGE, "无图模式", false),
-                SettingState.CheckableVO(3, ICON_DARK_MODE, "夜间模式", false),
+                SettingState.CheckableVO(1, ICON_AUTO_CACHE, "自动缓存", AppRedux.instance.isAutoCache()),
+                SettingState.CheckableVO(2, ICON_NO_IMAGE, "无图模式", AppRedux.instance.isNoImage()),
+                SettingState.CheckableVO(3, ICON_DARK_MODE, "夜间模式", AppRedux.instance.isDarkMode()),
                 SettingState.DividerVO,
                 SettingState.DigitalVO(4, ICON_CLEAR_CACHE, "清除缓存", "0.0KB"),
                 SettingState.DividerVO,

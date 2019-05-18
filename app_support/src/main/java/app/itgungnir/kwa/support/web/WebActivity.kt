@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
+import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.activity_web.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
@@ -79,7 +79,7 @@ class WebActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun loadSucceedPage(view: View, url: String) {
-        view.findViewById<WebBrowser>(R.id.browser).load(url)
+        view.findViewById<WebBrowser>(R.id.browser).load(url, AppRedux.instance.isNoImage())
             .onError { code, msg ->
                 statusView.failed { view ->
                     view.findViewById<TextView>(R.id.tip).text = "$code：$msg"

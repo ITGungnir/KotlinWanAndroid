@@ -46,6 +46,17 @@ fun ImageView.load(url: String) =
         .into(this)
 
 /**
+ * 加载本地res文件夹中的图片到ImageView中（目前仅供无图模式下使用）
+ */
+fun ImageView.load(imgRes: Int) =
+    GlideApp.with(this.context)
+        .load(imgRes)
+        .placeholder(R.mipmap.img_placeholder)
+        .error(R.mipmap.img_placeholder)
+        .centerCrop()
+        .into(this)
+
+/**
  * 隐藏软键盘
  */
 fun View.hideSoftInput() =
