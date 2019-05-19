@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.support.R
-import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.SearchResultActivity
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.activity_search_result.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
@@ -40,7 +39,7 @@ class SearchResultActivity : BaseActivity() {
         val key = intent.extras?.getString("key") ?: ""
 
         headBar.title("\"$key\"的搜索结果")
-            .back(ICON_BACK) { finish() }
+            .back(getString(R.string.icon_back)) { finish() }
 
         searchResultPage.apply {
             // Refresh Layout

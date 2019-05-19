@@ -1,16 +1,13 @@
 package app.itgungnir.kwa.main.home.search
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import app.itgungnir.kwa.main.R
-import app.itgungnir.kwa.common.COLOR_ACCENT
-import app.itgungnir.kwa.common.COLOR_DIVIDER
-import app.itgungnir.kwa.common.COLOR_TEXT1
+import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.ClearSearchHistory
+import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.list_item_search_history.view.*
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
@@ -32,7 +29,7 @@ class SearchHistoryDelegate(
                 statusView.empty { }
                 clearView.apply {
                     isEnabled = false
-                    textColor = Color.parseColor(COLOR_DIVIDER)
+                    textColor = context.color(R.color.clr_divider)
                 }
             }
             // Status View
@@ -42,7 +39,7 @@ class SearchHistoryDelegate(
                     render = { view, data ->
                         view.findViewById<TextView>(R.id.tagView).apply {
                             text = data.name
-                            textColor = Color.parseColor(COLOR_TEXT1)
+                            textColor = context.color(R.color.text_color_level_1)
                             onAntiShakeClick {
                                 keyClickCallback.invoke(data.name)
                             }
@@ -68,7 +65,7 @@ class SearchHistoryDelegate(
                 statusView.empty { }
                 clearView.apply {
                     isEnabled = false
-                    textColor = Color.parseColor(COLOR_DIVIDER)
+                    textColor = context.color(R.color.clr_divider)
                 }
             } else {
                 statusView.succeed {
@@ -76,7 +73,7 @@ class SearchHistoryDelegate(
                 }
                 clearView.apply {
                     isEnabled = true
-                    textColor = Color.parseColor(COLOR_ACCENT)
+                    textColor = context.color(R.color.colorAccent)
                 }
             }
         }

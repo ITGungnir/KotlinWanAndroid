@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.main.R
-import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.main.R
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.dialog_add_article.*
@@ -39,7 +38,7 @@ class AddArticleDialog : DialogFragment() {
     private fun initComponent() {
 
         headBar.title("新增站外文章")
-            .back(ICON_BACK) { this.dismiss() }
+            .back(getString(R.string.icon_back)) { this.dismiss() }
 
         Observable.combineLatest(
             arrayOf(

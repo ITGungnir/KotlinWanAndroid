@@ -3,7 +3,10 @@ package app.itgungnir.kwa.main.mine
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.HierarchyActivity
+import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.html
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.tree.TreeState
 import com.google.gson.Gson
@@ -45,7 +48,7 @@ class MineArticleDelegate(
                     .go()
             }
 
-            authorView.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "${context.getString(R.string.icon_author)} ${item.author}"
 
             categoryView.apply {
                 text = item.category

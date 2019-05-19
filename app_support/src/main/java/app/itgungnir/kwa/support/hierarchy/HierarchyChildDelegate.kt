@@ -3,11 +3,10 @@ package app.itgungnir.kwa.support.hierarchy
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import app.itgungnir.kwa.support.R
-import app.itgungnir.kwa.common.ICON_AUTHOR
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.onAntiShakeClick
+import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.list_item_hierarchy_article.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate
@@ -39,7 +38,7 @@ class HierarchyChildDelegate : BaseDelegate<HierarchyChildState.HierarchyArticle
                     .go()
             }
 
-            authorView.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "${context.getString(R.string.icon_author)} ${item.author}"
 
             titleView.text = html(item.title)
 

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.dialog_navigation.*
@@ -37,7 +36,7 @@ class NavigationDialog : FullScreenDialog() {
         rightManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
         headBar.title("导航")
-            .back(ICON_BACK) { this.dismiss() }
+            .back(getString(R.string.icon_back)) { this.dismiss() }
 
         sideBar.bind(
             manager = leftManager,

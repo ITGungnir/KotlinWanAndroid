@@ -8,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.ICON_BACK
-import app.itgungnir.kwa.common.ICON_FINISH
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.support.R
@@ -41,8 +39,8 @@ class EditScheduleDialog(
         super.onViewCreated(view, savedInstanceState)
 
         headBar.title("编辑日程")
-            .back(ICON_BACK) { this.dismiss() }
-            .addToolButton(ICON_FINISH) {
+            .back(getString(R.string.icon_back)) { this.dismiss() }
+            .addToolButton(getString(R.string.icon_finish)) {
                 viewModel.finishSchedule(position, data.id)
             }
 

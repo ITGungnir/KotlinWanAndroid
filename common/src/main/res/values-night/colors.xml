@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPure">#FF707070</color>
+    <color name="colorPrimary">#FF000000</color>
+    <color name="colorAccent">#FF6d4c41</color>
+
+    <color name="clr_divider">#FF424242</color>
+    <color name="clr_background">#FF616161</color>
+    <color name="clr_mask">#99707070</color>
+
+    <color name="text_color_level_1">#FFEFEFEF</color>
+    <color name="text_color_level_2">#FFDCDCDC</color>
+    <color name="text_color_level_3">#FFBDBDBD</color>
+
+</resources>

@@ -1,11 +1,10 @@
 package app.itgungnir.kwa.main.tree.tools
 
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.main.R
-import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.main.R
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.dialog_tools.*
 import my.itgungnir.grouter.api.Router
@@ -26,7 +25,7 @@ class ToolsDialog : FullScreenDialog() {
     override fun initComponent() {
 
         headBar.title("常用网站")
-            .back(ICON_BACK) { this.dismiss() }
+            .back(getString(R.string.icon_back)) { this.dismiss() }
 
         children.bind<ToolsState.ToolTagVO>(
             layoutId = R.layout.list_item_tag,

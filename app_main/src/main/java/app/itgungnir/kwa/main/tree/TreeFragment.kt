@@ -3,11 +3,9 @@ package app.itgungnir.kwa.main.tree
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.main.R
-import app.itgungnir.kwa.common.ICON_NAVIGATION
-import app.itgungnir.kwa.common.ICON_TOOLS
 import app.itgungnir.kwa.common.dp2px
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.tree.navigation.NavigationDialog
 import app.itgungnir.kwa.main.tree.tools.ToolsDialog
 import kotlinx.android.synthetic.main.fragment_tree.*
@@ -34,10 +32,10 @@ class TreeFragment : BaseFragment() {
     override fun initComponent() {
         // Head Bar
         headBar.title("知识体系")
-            .addToolButton(ICON_TOOLS) {
+            .addToolButton(getString(R.string.icon_tools)) {
                 ToolsDialog().show(childFragmentManager, ToolsDialog::class.java.name)
             }
-            .addToolButton(ICON_NAVIGATION) {
+            .addToolButton(getString(R.string.icon_navigation)) {
                 NavigationDialog().show(childFragmentManager, NavigationDialog::class.java.name)
             }
         // Common Page

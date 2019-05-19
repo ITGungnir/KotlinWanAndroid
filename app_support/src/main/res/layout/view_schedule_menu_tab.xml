@@ -9,7 +9,7 @@
 
     <View
         android:id="@+id/divider1"
-        android:layout_width="@dimen/ui_kit_dp_divider_height"
+        android:layout_width="@dimen/divider_height"
         android:layout_height="20dp"
         android:background="@color/clr_divider"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +19,7 @@
 
     <View
         android:id="@+id/divider2"
-        android:layout_width="@dimen/ui_kit_dp_divider_height"
+        android:layout_width="@dimen/divider_height"
         android:layout_height="20dp"
         android:layout_marginEnd="70dp"
         android:background="@color/clr_divider"
@@ -30,7 +30,7 @@
     <View
         android:id="@+id/divider3"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ui_kit_dp_divider_height"
+        android:layout_height="@dimen/divider_height"
         android:background="@color/clr_divider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,17 +53,17 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/str_schedule_type"
-            android:textColor="@color/clr_text_level_1"
-            android:textSize="@dimen/sp_text_size_4" />
+            android:textColor="@color/text_color_level_1"
+            android:textSize="@dimen/text_size_small" />
 
         <my.itgungnir.ui.icon_font.IconFontView
             android:id="@+id/tabArrow1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="@string/str_icon_arrow_down"
-            android:textColor="@color/clr_text_level_1"
-            android:textSize="@dimen/sp_text_size_2" />
+            android:text="@string/icon_arrow_down"
+            android:textColor="@color/text_color_level_1"
+            android:textSize="@dimen/text_size_large" />
     </LinearLayout>
 
     <LinearLayout
@@ -83,17 +83,17 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/str_schedule_priority"
-            android:textColor="@color/clr_text_level_1"
-            android:textSize="@dimen/sp_text_size_4" />
+            android:textColor="@color/text_color_level_1"
+            android:textSize="@dimen/text_size_small" />
 
         <my.itgungnir.ui.icon_font.IconFontView
             android:id="@+id/tabArrow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="@string/str_icon_arrow_down"
-            android:textColor="@color/clr_text_level_1"
-            android:textSize="@dimen/sp_text_size_2" />
+            android:text="@string/icon_arrow_down"
+            android:textColor="@color/text_color_level_1"
+            android:textSize="@dimen/text_size_large" />
     </LinearLayout>
 
     <my.itgungnir.ui.icon_font.IconFontView
@@ -101,9 +101,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="@string/str_icon_sort"
-        android:textColor="@color/clr_text_level_1"
-        android:textSize="@dimen/sp_text_size_2"
+        android:text="@string/icon_sort"
+        android:textColor="@color/text_color_level_1"
+        android:textSize="@dimen/text_size_large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/divider2"

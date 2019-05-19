@@ -3,7 +3,6 @@ package app.itgungnir.kwa.support.schedule.done
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.ScheduleDoneActivity
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.support.R
@@ -37,7 +36,7 @@ class ScheduleDoneActivity : BaseActivity() {
     override fun initComponent() {
 
         headBar.title("已完成日程")
-            .back(ICON_BACK) { finish() }
+            .back(getString(R.string.icon_back)) { finish() }
 
         scheduleDonePage.apply {
             // Refresh Layout

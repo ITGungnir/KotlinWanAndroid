@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/app_name"
-        android:textColor="@color/clr_text_level_1"
-        android:textSize="@dimen/sp_text_size_2"
+        android:textColor="@color/text_color_level_1"
+        android:textSize="@dimen/text_size_large"
         android:textStyle="bold" />
 
     <TextView
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/clr_text_level_1"
-        android:textSize="@dimen/sp_text_size_4" />
+        android:textColor="@color/text_color_level_1"
+        android:textSize="@dimen/text_size_small" />
 
 </LinearLayout>

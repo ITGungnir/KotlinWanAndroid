@@ -1,10 +1,11 @@
 package app.itgungnir.kwa.support.schedule
 
-import android.graphics.Color
+import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.color
+import app.itgungnir.kwa.common.dp2px
 import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.list_item_schedule.view.*
 import my.itgungnir.ui.easy_adapter.BaseDelegate
@@ -40,8 +41,6 @@ class ScheduleDelegate(
                 clickCallback.invoke(holder.adapterPosition, item)
             }
 
-            val cornerRadius = this.context.dp2px(4.0F).toFloat()
-
             if (payloads.isNotEmpty()) {
                 val payload = payloads[0]
                 payload.keySet().forEach {
@@ -49,11 +48,14 @@ class ScheduleDelegate(
                         // 优先级
                         "PL_PRIORITY" -> {
                             val priority = payload.getInt(it)
-                            val foreColor = if (priority == 1) COLOR_PRIORITY_IMPORTANT else COLOR_PRIORITY_NORMAL
+                            val colorId = when (priority) {
+                                1 -> R.color.clr_priority_important
+                                else -> R.color.clr_priority_normal
+                            }
                             priorityView.text = RichText()
                                 .append("优先级：")
                                 .append(if (priority == 1) "重要" else "一般")
-                                .foreColor(Color.parseColor(foreColor))
+                                .foreColor(this.context.color(colorId))
                                 .create()
                         }
                         // 类型
@@ -61,15 +63,15 @@ class ScheduleDelegate(
                             when (payload.getInt(it)) {
                                 1 -> {
                                     text = "工作"
-                                    backgroundDrawable = buildTypeDrawable(COLOR_BG_WORK, cornerRadius)
+                                    backgroundDrawable = typeDrawable(this.context, R.color.clr_type_work)
                                 }
                                 2 -> {
                                     text = "学习"
-                                    backgroundDrawable = buildTypeDrawable(COLOR_BG_LEARN, cornerRadius)
+                                    backgroundDrawable = typeDrawable(this.context, R.color.clr_type_learn)
                                 }
                                 3 -> {
                                     text = "生活"
-                                    backgroundDrawable = buildTypeDrawable(COLOR_BG_LIFE, cornerRadius)
+                                    backgroundDrawable = typeDrawable(this.context, R.color.clr_type_life)
                                 }
                             }
                         }
@@ -87,26 +89,29 @@ class ScheduleDelegate(
                 }
             } else {
                 // 优先级
-                val foreColor = if (item.priority == 1) COLOR_PRIORITY_IMPORTANT else COLOR_PRIORITY_NORMAL
+                val colorId = when (item.priority) {
+                    1 -> R.color.clr_priority_important
+                    else -> R.color.clr_priority_normal
+                }
                 priorityView.text = RichText()
                     .append("优先级：")
                     .append(if (item.priority == 1) "重要" else "一般")
-                    .foreColor(Color.parseColor(foreColor))
+                    .foreColor(this.context.color(colorId))
                     .create()
                 // 类型
                 typeView.apply {
                     when (item.type) {
                         1 -> {
                             text = "工作"
-                            backgroundDrawable = buildTypeDrawable(COLOR_BG_WORK, cornerRadius)
+                            backgroundDrawable = typeDrawable(this.context, R.color.clr_type_work)
                         }
                         2 -> {
                             text = "学习"
-                            backgroundDrawable = buildTypeDrawable(COLOR_BG_LEARN, cornerRadius)
+                            backgroundDrawable = typeDrawable(this.context, R.color.clr_type_learn)
                         }
                         3 -> {
                             text = "生活"
-                            backgroundDrawable = buildTypeDrawable(COLOR_BG_LIFE, cornerRadius)
+                            backgroundDrawable = typeDrawable(this.context, R.color.clr_type_life)
                         }
                     }
                 }
@@ -124,8 +129,8 @@ class ScheduleDelegate(
         }
     }
 
-    private fun buildTypeDrawable(color: String, radius: Float) = GradientDrawable().apply {
-        setColor(Color.parseColor(color))
-        cornerRadius = radius
+    private fun typeDrawable(context: Context, colorId: Int) = GradientDrawable().apply {
+        setColor(context.color(colorId))
+        cornerRadius = context.dp2px(5.0F).toFloat()
     }
 }

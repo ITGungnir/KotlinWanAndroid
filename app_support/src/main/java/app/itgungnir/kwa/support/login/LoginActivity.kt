@@ -2,10 +2,10 @@ package app.itgungnir.kwa.support.login
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.LocalizeUserInfo
+import app.itgungnir.kwa.support.R
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_login.*
@@ -30,7 +30,7 @@ class LoginActivity : BaseActivity() {
     override fun initComponent() {
 
         headBar.title("用户登录")
-            .back(ICON_BACK) { finish() }
+            .back(getString(R.string.icon_back)) { finish() }
 
         Observable.combineLatest(
             arrayOf(

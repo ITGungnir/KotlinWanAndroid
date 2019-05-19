@@ -2,7 +2,8 @@ package app.itgungnir.kwa.support.schedule
 
 import android.view.View
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.ScheduleActivity
+import app.itgungnir.kwa.common.ScheduleDoneActivity
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.schedule.dialog.AddScheduleDialog
 import app.itgungnir.kwa.support.schedule.menu.MenuContent
@@ -28,12 +29,12 @@ class ScheduleActivity : BaseActivity() {
     override fun initComponent() {
 
         headBar.title("我的日程")
-            .back(ICON_BACK) { finish() }
-            .addToolButton(ICON_ADD) {
+            .back(getString(R.string.icon_back)) { finish() }
+            .addToolButton(getString(R.string.icon_add)) {
                 viewModel.setState { copy(dismissFlag = null) }
                 AddScheduleDialog().show(supportFragmentManager, AddScheduleDialog::class.java.name)
             }
-            .addToolButton(ICON_SCHEDULE_DONE) {
+            .addToolButton(getString(R.string.icon_schedule_done)) {
                 Router.instance.with(this)
                     .target(ScheduleDoneActivity)
                     .go()

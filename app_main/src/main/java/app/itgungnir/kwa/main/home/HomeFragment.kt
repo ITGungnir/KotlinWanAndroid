@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.ICON_SEARCH
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.delegate.BannerDelegate
@@ -38,7 +37,7 @@ class HomeFragment : BaseFragment() {
     override fun initComponent() {
         // Head Bar
         headBar.title("首页")
-            .addToolButton(ICON_SEARCH) {
+            .addToolButton(getString(R.string.icon_search)) {
                 SearchDialog().show(childFragmentManager, SearchDialog::class.java.name)
             }
         // Common Page

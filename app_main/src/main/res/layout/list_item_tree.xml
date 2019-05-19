@@ -21,8 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/clr_text_level_1"
-            android:textSize="@dimen/sp_text_size_2"
+            android:textColor="@color/text_color_level_1"
+            android:textSize="@dimen/text_size_large"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="开发环境" />
@@ -32,9 +32,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:text="@string/str_icon_right_arrow"
-            android:textColor="@color/clr_text_level_2"
-            android:textSize="@dimen/sp_text_size_1"
+            android:text="@string/icon_right_arrow"
+            android:textColor="@color/text_color_level_2"
+            android:textSize="@dimen/text_size_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

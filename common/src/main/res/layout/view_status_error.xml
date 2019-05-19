@@ -11,8 +11,8 @@
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/str_icon_auth"
-        android:textColor="@color/clr_text_level_3"
+        android:text="@string/icon_project_normal"
+        android:textColor="@color/text_color_level_3"
         android:textSize="120dp" />
 
     <TextView
@@ -20,8 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@color/clr_text_level_2"
-        android:textSize="@dimen/sp_text_size_3" />
+        android:textColor="@color/text_color_level_2"
+        android:textSize="@dimen/text_size_normal" />
 
     <my.itgungnir.ui.input.ProgressButton
         android:id="@+id/button"

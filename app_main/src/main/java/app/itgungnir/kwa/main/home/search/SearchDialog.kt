@@ -1,12 +1,11 @@
 package app.itgungnir.kwa.main.home.search
 
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.main.R
-import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.SearchResultActivity
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AddSearchHistory
 import app.itgungnir.kwa.common.redux.AppRedux
+import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.dialog_search.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
@@ -28,7 +27,7 @@ class SearchDialog : FullScreenDialog() {
     override fun layoutId(): Int = R.layout.dialog_search
 
     override fun initComponent() {
-        searchBar.back(ICON_BACK) { this.dismiss() }
+        searchBar.back(getString(R.string.icon_back)) { this.dismiss() }
             .doOnSearch {
                 if (it.isNotBlank()) {
                     AppRedux.instance.dispatch(AddSearchHistory(it))

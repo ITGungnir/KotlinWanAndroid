@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.LoginActivity
+import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.html
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.support.R
@@ -41,10 +44,10 @@ class WebActivity : BaseActivity() {
         val url = intent.getStringExtra("url").replace("http://", "https://")
 
         headBar.title(html(title))
-            .back(ICON_BACK) { finish() }
+            .back(getString(R.string.icon_back)) { finish() }
 
         if (id > 0 && originId >= 0) {
-            headBar.addToolButton(ICON_UNCOLLECT) {
+            headBar.addToolButton(getString(R.string.icon_uncollect)) {
                 if (AppRedux.instance.isUserIn()) {
                     when (AppRedux.instance.isCollected(id) || AppRedux.instance.isCollected(originId)) {
                         // 取消收藏
@@ -66,7 +69,7 @@ class WebActivity : BaseActivity() {
             }
         }
 
-        headBar.addToolButton(ICON_SHARE) {
+        headBar.addToolButton(getString(R.string.icon_share)) {
             share("KotlinWanAndroid分享《$title》专题：$url", title)
         }
 
@@ -105,7 +108,13 @@ class WebActivity : BaseActivity() {
                 collectIds?.a?.let {
                     if (headBar.toolButtonCount() > 1) {
                         val flag = it.contains(id) || it.contains(originId)
-                        headBar.updateToolButton(0, if (flag) ICON_COLLECT else ICON_UNCOLLECT)
+                        headBar.updateToolButton(
+                            0,
+                            when (flag) {
+                                true -> getString(R.string.icon_collect)
+                                else -> getString(R.string.icon_uncollect)
+                            }
+                        )
                     }
                 }
             })

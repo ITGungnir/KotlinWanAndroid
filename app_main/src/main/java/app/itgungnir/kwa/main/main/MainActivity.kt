@@ -1,10 +1,11 @@
 package app.itgungnir.kwa.main.main
 
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.MainActivity
+import app.itgungnir.kwa.common.color
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.HomeFragment
 import app.itgungnir.kwa.main.mine.MineFragment
@@ -31,18 +32,38 @@ class MainActivity : AppCompatActivity() {
 
     private fun initComponent() {
 
-        val selectedColor = Color.parseColor(COLOR_ICON_SELECT)
-        val unSelectedColor = Color.parseColor(COLOR_ICON_NORMAL)
+        val selectedColor = this.color(R.color.clr_icon_selected)
+        val unSelectedColor = this.color(R.color.clr_icon_unselected)
 
         bottomTab.init(
             targetFrameId = R.id.fragment,
             fragmentManager = supportFragmentManager,
             items = listOf(
-                TabItem("首页", ICON_HOME_NORMAL, ICON_HOME_SELECT) to HomeFragment(),
-                TabItem("知识体系", ICON_TREE_NORMAL, ICON_TREE_SELECT) to TreeFragment(),
-                TabItem("公众号", ICON_WEIXIN_NORMAL, ICON_WEIXIN_SELECT) to WeixinFragment(),
-                TabItem("项目", ICON_PROJECT_NORMAL, ICON_PROJECT_SELECT) to ProjectFragment(),
-                TabItem("我的", ICON_MINE_NORMAL, ICON_MINE_SELECT) to MineFragment()
+                TabItem(
+                    "首页",
+                    getString(R.string.icon_home_normal),
+                    getString(R.string.icon_home_select)
+                ) to HomeFragment(),
+                TabItem(
+                    "知识体系",
+                    getString(R.string.icon_tree_normal),
+                    getString(R.string.icon_tree_select)
+                ) to TreeFragment(),
+                TabItem(
+                    "公众号",
+                    getString(R.string.icon_weixin_normal),
+                    getString(R.string.icon_weixin_select)
+                ) to WeixinFragment(),
+                TabItem(
+                    "项目",
+                    getString(R.string.icon_project_normal),
+                    getString(R.string.icon_project_select)
+                ) to ProjectFragment(),
+                TabItem(
+                    "我的",
+                    getString(R.string.icon_mine_normal),
+                    getString(R.string.icon_mine_select)
+                ) to MineFragment()
             ),
             itemLayoutId = R.layout.list_item_main_bottom_tab,
             render = { view, data, selected ->

@@ -1,20 +1,47 @@
 <resources>
-
+    <!-- 应用名称 -->
     <string name="app_name">KotlinWanAndroid</string>
-
-    <string name="str_icon_back">\ue720</string>
-    <string name="str_icon_empty">\ue6a6</string>
-    <string name="str_icon_search">\ue833</string>
-    <string name="str_icon_top">\ue617</string>
-    <string name="str_icon_right_arrow">\ue6f8</string>
-    <string name="str_icon_clear">\ue738 清空</string>
-    <string name="str_icon_clear_text">\ue6f2</string>
-    <string name="str_icon_auth">\ue6ec</string>
-    <string name="str_icon_show_pwd">\ue8d4</string>
-    <string name="str_icon_hide_pwd">\ue8d5</string>
-    <string name="str_icon_sort">\ue63a</string>
-    <string name="str_icon_arrow_down">\ue74a</string>
-
+    <!-- 图标 -->
+    <string name="icon_back">\ue720</string>
+    <string name="icon_empty">\ue6a6</string>
+    <string name="icon_search">\ue833</string>
+    <string name="icon_top">\ue617</string>
+    <string name="icon_right_arrow">\ue6f8</string>
+    <string name="icon_clear">\ue738 清空</string>
+    <string name="icon_clear_text">\ue6f2</string>
+    <string name="icon_show_pwd">\ue8d4</string>
+    <string name="icon_hide_pwd">\ue8d5</string>
+    <string name="icon_sort">\ue63a</string>
+    <string name="icon_arrow_down">\ue74a</string>
+    <string name="icon_home_normal">\ue703</string>
+    <string name="icon_home_select">\ue702</string>
+    <string name="icon_tree_normal">\ue6ef</string>
+    <string name="icon_tree_select">\ue6ee</string>
+    <string name="icon_weixin_normal">\ue82c</string>
+    <string name="icon_weixin_select">\ue608</string>
+    <string name="icon_project_normal">\ue6ec</string>
+    <string name="icon_project_select">\ue6eb</string>
+    <string name="icon_mine_normal">\ue716</string>
+    <string name="icon_mine_select">\ue715</string>
+    <string name="icon_author">\ue830</string>
+    <string name="icon_uncollect">\ue708</string>
+    <string name="icon_collect">\ue707</string>
+    <string name="icon_share">\ue729</string>
+    <string name="icon_tools">\ue834</string>
+    <string name="icon_navigation">\ue744</string>
+    <string name="icon_add">\ue6df</string>
+    <string name="icon_schedule">\ue6de</string>
+    <string name="icon_schedule_done">\ue732</string>
+    <string name="icon_setting">\ue728</string>
+    <string name="icon_arrow_up">\ue749</string>
+    <string name="icon_finish">\ue721</string>
+    <string name="icon_auto_cache">\ue791</string>
+    <string name="icon_no_image">\ue63d</string>
+    <string name="icon_dark_mode">\ue633</string>
+    <string name="icon_clear_cache">\ue6aa</string>
+    <string name="icon_feedback">\ue6f5</string>
+    <string name="icon_about_us">\ue601</string>
+    <!-- 应用内文本 -->
     <string name="str_search">搜索</string>
     <string name="str_hot_key">热搜</string>
     <string name="str_repository">Repository</string>
@@ -37,5 +64,4 @@
     <string name="str_schedule_life">生活</string>
     <string name="str_schedule_important">重要</string>
     <string name="str_schedule_normal">一般</string>
-
 </resources>

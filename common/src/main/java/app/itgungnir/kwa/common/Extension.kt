@@ -6,6 +6,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import app.itgungnir.kwa.common.util.GlideApp
@@ -75,3 +76,8 @@ fun View.onAntiShakeClick(block: (View) -> Unit) =
  * 加载HTML代码到TextView中
  */
 fun html(html: String): String = HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
+
+/**
+ * 获取XML配置中的颜色
+ */
+fun Context.color(id: Int) = ContextCompat.getColor(this, id)

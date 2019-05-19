@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceSmallInverse"
         android:textColor="@color/colorAccent"
-        android:textSize="@dimen/sp_text_size_4"
+        android:textSize="@dimen/text_size_small"
         app:chipBackgroundColor="@color/clr_background"
         tools:ignore="SpUsage"
         tools:text="@string/app_name" />

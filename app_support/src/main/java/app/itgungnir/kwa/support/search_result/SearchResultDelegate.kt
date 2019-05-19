@@ -3,11 +3,10 @@ package app.itgungnir.kwa.support.search_result
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import app.itgungnir.kwa.support.R
-import app.itgungnir.kwa.common.ICON_AUTHOR
 import app.itgungnir.kwa.common.WebActivity
 import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.onAntiShakeClick
+import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.list_item_search_article.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate
@@ -40,7 +39,7 @@ class SearchResultDelegate : BaseDelegate<SearchResultState.SearchResultArticleV
                     .go()
             }
 
-            authorView.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "${context.getString(R.string.icon_author)} ${item.author}"
 
             titleView.text = html(item.title)
 

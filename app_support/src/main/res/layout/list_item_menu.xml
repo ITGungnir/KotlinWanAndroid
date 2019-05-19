@@ -12,8 +12,8 @@
         android:layout_height="match_parent"
         android:background="?android:selectableItemBackground"
         android:gravity="center"
-        android:textColor="@color/clr_text_level_1"
-        android:textSize="@dimen/sp_text_size_4"
+        android:textColor="@color/text_color_level_1"
+        android:textSize="@dimen/text_size_small"
         tools:ignore="SpUsage"
         tools:text="不限" />
 

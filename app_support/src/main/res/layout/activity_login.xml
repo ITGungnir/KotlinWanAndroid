@@ -48,8 +48,8 @@
         android:paddingEnd="20dp"
         android:paddingBottom="5dp"
         android:text="@string/str_register"
-        android:textColor="@color/clr_text_level_2"
-        android:textSize="@dimen/sp_text_size_4"
+        android:textColor="@color/text_color_level_2"
+        android:textSize="@dimen/text_size_small"
         tools:ignore="SpUsage" />
 
 </LinearLayout>

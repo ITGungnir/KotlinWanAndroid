@@ -3,7 +3,10 @@ package app.itgungnir.kwa.main.project.child
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.html
+import app.itgungnir.kwa.common.load
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.list_item_project_article.view.*
@@ -44,7 +47,7 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
                 coverView.load(item.cover)
             }
 
-            authorView.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "${context.getString(R.string.icon_author)} ${item.author}"
 
             repositoryView.onAntiShakeClick {
                 Router.instance.with(context)

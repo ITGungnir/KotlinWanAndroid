@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.support.R
@@ -37,7 +36,7 @@ class AddScheduleDialog : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         headBar.title("添加日程")
-            .back(ICON_BACK) { this.dismiss() }
+            .back(getString(R.string.icon_back)) { this.dismiss() }
 
         dateInput.onAntiShakeClick {
             it.hideSoftInput()

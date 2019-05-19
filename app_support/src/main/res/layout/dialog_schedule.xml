@@ -14,7 +14,7 @@
         android:layout_height="?attr/actionBarSize"
         app:hb_dividerColor="@color/clr_divider"
         app:hb_showDivider="true"
-        app:hb_textColor="@color/clr_text_level_1" />
+        app:hb_textColor="@color/text_color_level_1" />
 
     <my.itgungnir.ui.input.ShadowInput
         android:id="@+id/titleInput"
@@ -48,8 +48,8 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:text="@string/str_dialog_schedule_date"
-        android:textColor="@color/clr_text_level_1"
-        android:textSize="@dimen/sp_text_size_2" />
+        android:textColor="@color/text_color_level_1"
+        android:textSize="@dimen/text_size_large" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -63,8 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/str_schedule_type"
-            android:textColor="@color/clr_text_level_2"
-            android:textSize="@dimen/sp_text_size_3" />
+            android:textColor="@color/text_color_level_2"
+            android:textSize="@dimen/text_size_normal" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/typeGroup"
@@ -84,8 +84,8 @@
                 android:text="@string/str_schedule_work"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@color/colorPure"
-                app:chipBackgroundColor="#FFB4004E"
-                app:chipIconSize="@dimen/sp_text_size_3" />
+                app:chipBackgroundColor="@color/clr_type_work"
+                app:chipIconSize="@dimen/text_size_normal" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipLearn"
@@ -95,8 +95,8 @@
                 android:text="@string/str_schedule_learn"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@color/colorPure"
-                app:chipBackgroundColor="#FF087F23"
-                app:chipIconSize="@dimen/sp_text_size_3" />
+                app:chipBackgroundColor="@color/clr_type_learn"
+                app:chipIconSize="@dimen/text_size_normal" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipLife"
@@ -106,8 +106,8 @@
                 android:text="@string/str_schedule_life"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@color/colorPure"
-                app:chipBackgroundColor="#FF007AC1"
-                app:chipIconSize="@dimen/sp_text_size_3" />
+                app:chipBackgroundColor="@color/clr_type_life"
+                app:chipIconSize="@dimen/text_size_normal" />
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -131,8 +131,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/str_schedule_priority"
-            android:textColor="@color/clr_text_level_2"
-            android:textSize="@dimen/sp_text_size_3" />
+            android:textColor="@color/text_color_level_2"
+            android:textSize="@dimen/text_size_normal" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/priorityGroup"
@@ -151,9 +151,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/str_schedule_important"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="#FFFF5722"
+                android:textColor="@color/clr_priority_important"
                 app:chipBackgroundColor="@color/clr_background"
-                app:chipIconSize="@dimen/sp_text_size_3" />
+                app:chipIconSize="@dimen/text_size_normal" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipNormal"
@@ -162,9 +162,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/str_schedule_normal"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="#FF29B6F6"
+                android:textColor="@color/clr_priority_normal"
                 app:chipBackgroundColor="@color/clr_background"
-                app:chipIconSize="@dimen/sp_text_size_3" />
+                app:chipIconSize="@dimen/text_size_normal" />
 
         </com.google.android.material.chip.ChipGroup>
 

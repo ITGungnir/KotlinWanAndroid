@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@color/clr_text_level_1"
-        android:textSize="@dimen/sp_text_size_3"
+        android:textColor="@color/text_color_level_1"
+        android:textSize="@dimen/text_size_normal"
         tools:ignore="SpUsage" />
 
     <my.itgungnir.ui.flex.ScrollableFlexView

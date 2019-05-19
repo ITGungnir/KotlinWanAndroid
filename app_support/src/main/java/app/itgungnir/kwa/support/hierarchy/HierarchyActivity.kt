@@ -2,9 +2,8 @@ package app.itgungnir.kwa.support.hierarchy
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
-import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.common.HierarchyActivity
-import app.itgungnir.kwa.common.ICON_BACK
+import app.itgungnir.kwa.support.R
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_hierarchy.*
 import my.itgungnir.grouter.annotation.Route
@@ -21,7 +20,7 @@ class HierarchyActivity : BaseActivity() {
         val vo = Gson().fromJson(json, TreeVO::class.java)
 
         headBar.title(vo.name)
-            .back(ICON_BACK) { finish() }
+            .back(getString(R.string.icon_back)) { finish() }
 
         tabLayout.setupWithViewPager(viewPager)
 

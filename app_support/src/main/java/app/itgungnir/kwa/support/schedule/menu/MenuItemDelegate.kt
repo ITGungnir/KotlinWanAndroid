@@ -1,10 +1,8 @@
 package app.itgungnir.kwa.support.schedule.menu
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import app.itgungnir.kwa.common.COLOR_ACCENT
-import app.itgungnir.kwa.common.COLOR_TEXT1
+import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.schedule.ScheduleState
 import kotlinx.android.synthetic.main.list_item_menu.view.*
@@ -54,16 +52,16 @@ class MenuItemDelegate(
                 text = item.title
                 if (payloads.isNullOrEmpty()) {
                     textColor = when (item.selected) {
-                        true -> Color.parseColor(COLOR_ACCENT)
-                        else -> Color.parseColor(COLOR_TEXT1)
+                        true -> context.color(R.color.colorAccent)
+                        else -> context.color(R.color.text_color_level_1)
                     }
                 } else {
                     val payload = payloads[0]
                     for (key in payload.keySet()) {
                         when (key) {
                             "PL_SELECT" -> textColor = when (item.selected) {
-                                true -> Color.parseColor(COLOR_ACCENT)
-                                else -> Color.parseColor(COLOR_TEXT1)
+                                true -> context.color(R.color.colorAccent)
+                                else -> context.color(R.color.text_color_level_1)
                             }
                         }
                     }

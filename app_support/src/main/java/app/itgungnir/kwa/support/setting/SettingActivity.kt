@@ -2,7 +2,6 @@ package app.itgungnir.kwa.support.setting
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.ICON_BACK
 import app.itgungnir.kwa.common.SettingActivity
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
@@ -39,7 +38,7 @@ class SettingActivity : BaseActivity() {
     override fun initComponent() {
 
         headBar.title("设置")
-            .back(ICON_BACK) { finish() }
+            .back(getString(R.string.icon_back)) { finish() }
 
         listAdapter = list.bind(diffAnalyzer = object : Differ {
             override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
@@ -126,7 +125,7 @@ class SettingActivity : BaseActivity() {
                 finish()
             }))
 
-        viewModel.getSettingList()
+        viewModel.getSettingList(this)
     }
 
     override fun observeVM() {

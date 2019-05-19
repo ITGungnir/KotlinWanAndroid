@@ -3,8 +3,11 @@ package app.itgungnir.kwa.main.weixin.child
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.hideSoftInput
+import app.itgungnir.kwa.common.html
+import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.main.R
-import app.itgungnir.kwa.common.*
 import kotlinx.android.synthetic.main.list_item_weixin_article.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate
@@ -38,7 +41,7 @@ class WeixinChildDelegate : BaseDelegate<WeixinChildState.WeixinArticleVO>() {
                     .go()
             }
 
-            authorView.text = "$ICON_AUTHOR ${item.author}"
+            authorView.text = "${context.getString(R.string.icon_author)} ${item.author}"
 
             titleView.text = html(item.title)
 

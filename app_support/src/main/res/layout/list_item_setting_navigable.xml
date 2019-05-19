@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:layout_marginStart="10dp"
-    android:layout_marginTop="@dimen/dp_divider_height"
+    android:layout_marginTop="@dimen/divider_height"
     android:layout_marginEnd="10dp"
     android:background="@color/colorPure"
     tools:ignore="SpUsage">
@@ -20,7 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:gravity="center"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/sp_text_size_1" />
+            android:textSize="@dimen/text_size_icon" />
 
         <TextView
             android:id="@+id/titleView"
@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/iconView"
-            android:textColor="@color/clr_text_level_1"
-            android:textSize="@dimen/sp_text_size_3"
+            android:textColor="@color/text_color_level_1"
+            android:textSize="@dimen/text_size_normal"
             tools:ignore="RelativeOverlap" />
 
         <my.itgungnir.ui.icon_font.IconFontView
@@ -38,9 +38,9 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentEnd="true"
             android:gravity="center"
-            android:text="@string/str_icon_right_arrow"
-            android:textColor="@color/clr_text_level_2"
-            android:textSize="@dimen/sp_text_size_1" />
+            android:text="@string/icon_right_arrow"
+            android:textColor="@color/text_color_level_2"
+            android:textSize="@dimen/text_size_icon" />
 
     </RelativeLayout>
 
