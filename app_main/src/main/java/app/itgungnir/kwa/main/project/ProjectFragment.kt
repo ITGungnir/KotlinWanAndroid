@@ -3,8 +3,8 @@ package app.itgungnir.kwa.main.project
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.project.child.ProjectChildFragment
 import kotlinx.android.synthetic.main.fragment_project.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment

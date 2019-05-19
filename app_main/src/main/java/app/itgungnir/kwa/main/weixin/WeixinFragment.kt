@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
-import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.common.hideSoftInput
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.weixin.child.WeixinChildFragment
 import kotlinx.android.synthetic.main.fragment_weixin.*
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment

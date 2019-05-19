@@ -29,7 +29,7 @@ class ProjectChildFragment : LazyFragment() {
         )
     }
 
-    private var flag = 0
+    private var flag = -1
 
     companion object {
         fun newInstance(flag: Int) = ProjectChildFragment().apply { this.flag = flag }

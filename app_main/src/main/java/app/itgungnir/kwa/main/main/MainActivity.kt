@@ -3,12 +3,9 @@ package app.itgungnir.kwa.main.main
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.MainActivity
 import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
-import app.itgungnir.kwa.common.redux.AppRedux
-import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.HomeFragment
 import app.itgungnir.kwa.main.mine.MineFragment
@@ -26,14 +23,11 @@ class MainActivity : AppCompatActivity() {
 
     private var lastTime = 0L
 
-    private var darkMode = AppRedux.instance.isDarkMode()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initComponent()
-        observeVM()
     }
 
     private fun initComponent() {
@@ -90,19 +84,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         )
-    }
-
-    private fun observeVM() {
-
-        AppRedux.instance.pick(AppState::darkMode)
-            .observe(this, Observer { darkMode ->
-                darkMode?.a?.let {
-                    if (it != this.darkMode) {
-                        recreate()
-                    }
-                    this.darkMode = it
-                }
-            })
     }
 
     override fun onBackPressed() {
