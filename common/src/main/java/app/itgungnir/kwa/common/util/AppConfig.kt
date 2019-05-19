@@ -14,6 +14,7 @@ class AppConfig private constructor() {
             LeakDetectUtil(),
             LoggingUtil(),
             ReduxUtil(),
+            ThemeUtil(),
             CacheUtil.instance
         ).map {
             it.init(application)

@@ -19,4 +19,5 @@
     <color name="text_color_level_1">#FF373737</color>
     <color name="text_color_level_2">#FF707070</color>
     <color name="text_color_level_3">#FFAEAEAE</color>
+    <color name="text_color_head_bar">#FFFFFFFF</color>
 </resources>

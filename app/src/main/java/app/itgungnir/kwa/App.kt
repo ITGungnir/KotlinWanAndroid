@@ -1,6 +1,5 @@
 package app.itgungnir.kwa
 
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
 import app.itgungnir.kwa.common.util.AppConfig
 
@@ -15,7 +14,5 @@ class App : MultiDexApplication() {
         super.onCreate()
 
         AppConfig.instance.init(this)
-
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 }

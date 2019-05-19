@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="colorPure">#FF707070</color>
-    <color name="colorPrimary">#FF000000</color>
+    <!-- 主题颜色 -->
+    <color name="colorPure">#FF000000</color>
+    <color name="colorPrimary">#FF464646</color>
     <color name="colorAccent">#FF6d4c41</color>
-
+    <!-- 样式颜色 -->
     <color name="clr_divider">#FF424242</color>
     <color name="clr_background">#FF616161</color>
     <color name="clr_mask">#99707070</color>
-
+    <color name="clr_icon_selected">#FF707070</color>
+    <color name="clr_icon_unselected">#FFC2C2C2</color>
+    <color name="clr_type_work">#FFB4004E</color>
+    <color name="clr_type_learn">#FF087F23</color>
+    <color name="clr_type_life">#FF007AC1</color>
+    <color name="clr_priority_important">#FFFF5722</color>
+    <color name="clr_priority_normal">#FF29B6F6</color>
+    <!-- 文本颜色 -->
     <color name="text_color_level_1">#FFEFEFEF</color>
     <color name="text_color_level_2">#FFDCDCDC</color>
     <color name="text_color_level_3">#FFBDBDBD</color>
-
+    <color name="text_color_head_bar">#FFEFEFEF</color>
 </resources>

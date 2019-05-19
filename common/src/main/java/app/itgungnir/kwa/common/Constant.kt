@@ -11,6 +11,7 @@ const val RegisterActivity = "register"
 const val SettingActivity = "setting"
 const val ScheduleActivity = "schedule"
 const val ScheduleDoneActivity = "scheduleDone"
+const val GhostActivity = "ghost"
 
 // HTTP
 const val APP_VERSION = "V1.0.0"

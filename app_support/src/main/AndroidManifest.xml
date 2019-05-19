@@ -23,6 +23,8 @@
 
         <activity android:name=".schedule.done.ScheduleDoneActivity" />
 
+        <activity android:name=".ghost.GhostActivity" />
+
     </application>
 
 </manifest>
