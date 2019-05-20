@@ -2,9 +2,11 @@
 <div align="center">
   <img src="./ic_launcher_origin.png"/>
   <br/><br/>
-  <img src="https://img.shields.io/badge/Version-V1.0.0-brightgreen.svg">
-  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg">
-  <img src="https://img.shields.io/badge/API-19+-blue.svg" alt="Min Sdk Version">
+  <img src="https://img.shields.io/badge/Version-V1.0.0-brightgreen.svg" />
+  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" />
+  <img src="https://img.shields.io/badge/API-19+-blue.svg" alt="Min Sdk Version" />
+  <img src="https://img.shields.io/badge/License-Apache2.0-blue.svg" alt="License" />
+  <img src="https://img.shields.io/badge/Email-itgungnir@163.com-ff69b4.svg" />
 </div>
 
 ## 项目简介
@@ -23,6 +25,9 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 * **日程**，日程页面展示个人所有待办日程，可以添加、修改、删除日程以及查看已完成日程。
 
 ## 应用下载
+扫码下载应用(Android 4.4+)。如果在使用中发现任何问题或Bug，欢迎issue，或email(itgungnir@163.com)
+
+![KotlinWanAndroid Apk Download](./images/download_code.png)
 
 ## 功能截屏
 |Image Column 01|Image Column 02|Image Column 03|
@@ -38,3 +43,20 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 ## 项目架构
 
 ## 技术栈
+
+## License
+```text
+Copyright 2019 ITGungnir
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
