@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.fragment_hierarchy_child.*
 import my.itgungnir.rxmvvm.core.mvvm.LazyFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
@@ -29,10 +29,10 @@ class HierarchyChildFragment : LazyFragment() {
         )
     }
 
-    private var flag: Int = -1
-
     companion object {
-        fun newInstance(flag: Int) = HierarchyChildFragment().apply { this.flag = flag }
+        fun newInstance(flag: Int) = HierarchyChildFragment().apply {
+            arguments = Bundle().apply { putInt("FLAG", flag) }
+        }
     }
 
     override fun layoutId(): Int = R.layout.fragment_hierarchy_child
@@ -41,7 +41,7 @@ class HierarchyChildFragment : LazyFragment() {
         hierarchyPage.apply {
             // Refresh Layout
             refreshLayout().setOnRefreshListener {
-                viewModel.getArticles(flag)
+                flag()?.let { viewModel.getArticles(it) }
             }
             // Status View
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_list) {
@@ -77,7 +77,7 @@ class HierarchyChildFragment : LazyFragment() {
                     .bindTo(list)
                     .doOnLoadMore {
                         if (!refreshLayout().isRefreshing) {
-                            viewModel.loadMoreArticles(flag)
+                            flag()?.let { flag -> viewModel.loadMoreArticles(flag) }
                         }
                     }
                     .build()
@@ -88,7 +88,7 @@ class HierarchyChildFragment : LazyFragment() {
     }
 
     override fun onLazyLoad() {
-        viewModel.getArticles(flag)
+        flag()?.let { viewModel.getArticles(it) }
     }
 
     override fun observeVM() {
@@ -126,4 +126,6 @@ class HierarchyChildFragment : LazyFragment() {
                 }
             })
     }
+
+    private fun flag() = arguments?.getInt("FLAG")
 }

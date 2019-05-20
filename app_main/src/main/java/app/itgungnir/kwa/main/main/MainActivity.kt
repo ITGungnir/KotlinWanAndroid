@@ -1,11 +1,12 @@
 package app.itgungnir.kwa.main.main
 
-import android.os.Bundle
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.MainActivity
 import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.redux.AppRedux
+import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.HomeFragment
 import app.itgungnir.kwa.main.mine.MineFragment
@@ -14,23 +15,21 @@ import app.itgungnir.kwa.main.tree.TreeFragment
 import app.itgungnir.kwa.main.weixin.WeixinFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.grouter.annotation.Route
+import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.ui.icon_font.IconFontView
 import org.jetbrains.anko.textColor
 import org.joda.time.DateTime
 
 @Route(MainActivity)
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private var lastTime = 0L
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    private var isDarkMode = AppRedux.instance.isDarkMode()
 
-        initComponent()
-    }
+    override fun layoutId(): Int = R.layout.activity_main
 
-    private fun initComponent() {
+    override fun initComponent() {
 
         val selectedColor = this.color(R.color.clr_icon_selected)
         val unSelectedColor = this.color(R.color.clr_icon_unselected)
@@ -84,6 +83,19 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         )
+    }
+
+    override fun observeVM() {
+
+        AppRedux.instance.pick(AppState::darkMode)
+            .observe(this, Observer { darkMode ->
+                darkMode?.a?.let {
+                    if (it != isDarkMode) {
+                        recreate()
+                    }
+                    isDarkMode = it
+                }
+            })
     }
 
     override fun onBackPressed() {

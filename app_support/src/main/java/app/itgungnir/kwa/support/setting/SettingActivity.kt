@@ -1,13 +1,11 @@
 package app.itgungnir.kwa.support.setting
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.SettingActivity
 import app.itgungnir.kwa.common.popToast
-import app.itgungnir.kwa.common.redux.AppRedux
-import app.itgungnir.kwa.common.redux.AppState
-import app.itgungnir.kwa.common.redux.ToggleAutoCache
-import app.itgungnir.kwa.common.redux.ToggleNoImage
+import app.itgungnir.kwa.common.redux.*
 import app.itgungnir.kwa.common.util.CacheUtil
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.setting.delegate.*
@@ -91,7 +89,14 @@ class SettingActivity : BaseActivity() {
                         AppRedux.instance.dispatch(ToggleAutoCache)
                     }
                     2 -> AppRedux.instance.dispatch(ToggleNoImage)
-                    3 -> popToast("正在开发中，敬请期待~") // TODO 夜间模式
+                    3 -> {
+                        AppRedux.instance.dispatch(ToggleDarkMode)
+                        when (AppRedux.instance.isDarkMode()) {
+                            true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                            else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        }
+                        recreate()
+                    }
                 }
             }))
             .map({ data -> data is SettingState.DigitalVO }, DigitalDelegate(digitalClickCallback = { id ->

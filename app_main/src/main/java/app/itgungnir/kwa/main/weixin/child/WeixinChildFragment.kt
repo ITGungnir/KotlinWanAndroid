@@ -5,8 +5,8 @@ import android.os.Handler
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.weixin.WeixinState
 import app.itgungnir.kwa.main.weixin.WeixinViewModel
 import kotlinx.android.synthetic.main.fragment_weixin_child.*
@@ -39,14 +39,14 @@ class WeixinChildFragment : LazyFragment() {
         )
     }
 
-    private var flag: Int = -1
-
     private var k: String = ""
 
     private val handler = Handler()
 
     companion object {
-        fun newInstance(flag: Int) = WeixinChildFragment().apply { this.flag = flag }
+        fun newInstance(flag: Int) = WeixinChildFragment().apply {
+            arguments = Bundle().apply { putInt("FLAG", flag) }
+        }
     }
 
     override fun layoutId(): Int = R.layout.fragment_weixin_child
@@ -55,7 +55,7 @@ class WeixinChildFragment : LazyFragment() {
         weixinPage.apply {
             // Refresh Layout
             refreshLayout().setOnRefreshListener {
-                selfViewModel.getArticles(flag, k)
+                flag()?.let { selfViewModel.getArticles(it, k) }
             }
             // Status View
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_list) {
@@ -91,7 +91,7 @@ class WeixinChildFragment : LazyFragment() {
                     .bindTo(list)
                     .doOnLoadMore {
                         if (!refreshLayout().isRefreshing) {
-                            selfViewModel.loadMoreArticles(flag, k)
+                            flag()?.let { flag -> selfViewModel.loadMoreArticles(flag, k) }
                         }
                     }
                     .build()
@@ -102,7 +102,7 @@ class WeixinChildFragment : LazyFragment() {
     }
 
     override fun onLazyLoad() {
-        selfViewModel.getArticles(flag, k)
+        flag()?.let { selfViewModel.getArticles(it, k) }
     }
 
     override fun observeVM() {
@@ -110,7 +110,7 @@ class WeixinChildFragment : LazyFragment() {
         parentViewModel.pick(WeixinState::currTab, WeixinState::k)
             .observe(this, Observer { data ->
                 data?.let {
-                    if (it.a?.id == flag && it.b != k) {
+                    if (it.a?.id == flag() && it.b != k) {
                         k = it.b
                         selfViewModel.getArticles(it.a!!.id, k)
                     }
@@ -156,4 +156,6 @@ class WeixinChildFragment : LazyFragment() {
                 }
             })
     }
+
+    private fun flag() = arguments?.getInt("FLAG")
 }

@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.fragment_project_child.*
 import my.itgungnir.rxmvvm.core.mvvm.LazyFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
@@ -29,10 +29,10 @@ class ProjectChildFragment : LazyFragment() {
         )
     }
 
-    private var flag = -1
-
     companion object {
-        fun newInstance(flag: Int) = ProjectChildFragment().apply { this.flag = flag }
+        fun newInstance(flag: Int) = ProjectChildFragment().apply {
+            arguments = Bundle().apply { putInt("FLAG", flag) }
+        }
     }
 
     override fun layoutId(): Int = R.layout.fragment_project_child
@@ -41,7 +41,7 @@ class ProjectChildFragment : LazyFragment() {
         projectPage.apply {
             // Refresh Layout
             refreshLayout().setOnRefreshListener {
-                viewModel.getProjects(flag)
+                flag()?.let { viewModel.getProjects(it) }
             }
             // Status View
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_list) {
@@ -77,7 +77,7 @@ class ProjectChildFragment : LazyFragment() {
                     .bindTo(list)
                     .doOnLoadMore {
                         if (!refreshLayout().isRefreshing) {
-                            viewModel.loadMoreProjects(flag)
+                            flag()?.let { flag -> viewModel.loadMoreProjects(flag) }
                         }
                     }
                     .build()
@@ -88,7 +88,7 @@ class ProjectChildFragment : LazyFragment() {
     }
 
     override fun onLazyLoad() {
-        viewModel.getProjects(flag)
+        flag()?.let { viewModel.getProjects(it) }
     }
 
     override fun observeVM() {
@@ -126,4 +126,6 @@ class ProjectChildFragment : LazyFragment() {
                 }
             })
     }
+
+    private fun flag() = arguments?.getInt("FLAG")
 }
