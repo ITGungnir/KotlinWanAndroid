@@ -16,7 +16,7 @@ class MenuTabBar @JvmOverloads constructor(context: Context, attrs: AttributeSet
     private var isTabOpen2 = false
     private var isTabOpen3 = false
 
-    private val textColorNormal = context.color(R.color.text_color_level_1)
+    private val textColorNormal = context.color(R.color.text_color_head_bar)
     private val textColorSelected = context.color(R.color.colorAccent)
 
     init {

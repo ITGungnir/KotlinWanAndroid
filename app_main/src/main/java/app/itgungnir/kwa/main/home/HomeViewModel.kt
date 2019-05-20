@@ -12,13 +12,13 @@ import my.itgungnir.ui.easy_adapter.ListItem
 @SuppressLint("CheckResult")
 class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
 
-    private var pageNo = 1
+    private var pageNo = 0
 
     /**
      * 获取数据
      */
     fun getHomeData() {
-        pageNo = 1
+        pageNo = 0
 
         val s1 = HttpClient.api.banners()
             .handleResult()
@@ -53,7 +53,7 @@ class HomeViewModel : BaseViewModel<HomeState>(initialState = HomeState()) {
                 }
             }
 
-        val s3 = HttpClient.api.homeArticles(1)
+        val s3 = HttpClient.api.homeArticles(pageNo)
             .handleResult()
             .io2Main()
             .map {

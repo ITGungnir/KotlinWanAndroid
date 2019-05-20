@@ -4,10 +4,7 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.LoginActivity
-import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.html
-import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.*
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
 import app.itgungnir.kwa.support.R
@@ -41,7 +38,7 @@ class WebActivity : BaseActivity() {
         id = intent.getIntExtra("id", -1)
         originId = intent.getIntExtra("originId", -1)
         val title = intent.getStringExtra("title")
-        val url = intent.getStringExtra("url").replace("http://", "https://")
+        val url = intent.getStringExtra("url")
 
         headBar.title(html(title))
             .back(getString(R.string.icon_back)) { finish() }
@@ -82,13 +79,18 @@ class WebActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun loadSucceedPage(view: View, url: String) {
-        view.findViewById<WebBrowser>(R.id.browser).load(url, AppRedux.instance.isNoImage())
-            .onError { code, msg ->
-                statusView.failed { view ->
-                    view.findViewById<TextView>(R.id.tip).text = "$code：$msg"
-                    view.findViewById<ProgressButton>(R.id.button).ready("重新加载")
+        view.findViewById<WebBrowser>(R.id.browser).apply {
+            load(url, AppRedux.instance.isNoImage())
+                .onError { code, msg ->
+                    statusView.failed { view ->
+                        view.findViewById<TextView>(R.id.tip).text = "$code：$msg"
+                        view.findViewById<ProgressButton>(R.id.button).ready("重新加载")
+                    }
                 }
+            if (AppRedux.instance.isDarkMode()) {
+                mask(context.color(R.color.clr_mask))
             }
+        }
     }
 
     private fun loadFailedPage(view: View, url: String) {
