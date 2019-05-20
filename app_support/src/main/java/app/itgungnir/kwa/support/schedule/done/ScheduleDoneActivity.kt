@@ -66,6 +66,7 @@ class ScheduleDoneActivity : BaseActivity() {
                 // List Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)
+                    .render(context.color(R.color.clr_divider), context.color(R.color.clr_background))
                     .doOnLoadMore {
                         if (!refreshLayout().isRefreshing) {
                             viewModel.loadMoreScheduleList()

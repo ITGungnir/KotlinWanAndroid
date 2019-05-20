@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.fragment_hierarchy_child.*
@@ -75,6 +76,7 @@ class HierarchyChildFragment : LazyFragment() {
                 // Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)
+                    .render(context.color(R.color.clr_divider), context.color(R.color.clr_background))
                     .doOnLoadMore {
                         if (!refreshLayout().isRefreshing) {
                             flag()?.let { flag -> viewModel.loadMoreArticles(flag) }

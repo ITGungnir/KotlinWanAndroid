@@ -36,11 +36,11 @@ class SearchDialog : FullScreenDialog() {
             }
 
         listAdapter = list.bind()
-            .map(isForViewType = { data -> data is SearchState.SearchHotKeyVO }, delegate = SearchHotKeyDelegate {
+            .addDelegate(isForViewType = { data -> data is SearchState.SearchHotKeyVO }, delegate = SearchHotKeyDelegate {
                 AppRedux.instance.dispatch(AddSearchHistory(it))
                 navigate(it)
             })
-            .map(isForViewType = { data -> data is SearchState.SearchHistoryVO }, delegate = SearchHistoryDelegate {
+            .addDelegate(isForViewType = { data -> data is SearchState.SearchHistoryVO }, delegate = SearchHistoryDelegate {
                 navigate(it)
             })
 

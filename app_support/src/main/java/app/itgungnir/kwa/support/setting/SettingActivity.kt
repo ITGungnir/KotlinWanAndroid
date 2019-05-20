@@ -81,8 +81,8 @@ class SettingActivity : BaseActivity() {
                 }
                 return null
             }
-        }).map({ data -> data is SettingState.DividerVO }, DividerDelegate())
-            .map({ data -> data is SettingState.CheckableVO }, CheckableDelegate(checkCallback = { id ->
+        }).addDelegate({ data -> data is SettingState.DividerVO }, DividerDelegate())
+            .addDelegate({ data -> data is SettingState.CheckableVO }, CheckableDelegate(checkCallback = { id ->
                 when (id) {
                     1 -> {
                         CacheUtil.instance.clearCache()
@@ -99,7 +99,7 @@ class SettingActivity : BaseActivity() {
                     }
                 }
             }))
-            .map({ data -> data is SettingState.DigitalVO }, DigitalDelegate(digitalClickCallback = { id ->
+            .addDelegate({ data -> data is SettingState.DigitalVO }, DigitalDelegate(digitalClickCallback = { id ->
                 when (id) {
                     4 -> {
                         CacheUtil.instance.clearCache()
@@ -117,7 +117,7 @@ class SettingActivity : BaseActivity() {
                     }
                 }
             }))
-            .map({ data -> data is SettingState.NavigableVO }, NavigableDelegate(navigateCallback = { id ->
+            .addDelegate({ data -> data is SettingState.NavigableVO }, NavigableDelegate(navigateCallback = { id ->
                 when (id) {
                     5 -> when (email(email = "itgungnir@163.com")) {
                         true -> popToast("反馈成功！")
@@ -126,7 +126,7 @@ class SettingActivity : BaseActivity() {
                     6 -> AboutUsDialog().show(supportFragmentManager, AboutUsDialog::class.java.name)
                 }
             }))
-            .map({ data -> data is SettingState.ButtonVO }, ButtonDelegate(callback = {
+            .addDelegate({ data -> data is SettingState.ButtonVO }, ButtonDelegate(callback = {
                 finish()
             }))
 
