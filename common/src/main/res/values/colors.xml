@@ -15,9 +15,15 @@
     <color name="clr_type_life">#FF007AC1</color>
     <color name="clr_priority_important">#FFFF5722</color>
     <color name="clr_priority_normal">#FF29B6F6</color>
+    <color name="clr_bottom_bar">#FFFFFFFF</color>
+    <color name="clr_dialog">#FFFFFFFF</color>
+    <color name="clr_pb_enabled">#FF707070</color>
+    <color name="clr_pb_disabled">#FFC2C2C2</color>
     <!-- 文本颜色 -->
     <color name="text_color_level_1">#FF373737</color>
     <color name="text_color_level_2">#FF707070</color>
     <color name="text_color_level_3">#FFAEAEAE</color>
     <color name="text_color_head_bar">#FFFFFFFF</color>
+    <color name="text_color_pb_enabled">#FFFFFFFF</color>
+    <color name="text_color_pb_disabled">#FFF5F5F5</color>
 </resources>

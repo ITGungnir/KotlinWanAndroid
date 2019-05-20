@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPure"
+        android:background="@color/clr_dialog"
         android:orientation="vertical"
         tools:ignore="UselessParent">
 

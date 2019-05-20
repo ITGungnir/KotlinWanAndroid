@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPure"
+        android:background="@color/clr_dialog"
         tools:ignore="UselessParent">
 
         <my.itgungnir.ui.head_bar.HeadBar

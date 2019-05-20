@@ -4,17 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPure"
+    android:background="@color/clr_dialog"
     android:orientation="vertical"
     tools:ignore="SpUsage">
 
     <my.itgungnir.ui.head_bar.HeadBar
         android:id="@+id/headBar"
+        style="@style/HeadBarStyle_Light"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:hb_dividerColor="@color/clr_divider"
-        app:hb_showDivider="true"
-        app:hb_textColor="@color/text_color_level_1" />
+        android:layout_height="?attr/actionBarSize" />
 
     <my.itgungnir.ui.input.ShadowInput
         android:id="@+id/titleInput"

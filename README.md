@@ -1,4 +1,6 @@
 # KotlinWanAndroid
 WanAndroid client programmed with Kotlin.
 
-## ToFix
+## ToFinish
+* 项目文档
+* 集成Bugly监控

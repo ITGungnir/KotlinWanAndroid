@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.schedule.ScheduleActivity
@@ -65,6 +66,10 @@ class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSe
                         },
                         longClickCallback = { position, id ->
                             SimpleDialog(
+                                bgColor = context.color(R.color.clr_dialog),
+                                msgColor = context.color(R.color.text_color_level_2),
+                                dividerColor = context.color(R.color.clr_divider),
+                                btnColor = context.color(R.color.text_color_level_1),
                                 msg = "确定要删除该日程吗？",
                                 onConfirm = {
                                     viewModel.deleteSchedule(position, id)

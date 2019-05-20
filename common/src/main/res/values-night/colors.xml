@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- 主题颜色 -->
-    <color name="colorPure">#FF000000</color>
-    <color name="colorPrimary">#FF464646</color>
-    <color name="colorAccent">#FF6d4c41</color>
+    <color name="colorPure">#FF0D1D34</color>
+    <color name="colorPrimary">#FF153159</color>
+    <color name="colorAccent">#FFC56000</color>
     <!-- 样式颜色 -->
-    <color name="clr_divider">#FF424242</color>
-    <color name="clr_background">#FF616161</color>
+    <color name="clr_divider">#FF497090</color>
+    <color name="clr_background">#FF112444</color>
     <color name="clr_mask">#99707070</color>
-    <color name="clr_icon_selected">#FF707070</color>
-    <color name="clr_icon_unselected">#FFC2C2C2</color>
+    <color name="clr_icon_selected">#FF3E6091</color>
+    <color name="clr_icon_unselected">#FF001138</color>
     <color name="clr_type_work">#FFB4004E</color>
     <color name="clr_type_learn">#FF087F23</color>
     <color name="clr_type_life">#FF007AC1</color>
     <color name="clr_priority_important">#FFFF5722</color>
     <color name="clr_priority_normal">#FF29B6F6</color>
+    <color name="clr_bottom_bar">#FF023259</color>
+    <color name="clr_dialog">#FF013763</color>
+    <color name="clr_pb_enabled">#FF497090</color>
+    <color name="clr_pb_disabled">#FF112444</color>
     <!-- 文本颜色 -->
-    <color name="text_color_level_1">#FFEFEFEF</color>
-    <color name="text_color_level_2">#FFDCDCDC</color>
-    <color name="text_color_level_3">#FFBDBDBD</color>
-    <color name="text_color_head_bar">#FFEFEFEF</color>
+    <color name="text_color_level_1">#FF789EC0</color>
+    <color name="text_color_level_2">#FF6487A5</color>
+    <color name="text_color_level_3">#FF497090</color>
+    <color name="text_color_head_bar">#FF789EC0</color>
+    <color name="text_color_pb_enabled">#FFCDCDCD</color>
+    <color name="text_color_pb_disabled">#FF497090</color>
 </resources>

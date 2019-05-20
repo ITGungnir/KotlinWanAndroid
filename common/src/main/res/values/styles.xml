@@ -14,7 +14,7 @@
     </style>
 
     <style name="HeadBarStyle_Light">
-        <item name="android:background">@color/colorPure</item>
+        <item name="android:background">@color/clr_dialog</item>
         <item name="hb_showDivider">true</item>
         <item name="hb_dividerColor">@color/clr_divider</item>
         <item name="hb_textColor">@color/text_color_level_1</item>
@@ -22,10 +22,10 @@
 
     <style name="TabLayoutStyle">
         <item name="android:background">@color/colorPrimary</item>
-        <item name="tabIndicatorColor">@color/colorPure</item>
+        <item name="tabIndicatorColor">@color/text_color_head_bar</item>
         <item name="tabIndicatorHeight">5dp</item>
         <item name="tabMode">scrollable</item>
-        <item name="tabSelectedTextColor">@color/colorPure</item>
+        <item name="tabSelectedTextColor">@color/text_color_head_bar</item>
         <item name="tabTextColor">@color/text_color_level_3</item>
     </style>
 
@@ -48,10 +48,10 @@
 
     <style name="ProgressButtonStyle">
         <item name="pb_cornerRadius">3dp</item>
-        <item name="pb_disabledColor">@color/clr_divider</item>
-        <item name="pb_disabledTextColor">@color/clr_background</item>
-        <item name="pb_enabledColor">@color/colorPrimary</item>
-        <item name="pb_enabledTextColor">@color/colorPure</item>
+        <item name="pb_disabledColor">@color/clr_pb_disabled</item>
+        <item name="pb_disabledTextColor">@color/text_color_pb_disabled</item>
+        <item name="pb_enabledColor">@color/clr_pb_enabled</item>
+        <item name="pb_enabledTextColor">@color/text_color_pb_enabled</item>
     </style>
 
     <style name="CommonPageStyle">

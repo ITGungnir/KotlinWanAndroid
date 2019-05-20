@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPure"
+    android:background="@color/colorPrimary"
     tools:ignore="SpUsage">
 
     <View
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/str_schedule_type"
-            android:textColor="@color/text_color_level_1"
+            android:textColor="@color/text_color_head_bar"
             android:textSize="@dimen/text_size_small" />
 
         <my.itgungnir.ui.icon_font.IconFontView
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/icon_arrow_down"
-            android:textColor="@color/text_color_level_1"
+            android:textColor="@color/text_color_head_bar"
             android:textSize="@dimen/text_size_large" />
     </LinearLayout>
 
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/str_schedule_priority"
-            android:textColor="@color/text_color_level_1"
+            android:textColor="@color/text_color_head_bar"
             android:textSize="@dimen/text_size_small" />
 
         <my.itgungnir.ui.icon_font.IconFontView
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/icon_arrow_down"
-            android:textColor="@color/text_color_level_1"
+            android:textColor="@color/text_color_head_bar"
             android:textSize="@dimen/text_size_large" />
     </LinearLayout>
 
@@ -102,7 +102,7 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:text="@string/icon_sort"
-        android:textColor="@color/text_color_level_1"
+        android:textColor="@color/text_color_head_bar"
         android:textSize="@dimen/text_size_large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
