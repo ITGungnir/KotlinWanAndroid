@@ -1,11 +1,10 @@
 package app.itgungnir.kwa.main.tree.navigation
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.color
-import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.common.onAntiShakeClick
+import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.list_item_navigation_left.view.*
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
