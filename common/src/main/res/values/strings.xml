@@ -47,7 +47,6 @@
     <string name="str_repository">Repository</string>
     <string name="str_search_history">搜索历史</string>
     <string name="str_search_hint">发现更多干货</string>
-    <string name="str_profile">登录 / 注册</string>
     <string name="str_username_hint">请输入用户名</string>
     <string name="str_password_hint">请输入密码</string>
     <string name="str_confirm_pwd_hint">请再次输入密码</string>

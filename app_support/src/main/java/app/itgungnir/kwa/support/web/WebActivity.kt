@@ -1,7 +1,5 @@
 package app.itgungnir.kwa.support.web
 
-import android.annotation.SuppressLint
-import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.*
@@ -13,9 +11,7 @@ import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import my.itgungnir.ui.browser.WebBrowser
 import my.itgungnir.ui.input.ProgressButton
-import my.itgungnir.ui.status_view.StatusView
 import org.jetbrains.anko.share
 
 @Route(WebActivity)
@@ -70,37 +66,16 @@ class WebActivity : BaseActivity() {
             share("KotlinWanAndroid分享《$title》专题：$url", title)
         }
 
-        statusView.addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_web) {
-            loadSucceedPage(it, url)
-        }.addDelegate(StatusView.Status.FAILED, R.layout.view_status_error) {
-            loadFailedPage(it, url)
-        }.succeed { }
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun loadSucceedPage(view: View, url: String) {
-        view.findViewById<WebBrowser>(R.id.browser).apply {
-            load(url, AppRedux.instance.isNoImage())
-                .onError { code, msg ->
-                    statusView.failed { view ->
-                        view.findViewById<TextView>(R.id.tip).text = "$code：$msg"
-                        view.findViewById<ProgressButton>(R.id.button).ready("重新加载")
-                    }
-                }
-            if (AppRedux.instance.isDarkMode()) {
-                mask(context.color(R.color.clr_mask))
+        browserView.load(
+            url = url,
+            blockImage = AppRedux.instance.isNoImage(),
+            indicatorColor = this.color(R.color.colorAccent),
+            errorLayoutId = R.layout.view_status_error,
+            errorCallback = {
+                it.findViewById<TextView>(R.id.tip).text = "页面加载时出现问题，请重试~"
+                it.findViewById<ProgressButton>(R.id.button).ready("重新加载")
             }
-        }
-    }
-
-    private fun loadFailedPage(view: View, url: String) {
-        view.findViewById<ProgressButton>(R.id.button).apply {
-            ready("重新加载")
-            setOnClickListener {
-                loading()
-                statusView.succeed { v -> loadSucceedPage(v, url) }
-            }
-        }
+        )
     }
 
     override fun observeVM() {
@@ -127,5 +102,11 @@ class WebActivity : BaseActivity() {
                     popToast(it)
                 }
             })
+    }
+
+    override fun onBackPressed() {
+        if (!browserView.goBack()) {
+            super.onBackPressed()
+        }
     }
 }
