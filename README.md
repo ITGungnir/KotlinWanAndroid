@@ -41,8 +41,19 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 |<img src="./images/screen_shot_19.png" width="250"/>|<img src="./images/screen_shot_20.png" width="250"/>|<img src="./images/screen_shot_21.png" width="250"/>|
 
 ## 项目架构
+本项目共分为四个模块：`app`、`app_main`、`app_support`、`common`，其模块依赖关系如下图所示。
+
+![project structure](./images/project_structure.png)
+
+* `app`模块是项目的壳模块，其中仅存放了`App`和项目的入口页面`SplashActivity`；
+* `app_main`模块中包含的是`MainActivity`及其中的五个`Fragment`，和点击弹出的各种`Dialog`；
+* `app_support`模块是除上述两个模块包含的页面之外的页面；
+* `common`模块是项目的通用模块，其中包含了`工具类`、`HTTP相关类`、`Redux的本地实现`等。
+
+具体的技术会在`技术栈`章节中详细介绍。
 
 ## 技术栈
+### 1、[RxMVVM框架](https://github.com/ITGungnir/RxMVVM)
 
 ## License
 ```text
