@@ -19,7 +19,6 @@ ext {
     // ReactiveX
     rxjava_version = '2.2.4'
     rxandroid_version = '2.1.0'
-    rxpermissions_version = '0.10.2'
     rxbinding_version = '2.2.0'
     // Glide
     glide_version = '4.8.0'
