@@ -115,6 +115,24 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 ### V1.0.0
 `KotlinWanAndroid`的第一版
 
+## Thanks
+#### 鸿洋大神提供的[WanAndroid API](https://www.wanandroid.com/blog/show/2)
+#### [JsonChao:Awesome-WanAndroid](https://github.com/JsonChao/Awesome-WanAndroid)提供的界面布局思路
+#### [Material Design Color Tool](https://material.io/tools/color/)提供的颜色搭配方案
+#### 阿里巴巴[IconFont](https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2)提供的图标字体解决方案
+#### 系统中用到的三方库
+[Rxjava](https://github.com/ReactiveX/RxJava)、
+[RxAndroid](https://github.com/ReactiveX/RxAndroid)、
+[RxBinding](https://github.com/JakeWharton/RxBinding)、
+[Retrofit](https://github.com/square/retrofit)、
+[OkHttp](https://github.com/square/okhttp)、
+[Gson](https://github.com/google/gson)、
+[Glide](https://github.com/bumptech/glide)、
+[FlexBoxLayout](https://github.com/google/flexbox-layout)、
+[JodaTimeAndroid](https://github.com/dlew/joda-time-android)、
+[LeakCanary](https://github.com/square/leakcanary) 等
+#### 感谢开源和喜欢开源的各位大佬，让编程更美好！
+
 ## License
 ```text
 Copyright 2019 ITGungnir
