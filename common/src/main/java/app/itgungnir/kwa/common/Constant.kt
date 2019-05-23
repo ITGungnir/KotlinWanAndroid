@@ -13,7 +13,7 @@ const val ScheduleActivity = "schedule"
 const val ScheduleDoneActivity = "scheduleDone"
 
 // HTTP
-const val APP_VERSION = "1.0.0"
+const val APP_VERSION = "1.1.0"
 const val HTTP_BASE_URL = "https://www.wanandroid.com"
 const val HTTP_VERSION_URL = "https://raw.githubusercontent.com"
 const val HTTP_TIME_OUT = 5L

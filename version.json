@@ -1,7 +1,7 @@
 {
   "data": {
     "downloadUrl": "https://github.com/ITGungnir/KotlinWanAndroid/blob/master/app/release/app-release.apk",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "versionDesc": "主要更新：\r\n1.支持自动检查更新；\r\n2.适配各种屏幕尺寸；\r\n3.部分界面微调。"
   },
   "errorCode": 0,

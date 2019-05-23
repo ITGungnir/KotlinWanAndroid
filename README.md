@@ -112,6 +112,15 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 * **`LeakCanary`**：内存泄漏监测框架，则debug版本中监测并警报内存泄漏；
 
 ## Version Log
+### V1.1.0
+小幅度修改某些页面的布局；
+
+增加了屏幕适配功能，在不同尺寸和分辨率的屏幕上有相同展示效果
+
+将应用改为仅能竖屏展示
+
+支持应用自动检查更新
+
 ### V1.0.0
 `KotlinWanAndroid`的第一版
 
@@ -120,6 +129,8 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 #### [JsonChao:Awesome-WanAndroid](https://github.com/JsonChao/Awesome-WanAndroid)提供的界面布局思路
 #### [Material Design Color Tool](https://material.io/tools/color/)提供的颜色搭配方案
 #### 阿里巴巴[IconFont](https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2)提供的图标字体解决方案
+#### [BlankJ](https://blankj.com/2018/07/30/easy-adapt-screen/)和[字节跳动技术团队](https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA)提供的屏幕适配方案
+#### [磐龍](https://www.jianshu.com/p/98ea7e866ffd)提供的应用自动检查更新解决方案
 #### 系统中用到的三方库
 [Rxjava](https://github.com/ReactiveX/RxJava)、
 [RxAndroid](https://github.com/ReactiveX/RxAndroid)、

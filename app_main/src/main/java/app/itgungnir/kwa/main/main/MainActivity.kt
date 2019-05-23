@@ -137,10 +137,6 @@ class MainActivity : BaseActivity() {
 
     private fun startDownloadApk() {
         viewModel.withState {
-            // TODO 下载APK、安装、更新Redux状态
-            // https://blog.csdn.net/qq_19431333/article/details/52798105
-            // https://www.jianshu.com/p/ca2e82c8be7c
-            // https://blog.csdn.net/g_ying_jie/article/details/74978079
             it.versionInfo?.let { data ->
                 val fileName = "KWA_${data.upgradeVersion.replace(".", "_")}.apk"
                 HttpUtil.instance.downloadApk(this, data.upgradeUrl, fileName)
