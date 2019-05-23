@@ -217,4 +217,10 @@ interface HttpApi {
     fun deleteSchedule(
         @Path("id") id: Int
     ): Single<Result<Any>>
+
+    /**
+     * 版本检查
+     */
+    @GET("/blob/dev/version.json")
+    fun versionInfo(): Single<Result<VersionResponse>>
 }

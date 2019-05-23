@@ -22,10 +22,20 @@ class HttpClient private constructor() {
         private val instance by lazy { HttpClient() }
 
         val api: HttpApi by lazy { HttpClient.instance.buildApi() }
+
+        val api2: HttpApi by lazy { HttpClient.instance.buildApi2() }
     }
 
     private fun buildApi() = Retrofit.Builder()
         .baseUrl(HTTP_BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .client(okHttpClient())
+        .build()
+        .create(HttpApi::class.java)
+
+    private fun buildApi2() = Retrofit.Builder()
+        .baseUrl(HTTP_VERSION_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .client(okHttpClient())
