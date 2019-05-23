@@ -1,5 +1,7 @@
 package app.itgungnir.kwa.common.redux
 
+import app.itgungnir.kwa.common.APP_VERSION
+
 data class AppState(
     // 搜索历史
     val searchHistory: Set<String> = linkedSetOf(),
@@ -16,5 +18,7 @@ data class AppState(
     // 是否开启“无图模式”
     val noImage: Boolean = false,
     // 是否开启“夜间模式”
-    val darkMode: Boolean = false
+    val darkMode: Boolean = false,
+    // 当前版本
+    val version: String = APP_VERSION
 )

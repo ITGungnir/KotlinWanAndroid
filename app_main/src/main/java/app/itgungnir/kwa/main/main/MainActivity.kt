@@ -4,9 +4,11 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.MainActivity
 import app.itgungnir.kwa.common.color
+import app.itgungnir.kwa.common.http.HttpUtil
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.AppState
+import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.HomeFragment
 import app.itgungnir.kwa.main.mine.MineFragment
@@ -16,6 +18,7 @@ import app.itgungnir.kwa.main.weixin.WeixinFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
+import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
 import my.itgungnir.ui.icon_font.IconFontView
 import org.jetbrains.anko.textColor
 import org.joda.time.DateTime
@@ -27,9 +30,18 @@ class MainActivity : BaseActivity() {
 
     private var isDarkMode = AppRedux.instance.isDarkMode()
 
+    private val viewModel by lazy {
+        buildActivityViewModel(
+            activity = this,
+            viewModelClass = MainViewModel::class.java
+        )
+    }
+
     override fun layoutId(): Int = R.layout.activity_main
 
     override fun initComponent() {
+
+        viewModel.getLatestVersion()
 
         val selectedColor = this.color(R.color.clr_icon_selected)
         val unSelectedColor = this.color(R.color.clr_icon_unselected)
@@ -38,27 +50,27 @@ class MainActivity : BaseActivity() {
             targetFrameId = R.id.fragment,
             fragmentManager = supportFragmentManager,
             items = listOf(
-                TabItem(
+                MainState.TabItem(
                     "首页",
                     getString(R.string.icon_home_normal),
                     getString(R.string.icon_home_select)
                 ) to HomeFragment(),
-                TabItem(
+                MainState.TabItem(
                     "知识体系",
                     getString(R.string.icon_tree_normal),
                     getString(R.string.icon_tree_select)
                 ) to TreeFragment(),
-                TabItem(
+                MainState.TabItem(
                     "公众号",
                     getString(R.string.icon_weixin_normal),
                     getString(R.string.icon_weixin_select)
                 ) to WeixinFragment(),
-                TabItem(
+                MainState.TabItem(
                     "项目",
                     getString(R.string.icon_project_normal),
                     getString(R.string.icon_project_select)
                 ) to ProjectFragment(),
-                TabItem(
+                MainState.TabItem(
                     "我的",
                     getString(R.string.icon_mine_normal),
                     getString(R.string.icon_mine_select)
@@ -96,6 +108,44 @@ class MainActivity : BaseActivity() {
                     isDarkMode = it
                 }
             })
+
+        viewModel.pick(MainState::versionInfo)
+            .observe(this, Observer { versionInfo ->
+                versionInfo?.a?.let {
+                    simpleDialog(
+                        manager = supportFragmentManager,
+                        msg = "发现新版本：\r\nV${it.upgradeVersion}\r\n\r\n${it.upgradeDesc}",
+                        onConfirm = { confirmUpdate() }
+                    )
+                }
+            })
+    }
+
+    private fun confirmUpdate() {
+        if (!HttpUtil.instance.isNetworkConnected(this)) {
+            simpleDialog(supportFragmentManager, "当前没有网络！")
+            return
+        }
+        if (!HttpUtil.instance.isWiFiConnected(this)) {
+            simpleDialog(supportFragmentManager, "当前处于非WIFI环境，确定要继续下载吗？") {
+                startDownloadApk()
+            }
+            return
+        }
+        startDownloadApk()
+    }
+
+    private fun startDownloadApk() {
+        viewModel.withState {
+            // TODO 下载APK、安装、更新Redux状态
+            // https://blog.csdn.net/qq_19431333/article/details/52798105
+            // https://www.jianshu.com/p/ca2e82c8be7c
+            // https://blog.csdn.net/g_ying_jie/article/details/74978079
+            it.versionInfo?.let { data ->
+                val fileName = "KWA_${data.upgradeVersion.replace(".", "_")}.apk"
+                HttpUtil.instance.downloadApk(this, data.upgradeUrl, fileName)
+            }
+        }
     }
 
     override fun onBackPressed() {

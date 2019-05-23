@@ -11,6 +11,8 @@ import app.itgungnir.kwa.common.SplashActivity
 import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.dp2px
 import app.itgungnir.kwa.common.http.io2Main
+import app.itgungnir.kwa.common.redux.AppRedux
+import app.itgungnir.kwa.common.redux.UpdateVersion
 import io.reactivex.Single
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
@@ -48,6 +50,8 @@ class SplashActivity : AppCompatActivity() {
             navigate()
             return
         }
+
+        AppRedux.instance.dispatch(UpdateVersion)
 
         Single.timer(2L, TimeUnit.SECONDS)
             .io2Main()

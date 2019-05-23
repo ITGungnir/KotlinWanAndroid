@@ -1,9 +1,8 @@
 {
   "data": {
     "downloadUrl": "https://github.com/ITGungnir/KotlinWanAndroid/blob/master/app/release/app-release.apk",
-    "version": "1.0.1",
-    "versionCode": 2,
-    "versionDesc": "主要修改:\n1.增加多项新功能;\n2.修复已知bug。"
+    "version": "1.0.0",
+    "versionDesc": "KotlinWanAndroid的第一版"
   },
   "errorCode": 0,
   "errorMsg": ""

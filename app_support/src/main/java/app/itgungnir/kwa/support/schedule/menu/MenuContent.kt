@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.schedule.ScheduleActivity
 import app.itgungnir.kwa.support.schedule.ScheduleDelegate
@@ -18,7 +19,6 @@ import app.itgungnir.kwa.support.schedule.ScheduleViewModel
 import app.itgungnir.kwa.support.schedule.dialog.EditScheduleDialog
 import kotlinx.android.synthetic.main.view_schedule_menu_content.view.*
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
-import my.itgungnir.ui.dialog.SimpleDialog
 import my.itgungnir.ui.easy_adapter.Differ
 import my.itgungnir.ui.easy_adapter.EasyAdapter
 import my.itgungnir.ui.easy_adapter.ListItem
@@ -65,16 +65,9 @@ class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSe
                             )
                         },
                         longClickCallback = { position, id ->
-                            SimpleDialog(
-                                bgColor = context.color(R.color.clr_dialog),
-                                msgColor = context.color(R.color.text_color_level_2),
-                                dividerColor = context.color(R.color.clr_divider),
-                                btnColor = context.color(R.color.text_color_level_1),
-                                msg = "确定要删除该日程吗？",
-                                onConfirm = {
-                                    viewModel.deleteSchedule(position, id)
-                                }
-                            ).show(fragmentManager, SimpleDialog::class.java.name)
+                            context.simpleDialog(fragmentManager, "确定要删除该日程吗？") {
+                                viewModel.deleteSchedule(position, id)
+                            }
                         }
                     ),
                     diffAnalyzer = object : Differ {

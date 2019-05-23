@@ -32,3 +32,5 @@ object ToggleAutoCache : Action
 object ToggleNoImage : Action
 
 object ToggleDarkMode : Action
+
+object UpdateVersion : Action

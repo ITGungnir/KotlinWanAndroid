@@ -221,6 +221,6 @@ interface HttpApi {
     /**
      * 版本检查
      */
-    @GET("/blob/dev/version.json")
+    @GET("/ITGungnir/KotlinWanAndroid/dev/version.json")
     fun versionInfo(): Single<Result<VersionResponse>>
 }

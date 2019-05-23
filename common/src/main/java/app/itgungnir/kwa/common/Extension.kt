@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import app.itgungnir.kwa.common.util.GlideApp
 import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxbinding2.view.RxView
+import my.itgungnir.ui.dialog.SimpleDialog
 import org.jetbrains.anko.contentView
 import java.util.concurrent.TimeUnit
 
@@ -81,3 +83,17 @@ fun html(html: String): String = HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_
  * 获取XML配置中的颜色
  */
 fun Context.color(id: Int) = ContextCompat.getColor(this, id)
+
+/**
+ * 弹出SimpleDialog
+ */
+fun Context.simpleDialog(manager: FragmentManager, msg: String, onConfirm: (() -> Unit)? = null) =
+    SimpleDialog.newInstance(
+        bgColor = this.color(R.color.clr_dialog),
+        msgColor = this.color(R.color.text_color_level_2),
+        dividerColor = this.color(R.color.clr_divider),
+        btnColor = this.color(R.color.text_color_level_1),
+        msg = msg,
+        onConfirm = onConfirm,
+        onCancel = null
+    ).show(manager, SimpleDialog::class.java.name)

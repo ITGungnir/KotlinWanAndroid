@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.fragment_mine.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseFragment
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
-import my.itgungnir.ui.dialog.SimpleDialog
 import my.itgungnir.ui.easy_adapter.Differ
 import my.itgungnir.ui.easy_adapter.EasyAdapter
 import my.itgungnir.ui.easy_adapter.ListItem
@@ -68,14 +67,9 @@ class MineFragment : BaseFragment() {
                 // Recycler View
                 listAdapter = list.bind(
                     delegate = MineArticleDelegate { id, originId ->
-                        SimpleDialog(
-                            bgColor = context.color(R.color.clr_dialog),
-                            msgColor = context.color(R.color.text_color_level_2),
-                            dividerColor = context.color(R.color.clr_divider),
-                            btnColor = context.color(R.color.text_color_level_1),
-                            msg = "确定要取消收藏该文章吗？",
-                            onConfirm = { viewModel.disCollectArticle(id, originId) }
-                        ).show(childFragmentManager, SimpleDialog::class.java.name)
+                        context.simpleDialog(childFragmentManager, "确定要取消收藏该文章吗？") {
+                            viewModel.disCollectArticle(id, originId)
+                        }
                     },
                     diffAnalyzer = object : Differ {
                         override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {

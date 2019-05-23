@@ -1,5 +1,6 @@
 package app.itgungnir.kwa.common.redux
 
+import app.itgungnir.kwa.common.APP_VERSION
 import my.itgungnir.rxmvvm.core.redux.Action
 import my.itgungnir.rxmvvm.core.redux.Reducer
 import java.util.*
@@ -37,6 +38,9 @@ class AppReducer : Reducer<AppState> {
         // 切换“夜间模式”的状态
         is ToggleDarkMode ->
             state.copy(darkMode = !state.darkMode)
+        // 更新应用版本信息
+        is UpdateVersion ->
+            state.copy(version = APP_VERSION)
         // Default
         else ->
             state
