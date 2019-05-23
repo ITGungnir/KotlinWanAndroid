@@ -29,6 +29,8 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 
 ![KotlinWanAndroid Apk Download](./images/download_code.png)
 
+如果上述二维码无法扫描下载，请[点击这里下载APK](https://www.pgyer.com/itgungnir_kwa)
+
 ## 功能截屏
 |Image Column 01|Image Column 02|Image Column 03|
 |---|---|---|
