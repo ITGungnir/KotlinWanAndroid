@@ -5,5 +5,5 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textColor="@color/text_color_level_2"
-    android:textSize="@dimen/text_size_tiny"
+    android:textSize="@dimen/text_size_small"
     tools:ignore="SpUsage" />
