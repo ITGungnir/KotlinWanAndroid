@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textColor="@color/text_color_level_1"
-        android:textSize="@dimen/text_size_normal"
-        tools:ignore="SpUsage" />
+        android:textSize="@dimen/text_size_normal" />
 
     <my.itgungnir.ui.flex.ScrollableFlexView
         android:id="@+id/childrenView"

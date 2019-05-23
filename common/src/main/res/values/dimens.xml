@@ -3,9 +3,9 @@
     <!-- 分隔线高度 -->
     <dimen name="divider_height">0.5dp</dimen>
     <!-- 字体大小 -->
-    <dimen name="text_size_icon">24dp</dimen>
-    <dimen name="text_size_large">18dp</dimen>
-    <dimen name="text_size_normal">16dp</dimen>
-    <dimen name="text_size_small">14dp</dimen>
-    <dimen name="text_size_tiny">12dp</dimen>
+    <dimen name="text_size_icon">24sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_tiny">12sp</dimen>
 </resources>

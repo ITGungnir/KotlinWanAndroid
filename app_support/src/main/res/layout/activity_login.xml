@@ -50,7 +50,6 @@
         android:paddingBottom="5dp"
         android:text="@string/str_register"
         android:textColor="@color/text_color_level_2"
-        android:textSize="@dimen/text_size_small"
-        tools:ignore="SpUsage" />
+        android:textSize="@dimen/text_size_small" />
 
 </LinearLayout>

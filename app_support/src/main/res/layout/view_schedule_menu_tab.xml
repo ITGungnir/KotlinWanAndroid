@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimary"
-    tools:ignore="SpUsage">
+    android:background="@color/colorPrimary">
 
     <View
         android:id="@+id/divider1"

@@ -12,8 +12,7 @@
         android:layout_marginTop="15dp"
         android:text="@string/str_hot_key"
         android:textColor="@color/text_color_level_1"
-        android:textSize="@dimen/text_size_large"
-        tools:ignore="SpUsage" />
+        android:textSize="@dimen/text_size_large" />
 
     <my.itgungnir.ui.flex.FlexView
         android:id="@+id/childrenView"

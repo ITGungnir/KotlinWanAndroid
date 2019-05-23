@@ -14,7 +14,6 @@
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/text_size_small"
         app:chipBackgroundColor="@color/clr_background"
-        tools:ignore="SpUsage"
         tools:text="@string/app_name" />
 
 </FrameLayout>

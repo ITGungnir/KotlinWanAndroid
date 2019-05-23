@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:background="?android:attr/selectableItemBackground"
     android:gravity="center"
-    android:orientation="vertical"
-    tools:ignore="SpUsage">
+    android:orientation="vertical">
 
     <my.itgungnir.ui.icon_font.IconFontView
         android:id="@+id/iconView"
@@ -20,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        tools:text="首页"
+        tools:text="@string/app_name"
         tools:textSize="@dimen/text_size_normal" />
 
 </LinearLayout>

@@ -3,27 +3,39 @@
 
     <application android:theme="@style/AppTheme">
 
-        <activity android:name=".search_result.SearchResultActivity" />
+        <activity
+            android:name=".search_result.SearchResultActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".web.WebActivity" />
+        <activity
+            android:name=".web.WebActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".hierarchy.HierarchyActivity" />
+        <activity
+            android:name=".hierarchy.HierarchyActivity"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".login.LoginActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".register.RegisterActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 
-        <activity android:name=".setting.SettingActivity" />
+        <activity
+            android:name=".setting.SettingActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".schedule.ScheduleActivity" />
+        <activity
+            android:name=".schedule.ScheduleActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".schedule.done.ScheduleDoneActivity" />
-
-        <activity android:name=".ghost.GhostActivity" />
+        <activity
+            android:name=".schedule.done.ScheduleDoneActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

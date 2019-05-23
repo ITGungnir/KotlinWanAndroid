@@ -136,8 +136,10 @@ class WeixinChildFragment : LazyFragment() {
                     footer?.onLoadSucceed(it.b)
                     if (it.c) {
                         handler.post {
-                            (weixinPage.statusView().getDelegate(StatusView.Status.SUCCEED) as RecyclerView)
-                                .scrollToPosition(0)
+                            if (this.isVisible) {
+                                (weixinPage.statusView().getDelegate(StatusView.Status.SUCCEED) as RecyclerView)
+                                    .scrollToPosition(0)
+                            }
                         }
                     }
                 }

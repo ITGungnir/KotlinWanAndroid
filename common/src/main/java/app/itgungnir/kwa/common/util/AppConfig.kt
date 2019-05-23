@@ -10,6 +10,7 @@ class AppConfig private constructor() {
 
     fun init(application: Application) {
         listOf(
+            ScreenAdaptUtil(),
             DateTimeUtil(),
             LeakDetectUtil(),
             LoggingUtil(),

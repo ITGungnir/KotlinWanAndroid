@@ -14,7 +14,6 @@
         android:gravity="center"
         android:textColor="@color/text_color_level_1"
         android:textSize="@dimen/text_size_small"
-        tools:ignore="SpUsage"
-        tools:text="不限" />
+        tools:text="@string/app_name" />
 
 </FrameLayout>
