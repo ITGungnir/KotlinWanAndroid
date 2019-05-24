@@ -2,7 +2,7 @@
 <div align="center">
   <img src="./ic_launcher_origin.png"/>
   <br/><br/>
-  <img src="https://img.shields.io/badge/Version-V1.0.0-brightgreen.svg" />
+  <img src="https://img.shields.io/badge/Version-V1.1.0-brightgreen.svg" />
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" />
   <img src="https://img.shields.io/badge/API-19+-blue.svg" alt="Min Sdk Version" />
   <img src="https://img.shields.io/badge/License-Apache2.0-blue.svg" alt="License" />
@@ -133,6 +133,7 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 #### 阿里巴巴[IconFont](https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2)提供的图标字体解决方案
 #### [BlankJ](https://blankj.com/2018/07/30/easy-adapt-screen/)和[字节跳动技术团队](https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA)提供的屏幕适配方案
 #### [磐龍](https://www.jianshu.com/p/98ea7e866ffd)提供的应用自动检查更新解决方案
+#### [蒲公英](https://www.pgyer.com/)提供的APK发布平台
 #### 系统中用到的三方库
 [Rxjava](https://github.com/ReactiveX/RxJava)、
 [RxAndroid](https://github.com/ReactiveX/RxAndroid)、
