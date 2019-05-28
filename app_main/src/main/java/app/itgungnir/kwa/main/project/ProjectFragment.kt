@@ -3,6 +3,7 @@ package app.itgungnir.kwa.main.project
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Observer
+import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.project.child.ProjectChildFragment
@@ -44,7 +45,7 @@ class ProjectFragment : BaseFragment() {
                             it.size
 
                         override fun getPageTitle(position: Int) =
-                            it[position].name
+                            html(it[position].name)
                     }
                 }
             })

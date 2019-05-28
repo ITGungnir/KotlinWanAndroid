@@ -38,6 +38,14 @@ class WebActivity : BaseActivity() {
 
         headBar.title(html(title))
             .back(getString(R.string.icon_back)) { finish() }
+            .addMenuItem(getString(R.string.icon_share), "分享") {
+                val currTitle = browserView.currentTitle()
+                val currUrl = browserView.currentUrl()
+                share("KotlinWanAndroid分享《$currTitle》专题：$currUrl", currTitle)
+            }
+            .addMenuItem(getString(R.string.icon_browser), "用系统浏览器打开") {
+                Router.instance.with(this).target(browserView.currentUrl()).go()
+            }
 
         if (id > 0 && originId >= 0) {
             headBar.addToolButton(getString(R.string.icon_uncollect)) {
@@ -60,10 +68,6 @@ class WebActivity : BaseActivity() {
                         .go()
                 }
             }
-        }
-
-        headBar.addToolButton(getString(R.string.icon_share)) {
-            share("KotlinWanAndroid分享《$title》专题：$url", title)
         }
 
         browserView.load(

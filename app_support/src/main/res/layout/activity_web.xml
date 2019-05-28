@@ -9,6 +9,9 @@
         style="@style/HeadBarStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        app:hb_menuBackground="@color/colorPrimary"
+        app:hb_menuIconColor="@color/text_color_head_bar"
+        app:hb_menuTitleColor="@color/text_color_head_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

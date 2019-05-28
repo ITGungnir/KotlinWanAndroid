@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import app.itgungnir.kwa.common.hideSoftInput
+import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.weixin.child.WeixinChildFragment
@@ -70,7 +71,7 @@ class WeixinFragment : BaseFragment() {
                             it.size
 
                         override fun getPageTitle(position: Int) =
-                            it[position].name
+                            html(it[position].name)
                     }
                 }
             })

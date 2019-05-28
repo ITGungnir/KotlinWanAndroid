@@ -114,8 +114,13 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 * **`LeakCanary`**：内存泄漏监测框架，则debug版本中监测并警报内存泄漏；
 
 ## Version Log
+### V1.1.2
+优化部分文本的显示效果
+
+文章详情页功能增强
+
 ### V1.1.0
-小幅度修改某些页面的布局；
+小幅度修改某些页面的布局
 
 增加了屏幕适配功能，在不同尺寸和分辨率的屏幕上有相同展示效果
 

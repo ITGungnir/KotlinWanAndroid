@@ -41,6 +41,7 @@
     <string name="icon_clear_cache">\ue6aa</string>
     <string name="icon_feedback">\ue6f5</string>
     <string name="icon_about_us">\ue601</string>
+    <string name="icon_browser">\ue763</string>
     <!-- 应用内文本 -->
     <string name="str_search">搜索</string>
     <string name="str_hot_key">热搜</string>
