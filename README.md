@@ -2,7 +2,7 @@
 <div align="center">
   <img src="./ic_launcher_origin.png"/>
   <br/><br/>
-  <img src="https://img.shields.io/badge/Version-V1.1.0-brightgreen.svg" />
+  <img src="https://img.shields.io/badge/Version-V1.1.2-brightgreen.svg" />
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" />
   <img src="https://img.shields.io/badge/API-19+-blue.svg" alt="Min Sdk Version" />
   <img src="https://img.shields.io/badge/License-Apache2.0-blue.svg" alt="License" />
