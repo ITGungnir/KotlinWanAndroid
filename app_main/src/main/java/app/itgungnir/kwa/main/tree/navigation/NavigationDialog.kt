@@ -40,10 +40,6 @@ class NavigationDialog : FullScreenDialog() {
 
         sideBar.bind(
             manager = leftManager,
-            delegate = SideBarDelegate { position ->
-                selectTabAt(position)
-                rightManager.scrollToPositionWithOffset(position, 0)
-            },
             diffAnalyzer = object : Differ {
                 override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
                     (oldItem as NavigationState.NavTabVO).name == (newItem as NavigationState.NavTabVO).name
@@ -61,10 +57,15 @@ class NavigationDialog : FullScreenDialog() {
                     return if (bundle.isEmpty) null else bundle
                 }
             }
-        )
+        ).addDelegate({ true }, SideBarDelegate { position ->
+            selectTabAt(position)
+            rightManager.scrollToPositionWithOffset(position, 0)
+        }).initialize()
 
         navList.apply {
-            bind(manager = rightManager, delegate = NavigationDelegate())
+            bind(manager = rightManager)
+                .addDelegate({ true }, NavigationDelegate())
+                .initialize()
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)

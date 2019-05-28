@@ -22,16 +22,15 @@ class MenuView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
     init {
         View.inflate(context, R.layout.view_schedule_menu, this)
 
-        listAdapter = list.bind(
-            delegate = MenuItemDelegate(clickCallback = { position, vo ->
+        listAdapter = list.bind(diffAnalyzer = menuItemDiffer)
+            .addDelegate({ true }, MenuItemDelegate(clickCallback = { position, vo ->
                 dataList = dataList.mapIndexed { index, item ->
                     item.copy(selected = index == position)
                 }.toMutableList()
                 listAdapter?.update(dataList)
                 selectCallback?.invoke(position, vo.title, vo.value)
-            }),
-            diffAnalyzer = menuItemDiffer
-        )
+            }))
+            .initialize()
 
         listAdapter?.update(dataList)
     }

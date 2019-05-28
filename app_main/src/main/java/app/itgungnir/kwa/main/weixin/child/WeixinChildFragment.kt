@@ -5,8 +5,8 @@ import android.os.Handler
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.weixin.WeixinState
 import app.itgungnir.kwa.main.weixin.WeixinViewModel
@@ -63,7 +63,6 @@ class WeixinChildFragment : LazyFragment() {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
                 listAdapter = list.bind(
-                    delegate = WeixinChildDelegate(),
                     diffAnalyzer = object : Differ {
                         override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
                             oldItem as WeixinChildState.WeixinArticleVO
@@ -87,10 +86,12 @@ class WeixinChildFragment : LazyFragment() {
                             return if (bundle.isEmpty) null else bundle
                         }
                     })
+                    .addDelegate({ true }, WeixinChildDelegate())
+                    .initialize()
                 // Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)
-                    .render(context.color(R.color.clr_divider), context.color(R.color.clr_background))
+                    .render(R.layout.view_list_footer) { view, status -> renderFooter(view, status) }
                     .doOnLoadMore {
                         if (!refreshLayout().isRefreshing) {
                             flag()?.let { flag -> selfViewModel.loadMoreArticles(flag, k) }

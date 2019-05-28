@@ -48,7 +48,9 @@ class TreeFragment : BaseFragment() {
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_list) {
                 it.findViewById<RecyclerView>(R.id.list).apply {
                     bottomPadding = context.dp2px(10.0F)
-                    listAdapter = this.bind(delegate = TreeDelegate())
+                    listAdapter = this.bind()
+                        .addDelegate({ true }, TreeDelegate())
+                        .initialize()
                 }
             }.addDelegate(StatusView.Status.EMPTY, R.layout.view_status_list_empty) {
                 it.findViewById<TextView>(R.id.tip).text = "还没有知识体系~"

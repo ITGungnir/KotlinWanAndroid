@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.home.delegate.BannerDelegate
 import app.itgungnir.kwa.main.home.delegate.HomeArticleDelegate
@@ -78,10 +78,11 @@ class HomeFragment : BaseFragment() {
                         }
                 }).addDelegate({ data -> data is HomeState.BannerVO }, BannerDelegate())
                     .addDelegate({ data -> data is HomeState.HomeArticleVO }, HomeArticleDelegate())
+                    .initialize()
                 // Recycler Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)
-                    .render(context.color(R.color.clr_divider), context.color(R.color.clr_background))
+                    .render(R.layout.view_list_footer) { view, status -> renderFooter(view, status) }
                     .doOnLoadMore {
                         if (!homePage.refreshLayout().isRefreshing) {
                             viewModel.loadMoreHomeData()

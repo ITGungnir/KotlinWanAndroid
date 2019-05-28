@@ -22,15 +22,15 @@ class ScreenAdaptUtil : Util {
                 val activityDM = it.resources.displayMetrics
 
                 activityDM.apply {
-                    density = activityDM.widthPixels / ADAPT_WIDTH
-                    scaledDensity = activityDM.density
-                    densityDpi = (160 * activityDM.density).toInt()
+                    density = systemDM.widthPixels / ADAPT_WIDTH
+                    scaledDensity = systemDM.density
+                    densityDpi = (160 * systemDM.density).toInt()
                 }
 
                 appDM.apply {
-                    density = activityDM.density
-                    scaledDensity = activityDM.scaledDensity
-                    densityDpi = activityDM.densityDpi
+                    density = systemDM.density
+                    scaledDensity = systemDM.scaledDensity
+                    densityDpi = systemDM.densityDpi
                 }
             }
         }

@@ -129,6 +129,7 @@ class SettingActivity : BaseActivity() {
             .addDelegate({ data -> data is SettingState.ButtonVO }, ButtonDelegate(callback = {
                 finish()
             }))
+            .initialize()
 
         viewModel.getSettingList(this)
     }

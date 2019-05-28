@@ -5,6 +5,8 @@ import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
@@ -14,7 +16,10 @@ import app.itgungnir.kwa.common.util.GlideApp
 import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxbinding2.view.RxView
 import my.itgungnir.ui.dialog.SimpleDialog
+import my.itgungnir.ui.list_footer.FooterStatus
+import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.contentView
+import org.jetbrains.anko.textColor
 import java.util.concurrent.TimeUnit
 
 /**
@@ -97,3 +102,34 @@ fun Context.simpleDialog(manager: FragmentManager, msg: String, onConfirm: (() -
         onConfirm = onConfirm,
         onCancel = null
     ).show(manager, SimpleDialog::class.java.name)
+
+/**
+ * 根据状态渲染ListFooter的UI
+ */
+fun renderFooter(view: View, status: FooterStatus.Status) {
+    view.backgroundColor = view.context.color(R.color.clr_divider)
+    val title = view.findViewById<TextView>(R.id.footerTitle)
+    val progress = view.findViewById<ProgressBar>(R.id.footerProgress)
+    title.textColor = view.context.color(R.color.clr_background)
+    when (status) {
+        FooterStatus.Status.PROGRESSING -> {
+            title.visibility = View.GONE
+            progress.visibility = View.VISIBLE
+        }
+        FooterStatus.Status.SUCCEED -> {
+            title.visibility = View.VISIBLE
+            progress.visibility = View.GONE
+            title.text = "加载成功"
+        }
+        FooterStatus.Status.NO_MORE -> {
+            title.visibility = View.VISIBLE
+            progress.visibility = View.GONE
+            title.text = "我是有底线的"
+        }
+        FooterStatus.Status.FAILED -> {
+            title.visibility = View.VISIBLE
+            progress.visibility = View.GONE
+            title.text = "加载失败，请重试"
+        }
+    }
+}

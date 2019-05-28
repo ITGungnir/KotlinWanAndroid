@@ -25,7 +25,6 @@ class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
         container.apply {
             bannerView.bind<HomeState.BannerVO.BannerItem>(
                 layoutId = R.layout.list_item_home_banner_child,
-                items = listOf(),
                 render = { _, view, data ->
                     view.findViewById<ImageView>(R.id.imageView).apply {
                         when (AppRedux.instance.isNoImage()) {

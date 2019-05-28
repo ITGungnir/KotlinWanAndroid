@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.fragment_project_child.*
 import my.itgungnir.rxmvvm.core.mvvm.LazyFragment
@@ -49,7 +49,6 @@ class ProjectChildFragment : LazyFragment() {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
                 listAdapter = list.bind(
-                    delegate = ProjectChildDelegate(),
                     diffAnalyzer = object : Differ {
                         override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
                             oldItem as ProjectChildState.ProjectArticleVO
@@ -73,10 +72,12 @@ class ProjectChildFragment : LazyFragment() {
                             return if (bundle.isEmpty) null else bundle
                         }
                     })
+                    .addDelegate({ true }, ProjectChildDelegate())
+                    .initialize()
                 // Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)
-                    .render(context.color(R.color.clr_divider), context.color(R.color.clr_background))
+                    .render(R.layout.view_list_footer) { view, status -> renderFooter(view, status) }
                     .doOnLoadMore {
                         if (!refreshLayout().isRefreshing) {
                             flag()?.let { flag -> viewModel.loadMoreProjects(flag) }

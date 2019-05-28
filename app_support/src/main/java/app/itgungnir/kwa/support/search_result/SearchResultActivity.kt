@@ -5,8 +5,8 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import app.itgungnir.kwa.common.SearchResultActivity
-import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.activity_search_result.*
 import my.itgungnir.grouter.annotation.Route
@@ -51,7 +51,6 @@ class SearchResultActivity : BaseActivity() {
             statusView().addDelegate(StatusView.Status.SUCCEED, R.layout.view_status_list) {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 listAdapter = list.bind(
-                    delegate = SearchResultDelegate(),
                     diffAnalyzer = object : Differ {
                         override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
                             oldItem as SearchResultState.SearchResultArticleVO
@@ -75,9 +74,11 @@ class SearchResultActivity : BaseActivity() {
                             return if (bundle.isEmpty) null else bundle
                         }
                     })
+                    .addDelegate({ true }, SearchResultDelegate())
+                    .initialize()
                 footer = ListFooter.Builder()
                     .bindTo(list)
-                    .render(context.color(R.color.clr_divider), context.color(R.color.clr_background))
+                    .render(R.layout.view_list_footer) { view, status -> renderFooter(view, status) }
                     .doOnLoadMore {
                         if (!searchResultPage.refreshLayout().isRefreshing) {
                             viewModel.loadMoreSearchResult(key)

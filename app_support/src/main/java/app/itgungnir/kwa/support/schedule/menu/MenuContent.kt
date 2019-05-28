@@ -8,8 +8,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.popToast
+import app.itgungnir.kwa.common.renderFooter
 import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.schedule.ScheduleActivity
@@ -56,20 +56,6 @@ class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSe
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Easy Adapter
                 listAdapter = list.bind(
-                    delegate = ScheduleDelegate(
-                        clickCallback = { position, data ->
-                            viewModel.setState { copy(dismissFlag = null) }
-                            EditScheduleDialog(position, data).show(
-                                fragmentManager,
-                                EditScheduleDialog::class.java.name
-                            )
-                        },
-                        longClickCallback = { position, id ->
-                            context.simpleDialog(fragmentManager, "确定要删除该日程吗？") {
-                                viewModel.deleteSchedule(position, id)
-                            }
-                        }
-                    ),
                     diffAnalyzer = object : Differ {
                         override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean =
                             (oldItem as ScheduleState.ScheduleVO).id == (newItem as ScheduleState.ScheduleVO).id
@@ -97,10 +83,25 @@ class MenuContent @JvmOverloads constructor(context: Context, attrs: AttributeSe
                             return if (bundle.isEmpty) null else bundle
                         }
                     })
+                    .addDelegate({ true }, ScheduleDelegate(
+                        clickCallback = { position, data ->
+                            viewModel.setState { copy(dismissFlag = null) }
+                            EditScheduleDialog(position, data).show(
+                                fragmentManager,
+                                EditScheduleDialog::class.java.name
+                            )
+                        },
+                        longClickCallback = { position, id ->
+                            context.simpleDialog(fragmentManager, "确定要删除该日程吗？") {
+                                viewModel.deleteSchedule(position, id)
+                            }
+                        }
+                    ))
+                    .initialize()
                 // List Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)
-                    .render(context.color(R.color.clr_divider), context.color(R.color.clr_background))
+                    .render(R.layout.view_list_footer) { view, status -> renderFooter(view, status) }
                     .doOnLoadMore {
                         if (!refreshLayout().isRefreshing) {
                             viewModel.loadMoreScheduleList()

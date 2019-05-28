@@ -66,11 +66,6 @@ class MineFragment : BaseFragment() {
                 val list = it.findViewById<RecyclerView>(R.id.list)
                 // Recycler View
                 listAdapter = list.bind(
-                    delegate = MineArticleDelegate { id, originId ->
-                        context.simpleDialog(childFragmentManager, "确定要取消收藏该文章吗？") {
-                            viewModel.disCollectArticle(id, originId)
-                        }
-                    },
                     diffAnalyzer = object : Differ {
                         override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
                             oldItem as MineState.MineArticleVO
@@ -94,10 +89,16 @@ class MineFragment : BaseFragment() {
                             return if (bundle.isEmpty) null else bundle
                         }
                     })
+                    .addDelegate({ true }, MineArticleDelegate { id, originId ->
+                        context.simpleDialog(childFragmentManager, "确定要取消收藏该文章吗？") {
+                            viewModel.disCollectArticle(id, originId)
+                        }
+                    })
+                    .initialize()
                 // List Footer
                 footer = ListFooter.Builder()
                     .bindTo(list)
-                    .render(context.color(R.color.clr_divider), context.color(R.color.clr_background))
+                    .render(R.layout.view_list_footer) { view, status -> renderFooter(view, status) }
                     .doOnLoadMore {
                         if (!minePage.refreshLayout().isRefreshing) {
                             viewModel.loadMoreMineData()
