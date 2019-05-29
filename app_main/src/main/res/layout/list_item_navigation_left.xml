@@ -5,4 +5,4 @@
     android:layout_height="?attr/actionBarSize"
     android:gravity="center"
     android:textColor="@color/text_color_level_1"
-    android:textSize="@dimen/text_size_normal" />
+    android:textSize="@dimen/text_size_small" />

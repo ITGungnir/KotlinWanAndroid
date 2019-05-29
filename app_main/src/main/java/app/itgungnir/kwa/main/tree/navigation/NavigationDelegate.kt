@@ -3,6 +3,7 @@ package app.itgungnir.kwa.main.tree.navigation
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.WebActivity
+import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.main.R
 import com.google.android.material.chip.Chip
@@ -47,7 +48,7 @@ class NavigationDelegate : BaseDelegate<NavigationState.NavigationVO>() {
 
         holder.render(item) {
 
-            titleView.text = item.title
+            titleView.text = html(item.title)
 
             childrenView.refresh(item.children)
         }

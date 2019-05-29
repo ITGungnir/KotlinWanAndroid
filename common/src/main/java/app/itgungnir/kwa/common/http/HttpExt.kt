@@ -11,7 +11,7 @@ inline fun <reified T> Single<Result<T>>.handleResult() = compose { upsteam ->
             0 ->
                 Single.just(it.data ?: T::class.java.newInstance())
             else ->
-                Single.error(HttpException(it.errorCode, it.errorMsg))
+                Single.error(HttpException(it.errorMsg))
         }
     }
 }!!
