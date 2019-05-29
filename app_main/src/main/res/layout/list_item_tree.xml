@@ -46,6 +46,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
+            app:fv_horizontalSpacing="10dp"
+            app:fv_verticalSpacing="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/arrowView"
             app:layout_constraintStart_toStartOf="parent"

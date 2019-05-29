@@ -53,6 +53,8 @@ dependencies {
     api "com.orhanobut:logger:$logger_version"
     api "androidx.multidex:multidex:$dex_version"
     api "com.github.ITGungnir.GRouter:router_api:$router_version"
+    api "com.tencent.bugly:crashreport:$bugly_sdk_version"
+    api "com.tencent.bugly:nativecrashreport:$bugly_ndk_version"
     debugApi "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
     debugApi "com.squareup.leakcanary:leakcanary-support-fragment:$leak_canary_version"
     releaseApi "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"

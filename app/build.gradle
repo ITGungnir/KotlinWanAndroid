@@ -13,6 +13,7 @@ android {
         versionCode version_code
         versionName version_name
         multiDexEnabled true
+        ndk { abiFilters "armeabi", "armeabi-v7a", "x86" }
     }
     buildTypes {
         release {

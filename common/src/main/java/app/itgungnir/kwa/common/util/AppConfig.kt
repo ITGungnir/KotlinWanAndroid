@@ -10,13 +10,14 @@ class AppConfig private constructor() {
 
     fun init(application: Application) {
         listOf(
-            ScreenAdaptUtil(),
+            CacheUtil.instance,
+            CrashDetectUtil(),
             DateTimeUtil(),
             LeakDetectUtil(),
             LoggingUtil(),
             ReduxUtil(),
-            ThemeUtil(),
-            CacheUtil.instance
+            ScreenAdaptUtil(),
+            ThemeUtil()
         ).map {
             it.init(application)
         }
