@@ -2,7 +2,7 @@
 <div align="center">
   <img src="./ic_launcher_origin.png"/>
   <br/><br/>
-  <img src="https://img.shields.io/badge/Version-V1.1.2-brightgreen.svg" />
+  <img src="https://img.shields.io/badge/Version-V1.2.0-brightgreen.svg" />
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" />
   <img src="https://img.shields.io/badge/API-19+-blue.svg" alt="Min Sdk Version" />
   <img src="https://img.shields.io/badge/License-Apache2.0-blue.svg" alt="License" />
@@ -114,6 +114,15 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 * **`LeakCanary`**：内存泄漏监测框架，则debug版本中监测并警报内存泄漏；
 
 ## Version Log
+### V1.2.0
+集成了Bugly异常监测SDK
+
+解决首页搜索Dialog没有数据的bug
+
+部分页面的UI微调
+
+添加混淆，缩小应用体积
+
 ### V1.1.2
 优化部分文本的显示效果
 
@@ -139,6 +148,7 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 #### [BlankJ](https://blankj.com/2018/07/30/easy-adapt-screen/)和[字节跳动技术团队](https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA)提供的屏幕适配方案
 #### [磐龍](https://www.jianshu.com/p/98ea7e866ffd)提供的应用自动检查更新解决方案
 #### [蒲公英](https://www.pgyer.com/)提供的APK发布平台
+#### [Bugly](https://bugly.qq.com/v2/index)提供的异常/错误监测解决方案
 #### 系统中用到的三方库
 [Rxjava](https://github.com/ReactiveX/RxJava)、
 [RxAndroid](https://github.com/ReactiveX/RxAndroid)、

@@ -5,17 +5,10 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion target_sdk_version
+    buildToolsVersion build_tools_version
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
-        versionCode version_code
-        versionName version_name
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 }
 
@@ -54,7 +47,6 @@ dependencies {
     api "androidx.multidex:multidex:$dex_version"
     api "com.github.ITGungnir.GRouter:router_api:$router_version"
     api "com.tencent.bugly:crashreport:$bugly_sdk_version"
-    api "com.tencent.bugly:nativecrashreport:$bugly_ndk_version"
     debugApi "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
     debugApi "com.squareup.leakcanary:leakcanary-support-fragment:$leak_canary_version"
     releaseApi "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"

@@ -19,7 +19,6 @@ class App : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
-
         AppConfig.instance.init(this)
     }
 }

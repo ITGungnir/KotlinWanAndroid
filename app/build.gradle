@@ -6,6 +6,7 @@ apply plugin: 'grouter'
 
 android {
     compileSdkVersion target_sdk_version
+    buildToolsVersion build_tools_version
     defaultConfig {
         applicationId "app.itgungnir.kwa"
         minSdkVersion min_sdk_version
@@ -13,11 +14,23 @@ android {
         versionCode version_code
         versionName version_name
         multiDexEnabled true
-        ndk { abiFilters "armeabi", "armeabi-v7a", "x86" }
+    }
+    signingConfigs {
+        config {
+            storeFile file('D:/CodingTools/Android/itgungnir.jks')
+            storePassword 'android'
+            keyAlias 'android'
+            keyPassword 'android'
+        }
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.config
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
