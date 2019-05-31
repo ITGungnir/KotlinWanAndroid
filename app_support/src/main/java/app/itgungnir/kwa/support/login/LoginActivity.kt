@@ -2,7 +2,9 @@ package app.itgungnir.kwa.support.login
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.*
+import app.itgungnir.kwa.common.LoginActivity
+import app.itgungnir.kwa.common.RegisterActivity
+import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.LocalizeUserInfo
 import app.itgungnir.kwa.support.R
@@ -13,6 +15,8 @@ import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import my.itgungnir.ui.hideSoftInput
+import my.itgungnir.ui.onAntiShakeClick
 
 @Route(LoginActivity)
 class LoginActivity : BaseActivity() {
@@ -49,7 +53,7 @@ class LoginActivity : BaseActivity() {
 
         login.apply {
             disabled("登录")
-            onAntiShakeClick {
+            onAntiShakeClick(2000L) {
                 hideSoftInput()
                 loading()
                 val userName = userNameInput.getInput().editableText.toString().trim()
@@ -58,7 +62,7 @@ class LoginActivity : BaseActivity() {
             }
         }
 
-        toRegister.onAntiShakeClick {
+        toRegister.onAntiShakeClick(2000L) {
             it.hideSoftInput()
             Router.instance.with(this)
                 .target(RegisterActivity)

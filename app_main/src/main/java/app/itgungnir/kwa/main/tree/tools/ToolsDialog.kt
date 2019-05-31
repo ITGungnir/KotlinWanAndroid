@@ -2,7 +2,6 @@ package app.itgungnir.kwa.main.tree.tools
 
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import com.google.android.material.chip.Chip
@@ -10,6 +9,7 @@ import kotlinx.android.synthetic.main.dialog_tools.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
 import my.itgungnir.ui.dialog.FullScreenDialog
+import my.itgungnir.ui.onAntiShakeClick
 
 class ToolsDialog : FullScreenDialog() {
 
@@ -32,7 +32,7 @@ class ToolsDialog : FullScreenDialog() {
             render = { view, data ->
                 view.findViewById<Chip>(R.id.tagView).apply {
                     text = data.name
-                    onAntiShakeClick {
+                    onAntiShakeClick(2000L) {
                         Router.instance.with(context)
                             .target(WebActivity)
                             .addParam("title", data.name)

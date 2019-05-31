@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.hideSoftInput
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.schedule.ScheduleState
 import app.itgungnir.kwa.support.schedule.ScheduleViewModel
@@ -17,9 +14,12 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.dialog_schedule.*
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import my.itgungnir.ui.dialog.NoTitleDialogFragment
+import my.itgungnir.ui.hideSoftInput
+import my.itgungnir.ui.onAntiShakeClick
 import org.joda.time.DateTime
 
-class AddScheduleDialog : DialogFragment() {
+class AddScheduleDialog : NoTitleDialogFragment() {
 
     private val viewModel by lazy {
         buildActivityViewModel(
@@ -38,7 +38,7 @@ class AddScheduleDialog : DialogFragment() {
         headBar.title("添加日程")
             .back(getString(R.string.icon_back)) { this.dismiss() }
 
-        dateInput.onAntiShakeClick {
+        dateInput.onAntiShakeClick(2000L) {
             it.hideSoftInput()
             val currDate = DateTime()
             DatePickerDialog(context!!, DatePickerDialog.OnDateSetListener { _, year, month, day ->

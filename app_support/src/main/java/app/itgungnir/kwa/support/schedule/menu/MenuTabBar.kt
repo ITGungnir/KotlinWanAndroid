@@ -4,9 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.support.R
 import kotlinx.android.synthetic.main.view_schedule_menu_tab.view.*
+import my.itgungnir.ui.color
 import org.jetbrains.anko.textColor
 
 class MenuTabBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :

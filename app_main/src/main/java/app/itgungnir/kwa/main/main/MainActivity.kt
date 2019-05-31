@@ -3,7 +3,6 @@ package app.itgungnir.kwa.main.main
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.MainActivity
-import app.itgungnir.kwa.common.color
 import app.itgungnir.kwa.common.http.HttpUtil
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.AppRedux
@@ -19,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import my.itgungnir.ui.color
 import my.itgungnir.ui.icon_font.IconFontView
 import org.jetbrains.anko.textColor
 import org.joda.time.DateTime

@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import app.itgungnir.kwa.common.HierarchyActivity
-import app.itgungnir.kwa.common.html
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.main.R
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.list_item_tree.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.html
+import my.itgungnir.ui.onAntiShakeClick
 
 class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
 
@@ -38,7 +38,7 @@ class TreeDelegate : BaseDelegate<TreeState.TreeVO>() {
 
         holder.render(item) {
 
-            this.onAntiShakeClick {
+            this.onAntiShakeClick(2000L) {
                 val json = Gson().toJson(item)
                 Router.instance.with(context)
                     .target(HierarchyActivity)

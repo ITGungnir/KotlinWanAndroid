@@ -4,15 +4,15 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.load
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.list_item_project_article.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.html
+import my.itgungnir.ui.onAntiShakeClick
 
 class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() {
 
@@ -31,7 +31,7 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
 
         holder.render(item) {
 
-            this.onAntiShakeClick {
+            this.onAntiShakeClick(2000L) {
                 Router.instance.with(context)
                     .target(WebActivity)
                     .addParam("id", item.id)
@@ -49,7 +49,7 @@ class ProjectChildDelegate : BaseDelegate<ProjectChildState.ProjectArticleVO>() 
 
             authorView.text = "${context.getString(R.string.icon_author)} ${item.author}"
 
-            repositoryView.onAntiShakeClick {
+            repositoryView.onAntiShakeClick(2000L) {
                 Router.instance.with(context)
                     .target(WebActivity)
                     .addParam("title", item.title)

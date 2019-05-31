@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.SettingActivity
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.common.redux.*
+import app.itgungnir.kwa.common.simpleDialog
 import app.itgungnir.kwa.common.util.CacheUtil
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.setting.delegate.*
@@ -119,15 +120,15 @@ class SettingActivity : BaseActivity() {
             }))
             .addDelegate({ data -> data is SettingState.NavigableVO }, NavigableDelegate(navigateCallback = { id ->
                 when (id) {
-                    5 -> when (email(email = "itgungnir@163.com")) {
-                        true -> popToast("反馈成功！")
-                        else -> popToast("发送邮件失败，请检查邮箱设置")
-                    }
+                    5 -> email(email = "itgungnir@163.com")
                     6 -> AboutUsDialog().show(supportFragmentManager, AboutUsDialog::class.java.name)
                 }
             }))
             .addDelegate({ data -> data is SettingState.ButtonVO }, ButtonDelegate(callback = {
-                finish()
+                this.simpleDialog(supportFragmentManager, "确定要退出当前登录吗？") {
+                    AppRedux.instance.dispatch(ClearUserInfo)
+                    finish()
+                }
             }))
             .initialize()
 

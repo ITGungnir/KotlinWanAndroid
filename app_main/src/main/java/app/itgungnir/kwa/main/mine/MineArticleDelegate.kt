@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.HierarchyActivity
 import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.html
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.main.R
 import app.itgungnir.kwa.main.tree.TreeState
 import com.google.gson.Gson
@@ -14,6 +12,8 @@ import kotlinx.android.synthetic.main.list_item_mine_article.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.html
+import my.itgungnir.ui.onAntiShakeClick
 
 class MineArticleDelegate(
     private val onLongClick: (id: Int, originId: Int) -> Unit
@@ -38,7 +38,7 @@ class MineArticleDelegate(
                 true
             }
 
-            this.onAntiShakeClick {
+            this.onAntiShakeClick(2000L) {
                 Router.instance.with(context)
                     .target(WebActivity)
                     .addParam("id", item.id)
@@ -52,7 +52,7 @@ class MineArticleDelegate(
 
             categoryView.apply {
                 text = item.category
-                onAntiShakeClick {
+                onAntiShakeClick(2000L) {
                     val data = TreeState.TreeVO(
                         name = item.category,
                         children = listOf(

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.html
 import app.itgungnir.kwa.common.load
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.main.R
@@ -14,6 +13,7 @@ import kotlinx.android.synthetic.main.list_item_home_banner.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.html
 
 class BannerDelegate : BaseDelegate<HomeState.BannerVO>() {
 

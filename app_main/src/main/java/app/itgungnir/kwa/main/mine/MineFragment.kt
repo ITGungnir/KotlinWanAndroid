@@ -19,6 +19,7 @@ import my.itgungnir.ui.easy_adapter.ListItem
 import my.itgungnir.ui.easy_adapter.bind
 import my.itgungnir.ui.input.ProgressButton
 import my.itgungnir.ui.list_footer.ListFooter
+import my.itgungnir.ui.onAntiShakeClick
 import my.itgungnir.ui.status_view.StatusView
 
 class MineFragment : BaseFragment() {
@@ -111,7 +112,7 @@ class MineFragment : BaseFragment() {
                 it.findViewById<TextView>(R.id.tip).text = "您尚未登录"
                 it.findViewById<ProgressButton>(R.id.button).apply {
                     ready("登录 / 注册")
-                    onAntiShakeClick {
+                    onAntiShakeClick(2000L) {
                         Router.instance.with(context)
                             .target(LoginActivity)
                             .go()

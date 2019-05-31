@@ -2,12 +2,12 @@ package app.itgungnir.kwa.support.setting.delegate
 
 import android.os.Bundle
 import android.view.View
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.support.R
 import app.itgungnir.kwa.support.setting.SettingState
 import kotlinx.android.synthetic.main.list_item_setting_navigable.view.*
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.onAntiShakeClick
 
 class NavigableDelegate(
     private val navigateCallback: (Int) -> Unit
@@ -27,7 +27,7 @@ class NavigableDelegate(
 
         holder.render(item) {
 
-            this.onAntiShakeClick {
+            this.onAntiShakeClick(2000L) {
                 navigateCallback.invoke(item.id)
             }
 

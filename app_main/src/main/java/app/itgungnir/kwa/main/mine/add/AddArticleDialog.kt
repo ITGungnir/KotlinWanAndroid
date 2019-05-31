@@ -5,18 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
-import app.itgungnir.kwa.common.hideSoftInput
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.main.R
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.dialog_add_article.*
 import my.itgungnir.rxmvvm.core.mvvm.buildFragmentViewModel
+import my.itgungnir.ui.dialog.NoTitleDialogFragment
+import my.itgungnir.ui.hideSoftInput
+import my.itgungnir.ui.onAntiShakeClick
 
-class AddArticleDialog : DialogFragment() {
+class AddArticleDialog : NoTitleDialogFragment() {
 
     private val viewModel by lazy {
         buildFragmentViewModel(
@@ -57,7 +57,7 @@ class AddArticleDialog : DialogFragment() {
 
         addButton.apply {
             disabled("确定新增")
-            onAntiShakeClick {
+            onAntiShakeClick(2000L) {
                 loading()
                 it.hideSoftInput()
                 val titleStr = titleInput.getInput().editableText.toString().trim()

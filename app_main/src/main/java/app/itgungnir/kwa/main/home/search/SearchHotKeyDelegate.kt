@@ -3,12 +3,12 @@ package app.itgungnir.kwa.main.home.search
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import app.itgungnir.kwa.common.color
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.main.R
 import kotlinx.android.synthetic.main.list_item_search_hot.view.*
+import my.itgungnir.ui.color
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.onAntiShakeClick
 import org.jetbrains.anko.textColor
 
 class SearchHotKeyDelegate(
@@ -26,7 +26,7 @@ class SearchHotKeyDelegate(
                     view.findViewById<TextView>(R.id.tagView).apply {
                         text = data.name
                         textColor = this.context.color(R.color.colorAccent)
-                        onAntiShakeClick {
+                        onAntiShakeClick(2000L) {
                             keyClickCallback.invoke(data.name)
                         }
                     }

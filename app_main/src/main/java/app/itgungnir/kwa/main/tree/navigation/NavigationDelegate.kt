@@ -3,14 +3,14 @@ package app.itgungnir.kwa.main.tree.navigation
 import android.os.Bundle
 import android.view.View
 import app.itgungnir.kwa.common.WebActivity
-import app.itgungnir.kwa.common.html
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.main.R
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.list_item_navigation_right.view.*
 import my.itgungnir.grouter.api.Router
 import my.itgungnir.ui.easy_adapter.BaseDelegate
 import my.itgungnir.ui.easy_adapter.EasyAdapter
+import my.itgungnir.ui.html
+import my.itgungnir.ui.onAntiShakeClick
 
 class NavigationDelegate : BaseDelegate<NavigationState.NavigationVO>() {
 
@@ -24,7 +24,7 @@ class NavigationDelegate : BaseDelegate<NavigationState.NavigationVO>() {
                 render = { view, data ->
                     view.findViewById<Chip>(R.id.tagView).apply {
                         text = data.name
-                        onAntiShakeClick {
+                        onAntiShakeClick(2000L) {
                             Router.instance.with(context)
                                 .target(WebActivity)
                                 .addParam("id", data.id)

@@ -3,8 +3,6 @@ package app.itgungnir.kwa.support.register
 import android.annotation.SuppressLint
 import androidx.lifecycle.Observer
 import app.itgungnir.kwa.common.RegisterActivity
-import app.itgungnir.kwa.common.hideSoftInput
-import app.itgungnir.kwa.common.onAntiShakeClick
 import app.itgungnir.kwa.common.popToast
 import app.itgungnir.kwa.support.R
 import com.jakewharton.rxbinding2.widget.RxTextView
@@ -13,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_register.*
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.rxmvvm.core.mvvm.BaseActivity
 import my.itgungnir.rxmvvm.core.mvvm.buildActivityViewModel
+import my.itgungnir.ui.hideSoftInput
+import my.itgungnir.ui.onAntiShakeClick
 
 @Route(RegisterActivity)
 class RegisterActivity : BaseActivity() {
@@ -50,7 +50,7 @@ class RegisterActivity : BaseActivity() {
 
         register.apply {
             disabled("注册")
-            onAntiShakeClick {
+            onAntiShakeClick(2000L) {
                 hideSoftInput()
                 loading()
                 val userName = userNameInput.getInput().editableText.toString().trim()

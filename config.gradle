@@ -21,13 +21,14 @@ ext {
     rxjava_version = '2.2.4'
     rxandroid_version = '2.1.1'
     rxbinding_version = '2.2.0'
+    rxpermissions_version = '0.10.2'
     // Glide
     glide_version = '4.8.0'
     glide_trans_version = '3.3.0'
     // Widgets
     flex_version = '1.0.0'
     // Tools
-    uikit_version = '1.0.1'
+    uikit_version = '1.0.5'
     rxmvvm_version = '1.3.0'
     joda_version = '2.10.1'
     gson_version = '2.8.5'
