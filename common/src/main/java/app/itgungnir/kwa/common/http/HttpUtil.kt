@@ -45,13 +45,15 @@ class HttpUtil private constructor() {
      */
     fun downloadApk(context: Context, fileUrl: String, fileName: String) {
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        val request = DownloadManager.Request(Uri.parse(fileUrl))
-        request.setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-        // 通知栏
-        request.setTitle("KotlinWanAndroid")
-        request.setDescription("APK下载中...")
-        request.setAllowedOverRoaming(false)
-        downloadManager.enqueue(request)
+        DownloadManager.Request(Uri.parse(fileUrl)).apply {
+            setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
+            // 通知栏
+            setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            setTitle("KotlinWanAndroid")
+            setDescription("APK下载中...")
+            setAllowedOverRoaming(false)
+            // 入下载队列
+            downloadManager.enqueue(this)
+        }
     }
 }

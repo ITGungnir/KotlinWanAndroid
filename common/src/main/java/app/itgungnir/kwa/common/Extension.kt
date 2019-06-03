@@ -61,7 +61,8 @@ fun Context.simpleDialog(manager: FragmentManager, msg: String, onConfirm: (() -
         .backgroundColor(this.color(R.color.clr_dialog), 5F)
         .dividerColor(this.color(R.color.clr_divider))
         .message(msg, this.color(R.color.text_color_level_2))
-        .confirm { onConfirm?.invoke() }
+        .confirm(color = this.color(R.color.colorAccent)) { onConfirm?.invoke() }
+        .cancel(color = this.color(R.color.colorAccent))
         .create()
         .show(manager, SimpleDialog::class.java.name)
 
