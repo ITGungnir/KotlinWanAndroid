@@ -12,10 +12,10 @@ import app.itgungnir.kwa.common.SplashActivity
 import app.itgungnir.kwa.common.http.io2Main
 import app.itgungnir.kwa.common.redux.AppRedux
 import app.itgungnir.kwa.common.redux.UpdateVersion
-import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Single
 import my.itgungnir.grouter.annotation.Route
 import my.itgungnir.grouter.api.Router
+import my.itgungnir.permission.GPermission
 import my.itgungnir.ui.color
 import my.itgungnir.ui.dp2px
 import org.jetbrains.anko.*
@@ -59,22 +59,18 @@ class SplashActivity : AppCompatActivity() {
             .io2Main()
             .doOnSubscribe { App.isFirstRun = false }
             .subscribe({
-                navigate()
+                requestPermissions()
             }, {})
     }
 
-    @SuppressLint("CheckResult")
     private fun requestPermissions() {
-        RxPermissions(this).requestEachCombined(
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_PHONE_STATE
-        ).subscribe { permission ->
-            when {
-                permission.granted -> navigate()
-                permission.shouldShowRequestPermissionRationale -> Unit
-                else -> Unit
-            }
-        }
+        GPermission.with(this)
+            .onGranted { navigate() }
+            .onDenied { finish() }
+            .request(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE to "文件读写",
+                Manifest.permission.READ_PHONE_STATE to "获取手机状态"
+            )
     }
 
     private fun navigate() {
