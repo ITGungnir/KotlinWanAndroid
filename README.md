@@ -2,7 +2,7 @@
 <div align="center">
   <img src="./ic_launcher_origin.png"/>
   <br/><br/>
-  <img src="https://img.shields.io/badge/Version-V1.2.0-brightgreen.svg" />
+  <img src="https://img.shields.io/badge/Version-V1.2.1-brightgreen.svg" />
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" />
   <img src="https://img.shields.io/badge/API-19+-blue.svg" alt="Min Sdk Version" />
   <img src="https://img.shields.io/badge/License-Apache2.0-blue.svg" alt="License" />
@@ -22,7 +22,8 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 * **登录注册**，登录注册功能对用户身份进行验证，登录后可查看个人收藏列表和日程列表；
 * **我的**，我的页面中展示个人收藏列表，可添加站外文章，并提供设置页面和日程页面的入口；
 * **设置**，设置页面可以切换自动缓存、无图模式和夜间模式、清除缓存、意见反馈、关于我们、退出登录；
-* **日程**，日程页面展示个人所有待办日程，可以添加、修改、删除日程以及查看已完成日程。
+* **日程**，日程页面展示个人所有待办日程，可以添加、修改、删除日程以及查看已完成日程；
+* **自动更新**，当应用发布了新版本之后，首页会提示用户进行更新。
 
 ## 应用下载
 扫码下载应用(Android 4.4+)。如果在使用中发现任何问题或Bug，欢迎issue，或Email：**itgungnir@163.com**
@@ -92,18 +93,23 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 
 ### 3、[UIKit](https://github.com/ITGungnir/UIKit)
 `UIKit`是笔者自己封装的一套`UI`库，现在仅用于`KotlinWanAndroid`客户端，虽尚待完善，但已经提供了一些扩展性极高的控件，这里简单介绍几个：
-* **Banner**：一个可以自动、无限、循环滚动的广告栏控件，与指示器分离，用户可自己定制指示器；
+* **Banner**：一个可以自动、无限、循环滚动的广告栏控件，与指示器分离，且可以动态的设置是否无限滚动、是否自动滚动等；
 * **Browser**：基于`AgentWeb`封装的一个网页控件，支持阻绝图片、页内回退、Scheme唤醒、错误页定制等功能；
 * **RichText**：富文本生成工具类，支持前景色、背景色、删除线、下划线、加粗、倾斜、点击等多种特效，链式编程，十分方便；
-* **HeadBar**：一个封装性极高的标题栏控件，支持定制返回按钮、定制标题、定制工具按钮等；
+* **HeadBar**：一个封装性极高的标题栏控件，支持定制返回按钮、定制标题、定制工具按钮、定制菜单等；
 * **EasyAdapter**：`RecyclerView`的封装，通过简单的代码，可以实现`多ViewType`和`局部刷新`等操作；
-* **ListFooter**：一个上滑加载更多的控件；
+* **ListFooter**：一个上滑加载更多的控件，可以自定义`Footer`样式；
 * **StatusView**：一个控制状态的控件，为不同状态设置不同的布局，然后通过一行代码在不同状态之间切换，常用于列表页加载出错时显示错误页；
 * **CommonPage**：阅读类应用的通用页面，由`SwipeRefreshLayout`、`StatusView`和`FAB`组成，通过`Behavior`实现协调。
 
 以上是`UIKit`库中几个比较有代表性的控件的简单介绍，仓库的`README.md`文件中有每个控件的详细介绍和使用文档。
 
-### 4、其他第三方依赖
+### 4、[GPermission](https://github.com/ITGungnir/GPermission)
+`GPermission`是对`RxPermission`的封装，将现在应用中常见的动态请求权限的逻辑进行了封装，使开发人员不再需要根据用户的操作去决定系统的反馈效果。
+
+关于`GPermission`中的具体业务流程，大家可以移步仓库中的`README.md`文件查看。
+
+### 5、其他第三方依赖
 * **`AndroidX`**：迁移到`AndroidX`；
 * **`Retrofit` + `OkHttp` + `RxJava` + `RxAndroid` + `Gson`**：网络请求、线程切换、请求组合等；
 * **`OkHttpLoggingInterceptor`**：`OkHttp`的请求日志框架，便于调错；
@@ -111,9 +117,14 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 * **`RxBinding`**：响应式控件事件监听框架，支持按钮防抖、表单联动等；
 * **`FlexBox`**：`Google`开源的流式布局框架，可以结合`RecyclerView`使用；
 * **`JodaTime`**：功能强大的时间转换框架，让时间操作更简单；
-* **`LeakCanary`**：内存泄漏监测框架，则debug版本中监测并警报内存泄漏；
+* **`LeakCanary`**：内存泄漏监测框架，则debug版本中监测并警报内存泄漏。
 
 ## Version Log
+### V1.2.1
+优化了部分页面的交互体验
+
+添加了权限申请逻辑
+
 ### V1.2.0
 集成了Bugly异常监测SDK
 
@@ -159,6 +170,7 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 [Glide](https://github.com/bumptech/glide)、
 [FlexBoxLayout](https://github.com/google/flexbox-layout)、
 [JodaTimeAndroid](https://github.com/dlew/joda-time-android)、
+[RxPermission](https://github.com/tbruyelle/RxPermissions)、
 [LeakCanary](https://github.com/square/leakcanary) 等
 #### 感谢开源和喜欢开源的各位大佬，让编程更美好！
 

@@ -1,8 +1,8 @@
 {
   "data": {
-    "downloadUrl": "http://oss.pgyer.com/b5f96dda10dfd9d9652901bb325a65f0.apk?Expires=1559130525&OSSAccessKeyId=uKgrdAVRfXyY0LsE&response-content-disposition=attachment%3B+filename%3Dapp-release.apk&Signature=XMPTggy2Mc1R5bH91LZMQZbVnhA%3D",
-    "version": "1.2.0",
-    "versionDesc": "主要更新：\r\n1.集成Bugly异常监测SDK；\r\n2.添加混淆；\r\n3.解决已知Bug。"
+    "downloadUrl": "http://oss.pgyer.com/f3f2def4656402087c80a9b89d2414fa.apk?Expires=1559533480&OSSAccessKeyId=uKgrdAVRfXyY0LsE&response-content-disposition=attachment%3B+filename%3Dapp-release.apk&Signature=556qbKGOUTU4vkOMyuJpteVweqA%3D",
+    "version": "1.2.1",
+    "versionDesc": "主要更新：\r\n1.优化了部分页面的交互体验；\r\n2.添加了权限申请逻辑。"
   },
   "errorCode": 0,
   "errorMsg": ""
