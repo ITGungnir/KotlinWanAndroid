@@ -28,7 +28,7 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 ## 应用下载
 扫码下载应用(Android 4.4+)。如果在使用中发现任何问题或Bug，欢迎issue，或Email：**itgungnir@163.com**
 
-![KotlinWanAndroid Apk Download](./images/download_code.png)
+![KotlinWanAndroid Apk Download](https://www.pgyer.com/app/qrcode/itgungnir_kwa)
 
 如果上述二维码无法扫描下载，请[点击这里下载APK](https://www.pgyer.com/itgungnir_kwa)
 
