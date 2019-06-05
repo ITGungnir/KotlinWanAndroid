@@ -46,7 +46,6 @@ class SplashActivity : AppCompatActivity() {
         initComponent()
     }
 
-    @SuppressLint("CheckResult")
     private fun initComponent() {
         if (!App.isFirstRun) {
             navigate()
@@ -55,22 +54,27 @@ class SplashActivity : AppCompatActivity() {
 
         AppRedux.instance.dispatch(UpdateVersion)
 
-        Single.timer(2L, TimeUnit.SECONDS)
-            .io2Main()
-            .doOnSubscribe { App.isFirstRun = false }
-            .subscribe({
-                requestPermissions()
-            }, {})
+        requestPermissions()
     }
 
     private fun requestPermissions() {
         GPermission.with(this)
-            .onGranted { navigate() }
+            .onGranted { postNavigate() }
             .onDenied { finish() }
             .request(
                 Manifest.permission.WRITE_EXTERNAL_STORAGE to "文件读写",
                 Manifest.permission.READ_PHONE_STATE to "获取手机状态"
             )
+    }
+
+    @SuppressLint("CheckResult")
+    private fun postNavigate() {
+        Single.timer(2L, TimeUnit.SECONDS)
+            .io2Main()
+            .doOnSubscribe { App.isFirstRun = false }
+            .subscribe({
+                navigate()
+            }, {})
     }
 
     private fun navigate() {
@@ -79,4 +83,6 @@ class SplashActivity : AppCompatActivity() {
             .go()
         finish()
     }
+
+    override fun onBackPressed() = Unit
 }

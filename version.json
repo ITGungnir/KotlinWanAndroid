@@ -1,8 +1,8 @@
 {
   "data": {
-    "downloadUrl": "http://oss.pgyer.com/f3f2def4656402087c80a9b89d2414fa.apk?Expires=1559533480&OSSAccessKeyId=uKgrdAVRfXyY0LsE&response-content-disposition=attachment%3B+filename%3Dapp-release.apk&Signature=556qbKGOUTU4vkOMyuJpteVweqA%3D",
-    "version": "1.2.1",
-    "versionDesc": "主要更新：\r\n1.优化了部分页面的交互体验；\r\n2.添加了权限申请逻辑。"
+    "downloadUrl": "http://oss.pgyer.com/fba405e1d907c2dd529dc751ec31c1b2.apk?Expires=1559704901&OSSAccessKeyId=uKgrdAVRfXyY0LsE&response-content-disposition=attachment%3B+filename%3Dapp-release.apk&Signature=p7qi%2FuC7QzSVMMANlet9ZVmlklc%3D",
+    "version": "1.2.2",
+    "versionDesc": "主要更新：\r\n优化权限申请逻辑。"
   },
   "errorCode": 0,
   "errorMsg": ""

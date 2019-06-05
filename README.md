@@ -2,7 +2,7 @@
 <div align="center">
   <img src="./ic_launcher_origin.png"/>
   <br/><br/>
-  <img src="https://img.shields.io/badge/Version-V1.2.1-brightgreen.svg" />
+  <img src="https://img.shields.io/badge/Version-V1.2.2-brightgreen.svg" />
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" />
   <img src="https://img.shields.io/badge/API-19+-blue.svg" alt="Min Sdk Version" />
   <img src="https://img.shields.io/badge/License-Apache2.0-blue.svg" alt="License" />
@@ -120,6 +120,9 @@ KotlinWanAndroid是以[WanAndroid API](https://www.wanandroid.com/)为基础开�
 * **`LeakCanary`**：内存泄漏监测框架，则debug版本中监测并警报内存泄漏。
 
 ## Version Log
+### V1.2.2
+解决欢迎页倒计时过程中点击回退键造成的崩溃问题
+
 ### V1.2.1
 优化了部分页面的交互体验
 
